@@ -1,0 +1,866 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chapter 1 Practice Test: Scientific Method & Tools</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .test-header {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 30px;
+            border-radius: 20px;
+            text-align: center;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .test-header h1 {
+            font-size: 2.5em;
+            color: #4a90e2;
+            margin-bottom: 10px;
+        }
+
+        .test-info {
+            background: #e3f2fd;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            border-left: 5px solid #2196F3;
+        }
+
+        .timer-container {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 15px 25px;
+            border-radius: 25px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            font-weight: bold;
+            font-size: 1.2em;
+            color: #4a90e2;
+            z-index: 1000;
+        }
+
+        .timer-running {
+            color: #4CAF50;
+        }
+
+        .timer-warning {
+            color: #ff9800;
+            animation: pulse 1s infinite;
+        }
+
+        .timer-danger {
+            color: #f44336;
+            animation: pulse 0.5s infinite;
+        }
+
+        @keyframes pulse {
+            0% { opacity: 1; }
+            50% { opacity: 0.5; }
+            100% { opacity: 1; }
+        }
+
+        .question-container {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 25px;
+            border-radius: 15px;
+            margin-bottom: 25px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .question-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #e0e0e0;
+        }
+
+        .question-number {
+            background: #4a90e2;
+            color: white;
+            padding: 8px 20px;
+            border-radius: 25px;
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+
+        .question-type {
+            background: #f5f5f5;
+            padding: 5px 15px;
+            border-radius: 15px;
+            font-size: 0.9em;
+            color: #666;
+        }
+
+        .question-text {
+            font-size: 1.1em;
+            margin-bottom: 20px;
+            line-height: 1.7;
+        }
+
+        .answer-options {
+            margin: 20px 0;
+        }
+
+        .answer-option {
+            display: block;
+            padding: 15px 20px;
+            margin: 10px 0;
+            background: #f8f9fa;
+            border: 2px solid #e9ecef;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .answer-option:hover {
+            background: #e3f2fd;
+            border-color: #2196F3;
+        }
+
+        .answer-option.selected {
+            background: #e3f2fd;
+            border-color: #2196F3;
+            box-shadow: 0 3px 10px rgba(33, 150, 243, 0.3);
+        }
+
+        .answer-option input[type="radio"] {
+            margin-right: 15px;
+            transform: scale(1.2);
+        }
+
+        .visual-question {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 15px 0;
+            text-align: center;
+            border: 2px dashed #dee2e6;
+        }
+
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+            background: white;
+        }
+
+        .data-table th,
+        .data-table td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: center;
+        }
+
+        .data-table th {
+            background: #4a90e2;
+            color: white;
+            font-weight: bold;
+        }
+
+        .data-table tr:nth-child(even) {
+            background: #f8f9fa;
+        }
+
+        .controls {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+            margin: 30px 0;
+            text-align: center;
+        }
+
+        .btn {
+            padding: 12px 30px;
+            margin: 10px;
+            border: none;
+            border-radius: 25px;
+            font-size: 1.1em;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: #4a90e2;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #357abd;
+            transform: translateY(-2px);
+        }
+
+        .btn-success {
+            background: #4CAF50;
+            color: white;
+        }
+
+        .btn-success:hover {
+            background: #45a049;
+            transform: translateY(-2px);
+        }
+
+        .btn-warning {
+            background: #ff9800;
+            color: white;
+        }
+
+        .btn-warning:hover {
+            background: #f57c00;
+            transform: translateY(-2px);
+        }
+
+        .results-container {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+            margin: 30px 0;
+            display: none;
+        }
+
+        .score-display {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .score-circle {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2em;
+            font-weight: bold;
+            color: white;
+            margin: 20px;
+        }
+
+        .score-excellent {
+            background: linear-gradient(45deg, #4CAF50, #45a049);
+        }
+
+        .score-good {
+            background: linear-gradient(45deg, #2196F3, #1976D2);
+        }
+
+        .score-needs-work {
+            background: linear-gradient(45deg, #ff9800, #f57c00);
+        }
+
+        .score-poor {
+            background: linear-gradient(45deg, #f44336, #d32f2f);
+        }
+
+        .question-review {
+            margin: 20px 0;
+            padding: 15px;
+            border-radius: 10px;
+            border-left: 5px solid #ddd;
+        }
+
+        .correct-answer {
+            background: #e8f5e8;
+            border-left-color: #4CAF50;
+        }
+
+        .incorrect-answer {
+            background: #ffebee;
+            border-left-color: #f44336;
+        }
+
+        .back-link {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background: rgba(255, 255, 255, 0.9);
+            color: #4a90e2;
+            padding: 10px 20px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: bold;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .back-link:hover {
+            background: #4a90e2;
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 20px;
+            background: #e0e0e0;
+            border-radius: 10px;
+            margin: 20px 0;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(45deg, #4CAF50, #45a049);
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+
+        @media (max-width: 768px) {
+            .timer-container {
+                position: static;
+                margin-bottom: 20px;
+                text-align: center;
+            }
+            
+            .back-link {
+                position: static;
+                display: block;
+                text-align: center;
+                margin-bottom: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <a href="chapter1_study_guide.html" class="back-link">← Back to Study Guide</a>
+    
+    <div class="timer-container" id="timer">
+        <div>⏱️ Time: <span id="time-display">15:00</span></div>
+    </div>
+
+    <div class="container">
+        <div class="test-header">
+            <h1>Chapter 1 Practice Test</h1>
+            <h2>Scientific Method & Tools</h2>
+            
+            <div class="test-info">
+                <p><strong>Instructions:</strong> This practice test contains 15 questions designed to mirror the STAAR Science format. You have 15 minutes to complete the test. Choose the best answer for each question.</p>
+                <p><strong>Scoring:</strong> Aim for 12+ correct answers (80%) to demonstrate readiness for STAAR success!</p>
+            </div>
+
+            <div class="progress-bar">
+                <div class="progress-fill" id="progress"></div>
+            </div>
+        </div>
+
+        <form id="practice-test">
+            <!-- Question 1 -->
+            <div class="question-container">
+                <div class="question-header">
+                    <div class="question-number">Question 1</div>
+                    <div class="question-type">Scientific Method Steps</div>
+                </div>
+                <div class="question-text">
+                    Maria wants to investigate which brand of paper towel absorbs the most water. What should be her FIRST step in the scientific method?
+                </div>
+                <div class="answer-options">
+                    <label class="answer-option">
+                        <input type="radio" name="q1" value="A">
+                        A. Gather different brands of paper towels
+                    </label>
+                    <label class="answer-option">
+                        <input type="radio" name="q1" value="B">
+                        B. Write a hypothesis about which brand will absorb the most water
+                    </label>
+                    <label class="answer-option">
+                        <input type="radio" name="q1" value="C">
+                        C. State the problem or question she wants to investigate
+                    </label>
+                    <label class="answer-option">
+                        <input type="radio" name="q1" value="D">
+                        D. Test each brand by pouring water on them
+                    </label>
+                </div>
+            </div>
+
+            <!-- Question 2 -->
+            <div class="question-container">
+                <div class="question-header">
+                    <div class="question-number">Question 2</div>
+                    <div class="question-type">Measurement Tools</div>
+                </div>
+                <div class="question-text">
+                    A student needs to measure the volume of orange juice in a container. Which tool should the student use?
+                </div>
+                <div class="answer-options">
+                    <label class="answer-option">
+                        <input type="radio" name="q2" value="A">
+                        A. Balance
+                    </label>
+                    <label class="answer-option">
+                        <input type="radio" name="q2" value="B">
+                        B. Ruler
+                    </label>
+                    <label class="answer-option">
+                        <input type="radio" name="q2" value="C">
+                        C. Graduated cylinder
+                    </label>
+                    <label class="answer-option">
+                        <input type="radio" name="q2" value="D">
+                        D. Thermometer
+                    </label>
+                </div>
+            </div>
+
+            <!-- Question 3 -->
+            <div class="question-container">
+                <div class="question-header">
+                    <div class="question-number">Question 3</div>
+                    <div class="question-type">Hypothesis Formation</div>
+                </div>
+                <div class="question-text">
+                    Which of the following is written as a proper scientific hypothesis?
+                </div>
+                <div class="answer-options">
+                    <label class="answer-option">
+                        <input type="radio" name="q3" value="A">
+                        A. Plants will grow better with fertilizer
+                    </label>
+                    <label class="answer-option">
+                        <input type="radio" name="q3" value="B">
+                        B. If I add fertilizer to plants, then they will grow taller because fertilizer provides nutrients
+                    </label>
+                    <label class="answer-option">
+                        <input type="radio" name="q3" value="C">
+                        C. Fertilizer helps plants grow
+                    </label>
+                    <label class="answer-option">
+                        <input type="radio" name="q3" value="D">
+                        D. I think plants need fertilizer
+                    </label>
+                </div>
+            </div>
+
+            <!-- Question 4 -->
+            <div class="question-container">
+                <div class="question-header">
+                    <div class="question-number">Question 4</div>
+                    <div class="question-type">Reading Measurements</div>
+                </div>
+                <div class="question-text">
+                    Look at the graduated cylinder measurement shown below. What is the volume of the liquid?
+                </div>
+                <div class="visual-question">
+                    <p><strong>Graduated Cylinder Reading</strong></p>
+                    <p>The meniscus (bottom of the curved water surface) aligns with the 42 mL mark</p>
+                    <p>Scale: Each small line = 1 mL</p>
+                </div>
+                <div class="answer-options">
+                    <label class="answer-option">
+                        <input type="radio" name="q4" value="A">
+                        A. 40 mL
+                    </label>
+                    <label class="answer-option">
+                        <input type="radio" name="q4" value="B">
+                        B. 42 mL
+                    </label>
+                    <label class="answer-option">
+                        <input type="radio" name="q4" value="C">
+                        C. 44 mL
+                    </label>
+                    <label class="answer-option">
+                        <input type="radio" name="q4" value="D">
+                        D. 45 mL
+                    </label>
+                </div>
+            </div>
+
+            <!-- Question 5 -->
+            <div class="question-container">
+                <div class="question-header">
+                    <div class="question-number">Question 5</div>
+                    <div class="question-type">Observations vs. Inferences</div>
+                </div>
+                <div class="question-text">
+                    A student notices that ice cubes in a glass have completely disappeared after sitting on a table for 30 minutes. The student states: "The ice melted because it was warm in the room." Which part of this statement is an INFERENCE?
+                </div>
+                <div class="answer-options">
+                    <label class="answer-option">
+                        <input type="radio" name="q5" value="A">
+                        A. Ice cubes were in a glass
+                    </label>
+                    <label class="answer-option">
+                        <input type="radio" name="q5" value="B">
+                        B. The ice cubes disappeared
+                    </label>
+                    <label class="answer-option">
+                        <input type="radio" name="q5" value="C">
+                        C. It was warm in the room
+                    </label>
+                    <label class="answer-option">
+                        <input type="radio" name="q5" value="D">
+                        D. The glass sat on the table for 30 minutes
+                    </label>
+                </div>
+            </div>
+
+            <!-- Question 6 -->
+            <div class="question-container">
+                <div class="question-header">
+                    <div class="question-number">Question 6</div>
+                    <div class="question-type">Data Analysis</div>
+                </div>
+                <div class="question-text">
+                    Students measured the growth of bean plants over 4 weeks. Study the data table below and answer the question.
+                </div>
+                <table class="data-table">
+                    <tr>
+                        <th>Week</th>
+                        <th>Plant A Height (cm)</th>
+                        <th>Plant B Height (cm)</th>
+                        <th>Plant C Height (cm)</th>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>2</td>
+                        <td>3</td>
+                        <td>1</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>5</td>
+                        <td>6</td>
+                        <td>3</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>9</td>
+                        <td>11</td>
+                        <td>6</td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>14</td>
+                        <td>17</td>
+                        <td>10</td>
+                    </tr>
+                </table>
+                <div class="question-text">
+                    Which plant showed the GREATEST total growth from Week 1 to Week 4?
+                </div>
+                <div class="answer-options">
+                    <label class="answer-option">
+                        <input type="radio" name="q6" value="A">
+                        A. Plant A (grew 12 cm total)
+                    </label>
+                    <label class="answer-option">
+                        <input type="radio" name="q6" value="B">
+                        B. Plant B (grew 14 cm total)
+                    </label>
+                    <label class="answer-option">
+                        <input type="radio" name="q6" value="C">
+                        C. Plant C (grew 9 cm total)
+                    </label>
+                    <label class="answer-option">
+                        <input type="radio" name="q6" value="D">
+                        D. All plants grew the same amount
+                    </label>
+                </div>
+            </div>
+
+            <!-- Question 7 -->
+            <div class="question-container">
+                <div class="question-header">
+                    <div class="question-number">Question 7</div>
+                    <div class="question-type">Qualitative vs. Quantitative</div>
+                </div>
+                <div class="question-text">
+                    Which observation is QUANTITATIVE?
+                </div>
+                <div class="answer-options">
+                    <label class="answer-option">
+                        <input type="radio" name="q7" value="A">
+                        A. The flower is red
+                    </label>
+                    <label class="answer-option">
+                        <input type="radio" name="q7" value="B">
+                        B. The flower smells sweet
+                    </label>
+                    <label class="answer-option">
+                        <input type="radio" name="q7" value="C">
+                        C. The flower is 15 cm tall
+                    </label>
+                    <label class="answer-option">
+                        <input type="radio" name="q7" value="D">
+                        D. The flower feels soft
+                    </label>
+                </div>
+            </div>
+
+            <!-- Question 8 -->
+            <div class="question-container">
+                <div class="question-header">
+                    <div class="question-number">Question 8</div>
+                    <div class="question-type">Scientific Tools</div>
+                </div>
+                <div class="question-text">
+                    A scientist wants to find the mass of a small rock. The scientist should use a —
+                </div>
+                <div class="answer-options">
+                    <label class="answer-option">
+                        <input type="radio" name="q8" value="A">
+                        A. meter stick to measure its length
+                    </label>
+                    <label class="answer-option">
+                        <input type="radio" name="q8" value="B">
+                        B. balance to measure its mass
+                    </label>
+                    <label class="answer-option">
+                        <input type="radio" name="q8" value="C">
+                        C. graduated cylinder to measure its volume
+                    </label>
+                    <label class="answer-option">
+                        <input type="radio" name="q8" value="D">
+                        D. thermometer to measure its temperature
+                    </label>
+                </div>
+            </div>
+
+            <!-- Question 9 -->
+            <div class="question-container">
+                <div class="question-header">
+                    <div class="question-number">Question 9</div>
+                    <div class="question-type">Variables</div>
+                </div>
+                <div class="question-text">
+                    In an experiment testing how different amounts of sunlight affect plant growth, what is the VARIABLE being tested?
+                </div>
+                <div class="answer-options">
+                    <label class="answer-option">
+                        <input type="radio" name="q9" value="A">
+                        A. The type of plant used
+                    </label>
+                    <label class="answer-option">
+                        <input type="radio" name="q9" value="B">
+                        B. The amount of water given to each plant
+                    </label>
+                    <label class="answer-option">
+                        <input type="radio" name="q9" value="C">
+                        C. The amount of sunlight each plant receives
+                    </label>
+                    <label class="answer-option">
+                        <input type="radio" name="q9" value="D">
+                        D. The height of each plant
+                    </label>
+                </div>
+            </div>
+
+            <!-- Question 10 -->
+            <div class="question-container">
+                <div class="question-header">
+                    <div class="question-number">Question 10</div>
+                    <div class="question-type">Units of Measurement</div>
+                </div>
+                <div class="question-text">
+                    Which unit would be MOST appropriate for measuring the mass of a pencil?
+                </div>
+                <div class="answer-options">
+                    <label class="answer-option">
+                        <input type="radio" name="q10" value="A">
+                        A. Milliliters (mL)
+                    </label>
+                    <label class="answer-option">
+                        <input type="radio" name="q10" value="B">
+                        B. Centimeters (cm)
+                    </label>
+                    <label class="answer-option">
+                        <input type="radio" name="q10" value="C">
+                        C. Grams (g)
+                    </label>
+                    <label class="answer-option">
+                        <input type="radio" name="q10" value="D">
+                        D. Degrees Celsius (°C)
+                    </label>
+                </div>
+            </div>
+
+            <!-- Question 11 -->
+            <div class="question-container">
+                <div class="question-header">
+                    <div class="question-number">Question 11</div>
+                    <div class="question-type">Scientific Method</div>
+                </div>
+                <div class="question-text">
+                    After conducting an experiment, a scientist analyzes the data and decides whether the hypothesis was supported or not. This step is called the —
+                </div>
+                <div class="answer-options">
+                    <label class="answer-option">
+                        <input type="radio" name="q11" value="A">
+                        A. observation
+                    </label>
+                    <label class="answer-option">
+                        <input type="radio" name="q11" value="B">
+                        B. hypothesis
+                    </label>
+                    <label class="answer-option">
+                        <input type="radio" name="q11" value="C">
+                        C. conclusion
+                    </label>
+                    <label class="answer-option">
+                        <input type="radio" name="q11" value="D">
+                        D. procedure
+                    </label>
+                </div>
+            </div>
+
+            <!-- Question 12 -->
+            <div class="question-container">
+                <div class="question-header">
+                    <div class="question-number">Question 12</div>
+                    <div class="question-type">Data Collection</div>
+                </div>
+                <div class="question-text">
+                    Students recorded the temperature of water every 5 minutes as it was heated. What type of graph would BEST show how the temperature changed over time?
+                </div>
+                <div class="answer-options">
+                    <label class="answer-option">
+                        <input type="radio" name="q12" value="A">
+                        A. Bar graph
+                    </label>
+                    <label class="answer-option">
+                        <input type="radio" name="q12" value="B">
+                        B. Line graph
+                    </label>
+                    <label class="answer-option">
+                        <input type="radio" name="q12" value="C">
+                        C. Circle graph
+                    </label>
+                    <label class="answer-option">
+                        <input type="radio" name="q12" value="D">
+                        D. Picture graph
+                    </label>
+                </div>
+            </div>
+
+            <!-- Question 13 -->
+            <div class="question-container">
+                <div class="question-header">
+                    <div class="question-number">Question 13</div>
+                    <div class="question-type">Safety in Science</div>
+                </div>
+                <div class="question-text">
+                    Which safety rule should ALWAYS be followed when conducting science experiments?
+                </div>
+                <div class="answer-options">
+                    <label class="answer-option">
+                        <input type="radio" name="q13" value="A">
+                        A. Work alone without adult supervision
+                    </label>
+                    <label class="answer-option">
+                        <input type="radio" name="q13" value="B">
+                        B. Taste unknown substances to identify them
+                    </label>
+                    <label class="answer-option">
+                        <input type="radio" name="q13" value="C">
+                        C. Wear safety goggles when working with chemicals
+                    </label>
+                    <label class="answer-option">
+                        <input type="radio" name="q13" value="D">
+                        D. Mix different chemicals to see what happens
+                    </label>
+                </div>
+            </div>
+
+            <!-- Question 14 -->
+            <div class="question-container">
+                <div class="question-header">
+                    <div class="question-number">Question 14</div>
+                    <div class="question-type">Control Groups</div>
+                </div>
+                <div class="question-text">
+                    In an experiment testing whether music affects plant growth, one group of plants receives music while another group receives no music. The group that receives no music is called the —
+                </div>
+                <div class="answer-options">
+                    <label class="answer-option">
+                        <input type="radio" name="q14" value="A">
+                        A. variable group
+                    </label>
+                    <label class="answer-option">
+                        <input type="radio" name="q14" value="B">
+                        B. experimental group
+                    </label>
+                    <label class="answer-option">
+                        <input type="radio" name="q14" value="C">
+                        C. control group
+                    </label>
+                    <label class="answer-option">
+                        <input type="radio" name="q14" value="D">
+                        D. hypothesis group
+                    </label>
+                </div>
+            </div>
+
+            <!-- Question 15 -->
+            <div class="question-container">
+                <div class="question-header">
+                    <div class="question-number">Question 15</div>
+                    <div class="question-type">Scientific Process</div>
+                </div>
+                <div class="question-text">
+                    A student observes that sugar dissolves faster in hot water than in cold water. What should the student do NEXT to investigate this observation scientifically?
+                </div>
+                <div class="answer-options">
+                    <label class="answer-option">
+                        <input type="radio" name="q15" value="A">
+                        A. Tell everyone about the discovery
+                    </label>
+                    <label class="answer-option">
+                        <input type="radio" name="q15" value="B">
+                        B. Form a hypothesis and design an experiment to test it
+                    </label>
+                    <label class="answer-option">
+                        <input type="radio" name="q15" value="C">
+                        C. Assume the observation is always true
+                    </label>
+                    <label class="answer-option">
+                        <input type="radio" name="q15" value="D">
+                        D. Ignore the observation and try something else
+                    </label>
+                </div>
+            </div>
+        </form>
+
+        <div class="controls">
+            <button type="button" class="btn btn-warning" onclick="reviewAnswers()">Review My Answers</button>
+            <button type="button" class="btn btn-success" onclick="submitTest()">Submit Test</button>
+            <button type="button" class="btn btn-primary" onclick="restartTest()">Restart Test</button>
+        </div>
+
+        <div class="results-container" id="results">
+            <h2>Test Results</h2>
+            <div class="score-display">
+                <div class="score-circle" id="score-circle">
+                    <span id="score-text">0/15</span>
+                </div>
+                <div id="score-message"></div>
+                <div id="staar
