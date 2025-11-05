@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chapter 5 Practice Test: Water Cycle & Weather</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .test-header {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 30px;
+            border-radius: 20px;
+            text-align: center;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .test-header h1 {
+            font-size: 2.5em;
+            color: #4a90e2;
+            margin-bottom: 10px;
+        }
+
+        .test-info {
+            background: #e3f2fd;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            border-left: 5px solid #2196F3;
+        }
+
+        .timer-container {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 15px 25px;
+            border-radius: 25px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            font-weight: bold;
+            font-size: 1.2em;
+            color: #4a90e2;
+            z-index: 1000;
+        }
+
+        .timer-running { color: #4CAF50; }
+        .timer-warning { color: #ff9800; animation: pulse 1s infinite; }
+        .timer-danger { color: #f44336; animation: pulse 0.5s infinite; }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        .question-container {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 25px;
+            border-radius: 15px;
+            margin-bottom: 25px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .question-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #e0e0e0;
+        }
+
+        .question-number {
+            background: #4a90e2;
+            color: white;
+            padding: 8px 20px;
+            border-radius: 25px;
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+
+        .question-type {
+            background: #f5f5f5;
+            padding: 5px 15px;
+            border-radius: 15px;
+            font-size: 0.9em;
+            color: #666;
+        }
+
+        .question-text {
+            font-size: 1.1em;
+            margin-bottom: 20px;
+            line-height: 1.7;
+        }
+
+        .answer-options {
+            margin: 20px 0;
+        }
+
+        .answer-option {
+            display: block;
+            padding: 15px 20px;
+            margin: 10px 0;
+            background: #f8f9fa;
+            border: 2px solid #e9ecef;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .answer-option:hover {
+            background: #e3f2fd;
+            border-color: #2196F3;
+        }
+
+        .answer-option.selected {
+            background: #e3f2fd;
+            border-color: #2196F3;
+            box-shadow: 0 3px 10px rgba(33, 150, 243, 0.3);
+        }
+
+        .answer-option input[type="radio"] {
+            margin-right: 15px;
+            transform: scale(1.2);
+        }
+
+        .option-label {
+            font-weight: bold;
+            color: #4a90e2;
+            margin-right: 10px;
+        }
+
+        .visual-question {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 15px 0;
+            text-align: center;
+            border: 2px dashed #dee2e6;
+        }
+
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+            background: white;
+        }
+
+        .data-table th,
+        .data-table td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: center;
+        }
+
+        .data-table th {
+            background: #4a90e2;
+            color: white;
+            font-weight: bold;
+        }
+
+        .data-table tr:nth-child(even) {
+            background: #f8f9fa;
+        }
+
+        .controls {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+            margin: 30px 0;
+            text-align: center;
+        }
+
+        .btn {
+            padding: 12px 30px;
+            margin: 10px;
+            border: none;
+            border-radius: 25px;
+            font-size: 1.1em;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: #4a90e2;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #357abd;
+            transform: translateY(-2px);
+        }
+
+        .btn-success {
+            background: #4CAF50;
+            color: white;
+        }
+
+        .btn-success:hover {
+            background: #45a049;
+            transform: translateY(-2px);
+        }
+
+        .btn-warning {
+            background: #ff9800;
+            color: white;
+        }
+
+        .btn-warning:hover {
+            background: #f57c00;
+            transform: translateY(-2px);
+        }
+
+        .results-container {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+            margin: 30px 0;
+            display: none;
+        }
+
+        .score-display {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .score-circle {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            display: inline-flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-size: 2em;
+            font-weight: bold;
+            color: white;
+            margin: 20px;
+        }
+
+        .score-excellent {
+            background: linear-gradient(45deg, #4CAF50, #45a049);
+        }
+
+        .score-good {
+            background: linear-gradient(45deg, #2196F3, #1976D2);
+        }
+
+        .score-needs-work {
+            background: linear-gradient(45deg, #ff9800, #f57c00);
+        }
+
+        .score-poor {
+            background: linear-gradient(45deg, #f44336, #d32f2f);
+        }
+
+        .back-link {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background: rgba(255, 255, 255, 0.9);
+            color: #4a90e2;
+            padding: 10px 20px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: bold;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+            z-index: 999;
+        }
+
+        .back-link:hover {
+            background: #4a90e2;
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 25px;
+            background: #e0e0e0;
+            border-radius: 10px;
+            margin: 20px 0;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(45deg, #4CAF50, #45a049);
+            width: 0%;
+            transition: width 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 0.9em;
+        }
+
+        .answer-reveal {
+            margin-top: 30px;
+        }
+
+        .reveal-spacer {
+            height: 40px;
+            border-bottom: 2px dashed #ccc;
+            margin-bottom: 20px;
+        }
+
+        .reveal-content {
+            background: #e8f5e9;
+            padding: 20px;
+            border-radius: 10px;
+            border-left: 5px solid #4CAF50;
+        }
+
+        .reveal-content h4 {
+            color: #2e7d32;
+            margin-bottom: 10px;
+        }
+
+        @media (max-width: 768px) {
+            .timer-container {
+                position: static;
+                margin-bottom: 20px;
+                text-align: center;
+            }
+
+            .back-link {
+                position: static;
+                display: block;
+                text-align: center;
+                margin-bottom: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <a href="tests.html" class="back-link">← Back to Testing Center</a>
+
+    <div class="timer-container" id="timer">
+        <div>⏱️ Time: <span id="time-display">17:00</span></div>
+    </div>
+
+    <div class="container">
+        <div class="test-header">
+            <h1>Chapter 5 Practice Test</h1>
+            <h2>💧 Water Cycle & Weather</h2>
+
+            <div class="test-info">
+                <p><strong>Instructions:</strong> This practice test contains 17 challenging questions covering the water cycle, evaporation, condensation, precipitation, weather patterns, climate, and cloud types. You have 17 minutes to complete the test.</p>
+                <p><strong>Scoring:</strong> Aim for 14+ correct answers (80%) to demonstrate mastery!</p>
+                <p><strong>Note:</strong> Answers are randomized - the correct answer won't always be in the same position!</p>
+            </div>
+
+            <div class="progress-bar">
+                <div class="progress-fill" id="progress">
+                    <span id="progress-text">0 / 17 answered</span>
+                </div>
+            </div>
+        </div>
+
+        <div id="test-questions">
+            <!-- Questions will be inserted here by JavaScript -->
+        </div>
+
+        <div class="controls" id="test-controls">
+            <button type="button" class="btn btn-warning" id="review-answers">📝 Review My Answers</button>
+            <button type="button" class="btn btn-success" id="submit-test">✅ Submit Test</button>
+            <button type="button" class="btn btn-primary" id="restart-test">🔄 Restart Test</button>
+        </div>
+
+        <div class="results-container" id="results">
+            <h2 style="text-align: center; margin-bottom: 30px;">📊 Test Results</h2>
+            <div class="score-display">
+                <div class="score-circle" id="score-circle"></div>
+                <div id="score-text"></div>
+                <div id="score-message"></div>
+            </div>
+            <div id="answers-review"></div>
+
+            <div style="text-align: center; margin-top: 30px;">
+                <a href="tests.html" class="btn btn-primary">📚 Back to Testing Center</a>
+                <button type="button" class="btn btn-success" onclick="location.reload()">🔄 Retake Test</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="test-engine.js"></script>
+    <script>
+        // Chapter 5: Water Cycle & Weather Test Data
+        const testData = {
+            questions: [
+                {
+                    question: "The water cycle is the continuous movement of water on, above, and below Earth's surface. Which process occurs when liquid water changes into water vapor?",
+                    options: [
+                        "Evaporation occurs when liquid water absorbs heat and becomes gas",
+                        "Condensation occurs when liquid water absorbs heat and becomes gas",
+                        "Precipitation occurs when liquid water absorbs heat and becomes gas",
+                        "Transpiration occurs when liquid water absorbs heat and becomes gas"
+                    ],
+                    correct: 0,
+                    explanation: "Evaporation is the process where liquid water absorbs heat energy (usually from the sun) and changes into water vapor (gas). This happens from oceans, lakes, rivers, and even puddles!",
+                    topic: "Water Cycle"
+                },
+                {
+                    question: "Students observe a glass of ice water sitting on a table. After 10 minutes, water droplets form on the outside of the glass. What process caused this?",
+                    options: [
+                        "Evaporation: liquid water from inside leaked through the glass walls",
+                        "Condensation: water vapor in the air cooled and became liquid water",
+                        "Precipitation: water vapor in the air fell down onto the glass",
+                        "Transpiration: water from plants in the room collected on the glass"
+                    ],
+                    correct: 1,
+                    explanation: "Condensation occurs when water vapor in the air touches the cold glass surface, loses heat energy, and changes from gas to liquid. This is why the outside of the glass gets wet, not from water leaking out.",
+                    topic: "Water Cycle"
+                },
+                {
+                    question: "Precipitation is water that falls from clouds to Earth's surface. Which of the following is NOT a form of precipitation?",
+                    options: [
+                        "Rain falls as liquid water droplets from clouds to the ground",
+                        "Snow falls as frozen ice crystals from clouds to the ground",
+                        "Fog forms when water vapor condenses near the ground's surface",
+                        "Sleet falls as frozen raindrops or ice pellets from clouds down"
+                    ],
+                    correct: 2,
+                    explanation: "Fog is NOT precipitation because it doesn't fall from the sky. Fog is condensed water vapor suspended in air near the ground. Rain, snow, sleet, and hail are all forms of precipitation that fall to Earth.",
+                    topic: "Precipitation"
+                },
+                {
+                    question: "A student creates a model of the water cycle by placing a bowl of water in sunlight with plastic wrap on top. What part of the water cycle is represented by water droplets forming on the plastic wrap?",
+                    options: [
+                        "Evaporation, because the water is changing from liquid to gas state",
+                        "Condensation, because water vapor is changing back into liquid droplets",
+                        "Precipitation, because the water is falling down from the plastic wrap",
+                        "Collection, because the water droplets are gathering together on plastic"
+                    ],
+                    correct: 1,
+                    explanation: "The water droplets on the plastic wrap represent condensation. Water evaporates from the bowl, rises as vapor, cools when it touches the plastic wrap, and condenses back into liquid droplets.",
+                    topic: "Water Cycle"
+                },
+                {
+                    question: "On a hot summer day, a puddle of water disappears from a parking lot. Where did the water go?",
+                    options: [
+                        "The water soaked into the concrete and is stored underground",
+                        "The water evaporated into the air and became invisible water vapor",
+                        "The water was absorbed by plants through their roots in soil",
+                        "The water chemically changed into different substances and is gone forever"
+                    ],
+                    correct: 1,
+                    explanation: "The water evaporated! Heat from the sun gave water molecules enough energy to change from liquid to gas (water vapor). The water didn't disappear - it's still in the air as invisible water vapor.",
+                    topic: "Water Cycle"
+                },
+                {
+                    question: "Weather describes atmospheric conditions at a specific time and place. Climate describes average weather conditions over many years. Which describes weather, NOT climate?",
+                    options: [
+                        "Alaska has cold winters with heavy snowfall almost every single year",
+                        "Florida has hot, humid summers and receives frequent afternoon thunderstorms",
+                        "It is raining heavily today with strong winds and low temperatures",
+                        "The Sahara Desert is hot and dry throughout most of the year"
+                    ],
+                    correct: 2,
+                    explanation: "Weather is the current atmospheric conditions (today it's raining with strong winds). Climate is the average pattern over many years. Alaska's cold winters, Florida's humid summers, and the Sahara's dryness are climate descriptions.",
+                    topic: "Weather vs Climate"
+                },
+                {
+                    question: "Scientists study weather data from Dallas, Texas over 30 years and find the average July temperature is 35°C (95°F). What does this information describe?",
+                    options: [
+                        "This describes the current weather in Dallas during one specific day",
+                        "This describes the climate pattern for Dallas during the month of July",
+                        "This describes the highest temperature ever recorded in Dallas in summer",
+                        "This describes the temperature forecast for Dallas for next week's weather"
+                    ],
+                    correct: 1,
+                    explanation: "Average temperature over 30 years describes climate, not weather. Climate is the long-term average of weather conditions. Weather refers to current conditions or short-term forecasts.",
+                    topic: "Weather vs Climate"
+                },
+                {
+                    question: "Cumulus clouds are puffy, white clouds that look like cotton balls. What type of weather is usually associated with cumulus clouds?",
+                    options: [
+                        "Fair weather with sunny skies and pleasant conditions throughout the day",
+                        "Severe thunderstorms with heavy rain and strong winds developing rapidly",
+                        "Steady, light rain falling continuously for many hours or even days",
+                        "Thick fog and mist that reduces visibility near the ground's surface"
+                    ],
+                    correct: 0,
+                    explanation: "Cumulus clouds typically indicate fair weather. These puffy white clouds form on sunny days. However, if they grow very tall and dark, they can become cumulonimbus clouds, which bring thunderstorms.",
+                    topic: "Clouds"
+                },
+                {
+                    question: "Stratus clouds are low, gray clouds that often cover the entire sky like a blanket. What weather conditions do stratus clouds typically bring?",
+                    options: [
+                        "Stratus clouds bring clear skies with plenty of bright sunshine all day",
+                        "Stratus clouds bring overcast skies with drizzle or light steady rain",
+                        "Stratus clouds bring severe weather with tornadoes and damaging hail storms",
+                        "Stratus clouds bring hot, dry conditions with no moisture in the air"
+                    ],
+                    correct: 1,
+                    explanation: "Stratus clouds create overcast (gray) skies and often bring drizzle or light rain. They form in layers and can cover the entire sky, blocking sunlight and creating gloomy conditions.",
+                    topic: "Clouds"
+                },
+                {
+                    question: "Cirrus clouds are thin, wispy clouds made of ice crystals that form very high in the atmosphere. What do cirrus clouds often indicate about upcoming weather?",
+                    options: [
+                        "Cirrus clouds indicate that fair weather will continue for many days",
+                        "Cirrus clouds indicate that a change in weather may be approaching soon",
+                        "Cirrus clouds indicate that severe thunderstorms will occur within one hour",
+                        "Cirrus clouds indicate that the temperature will drop below freezing immediately"
+                    ],
+                    correct: 1,
+                    explanation: "Cirrus clouds often form ahead of warm fronts and can indicate that weather conditions may change in the next 24-48 hours. They're made of ice crystals because they form at very high, cold altitudes.",
+                    topic: "Clouds"
+                },
+                {
+                    question: "A weather map shows a cold front moving toward a city from the west. What weather changes would residents most likely experience as the cold front passes?",
+                    options: [
+                        "Temperature increases, humidity rises, and gentle steady rain begins to fall",
+                        "Temperature decreases, strong winds develop, and brief heavy rain may occur",
+                        "Temperature stays the same, winds calm down, and clear skies develop quickly",
+                        "Temperature rises sharply, clouds disappear, and very dry conditions arrive immediately"
+                    ],
+                    correct: 1,
+                    explanation: "Cold fronts bring quick weather changes: temperature drops, strong winds, and often brief but heavy rain or thunderstorms. Cold fronts move faster than warm fronts and cause more dramatic weather changes.",
+                    topic: "Weather Patterns"
+                },
+                {
+                    question: "Air pressure is the weight of air pressing down on Earth's surface. Which statement about air pressure and weather is correct?",
+                    options: [
+                        "High air pressure usually brings cloudy skies with rain and storms developing",
+                        "High air pressure usually brings clear skies with calm and fair weather",
+                        "Low air pressure usually brings sunny skies with very dry conditions overall",
+                        "Air pressure has no effect on weather patterns or conditions at all"
+                    ],
+                    correct: 1,
+                    explanation: "High pressure systems bring clear, calm weather because air sinks, preventing clouds from forming. Low pressure systems bring cloudy, rainy weather because air rises, cools, and forms clouds and precipitation.",
+                    topic: "Weather Patterns"
+                },
+                {
+                    question: "Humidity measures the amount of water vapor in the air. On a day with high humidity, what would a person most likely experience?",
+                    options: [
+                        "The air feels very dry and skin becomes chapped and uncomfortable",
+                        "The air feels sticky and muggy, and sweat doesn't evaporate quickly",
+                        "The air feels crisp and cool with very comfortable breathing conditions",
+                        "The air has no effect on how a person feels overall throughout the day"
+                    ],
+                    correct: 1,
+                    explanation: "High humidity makes air feel sticky and uncomfortable because there's already lots of water vapor in the air. This prevents sweat from evaporating quickly, making it harder for our bodies to cool down.",
+                    topic: "Atmospheric Conditions"
+                },
+                {
+                    question: "Students measure temperature, air pressure, humidity, and wind speed. These measurements are used to describe what?",
+                    options: [
+                        "The current weather conditions at their specific location and time",
+                        "The climate patterns for their region over the past thirty years",
+                        "The geology and rock formations found in their local area nearby",
+                        "The types of plants and animals living in their ecosystem currently"
+                    ],
+                    correct: 0,
+                    explanation: "Temperature, air pressure, humidity, and wind speed are all weather measurements that describe current atmospheric conditions. Together, they help scientists understand and predict weather patterns.",
+                    topic: "Weather Patterns"
+                },
+                {
+                    question: "The sun heats Earth's surface unevenly, causing differences in air temperature and pressure. What does this uneven heating cause?",
+                    options: [
+                        "It causes wind as air moves from high pressure to low pressure areas",
+                        "It causes the water cycle to stop completely across all of Earth's surface",
+                        "It causes all clouds to disappear from the atmosphere immediately everywhere",
+                        "It causes Earth's rotation to speed up and days to become much shorter"
+                    ],
+                    correct: 0,
+                    explanation: "Uneven heating creates differences in air pressure. Air moves from high pressure (cooler) areas to low pressure (warmer) areas, creating wind. This is why we have breezes, winds, and global wind patterns.",
+                    topic: "Weather Patterns"
+                },
+                {
+                    question: "A meteorologist observes dark cumulonimbus clouds forming, air pressure dropping rapidly, and wind speed increasing. What weather event is most likely about to occur?",
+                    options: [
+                        "A period of calm, clear weather with light gentle breezes all day",
+                        "A thunderstorm with heavy rain, lightning, and possibly strong winds or hail",
+                        "A light drizzle with overcast skies lasting for several days continuously",
+                        "A thick fog that reduces visibility near the ground throughout the morning"
+                    ],
+                    correct: 1,
+                    explanation: "Cumulonimbus clouds are tall, dark storm clouds. Combined with dropping air pressure and increasing winds, these conditions indicate an approaching thunderstorm with heavy rain, lightning, and possibly severe weather.",
+                    topic: "Weather Patterns"
+                },
+                {
+                    question: "Water exists in three forms on Earth: solid (ice and snow), liquid (water in oceans, lakes, and rivers), and gas (water vapor in the atmosphere). What causes water to change between these forms?",
+                    options: [
+                        "Changes in temperature cause water to gain or lose heat energy",
+                        "Changes in location cause water to transform into different chemical substances",
+                        "Changes in color cause water molecules to rearrange their atoms differently",
+                        "Changes in pressure cause water to become completely different types of matter"
+                    ],
+                    correct: 0,
+                    explanation: "Temperature changes (adding or removing heat energy) cause water to change states. Adding heat causes melting and evaporation. Removing heat causes freezing and condensation. The water molecules (H₂O) stay the same.",
+                    topic: "Water Cycle"
+                }
+            ]
+        };
+
+        // Initialize the test
+        document.addEventListener('DOMContentLoaded', function() {
+            new TestEngine(testData, 'chapter5_water_weather', 17);
+        });
+    </script>
+</body>
+</html>

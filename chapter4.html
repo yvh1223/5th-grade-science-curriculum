@@ -241,6 +241,82 @@
             margin: 30px 0;
             text-align: center;
         }
+
+        .comparison-table {
+            width: 100%;
+            margin: 30px 0;
+            border-collapse: collapse;
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .comparison-table th {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 15px;
+            text-align: left;
+            font-weight: bold;
+        }
+
+        .comparison-table td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .comparison-table tr:hover {
+            background: #f5f5f5;
+        }
+
+        .callout-box {
+            background: linear-gradient(135deg, #ffd89b, #19547b);
+            color: white;
+            border-radius: 12px;
+            padding: 20px;
+            margin: 20px 0;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .tip-box {
+            background: linear-gradient(135deg, #84fab0, #8fd3f4);
+            color: #333;
+            border-radius: 12px;
+            padding: 20px;
+            margin: 20px 0;
+            border-left: 5px solid #00b894;
+        }
+
+        .try-this-home {
+            background: linear-gradient(135deg, #a8edea, #fed6e3);
+            border-radius: 15px;
+            padding: 25px;
+            margin: 30px 0;
+            border: 3px dashed #ff6b9d;
+        }
+
+        .examples-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 25px 0;
+        }
+
+        .example-card-visual {
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+            border-top: 4px solid;
+        }
+
+        .example-card-visual:hover {
+            transform: translateY(-5px);
+        }
+
+        .physical-change { border-top-color: #3498db; }
+        .chemical-change { border-top-color: #e74c3c; }
     </style>
 </head>
 <body>
@@ -403,6 +479,191 @@
                 <div style="background: rgba(255,255,255,0.7); padding: 15px; border-radius: 10px; margin-top: 20px;">
                     <strong>🔬 Remember:</strong> The matter stays the same - only the arrangement and movement of particles changes!<br>
                     <strong>🌡️ Temperature:</strong> Measures how fast particles are moving!
+                </div>
+
+                <div class="callout-box">
+                    <h4>💡 Did You Know?</h4>
+                    <ul style="margin: 10px 0;">
+                        <li>❄️ Water is the only substance on Earth that exists naturally in all three states!</li>
+                        <li>🌬️ At room temperature, gas molecules zoom around at about 1,000 mph!</li>
+                        <li>💎 Some materials can skip the liquid phase entirely - going straight from solid to gas (like dry ice!)</li>
+                        <li>🌡️ Absolute zero (-273°C) is when all particle movement STOPS!</li>
+                    </ul>
+                </div>
+
+                <div class="try-this-home">
+                    <h4>🏠 Try This at Home: States of Matter in Your Kitchen!</h4>
+                    <p><strong>Mission:</strong> Find all three states of matter in your kitchen!</p>
+                    <div style="background: white; padding: 15px; border-radius: 10px; margin: 15px 0;">
+                        <p><strong>🧊 SOLIDS:</strong> Find 3 solid items</p>
+                        <p>Examples: _______________, _______________, _______________</p>
+                        <br>
+                        <p><strong>💧 LIQUIDS:</strong> Find 3 liquid items</p>
+                        <p>Examples: _______________, _______________, _______________</p>
+                        <br>
+                        <p><strong>💨 GASES:</strong> Can you find these?</p>
+                        <p>Examples: Steam from boiling water, air from opening soda, smell from cooking</p>
+                    </div>
+                    <p><strong>🌟 Bonus Challenge:</strong> Watch an ice cube melt! Observe it changing from solid → liquid → gas!</p>
+                </div>
+            </div>
+
+            <div class="physical-chemical-changes">
+                <h3 style="text-align: center; margin: 30px 0;">🔬 Physical vs. Chemical Changes - What's the Difference?</h3>
+                <p style="text-align: center;">Matter can change in two different ways! Let's learn how to tell them apart.</p>
+
+                <table class="comparison-table">
+                    <thead>
+                        <tr>
+                            <th>Feature</th>
+                            <th>🔵 Physical Change</th>
+                            <th>🔴 Chemical Change</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>What Happens?</strong></td>
+                            <td>Matter changes FORM but stays the SAME substance</td>
+                            <td>Matter becomes a COMPLETELY NEW substance</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Can You Reverse It?</strong></td>
+                            <td>✅ YES! Usually easy to undo</td>
+                            <td>❌ NO! Very hard or impossible to reverse</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Chemical Properties</strong></td>
+                            <td>Stay the same</td>
+                            <td>Change completely</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Examples</strong></td>
+                            <td>
+                                • Melting ice<br>
+                                • Cutting paper<br>
+                                • Dissolving sugar in water<br>
+                                • Crushing a can<br>
+                                • Freezing water
+                            </td>
+                            <td>
+                                • Burning wood<br>
+                                • Rusting iron<br>
+                                • Cooking an egg<br>
+                                • Baking a cake<br>
+                                • Digesting food
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><strong>Signs to Look For</strong></td>
+                            <td>
+                                • Size/shape changes<br>
+                                • State changes (solid/liquid/gas)<br>
+                                • Broken into pieces<br>
+                                • Mixed or separated
+                            </td>
+                            <td>
+                                • Color change<br>
+                                • Smell/odor produced<br>
+                                • Heat or light given off<br>
+                                • Bubbles/gas formed<br>
+                                • Hard to reverse
+                            </td>
+                        </tr>
+                        <tr style="background: #e8f5e8;">
+                            <td colspan="3" style="text-align: center; font-weight: bold;">
+                                🧠 Key Question: "Is it the SAME stuff in a different form, or COMPLETELY NEW stuff?"
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="examples-grid">
+                    <div class="example-card-visual physical-change">
+                        <h4 style="color: #3498db;">🧊 Ice Melting</h4>
+                        <p style="font-size: 2em; text-align: center;">❄️ → 💧</p>
+                        <p><strong>Type:</strong> Physical Change</p>
+                        <p><strong>Why:</strong> Still H₂O! Just changed from solid to liquid. You can freeze it back to ice!</p>
+                    </div>
+
+                    <div class="example-card-visual chemical-change">
+                        <h4 style="color: #e74c3c;">🔥 Burning Wood</h4>
+                        <p style="font-size: 2em; text-align: center;">🪵 → 💨 + 🔥</p>
+                        <p><strong>Type:</strong> Chemical Change</p>
+                        <p><strong>Why:</strong> Wood turns into ash, smoke, and gases. Can't turn ash back into wood!</p>
+                    </div>
+
+                    <div class="example-card-visual physical-change">
+                        <h4 style="color: #3498db;">✂️ Cutting Paper</h4>
+                        <p style="font-size: 2em; text-align: center;">📄 → ✂️ → 📋</p>
+                        <p><strong>Type:</strong> Physical Change</p>
+                        <p><strong>Why:</strong> Still paper! Just smaller pieces. Can tape it back together!</p>
+                    </div>
+
+                    <div class="example-card-visual chemical-change">
+                        <h4 style="color: #e74c3c;">🥚 Cooking an Egg</h4>
+                        <p style="font-size: 2em; text-align: center;">🥚 → 🍳</p>
+                        <p><strong>Type:</strong> Chemical Change</p>
+                        <p><strong>Why:</strong> Proteins in egg change permanently. Can't "uncook" an egg!</p>
+                    </div>
+
+                    <div class="example-card-visual physical-change">
+                        <h4 style="color: #3498db;">🍬 Sugar Dissolving</h4>
+                        <p style="font-size: 2em; text-align: center;">🍬 + 💧 → 🥤</p>
+                        <p><strong>Type:</strong> Physical Change</p>
+                        <p><strong>Why:</strong> Sugar just mixed with water. Evaporate water to get sugar back!</p>
+                    </div>
+
+                    <div class="example-card-visual chemical-change">
+                        <h4 style="color: #e74c3c;">🦀 Iron Rusting</h4>
+                        <p style="font-size: 2em; text-align: center;">⚙️ + 💧 → 🦀</p>
+                        <p><strong>Type:</strong> Chemical Change</p>
+                        <p><strong>Why:</strong> Iron combines with oxygen to make rust. Completely different substance!</p>
+                    </div>
+                </div>
+
+                <div class="tip-box">
+                    <h4>💡 Remember This! The 5 Clues of Chemical Changes:</h4>
+                    <p><strong>If you see ANY of these, it's probably a chemical change:</strong></p>
+                    <ol style="font-size: 1.1em;">
+                        <li>🎨 <strong>Color Change:</strong> Substance changes color (like rust forming)</li>
+                        <li>🌡️ <strong>Temperature Change:</strong> Gets hot or cold without adding heat</li>
+                        <li>💨 <strong>Gas Produced:</strong> Bubbles or fizzing (like vinegar + baking soda)</li>
+                        <li>👃 <strong>Odor Produced:</strong> New smell appears (like rotten eggs)</li>
+                        <li>💡 <strong>Light Produced:</strong> Gives off light (like glow sticks or fireworks)</li>
+                    </ol>
+                </div>
+
+                <div class="try-this-home">
+                    <h4>🏠 Try This at Home: Baking Soda & Vinegar Reaction!</h4>
+                    <p><strong>🎯 Goal:</strong> See a chemical change in action!</p>
+
+                    <div style="background: white; padding: 15px; border-radius: 10px; margin: 15px 0;">
+                        <p><strong>📋 Materials:</strong></p>
+                        <ul>
+                            <li>1/4 cup baking soda</li>
+                            <li>1/4 cup vinegar</li>
+                            <li>Clear glass or cup</li>
+                            <li>Spoon</li>
+                        </ul>
+
+                        <p style="margin-top: 15px;"><strong>📋 Instructions:</strong></p>
+                        <ol>
+                            <li>Put baking soda in the glass</li>
+                            <li>Slowly pour in vinegar</li>
+                            <li>Watch what happens! 🎆</li>
+                        </ol>
+
+                        <p style="margin-top: 15px;"><strong>🔍 Observations - Count the clues of chemical change:</strong></p>
+                        <ul>
+                            <li>💨 Bubbles forming (gas produced) ✓</li>
+                            <li>🌡️ Temperature change (feel the glass get warm or cold) ✓</li>
+                            <li>🎨 The mixture looks different than either substance alone ✓</li>
+                        </ul>
+
+                        <p style="margin-top: 15px;"><strong>🧪 What's Happening:</strong> Baking soda and vinegar chemically react to create a NEW substance - carbon dioxide gas! That's why you see bubbles!</p>
+                    </div>
+
+                    <p><strong>🌟 Bonus Challenge:</strong> Can you turn the mixture back into baking soda and vinegar? (No! It's a chemical change!)</p>
                 </div>
             </div>
 

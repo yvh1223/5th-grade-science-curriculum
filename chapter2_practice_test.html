@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chapter 2 Practice Test: Earth & Space Science</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .test-header {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 30px;
+            border-radius: 20px;
+            text-align: center;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .test-header h1 {
+            font-size: 2.5em;
+            color: #4a90e2;
+            margin-bottom: 10px;
+        }
+
+        .test-info {
+            background: #e3f2fd;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            border-left: 5px solid #2196F3;
+        }
+
+        .timer-container {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 15px 25px;
+            border-radius: 25px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            font-weight: bold;
+            font-size: 1.2em;
+            color: #4a90e2;
+            z-index: 1000;
+        }
+
+        .timer-running { color: #4CAF50; }
+        .timer-warning { color: #ff9800; animation: pulse 1s infinite; }
+        .timer-danger { color: #f44336; animation: pulse 0.5s infinite; }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        .question-container {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 25px;
+            border-radius: 15px;
+            margin-bottom: 25px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .question-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #e0e0e0;
+        }
+
+        .question-number {
+            background: #4a90e2;
+            color: white;
+            padding: 8px 20px;
+            border-radius: 25px;
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+
+        .question-type {
+            background: #f5f5f5;
+            padding: 5px 15px;
+            border-radius: 15px;
+            font-size: 0.9em;
+            color: #666;
+        }
+
+        .question-text {
+            font-size: 1.1em;
+            margin-bottom: 20px;
+            line-height: 1.7;
+        }
+
+        .answer-options {
+            margin: 20px 0;
+        }
+
+        .answer-option {
+            display: block;
+            padding: 15px 20px;
+            margin: 10px 0;
+            background: #f8f9fa;
+            border: 2px solid #e9ecef;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .answer-option:hover {
+            background: #e3f2fd;
+            border-color: #2196F3;
+        }
+
+        .answer-option.selected {
+            background: #e3f2fd;
+            border-color: #2196F3;
+            box-shadow: 0 3px 10px rgba(33, 150, 243, 0.3);
+        }
+
+        .answer-option input[type="radio"] {
+            margin-right: 15px;
+            transform: scale(1.2);
+        }
+
+        .option-label {
+            font-weight: bold;
+            color: #4a90e2;
+            margin-right: 10px;
+        }
+
+        .visual-question {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 15px 0;
+            text-align: center;
+            border: 2px dashed #dee2e6;
+        }
+
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+            background: white;
+        }
+
+        .data-table th,
+        .data-table td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: center;
+        }
+
+        .data-table th {
+            background: #4a90e2;
+            color: white;
+            font-weight: bold;
+        }
+
+        .data-table tr:nth-child(even) {
+            background: #f8f9fa;
+        }
+
+        .controls {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+            margin: 30px 0;
+            text-align: center;
+        }
+
+        .btn {
+            padding: 12px 30px;
+            margin: 10px;
+            border: none;
+            border-radius: 25px;
+            font-size: 1.1em;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: #4a90e2;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #357abd;
+            transform: translateY(-2px);
+        }
+
+        .btn-success {
+            background: #4CAF50;
+            color: white;
+        }
+
+        .btn-success:hover {
+            background: #45a049;
+            transform: translateY(-2px);
+        }
+
+        .btn-warning {
+            background: #ff9800;
+            color: white;
+        }
+
+        .btn-warning:hover {
+            background: #f57c00;
+            transform: translateY(-2px);
+        }
+
+        .results-container {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+            margin: 30px 0;
+            display: none;
+        }
+
+        .score-display {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .score-circle {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            display: inline-flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-size: 2em;
+            font-weight: bold;
+            color: white;
+            margin: 20px;
+        }
+
+        .score-excellent {
+            background: linear-gradient(45deg, #4CAF50, #45a049);
+        }
+
+        .score-good {
+            background: linear-gradient(45deg, #2196F3, #1976D2);
+        }
+
+        .score-needs-work {
+            background: linear-gradient(45deg, #ff9800, #f57c00);
+        }
+
+        .score-poor {
+            background: linear-gradient(45deg, #f44336, #d32f2f);
+        }
+
+        .back-link {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background: rgba(255, 255, 255, 0.9);
+            color: #4a90e2;
+            padding: 10px 20px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: bold;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+            z-index: 999;
+        }
+
+        .back-link:hover {
+            background: #4a90e2;
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 25px;
+            background: #e0e0e0;
+            border-radius: 10px;
+            margin: 20px 0;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(45deg, #4CAF50, #45a049);
+            width: 0%;
+            transition: width 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 0.9em;
+        }
+
+        .answer-reveal {
+            margin-top: 30px;
+        }
+
+        .reveal-spacer {
+            height: 40px;
+            border-bottom: 2px dashed #ccc;
+            margin-bottom: 20px;
+        }
+
+        .reveal-content {
+            background: #e8f5e9;
+            padding: 20px;
+            border-radius: 10px;
+            border-left: 5px solid #4CAF50;
+        }
+
+        .reveal-content h4 {
+            color: #2e7d32;
+            margin-bottom: 10px;
+        }
+
+        @media (max-width: 768px) {
+            .timer-container {
+                position: static;
+                margin-bottom: 20px;
+                text-align: center;
+            }
+
+            .back-link {
+                position: static;
+                display: block;
+                text-align: center;
+                margin-bottom: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <a href="tests.html" class="back-link">← Back to Testing Center</a>
+
+    <div class="timer-container" id="timer">
+        <div>⏱️ Time: <span id="time-display">18:00</span></div>
+    </div>
+
+    <div class="container">
+        <div class="test-header">
+            <h1>Chapter 2 Practice Test</h1>
+            <h2>🌍 Earth & Space Science</h2>
+
+            <div class="test-info">
+                <p><strong>Instructions:</strong> This practice test contains 18 challenging questions covering Earth's layers, solar system, moon phases, and space science. You have 18 minutes to complete the test.</p>
+                <p><strong>Scoring:</strong> Aim for 14+ correct answers (80%) to demonstrate mastery!</p>
+                <p><strong>Note:</strong> Answers are randomized - the correct answer won't always be in the same position!</p>
+            </div>
+
+            <div class="progress-bar">
+                <div class="progress-fill" id="progress">
+                    <span id="progress-text">0 / 18 answered</span>
+                </div>
+            </div>
+        </div>
+
+        <div id="test-questions">
+            <!-- Questions will be inserted here by JavaScript -->
+        </div>
+
+        <div class="controls" id="test-controls">
+            <button type="button" class="btn btn-warning" id="review-answers">📝 Review My Answers</button>
+            <button type="button" class="btn btn-success" id="submit-test">✅ Submit Test</button>
+            <button type="button" class="btn btn-primary" id="restart-test">🔄 Restart Test</button>
+        </div>
+
+        <div class="results-container" id="results">
+            <h2 style="text-align: center; margin-bottom: 30px;">📊 Test Results</h2>
+            <div class="score-display">
+                <div class="score-circle" id="score-circle"></div>
+                <div id="score-text"></div>
+                <div id="score-message"></div>
+            </div>
+            <div id="answers-review"></div>
+
+            <div style="text-align: center; margin-top: 30px;">
+                <a href="tests.html" class="btn btn-primary">📚 Back to Testing Center</a>
+                <button type="button" class="btn btn-success" onclick="location.reload()">🔄 Retake Test</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="test-engine.js"></script>
+    <script>
+        // Chapter 2: Earth & Space Science Test Data
+        const testData = {
+            questions: [
+                {
+                    question: "Earth is made up of several layers. Which layer is the thickest and contains most of Earth's mass?",
+                    options: [
+                        "The crust, which forms the surface we live on",
+                        "The mantle, which is made of hot, dense rock",
+                        "The outer core, which is made of liquid metal",
+                        "The inner core, which is solid iron and nickel"
+                    ],
+                    correct: 1,
+                    explanation: "The mantle is Earth's thickest layer, making up about 84% of Earth's volume. It's made of hot, dense rock that slowly flows over millions of years.",
+                    topic: "Earth's Structure"
+                },
+                {
+                    question: "A student creates a model of Earth's layers using a hard-boiled egg. Which part of the egg would best represent Earth's crust?",
+                    options: [
+                        "The shell represents the thin, solid outer crust",
+                        "The white represents the thin, solid outer crust",
+                        "The yolk represents the thin, solid outer crust",
+                        "The air space represents the thin, solid outer crust"
+                    ],
+                    correct: 0,
+                    explanation: "The eggshell is thin and brittle, just like Earth's crust. It's the perfect representation of the thin, solid outer layer we live on.",
+                    topic: "Earth's Structure - Models"
+                },
+                {
+                    question: "Scientists have discovered that Earth's magnetic field is created by movements in which layer?",
+                    options: [
+                        "The crust creates the magnetic field through rocks",
+                        "The mantle creates the magnetic field through convection",
+                        "The outer core creates the magnetic field through liquid metal",
+                        "The inner core creates the magnetic field through pressure"
+                    ],
+                    correct: 2,
+                    explanation: "The outer core is made of liquid iron and nickel. As these metals move and flow, they create electric currents that generate Earth's magnetic field, which protects us from harmful solar radiation.",
+                    topic: "Earth's Magnetic Field"
+                },
+                {
+                    question: "Which statement correctly compares the inner planets (Mercury, Venus, Earth, Mars) to the outer planets (Jupiter, Saturn, Uranus, Neptune)?",
+                    options: [
+                        "Inner planets are larger and made mostly of gas and ice",
+                        "Inner planets are smaller and made mostly of rock and metal",
+                        "Inner planets have many moons and prominent ring systems",
+                        "Inner planets are farther from the Sun and have longer years"
+                    ],
+                    correct: 1,
+                    explanation: "The inner planets (also called terrestrial or rocky planets) are smaller and made mostly of rock and metal. They have fewer moons and no ring systems, unlike the outer gas giants.",
+                    topic: "Solar System Planets"
+                },
+                {
+                    question: "A student observes that Venus is the brightest planet visible from Earth, even though it's not the closest planet. What causes Venus to appear so bright?",
+                    options: [
+                        "Venus produces its own light like a small star does",
+                        "Venus has thick clouds that reflect lots of sunlight back",
+                        "Venus is covered with ice that sparkles in space brightly",
+                        "Venus is the largest planet so it appears very bright"
+                    ],
+                    correct: 1,
+                    explanation: "Venus has thick clouds made of sulfuric acid that reflect about 70% of the sunlight that hits it. This makes Venus the brightest planet in our night sky, even brighter than Jupiter which is much larger.",
+                    topic: "Planet Properties"
+                },
+                {
+                    question: "Jupiter is known as a 'gas giant' because it is made mostly of hydrogen and helium. Approximately how many Earths could fit inside Jupiter?",
+                    options: [
+                        "About 10 Earths could fit inside Jupiter's volume",
+                        "About 100 Earths could fit inside Jupiter's volume",
+                        "About 1,000 Earths could fit inside Jupiter's volume",
+                        "About 10,000 Earths could fit inside Jupiter's volume"
+                    ],
+                    correct: 2,
+                    explanation: "Jupiter is massive! More than 1,000 Earths could fit inside Jupiter. It's the largest planet in our solar system, with a diameter of about 88,000 miles compared to Earth's 8,000 miles.",
+                    topic: "Planet Comparisons"
+                },
+                {
+                    question: "The diagram shows the Moon's orbit around Earth. At which position would we see a FULL MOON from Earth?<br><br>[Position A: Moon between Earth and Sun | Position B: Moon to the left of Earth | Position C: Moon opposite side from Sun | Position D: Moon to the right of Earth]",
+                    options: [
+                        "Position A - when Moon is between Earth and Sun",
+                        "Position B - when Moon is to the left of Earth",
+                        "Position C - when Moon is on opposite side from Sun",
+                        "Position D - when Moon is to the right of Earth"
+                    ],
+                    correct: 2,
+                    explanation: "A full moon occurs when the Moon is on the opposite side of Earth from the Sun (Position C). The Sun's light hits the entire face of the Moon that we can see from Earth, making it appear completely round and bright.",
+                    topic: "Moon Phases"
+                },
+                {
+                    question: "During which moon phase is the Moon positioned between Earth and the Sun, making it nearly invisible from Earth?",
+                    options: [
+                        "Full Moon occurs when the Moon is between Earth and Sun",
+                        "New Moon occurs when the Moon is between Earth and Sun",
+                        "First Quarter occurs when the Moon is between Earth and Sun",
+                        "Last Quarter occurs when the Moon is between Earth and Sun"
+                    ],
+                    correct: 1,
+                    explanation: "A new moon occurs when the Moon is between Earth and the Sun. The side of the Moon facing Earth is dark because sunlight is hitting the far side, making the Moon nearly invisible to us.",
+                    topic: "Moon Phases"
+                },
+                {
+                    question: "Students track the Moon's phases over 4 weeks and notice it takes about 29.5 days to go through all phases. What causes the Moon to appear to change shape?",
+                    options: [
+                        "Earth's shadow covers different amounts of the Moon's surface",
+                        "The Moon rotates and shows us different sides regularly",
+                        "The Moon's position changes, so we see different lit portions",
+                        "The Sun moves and shines on different parts of Moon"
+                    ],
+                    correct: 2,
+                    explanation: "Moon phases are caused by the Moon's position relative to Earth and the Sun. As the Moon orbits Earth, we see different portions of its sunlit half, creating the phases we observe.",
+                    topic: "Cause of Moon Phases"
+                },
+                {
+                    question: "The Sun is classified as a medium-sized star. Which statement about the Sun is most accurate?",
+                    options: [
+                        "The Sun is the largest star in our galaxy and hottest",
+                        "The Sun is a medium star that provides Earth with energy",
+                        "The Sun is the smallest star but closest to Earth completely",
+                        "The Sun is the only star that produces light in space"
+                    ],
+                    correct: 1,
+                    explanation: "The Sun is a medium-sized (yellow dwarf) star that provides Earth with light and heat energy. It's not the largest star (many stars are much bigger), but it's the closest star to Earth at about 93 million miles away.",
+                    topic: "The Sun"
+                },
+                {
+                    question: "Scientists estimate that the Sun makes up approximately what percentage of the total mass of our entire solar system?",
+                    options: [
+                        "About 25% of the solar system's total mass overall",
+                        "About 50% of the solar system's total mass overall",
+                        "About 75% of the solar system's total mass overall",
+                        "About 99% of the solar system's total mass overall"
+                    ],
+                    correct: 3,
+                    explanation: "The Sun contains about 99.86% of the total mass in our solar system! All the planets, moons, asteroids, and comets combined make up less than 1% of the solar system's mass. The Sun's gravity holds everything in orbit.",
+                    topic: "Solar System Mass"
+                },
+                {
+                    question: "A student researches Saturn and learns it has at least 82 known moons. What force keeps Saturn's many moons in orbit around the planet?",
+                    options: [
+                        "Magnetic force pulls the moons toward Saturn's rings strongly",
+                        "Gravitational force pulls the moons toward Saturn's center constantly",
+                        "Electric force pushes the moons away from Saturn's surface",
+                        "Frictional force keeps the moons moving around Saturn always"
+                    ],
+                    correct: 1,
+                    explanation: "Gravity is the force that keeps moons in orbit around planets. Saturn's large mass creates strong gravitational pull that keeps its 82+ moons orbiting around it, just like Earth's gravity keeps our Moon in orbit.",
+                    topic: "Gravity and Orbits"
+                },
+                {
+                    question: "The asteroid belt is located between which two planets in our solar system?",
+                    options: [
+                        "The asteroid belt is located between Mercury and Venus",
+                        "The asteroid belt is located between Venus and Earth regularly",
+                        "The asteroid belt is located between Mars and Jupiter mainly",
+                        "The asteroid belt is located between Jupiter and Saturn clearly"
+                    ],
+                    correct: 2,
+                    explanation: "The asteroid belt is a region of rocky debris located between Mars and Jupiter. It contains millions of asteroids of various sizes. Jupiter's strong gravity prevented these rocks from forming into a planet.",
+                    topic: "Asteroid Belt"
+                },
+                {
+                    question: "Comets are often called 'dirty snowballs' because they are made of ice, dust, and rock. What happens when a comet gets close to the Sun?",
+                    options: [
+                        "The comet freezes solid and becomes completely invisible from space",
+                        "The comet heats up and develops a bright glowing tail clearly",
+                        "The comet breaks apart into many small asteroids in pieces",
+                        "The comet speeds up and crashes into the Sun burning up"
+                    ],
+                    correct: 1,
+                    explanation: "When a comet approaches the Sun, solar heat causes its ice to vaporize (turn to gas). This creates a glowing cloud around the comet and a bright tail that can be millions of miles long, always pointing away from the Sun.",
+                    topic: "Comets"
+                },
+                {
+                    question: "Why do astronauts appear to float weightlessly inside a spacecraft orbiting Earth, even though Earth's gravity is still pulling on them?",
+                    options: [
+                        "They are so far from Earth that gravity disappears completely",
+                        "They and their spacecraft are falling toward Earth continuously together",
+                        "The spacecraft creates artificial gravity that cancels Earth's pull",
+                        "Space has no gravity so everything floats freely without weight"
+                    ],
+                    correct: 1,
+                    explanation: "Astronauts appear weightless because they and their spacecraft are in free fall, constantly falling toward Earth together. However, they're also moving forward fast enough that they keep missing Earth, creating a stable orbit. This creates the sensation of weightlessness.",
+                    topic: "Gravity in Space"
+                },
+                {
+                    question: "A telescope allows astronomers to see distant objects in space more clearly. What is the main reason space telescopes like the Hubble can see better than ground-based telescopes?",
+                    options: [
+                        "Space telescopes are much larger than any ground telescope possible",
+                        "Space telescopes don't have Earth's atmosphere blocking or blurring light",
+                        "Space telescopes are closer to the stars and planets they observe",
+                        "Space telescopes use different technology than ground telescopes use regularly"
+                    ],
+                    correct: 1,
+                    explanation: "Space telescopes like Hubble produce clearer images because they're above Earth's atmosphere. The atmosphere causes light to blur and blocks some wavelengths, like ultraviolet and infrared light. Space telescopes avoid these problems.",
+                    topic: "Space Exploration"
+                },
+                {
+                    question: "Earth rotates on its axis once every 24 hours. What would happen to the length of a day if Earth rotated faster?",
+                    options: [
+                        "Days would become longer because rotation takes more time always",
+                        "Days would become shorter because rotation takes less time clearly",
+                        "Days would stay the same length regardless of rotation speed",
+                        "Days would disappear completely because of the fast spinning motion"
+                    ],
+                    correct: 1,
+                    explanation: "If Earth rotated faster on its axis, days would be shorter. One complete rotation equals one day. For example, Jupiter rotates in about 10 hours, so a 'day' on Jupiter is only 10 hours long!",
+                    topic: "Earth's Rotation"
+                },
+                {
+                    question: "Earth orbits the Sun at an average distance of about 93 million miles. Approximately how long does it take Earth to complete one full orbit around the Sun?",
+                    options: [
+                        "It takes about 24 hours for one complete orbit yearly",
+                        "It takes about 30 days for one complete orbit yearly",
+                        "It takes about 90 days for one complete orbit yearly",
+                        "It takes about 365 days for one complete orbit yearly"
+                    ],
+                    correct: 3,
+                    explanation: "Earth takes approximately 365.25 days (one year) to complete one full orbit around the Sun. The extra 0.25 day each year is why we add a leap day every four years in February!",
+                    topic: "Earth's Revolution"
+                }
+            ]
+        };
+
+        // Initialize the test
+        document.addEventListener('DOMContentLoaded', function() {
+            new TestEngine(testData, 'chapter2_earth_space', 18);
+        });
+    </script>
+</body>
+</html>

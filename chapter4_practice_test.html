@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chapter 4 Practice Test: Matter & Energy</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .test-header {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 30px;
+            border-radius: 20px;
+            text-align: center;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .test-header h1 {
+            font-size: 2.5em;
+            color: #4a90e2;
+            margin-bottom: 10px;
+        }
+
+        .test-info {
+            background: #e3f2fd;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            border-left: 5px solid #2196F3;
+        }
+
+        .timer-container {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 15px 25px;
+            border-radius: 25px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            font-weight: bold;
+            font-size: 1.2em;
+            color: #4a90e2;
+            z-index: 1000;
+        }
+
+        .timer-running { color: #4CAF50; }
+        .timer-warning { color: #ff9800; animation: pulse 1s infinite; }
+        .timer-danger { color: #f44336; animation: pulse 0.5s infinite; }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        .question-container {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 25px;
+            border-radius: 15px;
+            margin-bottom: 25px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .question-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #e0e0e0;
+        }
+
+        .question-number {
+            background: #4a90e2;
+            color: white;
+            padding: 8px 20px;
+            border-radius: 25px;
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+
+        .question-type {
+            background: #f5f5f5;
+            padding: 5px 15px;
+            border-radius: 15px;
+            font-size: 0.9em;
+            color: #666;
+        }
+
+        .question-text {
+            font-size: 1.1em;
+            margin-bottom: 20px;
+            line-height: 1.7;
+        }
+
+        .answer-options {
+            margin: 20px 0;
+        }
+
+        .answer-option {
+            display: block;
+            padding: 15px 20px;
+            margin: 10px 0;
+            background: #f8f9fa;
+            border: 2px solid #e9ecef;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .answer-option:hover {
+            background: #e3f2fd;
+            border-color: #2196F3;
+        }
+
+        .answer-option.selected {
+            background: #e3f2fd;
+            border-color: #2196F3;
+            box-shadow: 0 3px 10px rgba(33, 150, 243, 0.3);
+        }
+
+        .answer-option input[type="radio"] {
+            margin-right: 15px;
+            transform: scale(1.2);
+        }
+
+        .option-label {
+            font-weight: bold;
+            color: #4a90e2;
+            margin-right: 10px;
+        }
+
+        .visual-question {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 15px 0;
+            text-align: center;
+            border: 2px dashed #dee2e6;
+        }
+
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+            background: white;
+        }
+
+        .data-table th,
+        .data-table td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: center;
+        }
+
+        .data-table th {
+            background: #4a90e2;
+            color: white;
+            font-weight: bold;
+        }
+
+        .data-table tr:nth-child(even) {
+            background: #f8f9fa;
+        }
+
+        .controls {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+            margin: 30px 0;
+            text-align: center;
+        }
+
+        .btn {
+            padding: 12px 30px;
+            margin: 10px;
+            border: none;
+            border-radius: 25px;
+            font-size: 1.1em;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: #4a90e2;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #357abd;
+            transform: translateY(-2px);
+        }
+
+        .btn-success {
+            background: #4CAF50;
+            color: white;
+        }
+
+        .btn-success:hover {
+            background: #45a049;
+            transform: translateY(-2px);
+        }
+
+        .btn-warning {
+            background: #ff9800;
+            color: white;
+        }
+
+        .btn-warning:hover {
+            background: #f57c00;
+            transform: translateY(-2px);
+        }
+
+        .results-container {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+            margin: 30px 0;
+            display: none;
+        }
+
+        .score-display {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .score-circle {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            display: inline-flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-size: 2em;
+            font-weight: bold;
+            color: white;
+            margin: 20px;
+        }
+
+        .score-excellent {
+            background: linear-gradient(45deg, #4CAF50, #45a049);
+        }
+
+        .score-good {
+            background: linear-gradient(45deg, #2196F3, #1976D2);
+        }
+
+        .score-needs-work {
+            background: linear-gradient(45deg, #ff9800, #f57c00);
+        }
+
+        .score-poor {
+            background: linear-gradient(45deg, #f44336, #d32f2f);
+        }
+
+        .back-link {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background: rgba(255, 255, 255, 0.9);
+            color: #4a90e2;
+            padding: 10px 20px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: bold;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+            z-index: 999;
+        }
+
+        .back-link:hover {
+            background: #4a90e2;
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 25px;
+            background: #e0e0e0;
+            border-radius: 10px;
+            margin: 20px 0;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(45deg, #4CAF50, #45a049);
+            width: 0%;
+            transition: width 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 0.9em;
+        }
+
+        .answer-reveal {
+            margin-top: 30px;
+        }
+
+        .reveal-spacer {
+            height: 40px;
+            border-bottom: 2px dashed #ccc;
+            margin-bottom: 20px;
+        }
+
+        .reveal-content {
+            background: #e8f5e9;
+            padding: 20px;
+            border-radius: 10px;
+            border-left: 5px solid #4CAF50;
+        }
+
+        .reveal-content h4 {
+            color: #2e7d32;
+            margin-bottom: 10px;
+        }
+
+        @media (max-width: 768px) {
+            .timer-container {
+                position: static;
+                margin-bottom: 20px;
+                text-align: center;
+            }
+
+            .back-link {
+                position: static;
+                display: block;
+                text-align: center;
+                margin-bottom: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <a href="tests.html" class="back-link">← Back to Testing Center</a>
+
+    <div class="timer-container" id="timer">
+        <div>⏱️ Time: <span id="time-display">18:00</span></div>
+    </div>
+
+    <div class="container">
+        <div class="test-header">
+            <h1>Chapter 4 Practice Test</h1>
+            <h2>⚛️ Matter & Energy</h2>
+
+            <div class="test-info">
+                <p><strong>Instructions:</strong> This practice test contains 18 challenging questions covering states of matter, physical and chemical changes, properties of matter, forms of energy, and energy transformations. You have 18 minutes to complete the test.</p>
+                <p><strong>Scoring:</strong> Aim for 14+ correct answers (80%) to demonstrate mastery!</p>
+                <p><strong>Note:</strong> Answers are randomized - the correct answer won't always be in the same position!</p>
+            </div>
+
+            <div class="progress-bar">
+                <div class="progress-fill" id="progress">
+                    <span id="progress-text">0 / 18 answered</span>
+                </div>
+            </div>
+        </div>
+
+        <div id="test-questions">
+            <!-- Questions will be inserted here by JavaScript -->
+        </div>
+
+        <div class="controls" id="test-controls">
+            <button type="button" class="btn btn-warning" id="review-answers">📝 Review My Answers</button>
+            <button type="button" class="btn btn-success" id="submit-test">✅ Submit Test</button>
+            <button type="button" class="btn btn-primary" id="restart-test">🔄 Restart Test</button>
+        </div>
+
+        <div class="results-container" id="results">
+            <h2 style="text-align: center; margin-bottom: 30px;">📊 Test Results</h2>
+            <div class="score-display">
+                <div class="score-circle" id="score-circle"></div>
+                <div id="score-text"></div>
+                <div id="score-message"></div>
+            </div>
+            <div id="answers-review"></div>
+
+            <div style="text-align: center; margin-top: 30px;">
+                <a href="tests.html" class="btn btn-primary">📚 Back to Testing Center</a>
+                <button type="button" class="btn btn-success" onclick="location.reload()">🔄 Retake Test</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="test-engine.js"></script>
+    <script>
+        // Chapter 4: Matter & Energy Test Data
+        const testData = {
+            questions: [
+                {
+                    question: "Matter exists in three common states: solid, liquid, and gas. Which statement best describes the particles in a solid?",
+                    options: [
+                        "Particles are far apart and move freely in all directions",
+                        "Particles are close together and vibrate in fixed positions only",
+                        "Particles are somewhat close and slide past each other constantly",
+                        "Particles have no movement and stay completely still without energy"
+                    ],
+                    correct: 1,
+                    explanation: "In a solid, particles are tightly packed together and vibrate in fixed positions. They have strong forces holding them in place, which gives solids a definite shape and volume.",
+                    topic: "States of Matter"
+                },
+                {
+                    question: "A student observes water in three forms: ice cubes in a glass, liquid water in the glass, and water vapor from a boiling kettle. What do all three forms have in common?",
+                    options: [
+                        "They all have the same shape and take the container's form",
+                        "They all have the same volume and cannot be compressed at all",
+                        "They are all made of the same water molecules (H₂O) throughout",
+                        "They all have particles that are arranged in fixed positions always"
+                    ],
+                    correct: 2,
+                    explanation: "Whether water is solid (ice), liquid (water), or gas (vapor), it's still made of H₂O molecules. Only the arrangement and movement of the molecules change between states, not the molecules themselves.",
+                    topic: "States of Matter"
+                },
+                {
+                    question: "When heat is added to ice, it melts into liquid water. When heat is removed from liquid water, it freezes into ice. What type of change is this?",
+                    options: [
+                        "A physical change because the water molecules remain H₂O throughout",
+                        "A chemical change because the water molecules break apart into atoms",
+                        "A physical change because new substances are created from the water",
+                        "A chemical change because the properties of water change completely forever"
+                    ],
+                    correct: 0,
+                    explanation: "Melting and freezing are physical changes. The water molecules (H₂O) don't change; only their arrangement and state change. Physical changes can be reversed, and no new substances are formed.",
+                    topic: "Physical Changes"
+                },
+                {
+                    question: "A teacher demonstrates four changes: tearing paper, dissolving sugar in water, burning wood, and bending a paper clip. Which change is a chemical change?",
+                    options: [
+                        "Tearing paper because the paper's shape changes into smaller pieces",
+                        "Dissolving sugar because the sugar seems to disappear in water",
+                        "Burning wood because new substances like ash and smoke are formed",
+                        "Bending a paper clip because its physical shape is permanently changed"
+                    ],
+                    correct: 2,
+                    explanation: "Burning wood is a chemical change because it produces new substances (ash, smoke, gases) that can't easily be changed back to wood. Signs of chemical change include color change, gas production, heat/light, and forming new substances.",
+                    topic: "Chemical Changes"
+                },
+                {
+                    question: "Students conduct an experiment and record these observations: bubbles form, the mixture gets warm, and the color changes from clear to yellow. What most likely occurred?",
+                    options: [
+                        "A physical change occurred because the mixture changed temperature slightly",
+                        "A chemical change occurred because new substances formed with different properties",
+                        "A physical change occurred because the substances can be easily separated",
+                        "A chemical change occurred because the mixture's volume increased with bubbles"
+                    ],
+                    correct: 1,
+                    explanation: "Multiple signs indicate a chemical change: gas production (bubbles), temperature change (getting warm), and color change. These are all evidence that a chemical reaction occurred and new substances formed.",
+                    topic: "Chemical Changes"
+                },
+                {
+                    question: "A student measures 100 mL of water, freezes it into ice, then measures the ice. The ice takes up more space but has the same mass. Why does this happen?",
+                    options: [
+                        "Water molecules expand and become larger when they freeze into ice",
+                        "Water molecules spread farther apart when they freeze into solid ice",
+                        "New water molecules are created during the freezing process naturally",
+                        "Water molecules combine together and become heavier when frozen solid"
+                    ],
+                    correct: 1,
+                    explanation: "When water freezes, the molecules arrange in a crystal structure that takes up more space, making ice less dense than liquid water. The same number of molecules exist, so mass stays the same, but volume increases.",
+                    topic: "Properties of Matter"
+                },
+                {
+                    question: "Three white powders look identical: salt, sugar, and baking soda. Which property would best help a scientist identify each powder?",
+                    options: [
+                        "Mass, because each powder will have a different total mass",
+                        "Color, because each powder will appear a different shade of white",
+                        "Solubility in water, because each dissolves differently or reacts uniquely",
+                        "Volume, because each powder will take up a different amount of space"
+                    ],
+                    correct: 2,
+                    explanation: "Solubility and reactions are characteristic properties that help identify substances. Salt and sugar both dissolve, but baking soda reacts with vinegar (creating bubbles). Mass, color, and volume can vary and aren't characteristic properties.",
+                    topic: "Properties of Matter"
+                },
+                {
+                    question: "A balloon filled with air is placed in a freezer. After 30 minutes, the balloon appears smaller. What happened to the air particles inside the balloon?",
+                    options: [
+                        "Air particles escaped through tiny holes in the balloon's rubber surface",
+                        "Air particles were destroyed by the cold temperature in the freezer",
+                        "Air particles moved slower and took up less space due to cooling",
+                        "Air particles combined together to form liquid air inside the balloon"
+                    ],
+                    correct: 2,
+                    explanation: "When gas cools, particles move slower and take up less space, causing the balloon to shrink. The same number of air particles remain, but they have less kinetic energy and the gas occupies a smaller volume.",
+                    topic: "States of Matter"
+                },
+                {
+                    question: "Kinetic energy is the energy of motion. Which object has the GREATEST kinetic energy?",
+                    options: [
+                        "A 2 kg ball rolling slowly at 1 meter per second down the hill",
+                        "A 2 kg ball rolling quickly at 5 meters per second down the hill",
+                        "A 5 kg ball sitting still at the top of a very steep hill",
+                        "A 1 kg ball rolling at 3 meters per second on a flat surface"
+                    ],
+                    correct: 1,
+                    explanation: "Kinetic energy depends on both mass and speed. The 2 kg ball moving at 5 m/s has the most kinetic energy because speed has a greater effect than mass (kinetic energy = ½ × mass × speed²).",
+                    topic: "Energy Forms"
+                },
+                {
+                    question: "Potential energy is stored energy based on position or condition. A book is on a shelf 2 meters high. Where does the book have the MOST potential energy?",
+                    options: [
+                        "When the book is resting on the floor at ground level completely",
+                        "When the book is on the shelf at 2 meters above the ground",
+                        "When the book is falling halfway between the shelf and the ground",
+                        "The book has the same potential energy at all positions and heights"
+                    ],
+                    correct: 1,
+                    explanation: "Gravitational potential energy increases with height. The book has the most potential energy when it's highest (on the shelf at 2 meters). As it falls, potential energy converts to kinetic energy.",
+                    topic: "Energy Forms"
+                },
+                {
+                    question: "A student investigates energy transformations in a light bulb. What energy transformation occurs when an electric light bulb is turned on?",
+                    options: [
+                        "Light energy is transformed into electrical energy and heat energy",
+                        "Electrical energy is transformed into light energy and heat energy continuously",
+                        "Chemical energy is transformed into light energy and electrical energy always",
+                        "Heat energy is transformed into electrical energy and light energy efficiently"
+                    ],
+                    correct: 1,
+                    explanation: "Light bulbs transform electrical energy into light energy (which we want) and heat energy (which is wasted energy). This is why bulbs get hot when they're on. Energy is transformed, not created or destroyed.",
+                    topic: "Energy Transformations"
+                },
+                {
+                    question: "A roller coaster car is at the top of the first hill. As it goes down, riders feel it speed up. What energy transformation is occurring?",
+                    options: [
+                        "Kinetic energy is being transformed into potential energy as it descends",
+                        "Potential energy is being transformed into kinetic energy as it speeds up",
+                        "Chemical energy is being transformed into mechanical energy throughout the ride",
+                        "Electrical energy is being transformed into potential energy at the top"
+                    ],
+                    correct: 1,
+                    explanation: "At the top, the coaster has maximum potential energy (high position). As it goes down, potential energy converts to kinetic energy (motion), causing it to speed up. Energy is conserved but changes forms.",
+                    topic: "Energy Transformations"
+                },
+                {
+                    question: "Heat energy naturally flows from warmer objects to cooler objects. A metal spoon is placed in hot soup. What will happen over time?",
+                    options: [
+                        "The spoon will get hotter and the soup will get cooler gradually",
+                        "The soup will get hotter and the spoon will get cooler gradually",
+                        "Both the spoon and soup will get colder as heat escapes completely",
+                        "Both the spoon and soup will get hotter as heat is created"
+                    ],
+                    correct: 0,
+                    explanation: "Heat flows from hot to cold. Heat energy transfers from the hot soup to the cooler spoon, making the spoon warmer and the soup slightly cooler until they reach the same temperature (thermal equilibrium).",
+                    topic: "Energy Transfer"
+                },
+                {
+                    question: "Students test three materials to see which is the best insulator: metal, plastic, and wood. They wrap hot water bottles with each material. Which material would keep water hot the longest?",
+                    options: [
+                        "Metal, because it conducts heat efficiently and prevents energy loss",
+                        "Plastic, because it is a poor conductor and reduces heat transfer",
+                        "Wood, because it absorbs the heat and stores it for long periods",
+                        "All materials work equally well because heat cannot pass through any solid"
+                    ],
+                    correct: 1,
+                    explanation: "Plastic is the best insulator among these choices because it's a poor conductor of heat. It slows heat transfer, keeping the water hot longer. Metal conducts heat quickly (poor insulator), and wood is between plastic and metal.",
+                    topic: "Energy Transfer"
+                },
+                {
+                    question: "Sound energy is produced by vibrations. A student plucks a guitar string and observes it vibrate rapidly. What happens to the sound when the string stops vibrating?",
+                    options: [
+                        "The sound continues because sound energy cannot be destroyed ever",
+                        "The sound stops because vibrations are needed to produce sound waves",
+                        "The sound gets louder because the energy is released all at once",
+                        "The sound changes pitch because the vibrations slow down over time"
+                    ],
+                    correct: 1,
+                    explanation: "Sound is produced by vibrations. When the guitar string stops vibrating, no more sound waves are created and the sound stops. The sound energy was transferred to the air and eventually dissipated.",
+                    topic: "Energy Forms"
+                },
+                {
+                    question: "Light energy can be absorbed, reflected, or transmitted through materials. A student shines a flashlight at a mirror. What happens to most of the light?",
+                    options: [
+                        "The light is absorbed by the mirror and transformed into heat",
+                        "The light passes through the mirror and comes out the other side",
+                        "The light is reflected by the mirror and bounces off the surface",
+                        "The light is scattered in all directions randomly by the mirror's surface"
+                    ],
+                    correct: 2,
+                    explanation: "Mirrors have smooth, shiny surfaces that reflect most light. The light bounces off at the same angle it hits the mirror, creating a reflection. This is why we can see our image in a mirror.",
+                    topic: "Energy Forms"
+                },
+                {
+                    question: "The Law of Conservation of Energy states that energy cannot be created or destroyed, only transformed. A battery-powered toy car moves across the floor. What happens to the chemical energy in the battery?",
+                    options: [
+                        "Chemical energy is destroyed and completely disappears as the car moves",
+                        "Chemical energy is transformed into motion, sound, and heat energy throughout",
+                        "Chemical energy is created continuously as the car moves across the floor",
+                        "Chemical energy stays in the battery and is not used by the car"
+                    ],
+                    correct: 1,
+                    explanation: "The battery's chemical energy is transformed into multiple forms: kinetic energy (motion of the car), sound energy (noise from wheels/motor), and heat energy (from friction). Energy changes form but the total amount stays constant.",
+                    topic: "Energy Transformations"
+                },
+                {
+                    question: "A pan of water is heated on a stove. The water temperature increases from 20°C to 80°C. Which statement correctly describes this process?",
+                    options: [
+                        "Heat energy moved from the cooler water into the hotter stove",
+                        "Heat energy moved from the hotter stove into the cooler water",
+                        "The water created its own heat energy through molecular motion only",
+                        "No energy transfer occurred because the water and stove are touching"
+                    ],
+                    correct: 1,
+                    explanation: "Heat always flows from hot to cold. The hot stove transfers heat energy to the cooler water through conduction (direct contact), increasing the water's temperature. Heat flows from higher temperature to lower temperature.",
+                    topic: "Energy Transfer"
+                }
+            ]
+        };
+
+        // Initialize the test
+        document.addEventListener('DOMContentLoaded', function() {
+            new TestEngine(testData, 'chapter4_matter_energy', 18);
+        });
+    </script>
+</body>
+</html>

@@ -1,8 +1,787 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chapter 5: Water Cycle & Weather</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .water-cycle-diagram {
+            background: linear-gradient(180deg, #87CEEB 0%, #E0F6FF 50%, #8B4513 100%);
+            border-radius: 15px;
+            padding: 40px;
+            margin: 30px 0;
+            position: relative;
+            min-height: 500px;
+            overflow: hidden;
+        }
+
+        .sun-visual {
+            position: absolute;
+            top: 20px;
+            right: 50px;
+            width: 80px;
+            height: 80px;
+            background: radial-gradient(circle, #FFD700, #FFA500);
+            border-radius: 50%;
+            box-shadow: 0 0 40px #FFD700;
+        }
+
+        .cloud-visual {
+            position: absolute;
+            background: white;
+            border-radius: 50%;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+
+        .ocean-visual {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 100px;
+            background: linear-gradient(180deg, #4A90E2, #2E5C8A);
+            border-radius: 0 0 15px 15px;
+        }
+
+        .mountain-visual {
+            position: absolute;
+            bottom: 100px;
+            right: 20%;
+            width: 0;
+            height: 0;
+            border-left: 80px solid transparent;
+            border-right: 80px solid transparent;
+            border-bottom: 140px solid #8B7355;
+        }
+
+        .process-label {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 10px 15px;
+            border-radius: 8px;
+            font-weight: bold;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            border-left: 4px solid;
+        }
+
+        .evaporation { border-left-color: #e74c3c; }
+        .condensation { border-left-color: #3498db; }
+        .precipitation { border-left-color: #9b59b6; }
+        .collection { border-left-color: #27ae60; }
+
+        .clouds-section {
+            background: linear-gradient(135deg, #a8edea, #fed6e3);
+            border-radius: 15px;
+            padding: 30px;
+            margin: 30px 0;
+        }
+
+        .cloud-types-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            margin: 30px 0;
+        }
+
+        .cloud-card {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .cloud-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .cloud-illustration {
+            width: 100%;
+            height: 120px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 20px 0;
+            font-size: 4em;
+        }
+
+        .comparison-table {
+            width: 100%;
+            margin: 30px 0;
+            border-collapse: collapse;
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .comparison-table th {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 15px;
+            text-align: left;
+            font-weight: bold;
+        }
+
+        .comparison-table td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .comparison-table tr:hover {
+            background: #f5f5f5;
+        }
+
+        .atmosphere-layers {
+            background: linear-gradient(180deg, #000033 0%, #000066 20%, #0066cc 40%, #66ccff 60%, #ffffff 100%);
+            border-radius: 15px;
+            padding: 30px;
+            margin: 30px 0;
+            color: white;
+            min-height: 600px;
+            position: relative;
+        }
+
+        .layer {
+            position: absolute;
+            left: 50px;
+            right: 50px;
+            padding: 20px;
+            border-radius: 10px;
+            background: rgba(255,255,255,0.1);
+            border-left: 5px solid;
+        }
+
+        .troposphere { bottom: 50px; height: 100px; border-left-color: #e74c3c; }
+        .stratosphere { bottom: 170px; height: 90px; border-left-color: #3498db; }
+        .mesosphere { bottom: 280px; height: 80px; border-left-color: #f39c12; }
+        .thermosphere { bottom: 380px; height: 70px; border-left-color: #9b59b6; }
+        .exosphere { bottom: 470px; height: 60px; border-left-color: #1abc9c; }
+
+        .precipitation-types {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .precip-card {
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            border-top: 4px solid;
+        }
+
+        .rain-type { border-top-color: #3498db; }
+        .snow-type { border-top-color: #ecf0f1; }
+        .sleet-type { border-top-color: #95a5a6; }
+        .hail-type { border-top-color: #34495e; }
+
+        .callout-box {
+            background: linear-gradient(135deg, #ffd89b, #19547b);
+            color: white;
+            border-radius: 12px;
+            padding: 20px;
+            margin: 20px 0;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .tip-box {
+            background: linear-gradient(135deg, #84fab0, #8fd3f4);
+            color: #333;
+            border-radius: 12px;
+            padding: 20px;
+            margin: 20px 0;
+            border-left: 5px solid #00b894;
+        }
+
+        .try-this-home {
+            background: linear-gradient(135deg, #a8edea, #fed6e3);
+            border-radius: 15px;
+            padding: 25px;
+            margin: 30px 0;
+            border: 3px dashed #ff6b9d;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🌊 Chapter 5: Water Cycle & Weather</h1>
+            <div class="breadcrumb">
+                <a href="index.html">🏠 Home</a> → <a href="chapter4.html">Chapter 4</a> → Chapter 5
+            </div>
+        </div>
+
+        <div class="lesson-content">
+            <div class="intro-section">
+                <h2>☁️ Discover Earth's Amazing Water and Weather Systems!</h2>
+                <p>Water is constantly on the move! It travels from the ocean to the sky, falls as rain or snow, flows in rivers, and starts all over again. Let's explore this incredible journey and learn about the weather it creates!</p>
+            </div>
+
+            <div class="water-cycle-section">
+                <h3>💧 The Water Cycle - Water's Never-Ending Journey!</h3>
+                <p>Water on Earth is ALWAYS moving in a continuous cycle! The same water that dinosaurs drank millions of years ago is the same water you drink today. Let's follow its amazing journey!</p>
+
+                <div class="water-cycle-diagram">
+                    <div class="sun-visual"></div>
+
+                    <div class="cloud-visual" style="top: 100px; left: 30%; width: 100px; height: 50px;"></div>
+                    <div class="cloud-visual" style="top: 120px; left: 34%; width: 80px; height: 40px;"></div>
+                    <div class="cloud-visual" style="top: 140px; right: 25%; width: 120px; height: 60px;"></div>
+
+                    <div class="mountain-visual"></div>
+                    <div class="ocean-visual"></div>
+
+                    <div class="process-label evaporation" style="bottom: 150px; left: 50px;">
+                        <div style="font-size: 1.5em;">☀️💧</div>
+                        <strong>1. EVAPORATION</strong><br>
+                        <small>Heat turns water into vapor</small>
+                    </div>
+
+                    <div class="process-label condensation" style="top: 80px; left: 35%;">
+                        <div style="font-size: 1.5em;">☁️</div>
+                        <strong>2. CONDENSATION</strong><br>
+                        <small>Vapor cools & forms clouds</small>
+                    </div>
+
+                    <div class="process-label precipitation" style="top: 200px; right: 18%;">
+                        <div style="font-size: 1.5em;">🌧️</div>
+                        <strong>3. PRECIPITATION</strong><br>
+                        <small>Water falls as rain/snow</small>
+                    </div>
+
+                    <div class="process-label collection" style="bottom: 50px; right: 50px;">
+                        <div style="font-size: 1.5em;">🌊</div>
+                        <strong>4. COLLECTION</strong><br>
+                        <small>Water gathers in oceans/rivers</small>
+                    </div>
+                </div>
+
+                <div style="background: white; border-radius: 15px; padding: 25px; margin: 30px 0; box-shadow: 0 5px 15px rgba(0,0,0,0.1);">
+                    <h4>🔄 The Four Main Processes of the Water Cycle:</h4>
+
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 20px;">
+                        <div style="padding: 15px; background: #ffe8e8; border-radius: 10px; border-left: 5px solid #e74c3c;">
+                            <h5>☀️ 1. EVAPORATION</h5>
+                            <p><strong>What happens:</strong> The sun heats up water in oceans, lakes, and rivers</p>
+                            <p><strong>Result:</strong> Liquid water turns into invisible water vapor (gas) and rises into the air</p>
+                            <p><strong>Fun fact:</strong> You can't see water vapor - it's invisible!</p>
+                        </div>
+
+                        <div style="padding: 15px; background: #e3f2fd; border-radius: 10px; border-left: 5px solid #3498db;">
+                            <h5>☁️ 2. CONDENSATION</h5>
+                            <p><strong>What happens:</strong> Water vapor rises high into the atmosphere where it's cold</p>
+                            <p><strong>Result:</strong> The vapor cools and turns back into tiny water droplets, forming clouds</p>
+                            <p><strong>Fun fact:</strong> Clouds are made of millions of tiny water droplets!</p>
+                        </div>
+
+                        <div style="padding: 15px; background: #f3e5f5; border-radius: 10px; border-left: 5px solid #9b59b6;">
+                            <h5>🌧️ 3. PRECIPITATION</h5>
+                            <p><strong>What happens:</strong> Water droplets in clouds get bigger and heavier</p>
+                            <p><strong>Result:</strong> Water falls back to Earth as rain, snow, sleet, or hail</p>
+                            <p><strong>Fun fact:</strong> The type of precipitation depends on the temperature!</p>
+                        </div>
+
+                        <div style="padding: 15px; background: #e8f5e9; border-radius: 10px; border-left: 5px solid #27ae60;">
+                            <h5>🌊 4. COLLECTION</h5>
+                            <p><strong>What happens:</strong> Precipitation lands on Earth's surface</p>
+                            <p><strong>Result:</strong> Water collects in oceans, rivers, lakes, and underground. Then the cycle starts again!</p>
+                            <p><strong>Fun fact:</strong> Some water soaks into the ground to become groundwater!</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="callout-box">
+                    <h4>💡 Did You Know?</h4>
+                    <ul style="margin: 10px 0;">
+                        <li>💧 97% of Earth's water is in the oceans (salty!). Only 3% is freshwater!</li>
+                        <li>☁️ A typical cloud weighs about 1.1 million pounds - the same as 100 elephants!</li>
+                        <li>🌍 The water you drink today could be the same water that dinosaurs drank!</li>
+                        <li>⚡ The water cycle is powered by the SUN - it provides the heat energy!</li>
+                        <li>🌊 The ocean contains 96.5% of all Earth's water!</li>
+                    </ul>
+                </div>
+
+                <div class="tip-box">
+                    <h4>💡 Remember This!</h4>
+                    <p style="font-size: 1.1em; margin: 15px 0;"><strong>Easy way to remember the water cycle:</strong></p>
+                    <p style="font-size: 1.3em; text-align: center; margin: 20px 0;">
+                        <strong>E</strong>very <strong>C</strong>loud <strong>P</strong>roduces <strong>C</strong>ool water!
+                    </p>
+                    <ul style="font-size: 1.1em;">
+                        <li><strong>E</strong>vaporation - Water goes up!</li>
+                        <li><strong>C</strong>ondensation - Clouds form!</li>
+                        <li><strong>P</strong>recipitation - Water comes down!</li>
+                        <li><strong>C</strong>ollection - Water gathers!</li>
+                    </ul>
+                </div>
+
+                <div class="try-this-home">
+                    <h4>🏠 Try This at Home: Make Your Own Water Cycle!</h4>
+                    <p><strong>🎯 Goal:</strong> Create a mini water cycle in a bag!</p>
+
+                    <div style="background: white; padding: 15px; border-radius: 10px; margin: 15px 0;">
+                        <p><strong>📋 Materials:</strong></p>
+                        <ul>
+                            <li>Clear plastic zip-lock bag</li>
+                            <li>Water (with blue food coloring - optional)</li>
+                            <li>Permanent marker</li>
+                            <li>Tape</li>
+                            <li>Sunny window</li>
+                        </ul>
+
+                        <p style="margin-top: 15px;"><strong>📋 Instructions:</strong></p>
+                        <ol>
+                            <li>Draw a sun, clouds, and ocean on the bag with marker</li>
+                            <li>Pour 1/4 cup of water into the bottom of the bag</li>
+                            <li>Seal the bag tightly (make sure no air can escape!)</li>
+                            <li>Tape it to a sunny window</li>
+                            <li>Wait a few hours and observe!</li>
+                        </ol>
+
+                        <p style="margin-top: 15px;"><strong>🔍 What to Observe:</strong></p>
+                        <ul>
+                            <li>💧 Evaporation: Water disappears from the bottom</li>
+                            <li>☁️ Condensation: Droplets form on the inside of the bag</li>
+                            <li>🌧️ Precipitation: Droplets get heavy and "rain" down</li>
+                            <li>🌊 Collection: Water collects at the bottom again!</li>
+                        </ul>
+                    </div>
+
+                    <p><strong>🌟 Challenge:</strong> Leave it for 24 hours. How many times does the cycle repeat?</p>
+                </div>
+            </div>
+
+            <div class="clouds-section">
+                <h3>☁️ Types of Clouds - Reading the Sky!</h3>
+                <p>Clouds tell us a lot about the weather! Different cloud types form at different heights and tell us what weather might be coming. Let's meet the cloud family!</p>
+
+                <div class="cloud-types-grid">
+                    <div class="cloud-card">
+                        <h4>☁️ Cumulus Clouds</h4>
+                        <div class="cloud-illustration">☁️</div>
+                        <p><strong>Look like:</strong> Puffy cotton balls or fluffy sheep</p>
+                        <p><strong>Height:</strong> Low to middle (2,000-6,000 feet)</p>
+                        <p><strong>Weather:</strong> Fair weather! These are "happy" clouds</p>
+                        <p><strong>Fun fact:</strong> Perfect for cloud watching and finding shapes!</p>
+                    </div>
+
+                    <div class="cloud-card">
+                        <h4>🌧️ Cumulonimbus Clouds</h4>
+                        <div class="cloud-illustration" style="color: #7f8c8d;">⛈️</div>
+                        <p><strong>Look like:</strong> Towering mountains or anvils</p>
+                        <p><strong>Height:</strong> Low to very high (reach 50,000+ feet!)</p>
+                        <p><strong>Weather:</strong> Thunderstorms! Rain, lightning, sometimes tornadoes</p>
+                        <p><strong>Fun fact:</strong> These are the TALLEST clouds - can be 10 miles high!</p>
+                    </div>
+
+                    <div class="cloud-card">
+                        <h4>🌫️ Stratus Clouds</h4>
+                        <div class="cloud-illustration" style="color: #95a5a6;">▬▬▬</div>
+                        <p><strong>Look like:</strong> Gray blankets covering the sky</p>
+                        <p><strong>Height:</strong> Very low (0-6,500 feet)</p>
+                        <p><strong>Weather:</strong> Overcast skies, light rain or drizzle</p>
+                        <p><strong>Fun fact:</strong> When on the ground, these are called FOG!</p>
+                    </div>
+
+                    <div class="cloud-card">
+                        <h4>🦅 Cirrus Clouds</h4>
+                        <div class="cloud-illustration">≈≈≈</div>
+                        <p><strong>Look like:</strong> Wispy, feathery streaks</p>
+                        <p><strong>Height:</strong> Very high (20,000+ feet)</p>
+                        <p><strong>Weather:</strong> Fair weather now, but change might be coming</p>
+                        <p><strong>Fun fact:</strong> Made of ICE crystals, not water droplets!</p>
+                    </div>
+
+                    <div class="cloud-card">
+                        <h4>🌨️ Nimbostratus Clouds</h4>
+                        <div class="cloud-illustration" style="color: #5a6a7a;">▓▓▓</div>
+                        <p><strong>Look like:</strong> Dark, thick gray blankets</p>
+                        <p><strong>Height:</strong> Low to middle (2,000-8,000 feet)</p>
+                        <p><strong>Weather:</strong> Steady rain or snow for hours</p>
+                        <p><strong>Fun fact:</strong> "Nimbus" means rain cloud!</p>
+                    </div>
+
+                    <div class="cloud-card">
+                        <h4>☀️ Altocumulus Clouds</h4>
+                        <div class="cloud-illustration">☁️☁️☁️</div>
+                        <p><strong>Look like:</strong> Groups of puffy clouds in rows</p>
+                        <p><strong>Height:</strong> Middle (6,500-20,000 feet)</p>
+                        <p><strong>Weather:</strong> Usually fair, but storms might develop</p>
+                        <p><strong>Fun fact:</strong> Look like sheep in the sky!</p>
+                    </div>
+                </div>
+
+                <div class="tip-box">
+                    <h4>💡 Remember This! Cloud Names Have Meanings:</h4>
+                    <ul style="font-size: 1.1em;">
+                        <li><strong>Cumulo-</strong> = Heap or pile (puffy clouds)</li>
+                        <li><strong>Cirro-</strong> = Curl or wisp (feathery clouds)</li>
+                        <li><strong>Strato-</strong> = Layer (flat, blanket-like clouds)</li>
+                        <li><strong>Nimbo-</strong> = Rain (clouds that bring precipitation)</li>
+                        <li><strong>Alto-</strong> = Middle (middle-level clouds)</li>
+                    </ul>
+                    <p style="margin-top: 15px;">💡 Mix them together to describe clouds! Cumulonimbus = Puffy + Rain = Thunderstorm cloud!</p>
+                </div>
+            </div>
+
+            <div class="weather-climate-section">
+                <h3>🌤️ Weather vs. Climate - What's the Difference?</h3>
+                <p>People often confuse weather and climate, but they're very different! Let's clear up the confusion.</p>
+
+                <table class="comparison-table">
+                    <thead>
+                        <tr>
+                            <th>Feature</th>
+                            <th>🌤️ WEATHER</th>
+                            <th>🌍 CLIMATE</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>What is it?</strong></td>
+                            <td>The condition of the atmosphere RIGHT NOW</td>
+                            <td>The AVERAGE weather over a LONG time (30+ years)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Time Period</strong></td>
+                            <td>Short-term (today, this week)</td>
+                            <td>Long-term (years, decades, centuries)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Can it Change?</strong></td>
+                            <td>YES! Changes hour to hour, day to day</td>
+                            <td>Changes VERY slowly over many years</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Examples</strong></td>
+                            <td>
+                                • "It's raining today"<br>
+                                • "Tomorrow will be sunny"<br>
+                                • "It's 75°F right now"<br>
+                                • "There's a thunderstorm coming"
+                            </td>
+                            <td>
+                                • "Florida has a warm climate"<br>
+                                • "Alaska has a cold climate"<br>
+                                • "Deserts have dry climates"<br>
+                                • "Rainforests have wet climates"
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><strong>What affects it?</strong></td>
+                            <td>
+                                • Temperature<br>
+                                • Humidity<br>
+                                • Precipitation<br>
+                                • Wind<br>
+                                • Clouds<br>
+                                • Air pressure
+                            </td>
+                            <td>
+                                • Latitude (distance from equator)<br>
+                                • Elevation (height above sea level)<br>
+                                • Distance from ocean<br>
+                                • Ocean currents<br>
+                                • Mountain ranges
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><strong>How do we measure it?</strong></td>
+                            <td>
+                                • Thermometer<br>
+                                • Barometer<br>
+                                • Anemometer<br>
+                                • Rain gauge<br>
+                                • Weather satellites
+                            </td>
+                            <td>
+                                • Data collected over 30+ years<br>
+                                • Average temperatures<br>
+                                • Typical precipitation<br>
+                                • Seasonal patterns
+                            </td>
+                        </tr>
+                        <tr style="background: #e8f5e8;">
+                            <td colspan="3" style="text-align: center; font-weight: bold;">
+                                💡 Easy to Remember: <strong>Climate is what you EXPECT</strong>, <strong>Weather is what you GET!</strong>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="callout-box">
+                    <h4>💡 Did You Know?</h4>
+                    <ul style="margin: 10px 0;">
+                        <li>🌍 Earth has many different climate zones: tropical, temperate, polar, desert, and more!</li>
+                        <li>🌡️ The hottest temperature ever recorded was 134°F (56.7°C) in Death Valley!</li>
+                        <li>❄️ The coldest temperature ever recorded was -128.6°F (-89.2°C) in Antarctica!</li>
+                        <li>🌧️ The wettest place on Earth is Mawsynram, India - it gets 467 inches of rain per year!</li>
+                        <li>🏜️ The Atacama Desert in Chile is one of the driest places - some areas haven't had rain in 400 years!</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="atmosphere-section">
+                <h3>🌌 Layers of the Atmosphere - Earth's Protective Blanket!</h3>
+                <p>Earth's atmosphere is made up of five distinct layers, each with special characteristics. Let's explore from bottom to top!</p>
+
+                <div class="atmosphere-layers">
+                    <h4 style="text-align: center; margin-bottom: 40px;">Layers of Earth's Atmosphere</h4>
+
+                    <div class="layer troposphere">
+                        <h5>🏔️ TROPOSPHERE (0-12 km)</h5>
+                        <p><strong>Where we live!</strong> All weather happens here</p>
+                        <p>• Contains 75% of atmosphere's air</p>
+                        <p>• Temperature DECREASES as you go up</p>
+                        <p>• Planes fly at the top of this layer</p>
+                    </div>
+
+                    <div class="layer stratosphere">
+                        <h5>🛩️ STRATOSPHERE (12-50 km)</h5>
+                        <p><strong>Home of the ozone layer!</strong> Protects us from UV rays</p>
+                        <p>• Temperature INCREASES as you go up</p>
+                        <p>• Very stable - no turbulence</p>
+                        <p>• Some high-altitude planes fly here</p>
+                    </div>
+
+                    <div class="layer mesosphere">
+                        <h5>☄️ MESOSPHERE (50-85 km)</h5>
+                        <p><strong>Meteor protection!</strong> Meteors burn up here</p>
+                        <p>• Coldest layer (-90°C!)</p>
+                        <p>• Temperature DECREASES as you go up</p>
+                        <p>• Too high for planes, too low for satellites</p>
+                    </div>
+
+                    <div class="layer thermosphere">
+                        <h5>🛰️ THERMOSPHERE (85-600 km)</h5>
+                        <p><strong>Where satellites orbit!</strong> Very hot but feels cold</p>
+                        <p>• Temperature can reach 2,000°C!</p>
+                        <p>• Northern Lights (Aurora) happen here</p>
+                        <p>• International Space Station orbits here</p>
+                    </div>
+
+                    <div class="layer exosphere">
+                        <h5>🚀 EXOSPHERE (600+ km)</h5>
+                        <p><strong>Edge of space!</strong> Merges with outer space</p>
+                        <p>• Almost no air molecules</p>
+                        <p>• Satellites orbit here too</p>
+                        <p>• Atoms can escape into space</p>
+                    </div>
+                </div>
+
+                <div class="tip-box">
+                    <h4>💡 Remember This!</h4>
+                    <p style="font-size: 1.1em; margin: 15px 0;"><strong>Easy way to remember the layers from bottom to top:</strong></p>
+                    <p style="font-size: 1.3em; text-align: center; margin: 20px 0; background: white; padding: 15px; border-radius: 10px;">
+                        <strong>T</strong>he <strong>S</strong>mart <strong>M</strong>an <strong>T</strong>raveled <strong>E</strong>verywhere
+                    </p>
+                    <ul style="font-size: 1.1em;">
+                        <li><strong>T</strong>roposphere - Weather layer</li>
+                        <li><strong>S</strong>tratosphere - Ozone layer</li>
+                        <li><strong>M</strong>esosphere - Meteor layer</li>
+                        <li><strong>T</strong>hermosphere - Hot layer</li>
+                        <li><strong>E</strong>xosphere - Space edge</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="precipitation-section">
+                <h3>🌧️ Types of Precipitation - Water Falls in Different Forms!</h3>
+                <p>Depending on temperature and conditions, water can fall from the sky in different forms. Let's explore them all!</p>
+
+                <div class="precipitation-types">
+                    <div class="precip-card rain-type">
+                        <div style="font-size: 3em;">🌧️</div>
+                        <h4>RAIN</h4>
+                        <p><strong>What it is:</strong> Liquid water droplets</p>
+                        <p><strong>When:</strong> Temperature above freezing (32°F/0°C) all the way down</p>
+                        <p><strong>Size:</strong> Droplets are 0.5mm or bigger</p>
+                        <p><strong>Fun fact:</strong> A raindrop falls at about 20 mph!</p>
+                    </div>
+
+                    <div class="precip-card snow-type">
+                        <div style="font-size: 3em;">❄️</div>
+                        <h4>SNOW</h4>
+                        <p><strong>What it is:</strong> Ice crystals</p>
+                        <p><strong>When:</strong> Temperature below freezing all the way down</p>
+                        <p><strong>Special:</strong> Each snowflake is unique!</p>
+                        <p><strong>Fun fact:</strong> Snow is actually clear/translucent, not white!</p>
+                    </div>
+
+                    <div class="precip-card sleet-type">
+                        <div style="font-size: 3em;">🌨️</div>
+                        <h4>SLEET</h4>
+                        <p><strong>What it is:</strong> Frozen raindrops (ice pellets)</p>
+                        <p><strong>When:</strong> Rain falls through a layer of cold air and freezes</p>
+                        <p><strong>Sound:</strong> Makes a "pinging" sound when hitting surfaces</p>
+                        <p><strong>Fun fact:</strong> Bounces when it hits the ground!</p>
+                    </div>
+
+                    <div class="precip-card hail-type">
+                        <div style="font-size: 3em;">🧊</div>
+                        <h4>HAIL</h4>
+                        <p><strong>What it is:</strong> Balls or chunks of ice</p>
+                        <p><strong>When:</strong> Strong thunderstorm updrafts freeze water multiple times</p>
+                        <p><strong>Size:</strong> Can range from pea-sized to softball-sized!</p>
+                        <p><strong>Fun fact:</strong> Largest hailstone was 8 inches across!</p>
+                    </div>
+                </div>
+
+                <div style="background: white; border-radius: 15px; padding: 25px; margin: 30px 0; box-shadow: 0 5px 15px rgba(0,0,0,0.1);">
+                    <h4>🌡️ Temperature Determines Precipitation Type!</h4>
+                    <div style="display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 15px; margin-top: 20px; text-align: center;">
+                        <div style="background: #e3f2fd; padding: 15px; border-radius: 8px;">
+                            <p style="font-size: 2em;">🌧️</p>
+                            <strong>RAIN</strong><br>
+                            <p style="margin: 10px 0;">Above 32°F<br>(0°C)</p>
+                            <p style="font-size: 0.9em;">All layers warm</p>
+                        </div>
+                        <div style="background: #f3e5f5; padding: 15px; border-radius: 8px;">
+                            <p style="font-size: 2em;">❄️</p>
+                            <strong>SNOW</strong><br>
+                            <p style="margin: 10px 0;">Below 32°F<br>(0°C)</p>
+                            <p style="font-size: 0.9em;">All layers cold</p>
+                        </div>
+                        <div style="background: #e0f2f1; padding: 15px; border-radius: 8px;">
+                            <p style="font-size: 2em;">🌨️</p>
+                            <strong>SLEET</strong><br>
+                            <p style="margin: 10px 0;">Mixed layers</p>
+                            <p style="font-size: 0.9em;">Warm → Cold → Freezes</p>
+                        </div>
+                        <div style="background: #fff3e0; padding: 15px; border-radius: 8px;">
+                            <p style="font-size: 2em;">🧊</p>
+                            <strong>HAIL</strong><br>
+                            <p style="margin: 10px 0;">Thunderstorm</p>
+                            <p style="font-size: 0.9em;">Up & down multiple times</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="try-this-home">
+                    <h4>🏠 Try This at Home: Rain Gauge Experiment!</h4>
+                    <p><strong>🎯 Goal:</strong> Measure how much rain falls!</p>
+
+                    <div style="background: white; padding: 15px; border-radius: 10px; margin: 15px 0;">
+                        <p><strong>📋 Materials:</strong></p>
+                        <ul>
+                            <li>Clear plastic bottle (2-liter soda bottle works great!)</li>
+                            <li>Scissors</li>
+                            <li>Ruler</li>
+                            <li>Permanent marker</li>
+                            <li>Tape</li>
+                        </ul>
+
+                        <p style="margin-top: 15px;"><strong>📋 Instructions:</strong></p>
+                        <ol>
+                            <li>Cut the top 1/3 off the bottle</li>
+                            <li>Turn the top upside down and place it inside the bottom (like a funnel!)</li>
+                            <li>Tape them together</li>
+                            <li>Use the ruler and marker to mark measurements (in cm or inches) up the side</li>
+                            <li>Place outside in an open area before it rains</li>
+                            <li>After the rain stops, measure how much water collected!</li>
+                        </ol>
+
+                        <p style="margin-top: 15px;"><strong>📊 Data Collection:</strong> Keep a rain log for one month!</p>
+                        <p>Date: ______ | Rainfall: ______ inches</p>
+                        <p>Date: ______ | Rainfall: ______ inches</p>
+                        <p>Date: ______ | Rainfall: ______ inches</p>
+                    </div>
+
+                    <p><strong>🌟 Challenge:</strong> Compare your measurements with official weather reports! How close were you?</p>
+                </div>
+            </div>
+
+            <div class="fun-fact">
+                <h4>🤯 Amazing Weather & Water Facts!</h4>
+                <ul>
+                    <li>☁️ At any moment, there are about 1,800 thunderstorms happening somewhere on Earth!</li>
+                    <li>💧 A person can survive about a month without food, but only a week without water!</li>
+                    <li>⚡ Lightning is 5 times hotter than the surface of the Sun!</li>
+                    <li>🌊 The ocean creates 70% of the oxygen we breathe!</li>
+                    <li>🌪️ A tornado can have wind speeds over 300 mph!</li>
+                    <li>❄️ No two snowflakes are exactly alike - each is unique!</li>
+                    <li>🌈 Rainbows are actually full circles - we just can't see the bottom half from the ground!</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="quiz-section">
+            <h2>🧠 Test Your Knowledge!</h2>
+            <div id="quiz-container">
+                <!-- Quiz questions will be generated by JavaScript -->
+            </div>
+            <div class="quiz-controls">
+                <button id="prev-btn" class="btn" disabled>⬅️ Previous</button>
+                <button id="next-btn" class="btn">Next ➡️</button>
+                <button id="submit-btn" class="btn btn-primary" style="display: none;">Submit Quiz 🎯</button>
+            </div>
+            <div id="quiz-results" class="results" style="display: none;">
+                <h3>🎉 Quiz Results</h3>
+                <div id="score-display"></div>
+                <div id="answers-review"></div>
+            </div>
+        </div>
+
+        <div class="navigation">
+            <a href="chapter4.html" class="btn">⬅️ Previous: Matter & Energy</a>
+            <a href="index.html" class="btn">🏠 Back to Home</a>
+            <a href="index.html" class="btn btn-next">Complete! Return Home 🎉</a>
+        </div>
+    </div>
+
+    <script>
+        // Chapter 5 Quiz Data
+        const chapter5QuizData = {
+            questions: [
+                {
+                    question: "What is the process called when water turns from liquid to vapor?",
+                    options: ["Condensation", "Evaporation", "Precipitation", "Collection"],
+                    correct: 1,
+                    explanation: "Evaporation is when liquid water is heated by the sun and turns into water vapor (gas) that rises into the air!"
+                },
+                {
+                    question: "What type of cloud is tall, dark, and brings thunderstorms?",
+                    options: ["Cumulus", "Cirrus", "Cumulonimbus", "Stratus"],
+                    correct: 2,
+                    explanation: "Cumulonimbus clouds are towering storm clouds that bring heavy rain, lightning, and sometimes tornadoes!"
+                },
+                {
+                    question: "What is the main difference between weather and climate?",
+                    options: ["Weather is long-term, climate is short-term", "Weather is short-term, climate is long-term average", "They are the same thing", "Weather only happens in summer"],
+                    correct: 1,
+                    explanation: "Weather is what's happening right now (short-term), while climate is the average weather pattern over many years (long-term)!"
+                },
+                {
+                    question: "In which layer of the atmosphere do we live and where does all weather occur?",
+                    options: ["Stratosphere", "Mesosphere", "Troposphere", "Thermosphere"],
+                    correct: 2,
+                    explanation: "The troposphere is the lowest layer where we live and where all weather happens!"
+                },
+                {
+                    question: "What type of precipitation is formed when raindrops freeze as they fall?",
+                    options: ["Snow", "Hail", "Sleet", "Rain"],
+                    correct: 2,
+                    explanation: "Sleet forms when raindrops fall through a layer of cold air and freeze into ice pellets before hitting the ground!"
+                }
+            ]
+        };
+
+        // Custom quiz class for Chapter 5
+        class Chapter5Quiz extends ScienceQuiz {
+            getQuizData() {
+                return chapter5QuizData;
+            }
+
             getChapterNumber() {
                 return 5;
             }
         }
-        
+
         // Initialize Chapter 5 quiz
         document.addEventListener('DOMContentLoaded', function() {
             if (document.getElementById('quiz-container')) {
