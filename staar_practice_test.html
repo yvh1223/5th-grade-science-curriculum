@@ -1,0 +1,821 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>STAAR Science Practice Test - Official Format</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .test-header {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 30px;
+            border-radius: 20px;
+            text-align: center;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .test-header h1 {
+            font-size: 2.5em;
+            color: #4a90e2;
+            margin-bottom: 10px;
+        }
+
+        .test-info {
+            background: #e3f2fd;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            border-left: 5px solid #2196F3;
+        }
+
+        .timer-container {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 15px 25px;
+            border-radius: 25px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            font-weight: bold;
+            font-size: 1.2em;
+            color: #4a90e2;
+            z-index: 1000;
+        }
+
+        .timer-running { color: #4CAF50; }
+        .timer-warning { color: #ff9800; animation: pulse 1s infinite; }
+        .timer-danger { color: #f44336; animation: pulse 0.5s infinite; }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        .question-container {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 25px;
+            border-radius: 15px;
+            margin-bottom: 25px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .question-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #e0e0e0;
+        }
+
+        .question-number {
+            background: #4a90e2;
+            color: white;
+            padding: 8px 20px;
+            border-radius: 25px;
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+
+        .question-type {
+            background: #f5f5f5;
+            padding: 5px 15px;
+            border-radius: 15px;
+            font-size: 0.9em;
+            color: #666;
+        }
+
+        .question-text {
+            font-size: 1.1em;
+            margin-bottom: 20px;
+            line-height: 1.7;
+        }
+
+        .answer-options {
+            margin: 20px 0;
+        }
+
+        .answer-option {
+            display: block;
+            padding: 15px 20px;
+            margin: 10px 0;
+            background: #f8f9fa;
+            border: 2px solid #e9ecef;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .answer-option:hover {
+            background: #e3f2fd;
+            border-color: #2196F3;
+        }
+
+        .answer-option.selected {
+            background: #e3f2fd;
+            border-color: #2196F3;
+            box-shadow: 0 3px 10px rgba(33, 150, 243, 0.3);
+        }
+
+        .answer-option input[type="radio"] {
+            margin-right: 15px;
+            transform: scale(1.2);
+        }
+
+        .option-label {
+            font-weight: bold;
+            color: #4a90e2;
+            margin-right: 10px;
+        }
+
+        .visual-question {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 15px 0;
+            text-align: center;
+            border: 2px dashed #dee2e6;
+        }
+
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+            background: white;
+        }
+
+        .data-table th,
+        .data-table td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: center;
+        }
+
+        .data-table th {
+            background: #4a90e2;
+            color: white;
+            font-weight: bold;
+        }
+
+        .data-table tr:nth-child(even) {
+            background: #f8f9fa;
+        }
+
+        .controls {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+            margin: 30px 0;
+            text-align: center;
+        }
+
+        .btn {
+            padding: 12px 30px;
+            margin: 10px;
+            border: none;
+            border-radius: 25px;
+            font-size: 1.1em;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: #4a90e2;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #357abd;
+            transform: translateY(-2px);
+        }
+
+        .btn-success {
+            background: #4CAF50;
+            color: white;
+        }
+
+        .btn-success:hover {
+            background: #45a049;
+            transform: translateY(-2px);
+        }
+
+        .btn-warning {
+            background: #ff9800;
+            color: white;
+        }
+
+        .btn-warning:hover {
+            background: #f57c00;
+            transform: translateY(-2px);
+        }
+
+        .results-container {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+            margin: 30px 0;
+            display: none;
+        }
+
+        .score-display {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .score-circle {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            display: inline-flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-size: 2em;
+            font-weight: bold;
+            color: white;
+            margin: 20px;
+        }
+
+        .score-excellent {
+            background: linear-gradient(45deg, #4CAF50, #45a049);
+        }
+
+        .score-good {
+            background: linear-gradient(45deg, #2196F3, #1976D2);
+        }
+
+        .score-needs-work {
+            background: linear-gradient(45deg, #ff9800, #f57c00);
+        }
+
+        .score-poor {
+            background: linear-gradient(45deg, #f44336, #d32f2f);
+        }
+
+        .back-link {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background: rgba(255, 255, 255, 0.9);
+            color: #4a90e2;
+            padding: 10px 20px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: bold;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+            z-index: 999;
+        }
+
+        .back-link:hover {
+            background: #4a90e2;
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 25px;
+            background: #e0e0e0;
+            border-radius: 10px;
+            margin: 20px 0;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(45deg, #4CAF50, #45a049);
+            width: 0%;
+            transition: width 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 0.9em;
+        }
+
+        .answer-reveal {
+            margin-top: 30px;
+        }
+
+        .reveal-spacer {
+            height: 40px;
+            border-bottom: 2px dashed #ccc;
+            margin-bottom: 20px;
+        }
+
+        .reveal-content {
+            background: #e8f5e9;
+            padding: 20px;
+            border-radius: 10px;
+            border-left: 5px solid #4CAF50;
+        }
+
+        .reveal-content h4 {
+            color: #2e7d32;
+            margin-bottom: 10px;
+        }
+
+        @media (max-width: 768px) {
+            .timer-container {
+                position: static;
+                margin-bottom: 20px;
+                text-align: center;
+            }
+
+            .back-link {
+                position: static;
+                display: block;
+                text-align: center;
+                margin-bottom: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <a href="tests.html" class="back-link">← Back to Testing Center</a>
+
+    <div class="timer-container" id="timer">
+        <div>⏱️ Time: <span id="time-display">60:00</span></div>
+    </div>
+
+    <div class="container">
+        <div class="test-header">
+            <h1>STAAR Science Practice Test</h1>
+            <h2>Texas Official Format - Grade 5</h2>
+
+            <div class="test-info">
+                <p><strong>Instructions:</strong> This practice test follows the official Texas STAAR format with 32 questions covering Scientific Investigation, Matter & Energy, Force/Motion/Energy, Earth & Space, and Organisms & Environments. You have 60 minutes to complete the test.</p>
+                <p><strong>Scoring:</strong> STAAR standards require high achievement. Aim for 26+ correct answers (80%+) for excellent performance!</p>
+                <p><strong>Note:</strong> Questions include data interpretation, diagrams, and real-world scenarios like the actual STAAR test.</p>
+            </div>
+
+            <div class="progress-bar">
+                <div class="progress-fill" id="progress">
+                    <span id="progress-text">0 / 32 answered</span>
+                </div>
+            </div>
+        </div>
+
+        <div id="test-questions">
+            <!-- Questions will be inserted here by JavaScript -->
+        </div>
+
+        <div class="controls" id="test-controls">
+            <button type="button" class="btn btn-warning" id="review-answers">📝 Review My Answers</button>
+            <button type="button" class="btn btn-success" id="submit-test">✅ Submit Test</button>
+            <button type="button" class="btn btn-primary" id="restart-test">🔄 Restart Test</button>
+        </div>
+
+        <div class="results-container" id="results">
+            <h2 style="text-align: center; margin-bottom: 30px;">📊 Test Results</h2>
+            <div class="score-display">
+                <div class="score-circle" id="score-circle"></div>
+                <div id="score-text"></div>
+                <div id="score-message"></div>
+            </div>
+            <div id="answers-review"></div>
+
+            <div style="text-align: center; margin-top: 30px;">
+                <a href="tests.html" class="btn btn-primary">📚 Back to Testing Center</a>
+                <button type="button" class="btn btn-success" onclick="location.reload()">🔄 Retake Test</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="test-engine.js"></script>
+    <script>
+        // STAAR Science Practice Test - Official Format
+        const testData = {
+            questions: [
+                // Scientific Investigation/Reasoning (6 questions)
+                {
+                    question: "A student wants to investigate whether the amount of sunlight affects the growth rate of bean plants. She plants 12 identical bean seeds in identical pots with the same soil and water. She places 4 pots in full sunlight, 4 pots in partial shade, and 4 pots in complete darkness. After 3 weeks, she measures plant height. Which statement best describes the design of this experiment?",
+                    options: [
+                        "The independent variable is plant height and the dependent variable is sunlight",
+                        "The independent variable is sunlight and the dependent variable is plant height",
+                        "The control group is the plants in partial shade because it's middle",
+                        "There are no controlled variables because all conditions are different"
+                    ],
+                    correct: 1,
+                    explanation: "In a controlled experiment, the independent variable is what the scientist changes (sunlight amount), and the dependent variable is what is measured (plant height). The student is manipulating sunlight to see its effect on growth. Using multiple plants per condition (4 pots each) increases reliability of results.",
+                    topic: "STAAR: Scientific Investigation"
+                },
+                {
+                    question: "Students collect data about temperature changes during ice melting:<br><br><table class='data-table'><tr><th>Time (min)</th><th>Temperature (°C)</th></tr><tr><td>0</td><td>-5</td></tr><tr><td>5</td><td>-2</td></tr><tr><td>10</td><td>0</td></tr><tr><td>15</td><td>0</td></tr><tr><td>20</td><td>3</td></tr></table><br>What can students conclude from this data?",
+                    options: [
+                        "Temperature increases steadily throughout the entire melting process continuously",
+                        "Temperature remains constant at 0°C while ice is changing to water",
+                        "Temperature decreases when ice melts because melting requires energy absorption",
+                        "Temperature changes are random and show no pattern during phase change"
+                    ],
+                    correct: 1,
+                    explanation: "The data shows temperature stays at 0°C (freezing point) from minute 10 to minute 15. During a phase change (ice melting to water), temperature remains constant while energy breaks bonds between molecules. Once all ice melts, temperature rises again. This demonstrates that phase changes occur at specific temperatures.",
+                    topic: "STAAR: Data Analysis"
+                },
+                {
+                    question: "A scientist measures the mass of a sample five times and records: 24.3g, 24.5g, 24.2g, 24.4g, and 24.3g. What is the best estimate of the sample's actual mass, and why is this method more reliable?",
+                    options: [
+                        "24.5g because it is the highest measurement recorded by scientist",
+                        "24.2g because it is the lowest measurement recorded by scientist",
+                        "24.34g because averaging multiple trials reduces measurement error significantly",
+                        "24.3g because it appears twice so it must be correct"
+                    ],
+                    correct: 2,
+                    explanation: "Calculating the average (mean) of multiple measurements gives the most reliable estimate: (24.3 + 24.5 + 24.2 + 24.4 + 24.3) ÷ 5 = 24.34g. Taking multiple measurements and averaging them reduces random errors and provides a more accurate result than a single measurement. This is standard scientific practice.",
+                    topic: "STAAR: Measurement"
+                },
+                {
+                    question: "Students test different materials to determine which is the best insulator to keep ice from melting. They wrap identical ice cubes in different materials (foil, cotton, foam, plastic) and measure how long each takes to melt completely. Which factor should be kept constant (controlled) in this experiment?",
+                    options: [
+                        "The type of wrapping material because that is what they're testing",
+                        "The melting time because that's what they want to find out",
+                        "The size of ice cubes because all must start with same amount",
+                        "The temperature of materials because insulators work differently at different temperatures"
+                    ],
+                    correct: 2,
+                    explanation: "In a fair test, all variables except the one being tested must be controlled (kept the same). The size of ice cubes must be identical so that any difference in melting time is due to the wrapping material, not the amount of ice. The wrapping material is the independent variable being tested, and melting time is the dependent variable being measured.",
+                    topic: "STAAR: Experimental Design"
+                },
+                {
+                    question: "A student designs a model of the water cycle using a clear plastic box, water, soil, and a heat lamp. She observes water evaporating, condensing on the lid, and dripping back down. What is the primary limitation of this model?",
+                    options: [
+                        "The model cannot accurately represent the massive scale of Earth's water cycle",
+                        "The model cannot show that water changes from liquid to gas phase",
+                        "The model cannot demonstrate that heat is required for evaporation to occur",
+                        "The model cannot prove that water moves in a repeating cycle"
+                    ],
+                    correct: 0,
+                    explanation: "All models have limitations. This model successfully demonstrates evaporation, condensation, and precipitation on a small scale. However, it cannot represent the enormous scale of Earth's actual water cycle - the vast oceans, atmosphere, and global weather patterns. Models are useful for understanding processes but cannot capture every aspect of the real system.",
+                    topic: "STAAR: Models"
+                },
+                {
+                    question: "Scientists studying plant growth record the following data for Plant A: Week 1: 8cm, Week 2: 12cm, Week 3: 18cm, Week 4: 26cm. Which type of graph would best display this information to show the pattern of continuous growth over time?",
+                    options: [
+                        "A pie chart showing what percentage each week contributed to total growth",
+                        "A bar graph comparing the plant's height during each separate week",
+                        "A line graph showing how plant height changed continuously over the weeks",
+                        "A pictograph using plant symbols to represent the height each week"
+                    ],
+                    correct: 2,
+                    explanation: "A line graph is best for showing how a variable changes continuously over time. The connected line between data points shows the trend (pattern) of increasing height week by week. Line graphs make it easy to see rates of change and predict future values. Bar graphs compare separate categories but don't show continuous change as effectively.",
+                    topic: "STAAR: Graphing"
+                },
+
+                // Matter & Energy (8 questions)
+                {
+                    question: "A student places a sealed balloon with a mass of 3 grams in a freezer. After several hours, the balloon shrinks but its mass is still 3 grams. Which statement best explains this observation?",
+                    options: [
+                        "The amount of matter in the balloon decreased but mass stayed same",
+                        "The air particles moved closer together but the amount of matter didn't change",
+                        "The air particles changed into a different substance with the same mass",
+                        "The air particles escaped through the balloon but were replaced by cold"
+                    ],
+                    correct: 1,
+                    explanation: "When gas cools, particles move slower and closer together, decreasing volume but not mass. The balloon shrinks because the air inside takes up less space. However, the number of air particles (amount of matter) stays the same, so mass remains 3 grams. This demonstrates that mass is conserved even when volume changes.",
+                    topic: "STAAR: Properties of Matter"
+                },
+                {
+                    question: "Students mix baking soda (solid) with vinegar (liquid) in a flask. Bubbles form and the mixture gets colder. The students notice the flask now weighs less than before. What best explains the decrease in mass?",
+                    options: [
+                        "Matter was destroyed during the chemical reaction that occurred inside",
+                        "The temperature decrease caused some matter to disappear completely from flask",
+                        "Carbon dioxide gas escaped from the flask taking mass with it",
+                        "The chemical reaction converted solid and liquid into pure energy only"
+                    ],
+                    correct: 2,
+                    explanation: "This is a chemical reaction: baking soda + vinegar → carbon dioxide + water + sodium acetate. The carbon dioxide gas (bubbles) escaped into the air, reducing the mass in the flask. Mass is conserved overall - if you captured the escaping gas, the total mass would equal the starting materials. In an open system, it appears mass is lost when gases escape.",
+                    topic: "STAAR: Chemical Changes"
+                },
+                {
+                    question: "Which of the following observations provides the strongest evidence that a chemical change (not just a physical change) has occurred?",
+                    options: [
+                        "Ice melting into liquid water when left at room temperature",
+                        "Iron nail rusting and turning reddish-brown over several weeks outside",
+                        "Sugar dissolving in water to make a clear sweet solution",
+                        "Water boiling and changing into invisible water vapor steam"
+                    ],
+                    correct: 1,
+                    explanation: "A chemical change produces new substances with different properties. Iron rusting is a chemical change: iron + oxygen → iron oxide (rust), a new substance. Melting, dissolving, and boiling are physical changes - no new substances form. You can identify chemical changes by: color change, temperature change, gas production, or formation of a precipitate (solid).",
+                    topic: "STAAR: Physical vs Chemical"
+                },
+                {
+                    question: "A student has a mixture of sand, salt, and iron filings. She wants to separate the mixture into its three components. Which procedure would successfully separate all three materials?",
+                    options: [
+                        "Filter the mixture then use a magnet then add water and evaporate",
+                        "Use a magnet for iron add water filter for sand then evaporate for salt",
+                        "Add water and evaporate then filter then finally use a magnet",
+                        "Heat the mixture then filter then use a magnet on the remains"
+                    ],
+                    correct: 1,
+                    explanation: "Correct sequence uses different physical properties: (1) Use magnet to remove iron filings (magnetic). (2) Add water to dissolve salt but not sand (solubility). (3) Filter to separate undissolved sand from salt solution. (4) Evaporate water to recover salt crystals. Each step exploits a different physical property: magnetism, solubility, and boiling point.",
+                    topic: "STAAR: Mixtures"
+                },
+                {
+                    question: "A metal ball rolling down a ramp has kinetic energy (energy of motion). At which point on the ramp does the ball have the GREATEST kinetic energy?",
+                    options: [
+                        "At the very top before it starts rolling down the ramp",
+                        "In the middle of the ramp when it's rolling moderately fast",
+                        "At the bottom of the ramp when it's rolling fastest overall",
+                        "The kinetic energy is exactly the same at all points on ramp"
+                    ],
+                    correct: 2,
+                    explanation: "Kinetic energy depends on speed (KE = ½mv²). As the ball rolls down, potential energy converts to kinetic energy, so speed increases. At the bottom, the ball is moving fastest, so it has the greatest kinetic energy. At the top, it has maximum potential energy but zero kinetic energy (not moving yet). This demonstrates energy transformation.",
+                    topic: "STAAR: Energy"
+                },
+                {
+                    question: "Two identical pots contain water at 25°C. Pot A contains 500 mL and Pot B contains 1000 mL. Both are heated until water temperature reaches 75°C. Which statement is correct about the heat energy required?",
+                    options: [
+                        "Pot A requires more heat because it heats up much faster",
+                        "Pot B requires more heat because it contains more water mass",
+                        "Both require the same heat because temperature change is identical",
+                        "Neither requires heat because water temperature increased on its own"
+                    ],
+                    correct: 1,
+                    explanation: "Pot B requires more heat energy because it has more mass (more water molecules to heat). Even though both reach the same temperature (75°C), the larger amount of water in Pot B needs more total energy. Temperature measures average energy per molecule, but thermal energy is total energy of all molecules. More molecules = more total energy needed.",
+                    topic: "STAAR: Thermal Energy"
+                },
+                {
+                    question: "A student observes that a metal spoon feels colder than a wooden spoon when both are at room temperature (20°C). Why does the metal spoon feel colder even though both are the same temperature?",
+                    options: [
+                        "Metal is actually at a lower temperature than wood always",
+                        "Metal conducts heat away from your hand faster than wood does",
+                        "Wood generates its own heat but metal cannot generate any heat",
+                        "Metal absorbs coldness from the air but wood doesn't absorb it"
+                    ],
+                    correct: 1,
+                    explanation: "Both spoons are at room temperature, but metal is a better thermal conductor than wood. When you touch the metal spoon, it quickly conducts heat away from your warm hand, making it feel cold. Wood is a poor conductor (good insulator), so it conducts heat slowly and feels warmer. Temperature is the same; the difference is the rate of heat transfer.",
+                    topic: "STAAR: Heat Transfer"
+                },
+                {
+                    question: "Water has a higher specific heat capacity than sand. On a sunny beach day, which observation would you expect, and what does this tell us about water's properties?",
+                    options: [
+                        "Sand feels much hotter than water because sand heats up faster",
+                        "Water feels much hotter than sand because water absorbs more energy",
+                        "Both feel the same temperature because they receive equal sunlight",
+                        "Sand stays cooler than water because sand reflects more sunlight away"
+                    ],
+                    correct: 0,
+                    explanation: "High specific heat means water requires more energy to increase temperature. Sand heats up and cools down quickly, while water changes temperature slowly. That's why beaches have hot sand but cooler water during the day. This property helps Earth's oceans moderate climate - oceans absorb heat in summer and release it in winter, preventing extreme temperature swings.",
+                    topic: "STAAR: Properties of Water"
+                },
+
+                // Force, Motion & Energy (6 questions - Focus on Energy transformations)
+                {
+                    question: "A battery-powered flashlight converts chemical energy stored in batteries into light energy. Which other form of energy is also produced during this energy transformation?",
+                    options: [
+                        "Electrical energy in the circuit and thermal energy as heat",
+                        "Nuclear energy from atoms and magnetic energy in the bulb",
+                        "Gravitational energy from Earth and sound energy from the switch",
+                        "Mechanical energy from the battery and elastic energy from the bulb"
+                    ],
+                    correct: 0,
+                    explanation: "The flashlight converts chemical energy → electrical energy → light + heat. The batteries produce electrical current that flows through the circuit. The bulb converts electrical energy to light energy, but also produces thermal energy (heat). No energy transformation is 100% efficient - some energy is always converted to heat. You can feel a flashlight get warm!",
+                    topic: "STAAR: Energy Transformation"
+                },
+                {
+                    question: "Solar panels on a house convert sunlight into electrical energy that powers lights and appliances. On a cloudy day, the panels produce less electricity than on a sunny day. What is the best explanation for this difference?",
+                    options: [
+                        "Clouds absorb all the light energy completely so none reaches panels",
+                        "Less light energy reaches the panels so less electrical energy is produced",
+                        "Clouds create their own energy that interferes with panel operation completely",
+                        "The panels stop working on cloudy days and produce zero electricity"
+                    ],
+                    correct: 1,
+                    explanation: "Solar panels convert light energy to electrical energy. On cloudy days, clouds scatter and absorb some sunlight, so less light energy reaches the panels. Less input energy means less output energy - the panels produce less electricity but don't stop completely. This shows that energy transformations depend on the amount of input energy available.",
+                    topic: "STAAR: Solar Energy"
+                },
+                {
+                    question: "A windmill converts wind energy (kinetic energy of moving air) into electrical energy. The windmill's blades spin faster when wind speed increases. What can be concluded about the relationship between wind speed and electrical energy produced?",
+                    options: [
+                        "Faster wind speed provides more kinetic energy resulting in more electricity",
+                        "Faster wind speed provides less kinetic energy resulting in less electricity",
+                        "Wind speed has no effect on electricity because they are unrelated",
+                        "Faster wind speed damages the windmill and stops all electricity production"
+                    ],
+                    correct: 0,
+                    explanation: "Faster wind has more kinetic energy (KE = ½mv²). When faster wind hits the blades, more kinetic energy is available to convert to electrical energy, so the windmill produces more electricity. This demonstrates the Law of Conservation of Energy - more input energy (fast wind) results in more output energy (electricity). Energy cannot be created, only transformed.",
+                    topic: "STAAR: Wind Energy"
+                },
+                {
+                    question: "A student strikes a drum, causing it to vibrate and produce sound. She notices that striking the drum harder produces a louder sound. What form of energy is converted into sound energy when the drum is struck?",
+                    options: [
+                        "Chemical energy from her muscles is converted into sound energy produced",
+                        "Mechanical energy from her hand's motion is converted into sound energy produced",
+                        "Electrical energy from her nerves is converted into sound energy produced",
+                        "Thermal energy from her body heat is converted into sound energy produced"
+                    ],
+                    correct: 1,
+                    explanation: "When the student strikes the drum, the mechanical energy (kinetic energy of her moving hand) transfers to the drum, causing it to vibrate. These vibrations create sound waves (sound energy). Hitting harder transfers more mechanical energy, producing louder sound. This demonstrates energy transformation: mechanical → sound + heat (some energy is lost as heat).",
+                    topic: "STAAR: Sound Energy"
+                },
+                {
+                    question: "A hydroelectric dam converts the potential energy of water stored behind the dam into electrical energy. As water falls through the dam, it spins turbines connected to generators. Which energy transformation occurs in this process?",
+                    options: [
+                        "Potential energy to kinetic energy to electrical energy completely throughout",
+                        "Kinetic energy to potential energy to electrical energy completely throughout",
+                        "Electrical energy to kinetic energy to potential energy completely throughout",
+                        "Chemical energy to thermal energy to electrical energy completely throughout"
+                    ],
+                    correct: 0,
+                    explanation: "The correct sequence is: (1) Potential energy - water stored at height has gravitational potential energy. (2) Kinetic energy - falling water has kinetic energy. (3) Mechanical energy - water spins turbines. (4) Electrical energy - generators convert mechanical to electrical. This multi-step transformation demonstrates how energy changes forms but is conserved (total energy stays constant).",
+                    topic: "STAAR: Hydroelectric Energy"
+                },
+                {
+                    question: "A student designs an energy-efficient house that uses solar panels, wind turbines, and insulation to reduce energy consumption. Which statement best explains why energy efficiency is important?",
+                    options: [
+                        "Energy efficiency creates new energy that didn't exist before saving resources",
+                        "Energy efficiency reduces wasted energy making better use of available resources",
+                        "Energy efficiency converts all energy to light with no losses at all",
+                        "Energy efficiency eliminates the need for any energy sources completely"
+                    ],
+                    correct: 1,
+                    explanation: "Energy efficiency means using less energy to accomplish the same task by reducing wasted energy. Most energy transformations waste energy as heat. Insulation reduces heat loss, and efficient appliances waste less energy. We cannot create energy (Law of Conservation), so using existing energy sources more efficiently reduces consumption and environmental impact. Efficiency is 'doing more with less.'",
+                    topic: "STAAR: Energy Efficiency"
+                },
+
+                // Earth & Space (6 questions)
+                {
+                    question: "Scientists study Earth's interior using seismic waves from earthquakes. They discovered that S-waves (shear waves) cannot pass through Earth's outer core, but P-waves (pressure waves) can. What important conclusion did scientists make from this evidence?",
+                    options: [
+                        "Earth's outer core must be liquid because S-waves cannot travel through liquids",
+                        "Earth's outer core must be solid because S-waves only travel through solids",
+                        "Earth's outer core must be empty space because waves cannot pass through",
+                        "Earth's outer core must be made of air because waves travel differently"
+                    ],
+                    correct: 0,
+                    explanation: "S-waves (secondary waves) can only travel through solids, not liquids. When scientists observed that S-waves stopped at the outer core while P-waves continued, they concluded the outer core must be liquid. This indirect evidence proves the outer core is made of molten (liquid) iron and nickel. Direct observation is impossible - the outer core is 1,800 miles deep!",
+                    topic: "STAAR: Earth's Structure"
+                },
+                {
+                    question: "The chart shows distances from the Sun:<br><br><table class='data-table'><tr><th>Planet</th><th>Distance from Sun</th><th>Orbital Period</th></tr><tr><td>Mercury</td><td>36 million miles</td><td>88 days</td></tr><tr><td>Earth</td><td>93 million miles</td><td>365 days</td></tr><tr><td>Mars</td><td>142 million miles</td><td>687 days</td></tr><tr><td>Jupiter</td><td>484 million miles</td><td>12 years</td></tr></table><br>What pattern does this data show?",
+                    options: [
+                        "Planets closer to the Sun take longer to complete one orbit",
+                        "Planets farther from the Sun take longer to complete one orbit",
+                        "Distance from the Sun has no effect on orbital period at all",
+                        "All planets take the same amount of time to orbit the Sun"
+                    ],
+                    correct: 1,
+                    explanation: "The data shows a clear pattern: as distance from the Sun increases, orbital period (year length) increases. Mercury (closest) has an 88-day year, while Jupiter (farther) has a 12-year year. This is because planets farther from the Sun have larger orbits to travel and move slower due to weaker gravitational pull. This relationship was first described by Kepler's Laws.",
+                    topic: "STAAR: Solar System Patterns"
+                },
+                {
+                    question: "A student observes the Moon on four consecutive nights and records these observations: Night 1: thin crescent on right. Night 2: thicker crescent. Night 3: first quarter (right half lit). Night 4: gibbous (more than half lit). If this pattern continues, what phase should appear on Night 7?",
+                    options: [
+                        "New moon because the cycle resets after one week completely",
+                        "Full moon because the Moon continues growing to full illumination",
+                        "Last quarter because the Moon starts decreasing after first quarter",
+                        "Waning crescent because the Moon shrinks back to crescent shape"
+                    ],
+                    correct: 1,
+                    explanation: "The Moon is waxing (growing) through its cycle: waxing crescent → first quarter → waxing gibbous → full moon (day 14-15). Since Night 1 was waxing crescent (day 3-4), Night 7 would be around day 10 - waxing gibbous approaching full moon. The sequence continues until reaching full moon (opposite side from Sun), then wanes (shrinks) back to new moon, completing the 29.5-day cycle.",
+                    topic: "STAAR: Moon Phases"
+                },
+                {
+                    question: "Mars and Earth are both rocky planets with similar day lengths (Mars: 24.6 hours, Earth: 24 hours). However, Mars is much colder than Earth with an average temperature of -60°C compared to Earth's +15°C. What is the primary reason for this temperature difference?",
+                    options: [
+                        "Mars is farther from the Sun so it receives less solar energy",
+                        "Mars rotates faster than Earth so it doesn't warm up enough",
+                        "Mars is smaller than Earth so it produces less internal heat",
+                        "Mars has more clouds than Earth so sunlight is blocked completely"
+                    ],
+                    correct: 0,
+                    explanation: "Distance from the Sun is the primary factor. Mars is about 142 million miles from the Sun, while Earth is 93 million miles away. Following the inverse square law, Mars receives only about 43% of the solar energy Earth receives. Less solar energy means lower temperatures. Mars also has a thin atmosphere that cannot retain heat like Earth's atmosphere does.",
+                    topic: "STAAR: Planetary Temperatures"
+                },
+                {
+                    question: "The Sun appears to move across the sky from east to west each day. However, this is an apparent motion caused by Earth's rotation. Which observation provides evidence that Earth rotates on its axis rather than the Sun moving around Earth?",
+                    options: [
+                        "Stars appear to move in circular patterns around the North Star nightly",
+                        "The Sun appears brighter at noon than during morning or evening times",
+                        "Different seasons occur throughout the year as temperatures change regularly",
+                        "The Moon changes phases from new moon to full moon monthly"
+                    ],
+                    correct: 0,
+                    explanation: "If Earth rotates, stars should appear to move in circular patterns around the axis of rotation (North Star/Polaris). This is exactly what we observe! Time-lapse photography shows stars making circular trails around Polaris. If the Sun were moving around Earth instead, we wouldn't see this pattern. The star trails prove Earth rotates on its axis once every 24 hours.",
+                    topic: "STAAR: Earth's Rotation"
+                },
+                {
+                    question: "Scientists have discovered ice deposits at the poles of Mars and evidence of ancient river valleys. What hypothesis do these observations support about Mars' past environment?",
+                    options: [
+                        "Mars once had a warmer climate with liquid water on the surface",
+                        "Mars was once covered entirely by frozen oceans of solid ice",
+                        "Mars never had any water and the valleys formed from wind",
+                        "Mars was once closer to the Sun before moving to current position"
+                    ],
+                    correct: 0,
+                    explanation: "Evidence of ancient river valleys and lake beds suggests liquid water once flowed on Mars' surface. Since water is currently frozen at the poles and the planet is too cold for liquid water now, Mars must have been warmer in the past with a thicker atmosphere. This hypothesis is supported by multiple Mars rovers finding minerals that only form in liquid water. Mars likely lost its atmosphere over time, becoming cold and dry.",
+                    topic: "STAAR: Planetary Science"
+                },
+
+                // Organisms & Environments (6 questions - Living Systems)
+                {
+                    question: "In a food chain: Grass → Grasshopper → Frog → Snake → Hawk. A disease kills most grasshoppers. Which prediction about the other populations is most accurate?",
+                    options: [
+                        "Grass decreases frogs decrease snakes increase and hawks increase throughout ecosystem",
+                        "Grass increases frogs decrease snakes decrease and hawks decrease throughout ecosystem",
+                        "Grass increases frogs increase snakes increase and hawks increase throughout ecosystem",
+                        "Grass decreases frogs increase snakes decrease and hawks decrease throughout ecosystem"
+                    ],
+                    correct: 1,
+                    explanation: "With fewer grasshoppers: (1) Grass increases - less herbivores eating it. (2) Frogs decrease - less food available. (3) Snakes decrease - fewer frogs to eat. (4) Hawks decrease - fewer snakes to eat. This demonstrates how populations are interconnected in food chains. Removing one population affects all levels above and below it. This is why protecting biodiversity is crucial.",
+                    topic: "STAAR: Food Chains"
+                },
+                {
+                    question: "The diagram shows energy flow in an ecosystem: 10,000 grass plants → 1,000 grasshoppers → 100 frogs → 10 hawks. Why does the number of organisms decrease at each level of this energy pyramid?",
+                    options: [
+                        "Larger organisms need more space so fewer can fit in the habitat",
+                        "Predators are stronger so they kill most prey animals immediately",
+                        "Only about 10% of energy transfers to the next level to support organisms",
+                        "Organisms at higher levels reproduce less frequently than lower levels"
+                    ],
+                    correct: 2,
+                    explanation: "The 10% Rule: only about 10% of energy passes from one trophic level to the next. The other 90% is used for life processes or lost as heat. Since less energy is available at each higher level, fewer organisms can be supported. That's why there are always many more producers (plants) than top predators. Energy limits the size of populations.",
+                    topic: "STAAR: Energy Pyramids"
+                },
+                {
+                    question: "Arctic foxes have thick white fur in winter that changes to thin brown fur in summer. How do these adaptations increase the fox's chances of survival?",
+                    options: [
+                        "Thick fur provides insulation in winter and camouflage color helps hunting",
+                        "White fur attracts prey animals and brown fur scares away predators completely",
+                        "Thick fur keeps the fox cool and white color absorbs more heat",
+                        "Brown fur provides warmth in summer and white fur reflects summer sunlight"
+                    ],
+                    correct: 0,
+                    explanation: "These are survival adaptations: (1) Thick fur provides insulation against extreme cold (as low as -50°C in winter). (2) White fur provides camouflage in snow, helping the fox hunt prey and avoid predators. (3) Thin brown fur prevents overheating in summer. (4) Brown color provides camouflage against brown tundra in summer. Adaptations that increase survival become more common through natural selection.",
+                    topic: "STAAR: Adaptations"
+                },
+                {
+                    question: "A student classifies organisms into groups based on their characteristics. She places a mushroom in a different group from a fern plant. Which characteristic best justifies this classification decision?",
+                    options: [
+                        "Mushrooms are heterotrophs that consume dead matter while ferns are autotrophs that produce food",
+                        "Mushrooms grow faster than ferns so they belong in different kingdoms",
+                        "Mushrooms are always poisonous while ferns are always safe to eat",
+                        "Mushrooms live in dark places while ferns need bright sunlight constantly"
+                    ],
+                    correct: 0,
+                    explanation: "Mushrooms are fungi (decomposers/heterotrophs) that absorb nutrients from dead organic matter. Ferns are plants (autotrophs) that make their own food through photosynthesis. The key difference is nutrition method, which is a fundamental characteristic used to classify organisms into different kingdoms. Fungi lack chlorophyll and cannot photosynthesize, distinguishing them from plants.",
+                    topic: "STAAR: Classification"
+                },
+                {
+                    question: "Kudzu is a fast-growing vine introduced to the United States from Asia. It grows rapidly, covering and killing native plants and trees. Why is kudzu considered an invasive species, and what impact does it have on native ecosystems?",
+                    options: [
+                        "Kudzu helps native species by providing food and shelter increasing diversity",
+                        "Kudzu competes with native plants for resources and disrupts food webs badly",
+                        "Kudzu grows slowly allowing native plants to adapt over long periods",
+                        "Kudzu is beneficial because it prevents forest fires by covering plants"
+                    ],
+                    correct: 1,
+                    explanation: "Kudzu is invasive because it: (1) Lacks natural predators/diseases in the US. (2) Grows rapidly (up to 1 foot per day!), smothering native plants. (3) Competes for sunlight, water, and nutrients, killing native vegetation. (4) Disrupts food webs - native animals can't eat it. Invasive species reduce biodiversity and damage ecosystems, costing billions in control efforts.",
+                    topic: "STAAR: Invasive Species"
+                },
+                {
+                    question: "In a healthy pond ecosystem, algae (producers) use sunlight to make food, small fish eat algae, large fish eat small fish, herons eat large fish, and bacteria decompose dead organisms. What would happen if all bacteria were removed from this ecosystem?",
+                    options: [
+                        "The ecosystem would improve because disease-causing bacteria are gone completely",
+                        "Dead organisms would accumulate and nutrients wouldn't be recycled back properly",
+                        "All other organisms would die immediately because bacteria produce oxygen needed",
+                        "Nothing would change because bacteria are not important to the ecosystem"
+                    ],
+                    correct: 1,
+                    explanation: "Bacteria are essential decomposers that break down dead organisms, recycling nutrients back to the soil and water. Without bacteria: (1) Dead matter would pile up. (2) Nutrients would be locked in dead organisms, unavailable to producers. (3) Producers would lack nutrients, reducing their populations. (4) Entire food web would collapse. Decomposers complete the nutrient cycle - they're as important as producers!",
+                    topic: "STAAR: Decomposers"
+                }
+            ]
+        };
+
+        // Initialize the test
+        document.addEventListener('DOMContentLoaded', function() {
+            new TestEngine(testData, 'staar_practice_official', 60);
+        });
+    </script>
+</body>
+</html>

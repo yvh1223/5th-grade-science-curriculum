@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chapter 3 Practice Test: Living Systems</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6; color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        .container { max-width: 1000px; margin: 0 auto; padding: 20px; }
+        .test-header {
+            background: rgba(255, 255, 255, 0.95); padding: 30px;
+            border-radius: 20px; text-align: center; margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+        .test-header h1 { font-size: 2.5em; color: #4a90e2; margin-bottom: 10px; }
+        .test-info {
+            background: #e3f2fd; padding: 20px; border-radius: 10px;
+            margin: 20px 0; border-left: 5px solid #2196F3;
+        }
+        .timer-container {
+            position: fixed; top: 20px; right: 20px;
+            background: rgba(255, 255, 255, 0.95); padding: 15px 25px;
+            border-radius: 25px; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            font-weight: bold; font-size: 1.2em; color: #4a90e2; z-index: 1000;
+        }
+        .timer-running { color: #4CAF50; }
+        .timer-warning { color: #ff9800; animation: pulse 1s infinite; }
+        .timer-danger { color: #f44336; animation: pulse 0.5s infinite; }
+        @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }
+        .question-container {
+            background: rgba(255, 255, 255, 0.95); padding: 25px;
+            border-radius: 15px; margin-bottom: 25px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+        .question-header {
+            display: flex; justify-content: space-between; align-items: center;
+            margin-bottom: 20px; padding-bottom: 10px; border-bottom: 2px solid #e0e0e0;
+        }
+        .question-number {
+            background: #4a90e2; color: white; padding: 8px 20px;
+            border-radius: 25px; font-weight: bold; font-size: 1.1em;
+        }
+        .question-type {
+            background: #f5f5f5; padding: 5px 15px;
+            border-radius: 15px; font-size: 0.9em; color: #666;
+        }
+        .question-text { font-size: 1.1em; margin-bottom: 20px; line-height: 1.7; }
+        .answer-options { margin: 20px 0; }
+        .answer-option {
+            display: block; padding: 15px 20px; margin: 10px 0;
+            background: #f8f9fa; border: 2px solid #e9ecef;
+            border-radius: 10px; cursor: pointer; transition: all 0.3s ease;
+        }
+        .answer-option:hover { background: #e3f2fd; border-color: #2196F3; }
+        .answer-option.selected {
+            background: #e3f2fd; border-color: #2196F3;
+            box-shadow: 0 3px 10px rgba(33, 150, 243, 0.3);
+        }
+        .answer-option input[type="radio"] { margin-right: 15px; transform: scale(1.2); }
+        .option-label { font-weight: bold; color: #4a90e2; margin-right: 10px; }
+        .visual-question {
+            background: #f8f9fa; padding: 20px; border-radius: 10px;
+            margin: 15px 0; text-align: center; border: 2px dashed #dee2e6;
+        }
+        .controls {
+            background: rgba(255, 255, 255, 0.95); padding: 25px;
+            border-radius: 15px; box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+            margin: 30px 0; text-align: center;
+        }
+        .btn {
+            padding: 12px 30px; margin: 10px; border: none;
+            border-radius: 25px; font-size: 1.1em; font-weight: bold;
+            cursor: pointer; transition: all 0.3s ease; text-decoration: none;
+            display: inline-block;
+        }
+        .btn-primary { background: #4a90e2; color: white; }
+        .btn-primary:hover { background: #357abd; transform: translateY(-2px); }
+        .btn-success { background: #4CAF50; color: white; }
+        .btn-success:hover { background: #45a049; transform: translateY(-2px); }
+        .btn-warning { background: #ff9800; color: white; }
+        .btn-warning:hover { background: #f57c00; transform: translateY(-2px); }
+        .results-container {
+            background: rgba(255, 255, 255, 0.95); padding: 30px;
+            border-radius: 15px; box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+            margin: 30px 0; display: none;
+        }
+        .score-display { text-align: center; margin-bottom: 30px; }
+        .score-circle {
+            width: 200px; height: 200px; border-radius: 50%;
+            display: inline-flex; flex-direction: column;
+            align-items: center; justify-content: center;
+            font-size: 2em; font-weight: bold; color: white; margin: 20px;
+        }
+        .score-excellent { background: linear-gradient(45deg, #4CAF50, #45a049); }
+        .score-good { background: linear-gradient(45deg, #2196F3, #1976D2); }
+        .score-needs-work { background: linear-gradient(45deg, #ff9800, #f57c00); }
+        .score-poor { background: linear-gradient(45deg, #f44336, #d32f2f); }
+        .back-link {
+            position: fixed; top: 20px; left: 20px;
+            background: rgba(255, 255, 255, 0.9); color: #4a90e2;
+            padding: 10px 20px; border-radius: 25px; text-decoration: none;
+            font-weight: bold; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease; z-index: 999;
+        }
+        .back-link:hover { background: #4a90e2; color: white; transform: translateY(-2px); }
+        .progress-bar {
+            width: 100%; height: 25px; background: #e0e0e0;
+            border-radius: 10px; margin: 20px 0; overflow: hidden;
+        }
+        .progress-fill {
+            height: 100%; background: linear-gradient(45deg, #4CAF50, #45a049);
+            width: 0%; transition: width 0.3s ease; display: flex;
+            align-items: center; justify-content: center;
+            color: white; font-weight: bold; font-size: 0.9em;
+        }
+        @media (max-width: 768px) {
+            .timer-container, .back-link { position: static; margin-bottom: 20px; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+    <a href="tests.html" class="back-link">← Back to Testing Center</a>
+    <div class="timer-container" id="timer">
+        <div>⏱️ Time: <span id="time-display">20:00</span></div>
+    </div>
+
+    <div class="container">
+        <div class="test-header">
+            <h1>Chapter 3 Practice Test</h1>
+            <h2>🌱 Living Systems</h2>
+            <div class="test-info">
+                <p><strong>Instructions:</strong> This practice test contains 20 challenging questions covering cells, photosynthesis, food chains, and ecosystems. You have 20 minutes.</p>
+                <p><strong>Scoring:</strong> Aim for 16+ correct answers (80%) to demonstrate mastery!</p>
+            </div>
+            <div class="progress-bar">
+                <div class="progress-fill" id="progress">
+                    <span id="progress-text">0 / 20 answered</span>
+                </div>
+            </div>
+        </div>
+
+        <div id="test-questions"></div>
+
+        <div class="controls" id="test-controls">
+            <button type="button" class="btn btn-warning" id="review-answers">📝 Review My Answers</button>
+            <button type="button" class="btn btn-success" id="submit-test">✅ Submit Test</button>
+            <button type="button" class="btn btn-primary" id="restart-test">🔄 Restart Test</button>
+        </div>
+
+        <div class="results-container" id="results">
+            <h2 style="text-align: center; margin-bottom: 30px;">📊 Test Results</h2>
+            <div class="score-display">
+                <div class="score-circle" id="score-circle"></div>
+                <div id="score-text"></div>
+                <div id="score-message"></div>
+            </div>
+            <div id="answers-review"></div>
+            <div style="text-align: center; margin-top: 30px;">
+                <a href="tests.html" class="btn btn-primary">📚 Back to Testing Center</a>
+                <button type="button" class="btn btn-success" onclick="location.reload()">🔄 Retake Test</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="test-engine.js"></script>
+    <script>
+        const testData = {
+            questions: [
+                {
+                    question: "All living things are made of cells. Which statement best describes the main difference between plant cells and animal cells?",
+                    options: [
+                        "Plant cells have a cell wall and chloroplasts; animal cells do not",
+                        "Animal cells have a cell wall and chloroplasts; plant cells do not",
+                        "Plant cells are smaller than animal cells and have no nucleus inside",
+                        "Animal cells can make their own food; plant cells cannot make food"
+                    ],
+                    correct: 0,
+                    explanation: "Plant cells have a rigid cell wall (animal cells only have a membrane) and chloroplasts for photosynthesis (animal cells don't have chloroplasts). Both have nuclei and most other organelles.",
+                    topic: "Cell Structures"
+                },
+                {
+                    question: "The nucleus is often called the 'control center' of the cell. What is the primary function of the nucleus?",
+                    options: [
+                        "It produces energy for all the cell's activities continuously",
+                        "It stores genetic information (DNA) and controls cell activities",
+                        "It breaks down food and waste materials for the cell",
+                        "It makes proteins that the cell needs for growth constantly"
+                    ],
+                    correct: 1,
+                    explanation: "The nucleus contains DNA (genetic material) and controls all cell activities by sending instructions to other parts of the cell. Think of it as the cell's 'brain' that tells everything what to do.",
+                    topic: "Cell Organelles"
+                },
+                {
+                    question: "Chloroplasts are found in plant cells but not in animal cells. What is the main function of chloroplasts?",
+                    options: [
+                        "They capture light energy and convert it into food (glucose)",
+                        "They break down food to release energy for the plant cell",
+                        "They store water and nutrients for the plant to use later",
+                        "They provide structure and support for the entire plant cell"
+                    ],
+                    correct: 0,
+                    explanation: "Chloroplasts contain chlorophyll (green pigment) and perform photosynthesis - converting light energy, water, and carbon dioxide into glucose (food) and oxygen. This is why plants are green!",
+                    topic: "Photosynthesis Structures"
+                },
+                {
+                    question: "Photosynthesis is the process plants use to make food. Which equation correctly represents photosynthesis?",
+                    options: [
+                        "Carbon dioxide + Water + Light Energy → Glucose + Oxygen",
+                        "Glucose + Oxygen → Carbon dioxide + Water + Energy released",
+                        "Nitrogen + Water + Light Energy → Glucose + Oxygen produced",
+                        "Glucose + Water → Carbon dioxide + Oxygen + Energy released"
+                    ],
+                    correct: 0,
+                    explanation: "During photosynthesis, plants take in carbon dioxide and water, use light energy, and produce glucose (sugar/food) and oxygen. The oxygen is released into the air, which is what we breathe!",
+                    topic: "Photosynthesis"
+                },
+                {
+                    question: "A student places a plant in a dark closet for several days and notices the leaves turn yellow. What is the most likely explanation?",
+                    options: [
+                        "The plant produced too much oxygen in the dark closet",
+                        "The plant couldn't perform photosynthesis without light energy available",
+                        "The plant grew too quickly and used all its nutrients",
+                        "The plant absorbed too much carbon dioxide from the air"
+                    ],
+                    correct: 1,
+                    explanation: "Without light, plants cannot perform photosynthesis. The chlorophyll (green pigment) breaks down, causing leaves to turn yellow. Plants need light energy to make food and stay healthy.",
+                    topic: "Photosynthesis Requirements"
+                },
+                {
+                    question: "In a food chain, organisms that can make their own food using sunlight are called producers. Which organisms are producers?",
+                    options: [
+                        "Herbivores like rabbits and deer that eat plants mainly",
+                        "Carnivores like wolves and lions that eat other animals",
+                        "Green plants and algae that perform photosynthesis always",
+                        "Decomposers like fungi and bacteria that break down waste"
+                    ],
+                    correct: 2,
+                    explanation: "Producers (green plants, algae, and some bacteria) can make their own food through photosynthesis. They're called producers because they produce food energy that all other organisms depend on.",
+                    topic: "Food Chains - Producers"
+                },
+                {
+                    question: "Study this food chain: Grass → Grasshopper → Mouse → Snake → Hawk. What would most likely happen if all the snakes were removed from this ecosystem?",
+                    options: [
+                        "The hawk population would increase because of less competition",
+                        "The mouse population would increase because their predator is gone",
+                        "The grasshopper population would decrease rapidly without the snakes",
+                        "The grass would grow much taller without any animals eating it"
+                    ],
+                    correct: 1,
+                    explanation: "If snakes (which eat mice) were removed, the mouse population would likely increase because their main predator is gone. This could then lead to more grasshoppers being eaten and eventually less grass.",
+                    topic: "Food Chain Relationships"
+                },
+                {
+                    question: "Decomposers play an important role in ecosystems. What is the primary function of decomposers like fungi and bacteria?",
+                    options: [
+                        "They produce oxygen for other organisms to breathe in air",
+                        "They make food using sunlight through photosynthesis regularly",
+                        "They break down dead organisms and return nutrients to soil",
+                        "They eat producers and control plant populations in ecosystems"
+                    ],
+                    correct: 2,
+                    explanation: "Decomposers break down dead plants and animals, returning important nutrients to the soil. Without decomposers, dead matter would pile up and nutrients wouldn't be recycled in the ecosystem!",
+                    topic: "Decomposers"
+                },
+                {
+                    question: "A food web shows multiple interconnected food chains. What advantage does a food web provide compared to a simple food chain?",
+                    options: [
+                        "It shows that organisms usually have only one food source",
+                        "It shows more realistic feeding relationships in an ecosystem",
+                        "It shows that all organisms eat the same types of food",
+                        "It shows that energy flows in a single simple path"
+                    ],
+                    correct: 1,
+                    explanation: "Food webs show the complex reality of nature - most animals eat more than one type of food and are eaten by more than one predator. This makes ecosystems more stable and interconnected.",
+                    topic: "Food Webs"
+                },
+                {
+                    question: "Herbivores are animals that eat only plants. Which adaptation would be most helpful for an herbivore?",
+                    options: [
+                        "Sharp claws for catching and holding fast-moving prey animals",
+                        "Flat teeth for grinding and chewing tough plant materials",
+                        "Excellent night vision for hunting in complete darkness effectively",
+                        "Powerful jaw muscles for crushing bones of other animals"
+                    ],
+                    correct: 1,
+                    explanation: "Herbivores need flat molars (back teeth) to grind tough plant materials like grass and leaves. Carnivores have sharp teeth for tearing meat, but herbivores need grinding teeth for plants.",
+                    topic: "Animal Adaptations"
+                },
+                {
+                    question: "Energy flows through a food chain from producers to consumers. What happens to the amount of energy as it moves up the food chain?",
+                    options: [
+                        "Energy increases at each level because organisms grow larger",
+                        "Energy stays exactly the same at every level in chain",
+                        "Energy decreases at each level because some is used and lost",
+                        "Energy disappears completely at the top of the food chain"
+                    ],
+                    correct: 2,
+                    explanation: "Energy decreases as it moves up the food chain. Organisms use most energy for life processes (moving, breathing, growing), so only about 10% passes to the next level. This is why there are fewer predators than prey.",
+                    topic: "Energy Flow"
+                },
+                {
+                    question: "A predator is an animal that hunts and eats other animals. What would happen to a predator population if its prey population suddenly decreased significantly?",
+                    options: [
+                        "The predator population would likely increase rapidly and grow more",
+                        "The predator population would likely decrease due to less food",
+                        "The predator population would stay exactly the same as before",
+                        "The predator population would switch to making their own food"
+                    ],
+                    correct: 1,
+                    explanation: "If prey decreases, predators have less food available. This causes the predator population to decrease due to starvation or migration to find food elsewhere. Predator and prey populations are closely connected.",
+                    topic: "Predator-Prey Relationships"
+                },
+                {
+                    question: "An ecosystem includes all living things and non-living things in an area. Which of the following is a NON-LIVING part of an ecosystem?",
+                    options: [
+                        "Bacteria that decompose dead leaves on the forest floor",
+                        "Mushrooms growing on a rotting log in the forest shade",
+                        "Sunlight that provides energy for plants to perform photosynthesis",
+                        "Insects that pollinate flowers and help plants reproduce successfully"
+                    ],
+                    correct: 2,
+                    explanation: "Sunlight is non-living (abiotic). Other abiotic factors include water, air, soil, temperature, and rocks. Bacteria, mushrooms, and insects are all living (biotic) parts of an ecosystem.",
+                    topic: "Ecosystem Components"
+                },
+                {
+                    question: "Scientists study a forest ecosystem and identify the following: deer, grass, trees, wolves, rabbits, and soil. Which organisms are primary consumers in this ecosystem?",
+                    options: [
+                        "Grass and trees because they are eaten by animals",
+                        "Deer and rabbits because they eat plants directly mainly",
+                        "Wolves because they eat other animals in the forest",
+                        "Soil because it provides nutrients for all the plants"
+                    ],
+                    correct: 1,
+                    explanation: "Primary consumers are herbivores - animals that eat producers (plants) directly. Deer and rabbits eat grass and plants. Wolves are secondary consumers (carnivores), and grass/trees are producers.",
+                    topic: "Consumer Levels"
+                },
+                {
+                    question: "Cellular respiration is the process cells use to release energy from food. Which organelle is responsible for cellular respiration?",
+                    options: [
+                        "The nucleus controls all the respiration processes in cells",
+                        "The cell wall provides the structure for respiration to occur",
+                        "The mitochondria break down glucose to release energy constantly",
+                        "The chloroplast uses light to create energy for the cell"
+                    ],
+                    correct: 2,
+                    explanation: "Mitochondria are the 'powerhouses' of the cell. They break down glucose (from food) and release energy that cells can use. Both plant and animal cells have mitochondria.",
+                    topic: "Cellular Respiration"
+                },
+                {
+                    question: "A population is all the members of one species living in the same area. What factor would most likely cause a rabbit population to increase?",
+                    options: [
+                        "A decrease in the amount of available grass and food",
+                        "An increase in the number of foxes and hawks hunting rabbits",
+                        "A decrease in the number of predators hunting the rabbits",
+                        "An increase in diseases that affect the rabbit population badly"
+                    ],
+                    correct: 2,
+                    explanation: "With fewer predators, more rabbits survive and reproduce, causing the population to increase. Populations are controlled by factors like food availability, predators, disease, and living space.",
+                    topic: "Population Dynamics"
+                },
+                {
+                    question: "Organisms have adaptations that help them survive in their environment. A cactus stores water in its thick stem. In which environment would this adaptation be most beneficial?",
+                    options: [
+                        "A tropical rainforest with daily rainfall and high humidity levels",
+                        "A cold arctic tundra with frozen ground and little vegetation",
+                        "A hot desert with very little rainfall and high temperatures",
+                        "A temperate forest with moderate rainfall throughout the entire year"
+                    ],
+                    correct: 2,
+                    explanation: "Cacti are adapted to desert environments where water is scarce. Their thick stems store water, spines reduce water loss, and deep roots collect water quickly when it rains. These adaptations help them survive in dry conditions.",
+                    topic: "Plant Adaptations"
+                },
+                {
+                    question: "Symbiosis is a close relationship between two different species. In mutualism, both organisms benefit. Which is an example of mutualism?",
+                    options: [
+                        "A tick feeds on a dog's blood, harming the dog",
+                        "A bee collects nectar from flowers and pollinates them in return",
+                        "A lion hunts and eats a zebra for food and energy",
+                        "A bird builds a nest in a tree without affecting it"
+                    ],
+                    correct: 1,
+                    explanation: "Bees and flowers have a mutualistic relationship. Bees get nectar (food) from flowers, and flowers get pollinated (helping them reproduce). Both organisms benefit from this relationship!",
+                    topic: "Symbiotic Relationships"
+                },
+                {
+                    question: "In an aquatic ecosystem, algae are the main producers. What would happen to the fish population if a disease killed most of the algae?",
+                    options: [
+                        "Fish population would increase because they have less competition for food",
+                        "Fish population would likely decrease because the food chain is disrupted",
+                        "Fish population would stay the same because they don't eat algae",
+                        "Fish population would adapt to make their own food like plants"
+                    ],
+                    correct: 1,
+                    explanation: "Even if fish don't eat algae directly, algae are the base of the food chain. Small organisms eat algae, fish eat those organisms. If algae die, the entire food chain collapses, affecting all consumers including fish.",
+                    topic: "Ecosystem Balance"
+                },
+                {
+                    question: "Learned behaviors are actions animals learn through experience, not instinct. Which behavior is a learned behavior?",
+                    options: [
+                        "A spider spinning a web to catch insects for food",
+                        "A dog sitting when its owner says 'sit' after training",
+                        "A baby sea turtle crawling toward the ocean after hatching",
+                        "A bird building a nest for its eggs without being taught"
+                    ],
+                    correct: 1,
+                    explanation: "A dog learning to sit on command is a learned behavior - it was taught through training and repetition. Spiders spinning webs, turtles going to the ocean, and birds building nests are instinctive behaviors (born knowing).",
+                    topic: "Animal Behavior"
+                }
+            ]
+        };
+
+        document.addEventListener('DOMContentLoaded', function() {
+            new TestEngine(testData, 'chapter3_living_systems', 20);
+        });
+    </script>
+</body>
+</html>

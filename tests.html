@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Testing Center - 5th Grade Science</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            text-align: center;
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .header h1 {
+            color: #4a47a3;
+            font-size: 3em;
+            margin-bottom: 10px;
+        }
+
+        .info-box {
+            background: #e3f2fd;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            border-left: 5px solid #2196F3;
+        }
+
+        .test-categories {
+            margin: 30px 0;
+        }
+
+        .category {
+            background: rgba(255,255,255,0.95);
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 30px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+
+        .category h2 {
+            color: #4a47a3;
+            margin-bottom: 20px;
+            font-size: 2em;
+            border-bottom: 3px solid #4a47a3;
+            padding-bottom: 10px;
+        }
+
+        .test-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .test-card {
+            background: white;
+            border: 3px solid #e0e0e0;
+            border-radius: 15px;
+            padding: 25px;
+            text-decoration: none;
+            color: inherit;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .test-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            border-color: #4a47a3;
+        }
+
+        .test-card.easy {
+            border-left: 8px solid #4CAF50;
+        }
+
+        .test-card.medium {
+            border-left: 8px solid #FF9800;
+        }
+
+        .test-card.hard {
+            border-left: 8px solid #f44336;
+        }
+
+        .test-card.exam {
+            border-left: 8px solid #9C27B0;
+            background: linear-gradient(135deg, #f3e5f5 0%, #e1bee7 100%);
+        }
+
+        .test-icon {
+            font-size: 3em;
+            margin-bottom: 15px;
+        }
+
+        .test-title {
+            font-size: 1.4em;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #4a47a3;
+        }
+
+        .test-description {
+            color: #666;
+            margin-bottom: 15px;
+            line-height: 1.5;
+        }
+
+        .test-meta {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 2px solid #e0e0e0;
+        }
+
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 0.9em;
+            color: #666;
+        }
+
+        .difficulty-badge {
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            font-weight: bold;
+            color: white;
+        }
+
+        .difficulty-easy {
+            background: #4CAF50;
+        }
+
+        .difficulty-medium {
+            background: #FF9800;
+        }
+
+        .difficulty-hard {
+            background: #f44336;
+        }
+
+        .back-link {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.9);
+            color: #4a47a3;
+            padding: 12px 25px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: bold;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+            margin-bottom: 20px;
+        }
+
+        .back-link:hover {
+            background: #4a47a3;
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .stats-section {
+            background: linear-gradient(135deg, #ffd89b 0%, #19547b 100%);
+            border-radius: 15px;
+            padding: 25px;
+            margin: 30px 0;
+            color: white;
+            text-align: center;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .stat-box {
+            background: rgba(255,255,255,0.2);
+            padding: 15px;
+            border-radius: 10px;
+        }
+
+        .stat-number {
+            font-size: 2em;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .ribbon {
+            position: absolute;
+            top: 15px;
+            right: -35px;
+            background: #FFD700;
+            color: #333;
+            padding: 5px 40px;
+            transform: rotate(45deg);
+            font-weight: bold;
+            font-size: 0.8em;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.3);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="index.html" class="back-link">← Back to Home</a>
+
+        <div class="header">
+            <h1>🎯 Testing Center</h1>
+            <p style="font-size: 1.3em; color: #666; margin: 15px 0;">
+                Practice Tests • Chapter Reviews • STAAR & MAP Prep
+            </p>
+
+            <div class="info-box">
+                <h3>📋 How to Use the Testing Center</h3>
+                <p><strong>Chapter Tests:</strong> Practice questions for each individual chapter (15-20 questions)</p>
+                <p><strong>Combined Tests:</strong> Review multiple chapters together to strengthen connections</p>
+                <p><strong>Exam Prep:</strong> Full-length practice tests designed like real STAAR and MAP exams</p>
+                <p style="margin-top: 15px;"><em>💡 Tip: Start with chapter tests, then move to combined tests, and finally practice with exam prep tests!</em></p>
+            </div>
+        </div>
+
+        <div class="stats-section">
+            <h2>📊 Your Testing Progress</h2>
+            <div class="stats-grid">
+                <div class="stat-box">
+                    <div class="stat-number" id="tests-taken">0</div>
+                    <div>Tests Taken</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number" id="avg-score">0%</div>
+                    <div>Average Score</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number" id="best-score">0%</div>
+                    <div>Best Score</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number" id="total-questions">0</div>
+                    <div>Questions Answered</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Chapter Tests -->
+        <div class="test-categories">
+            <div class="category">
+                <h2>📚 Chapter Practice Tests</h2>
+                <p style="color: #666; margin-bottom: 20px;">Test your knowledge on individual chapters. Each test has 15-20 challenging questions.</p>
+
+                <div class="test-grid">
+                    <a href="chapter1_practice_test.html" class="test-card easy">
+                        <div class="test-icon">🔬</div>
+                        <div class="test-title">Chapter 1: Scientific Method</div>
+                        <div class="test-description">
+                            Test your understanding of the scientific method, lab tools, and making observations.
+                        </div>
+                        <div class="test-meta">
+                            <div class="meta-item">
+                                <span>📝</span> 15 Questions
+                            </div>
+                            <div class="meta-item">
+                                <span>⏱️</span> 15 minutes
+                            </div>
+                            <div class="meta-item">
+                                <span class="difficulty-badge difficulty-easy">Easy-Medium</span>
+                            </div>
+                        </div>
+                    </a>
+
+                    <a href="chapter2_practice_test.html" class="test-card easy">
+                        <div class="test-icon">🌍</div>
+                        <div class="test-title">Chapter 2: Earth & Space</div>
+                        <div class="test-description">
+                            Challenge yourself on Earth's layers, planets, moon phases, and space science.
+                        </div>
+                        <div class="test-meta">
+                            <div class="meta-item">
+                                <span>📝</span> 18 Questions
+                            </div>
+                            <div class="meta-item">
+                                <span>⏱️</span> 18 minutes
+                            </div>
+                            <div class="meta-item">
+                                <span class="difficulty-badge difficulty-medium">Medium</span>
+                            </div>
+                        </div>
+                    </a>
+
+                    <a href="chapter3_practice_test.html" class="test-card medium">
+                        <div class="test-icon">🌱</div>
+                        <div class="test-title">Chapter 3: Living Systems</div>
+                        <div class="test-description">
+                            Master cells, photosynthesis, food chains, and ecosystems with these questions.
+                        </div>
+                        <div class="test-meta">
+                            <div class="meta-item">
+                                <span>📝</span> 20 Questions
+                            </div>
+                            <div class="meta-item">
+                                <span>⏱️</span> 20 minutes
+                            </div>
+                            <div class="meta-item">
+                                <span class="difficulty-badge difficulty-medium">Medium</span>
+                            </div>
+                        </div>
+                    </a>
+
+                    <a href="chapter4_practice_test.html" class="test-card medium">
+                        <div class="test-icon">⚡</div>
+                        <div class="test-title">Chapter 4: Matter & Energy</div>
+                        <div class="test-description">
+                            Test your knowledge of states of matter, physical and chemical changes, and energy forms.
+                        </div>
+                        <div class="test-meta">
+                            <div class="meta-item">
+                                <span>📝</span> 18 Questions
+                            </div>
+                            <div class="meta-item">
+                                <span>⏱️</span> 18 minutes
+                            </div>
+                            <div class="meta-item">
+                                <span class="difficulty-badge difficulty-medium">Medium</span>
+                            </div>
+                        </div>
+                    </a>
+
+                    <a href="chapter5_practice_test.html" class="test-card medium">
+                        <div class="test-icon">🌊</div>
+                        <div class="test-title">Chapter 5: Water Cycle & Weather</div>
+                        <div class="test-description">
+                            Practice questions on the water cycle, weather patterns, and climate concepts.
+                        </div>
+                        <div class="test-meta">
+                            <div class="meta-item">
+                                <span>📝</span> 17 Questions
+                            </div>
+                            <div class="meta-item">
+                                <span>⏱️</span> 17 minutes
+                            </div>
+                            <div class="meta-item">
+                                <span class="difficulty-badge difficulty-medium">Medium</span>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Combined Tests -->
+            <div class="category">
+                <h2>🔗 Combined Review Tests</h2>
+                <p style="color: #666; margin-bottom: 20px;">Practice with questions from multiple chapters to strengthen your overall understanding.</p>
+
+                <div class="test-grid">
+                    <a href="midterm_test.html" class="test-card hard">
+                        <div class="test-icon">📖</div>
+                        <div class="test-title">Mid-Term Review</div>
+                        <div class="test-description">
+                            Comprehensive test covering Chapters 1-3: Scientific Method, Earth & Space, and Living Systems.
+                        </div>
+                        <div class="test-meta">
+                            <div class="meta-item">
+                                <span>📝</span> 30 Questions
+                            </div>
+                            <div class="meta-item">
+                                <span>⏱️</span> 35 minutes
+                            </div>
+                            <div class="meta-item">
+                                <span class="difficulty-badge difficulty-hard">Challenging</span>
+                            </div>
+                        </div>
+                    </a>
+
+                    <a href="final_exam.html" class="test-card hard">
+                        <div class="test-icon">🏆</div>
+                        <div class="test-title">Final Exam</div>
+                        <div class="test-description">
+                            Complete review of all 5 chapters. Are you ready for the ultimate challenge?
+                        </div>
+                        <div class="test-meta">
+                            <div class="meta-item">
+                                <span>📝</span> 50 Questions
+                            </div>
+                            <div class="meta-item">
+                                <span>⏱️</span> 60 minutes
+                            </div>
+                            <div class="meta-item">
+                                <span class="difficulty-badge difficulty-hard">Very Hard</span>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Exam Prep Tests -->
+            <div class="category">
+                <h2>🎓 STAAR & MAP Exam Preparation</h2>
+                <p style="color: #666; margin-bottom: 20px;">Full-length practice tests designed to match real STAAR and MAP exam formats.</p>
+
+                <div class="test-grid">
+                    <a href="staar_practice_test.html" class="test-card exam">
+                        <div class="ribbon">OFFICIAL</div>
+                        <div class="test-icon">📋</div>
+                        <div class="test-title">STAAR Practice Test</div>
+                        <div class="test-description">
+                            Full-length practice test matching the Texas STAAR format. Includes multiple-choice and constructed-response questions.
+                        </div>
+                        <div class="test-meta">
+                            <div class="meta-item">
+                                <span>📝</span> 32 Questions
+                            </div>
+                            <div class="meta-item">
+                                <span>⏱️</span> 60 minutes
+                            </div>
+                            <div class="meta-item">
+                                <span class="difficulty-badge difficulty-hard">STAAR Format</span>
+                            </div>
+                        </div>
+                    </a>
+
+                    <a href="map_practice_test.html" class="test-card exam">
+                        <div class="ribbon">OFFICIAL</div>
+                        <div class="test-icon">📈</div>
+                        <div class="test-title">MAP Growth Practice Test</div>
+                        <div class="test-description">
+                            Comprehensive practice test following MAP Growth format. Multiple question types and adaptive difficulty.
+                        </div>
+                        <div class="test-meta">
+                            <div class="meta-item">
+                                <span>📝</span> 45 Questions
+                            </div>
+                            <div class="meta-item">
+                                <span>⏱️</span> 50 minutes
+                            </div>
+                            <div class="meta-item">
+                                <span class="difficulty-badge difficulty-hard">MAP Format</span>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div style="background: rgba(255,255,255,0.9); border-radius: 15px; padding: 25px; margin: 30px 0; text-align: center;">
+            <h3 style="color: #4a47a3; margin-bottom: 15px;">💡 Test-Taking Tips</h3>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; text-align: left;">
+                <div>
+                    <strong>📖 Read Carefully:</strong>
+                    <p style="color: #666; margin-top: 5px;">Read each question twice before selecting your answer.</p>
+                </div>
+                <div>
+                    <strong>❌ Eliminate Wrong Answers:</strong>
+                    <p style="color: #666; margin-top: 5px;">Cross out answers you know are incorrect first.</p>
+                </div>
+                <div>
+                    <strong>⏱️ Manage Your Time:</strong>
+                    <p style="color: #666; margin-top: 5px;">Don't spend too long on one question. You can always come back.</p>
+                </div>
+                <div>
+                    <strong>✅ Review Your Answers:</strong>
+                    <p style="color: #666; margin-top: 5px;">Use any extra time to check your work before submitting.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Calculate and display test statistics
+        function updateTestStats() {
+            const testScores = JSON.parse(localStorage.getItem('testScores') || '{}');
+            const scores = Object.values(testScores);
+
+            const testsTaken = scores.length;
+            const avgScore = testsTaken > 0
+                ? Math.round(scores.reduce((a, b) => a + b, 0) / testsTaken)
+                : 0;
+            const bestScore = testsTaken > 0
+                ? Math.max(...scores)
+                : 0;
+            const totalQuestions = JSON.parse(localStorage.getItem('totalQuestionsAnswered') || '0');
+
+            document.getElementById('tests-taken').textContent = testsTaken;
+            document.getElementById('avg-score').textContent = avgScore + '%';
+            document.getElementById('best-score').textContent = bestScore + '%';
+            document.getElementById('total-questions').textContent = totalQuestions;
+        }
+
+        // Initialize stats on page load
+        document.addEventListener('DOMContentLoaded', updateTestStats);
+    </script>
+</body>
+</html>

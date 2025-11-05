@@ -175,6 +175,117 @@
             font-size: 3em;
             margin-bottom: 15px;
         }
+
+        .food-web-diagram {
+            background: linear-gradient(135deg, #dfe6e9, #b2bec3);
+            border-radius: 15px;
+            padding: 30px;
+            margin: 30px 0;
+            position: relative;
+            min-height: 400px;
+        }
+
+        .web-organism {
+            position: absolute;
+            background: white;
+            border-radius: 50%;
+            padding: 15px;
+            text-align: center;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+            min-width: 100px;
+            font-size: 0.9em;
+            border: 3px solid;
+        }
+
+        .producer-web { border-color: #27ae60; }
+        .herbivore-web { border-color: #f39c12; }
+        .carnivore-web { border-color: #e74c3c; }
+        .omnivore-web { border-color: #9b59b6; }
+
+        .energy-pyramid {
+            background: linear-gradient(135deg, #74b9ff, #0984e3);
+            border-radius: 15px;
+            padding: 30px;
+            margin: 30px 0;
+            color: white;
+        }
+
+        .pyramid-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            margin: 30px auto;
+        }
+
+        .pyramid-level {
+            position: relative;
+            margin: 0 auto 5px;
+            padding: 20px;
+            text-align: center;
+            background: rgba(255,255,255,0.9);
+            color: #333;
+            border-radius: 5px;
+            font-weight: bold;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+        }
+
+        .pyramid-level-1 { width: 100%; background: linear-gradient(135deg, #27ae60, #229954); color: white; }
+        .pyramid-level-2 { width: 75%; background: linear-gradient(135deg, #f39c12, #e67e22); color: white; }
+        .pyramid-level-3 { width: 50%; background: linear-gradient(135deg, #3498db, #2980b9); color: white; }
+        .pyramid-level-4 { width: 25%; background: linear-gradient(135deg, #e74c3c, #c0392b); color: white; }
+
+        .callout-box {
+            background: linear-gradient(135deg, #ffd89b, #19547b);
+            color: white;
+            border-radius: 12px;
+            padding: 20px;
+            margin: 20px 0;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .tip-box {
+            background: linear-gradient(135deg, #84fab0, #8fd3f4);
+            color: #333;
+            border-radius: 12px;
+            padding: 20px;
+            margin: 20px 0;
+            border-left: 5px solid #00b894;
+        }
+
+        .try-this-home {
+            background: linear-gradient(135deg, #a8edea, #fed6e3);
+            border-radius: 15px;
+            padding: 25px;
+            margin: 30px 0;
+            border: 3px dashed #ff6b9d;
+        }
+
+        .comparison-table {
+            width: 100%;
+            margin: 30px 0;
+            border-collapse: collapse;
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .comparison-table th {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 15px;
+            text-align: left;
+            font-weight: bold;
+        }
+
+        .comparison-table td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .comparison-table tr:hover {
+            background: #f5f5f5;
+        }
     </style>
 </head>
 <body>
@@ -351,6 +462,192 @@
                         <strong>🔄 Remember:</strong> Energy comes from the SUN → Plants capture it → Animals get it by eating!<br>
                         <strong>🕸️ Food Webs:</strong> Real ecosystems have many connected food chains forming complex webs!
                     </div>
+                </div>
+
+                <h4 style="margin-top: 40px;">🕸️ Food Webs - The REAL Picture!</h4>
+                <p>In nature, food chains connect together to form complex food webs! Animals eat many different things, creating an interconnected web of energy flow.</p>
+
+                <div class="food-web-diagram" style="height: 500px;">
+                    <div style="text-align: center; padding: 20px; background: rgba(255,255,255,0.8); border-radius: 10px; margin-bottom: 20px;">
+                        <h4>🌳 Forest Food Web Example</h4>
+                        <p>Follow the arrows to see who eats who!</p>
+                    </div>
+
+                    <svg width="100%" height="400" style="position: absolute; top: 100px; left: 0;">
+                        <!-- Arrows showing connections -->
+                        <line x1="50%" y1="350" x2="30%" y2="250" stroke="#27ae60" stroke-width="3" marker-end="url(#arrowgreen)"/>
+                        <line x1="50%" y1="350" x2="50%" y2="250" stroke="#27ae60" stroke-width="3" marker-end="url(#arrowgreen)"/>
+                        <line x1="50%" y1="350" x2="70%" y2="250" stroke="#27ae60" stroke-width="3" marker-end="url(#arrowgreen)"/>
+
+                        <line x1="30%" y1="230" x2="25%" y2="130" stroke="#f39c12" stroke-width="3" marker-end="url(#arroworange)"/>
+                        <line x1="30%" y1="230" x2="40%" y2="130" stroke="#f39c12" stroke-width="3" marker-end="url(#arroworange)"/>
+                        <line x1="50%" y1="230" x2="40%" y2="130" stroke="#f39c12" stroke-width="3" marker-end="url(#arroworange)"/>
+                        <line x1="50%" y1="230" x2="60%" y2="130" stroke="#f39c12" stroke-width="3" marker-end="url(#arroworange)"/>
+                        <line x1="70%" y1="230" x2="60%" y2="130" stroke="#f39c12" stroke-width="3" marker-end="url(#arroworange)"/>
+                        <line x1="70%" y1="230" x2="75%" y2="130" stroke="#f39c12" stroke-width="3" marker-end="url(#arroworange)"/>
+
+                        <line x1="40%" y1="110" x2="50%" y2="30" stroke="#e74c3c" stroke-width="3" marker-end="url(#arrowred)"/>
+                        <line x1="60%" y1="110" x2="50%" y2="30" stroke="#e74c3c" stroke-width="3" marker-end="url(#arrowred)"/>
+
+                        <defs>
+                            <marker id="arrowgreen" markerWidth="10" markerHeight="10" refX="5" refY="3" orient="auto" markerUnits="strokeWidth">
+                                <path d="M0,0 L0,6 L9,3 z" fill="#27ae60"/>
+                            </marker>
+                            <marker id="arroworange" markerWidth="10" markerHeight="10" refX="5" refY="3" orient="auto" markerUnits="strokeWidth">
+                                <path d="M0,0 L0,6 L9,3 z" fill="#f39c12"/>
+                            </marker>
+                            <marker id="arrowred" markerWidth="10" markerHeight="10" refX="5" refY="3" orient="auto" markerUnits="strokeWidth">
+                                <path d="M0,0 L0,6 L9,3 z" fill="#e74c3c"/>
+                            </marker>
+                        </defs>
+                    </svg>
+
+                    <div class="web-organism producer-web" style="bottom: 20px; left: 50%; transform: translateX(-50%);">
+                        <div style="font-size: 2em;">🌳</div>
+                        <strong>PLANTS</strong><br>
+                        <small>(Producers)</small>
+                    </div>
+
+                    <div class="web-organism herbivore-web" style="bottom: 150px; left: 20%;">
+                        <div style="font-size: 2em;">🐰</div>
+                        <strong>Rabbit</strong><br>
+                        <small>(Herbivore)</small>
+                    </div>
+
+                    <div class="web-organism herbivore-web" style="bottom: 150px; left: 45%;">
+                        <div style="font-size: 2em;">🦌</div>
+                        <strong>Deer</strong><br>
+                        <small>(Herbivore)</small>
+                    </div>
+
+                    <div class="web-organism herbivore-web" style="bottom: 150px; right: 15%;">
+                        <div style="font-size: 2em;">🐛</div>
+                        <strong>Caterpillar</strong><br>
+                        <small>(Herbivore)</small>
+                    </div>
+
+                    <div class="web-organism carnivore-web" style="bottom: 280px; left: 30%;">
+                        <div style="font-size: 2em;">🦊</div>
+                        <strong>Fox</strong><br>
+                        <small>(Carnivore)</small>
+                    </div>
+
+                    <div class="web-organism carnivore-web" style="bottom: 280px; right: 25%;">
+                        <div style="font-size: 2em;">🐦</div>
+                        <strong>Bird</strong><br>
+                        <small>(Carnivore)</small>
+                    </div>
+
+                    <div class="web-organism carnivore-web" style="bottom: 380px; left: 45%;">
+                        <div style="font-size: 2em;">🦅</div>
+                        <strong>Hawk</strong><br>
+                        <small>(Top Predator)</small>
+                    </div>
+                </div>
+
+                <div class="tip-box">
+                    <h4>💡 Remember This!</h4>
+                    <p><strong>What's the difference between a food CHAIN and a food WEB?</strong></p>
+                    <ul>
+                        <li><strong>🔗 Food Chain:</strong> Shows ONE simple path (Grass → Rabbit → Fox)</li>
+                        <li><strong>🕸️ Food Web:</strong> Shows MANY connected paths (more realistic!)</li>
+                        <li>🌍 Real ecosystems are food webs, not chains!</li>
+                        <li>🔄 If one organism disappears, others can find different food sources</li>
+                    </ul>
+                </div>
+
+                <div class="callout-box">
+                    <h4>💡 Did You Know?</h4>
+                    <p>If one animal in a food web disappears, it affects ALL the other organisms! This is called <strong>biodiversity</strong> - having many different species keeps the ecosystem healthy and balanced!</p>
+                    <p style="margin-top: 10px;">🐺 Example: When wolves were removed from Yellowstone Park, deer populations exploded, they ate too many plants, and the whole ecosystem changed. When wolves were brought back, balance was restored!</p>
+                </div>
+            </div>
+
+            <div class="energy-pyramid-section">
+                <div class="energy-pyramid">
+                    <h3>📊 Energy Pyramid - Where Does All the Energy Go?</h3>
+                    <p>As energy flows through a food chain, most of it is LOST at each level! Let's see how much energy actually makes it to the top.</p>
+
+                    <div class="pyramid-container">
+                        <div class="pyramid-level pyramid-level-4">
+                            <div style="font-size: 1.5em;">🦅</div>
+                            <strong>TOP PREDATORS</strong><br>
+                            <small>(Hawks, eagles, lions)</small><br>
+                            <strong style="font-size: 1.2em;">10 units of energy</strong>
+                        </div>
+
+                        <div class="pyramid-level pyramid-level-3">
+                            <div style="font-size: 1.5em;">🦊 🐍</div>
+                            <strong>SECONDARY CONSUMERS</strong><br>
+                            <small>(Foxes, snakes, small carnivores)</small><br>
+                            <strong style="font-size: 1.2em;">100 units of energy</strong>
+                        </div>
+
+                        <div class="pyramid-level pyramid-level-2">
+                            <div style="font-size: 1.5em;">🐰 🦌 🐛</div>
+                            <strong>PRIMARY CONSUMERS</strong><br>
+                            <small>(Rabbits, deer, insects - herbivores)</small><br>
+                            <strong style="font-size: 1.2em;">1,000 units of energy</strong>
+                        </div>
+
+                        <div class="pyramid-level pyramid-level-1">
+                            <div style="font-size: 1.5em;">🌳 🌱 🌾</div>
+                            <strong>PRODUCERS</strong><br>
+                            <small>(Plants - make their own food)</small><br>
+                            <strong style="font-size: 1.2em;">10,000 units of energy</strong>
+                        </div>
+                    </div>
+
+                    <div style="background: rgba(255,255,255,0.9); color: #333; padding: 20px; border-radius: 10px; margin-top: 30px;">
+                        <h4>🤔 Why Does Energy Decrease?</h4>
+                        <p><strong>Only about 10% of energy passes to the next level!</strong> Here's where the rest goes:</p>
+                        <ul>
+                            <li>🔥 <strong>Heat Energy:</strong> Used for movement, staying warm, breathing</li>
+                            <li>💪 <strong>Life Processes:</strong> Growing, repairing cells, hunting for food</li>
+                            <li>🚫 <strong>Not All Eaten:</strong> Bones, shells, roots aren't always consumed</li>
+                            <li>💩 <strong>Waste:</strong> Energy lost through waste products</li>
+                        </ul>
+
+                        <div style="background: #fff3cd; padding: 15px; border-radius: 8px; margin-top: 15px; border-left: 5px solid #f39c12;">
+                            <strong>📏 The 10% Rule:</strong> Only about 10% of energy transfers from one level to the next!<br>
+                            Plants: 10,000 units → Herbivores: 1,000 units → Carnivores: 100 units → Top Predators: 10 units
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tip-box">
+                    <h4>💡 Remember This!</h4>
+                    <p><strong>Why are there more plants than animals in an ecosystem?</strong></p>
+                    <p style="font-size: 1.1em; margin: 15px 0;">Because energy decreases at each level! You need LOTS of plants to support a few herbivores, and lots of herbivores to support even fewer carnivores!</p>
+                    <ul>
+                        <li>🌱 <strong>Most organisms:</strong> Producers (plants)</li>
+                        <li>🐰 <strong>Medium amount:</strong> Herbivores (plant-eaters)</li>
+                        <li>🦊 <strong>Fewer:</strong> Carnivores (meat-eaters)</li>
+                        <li>🦅 <strong>Fewest:</strong> Top predators</li>
+                    </ul>
+                </div>
+
+                <div class="try-this-home">
+                    <h4>🏠 Try This at Home: Build Your Own Energy Pyramid!</h4>
+                    <p><strong>Materials:</strong> Building blocks, LEGO bricks, or even books</p>
+                    <ol>
+                        <li>🌿 <strong>Bottom layer:</strong> Use 10 blocks (producers/plants)</li>
+                        <li>🐰 <strong>Next layer:</strong> Stack 7-8 blocks (herbivores)</li>
+                        <li>🦊 <strong>Third layer:</strong> Stack 4-5 blocks (carnivores)</li>
+                        <li>🦅 <strong>Top layer:</strong> Stack 1-2 blocks (top predators)</li>
+                    </ol>
+                    <p>💡 <strong>Notice:</strong> The pyramid gets smaller as you go up, just like energy in nature!</p>
+                    <p><strong>Challenge:</strong> Try to build it upside down (biggest on top). What happens? This shows why food pyramids must be this shape!</p>
+                </div>
+
+                <div class="callout-box">
+                    <h4>💡 Did You Know?</h4>
+                    <ul style="margin: 10px 0;">
+                        <li>🐘 It takes about 1,000 pounds of plants to support 100 pounds of herbivores!</li>
+                        <li>🌍 There are more insects on Earth than all other animals combined!</li>
+                        <li>🐜 All the ants in the world weigh about the same as all the humans!</li>
+                        <li>🌳 A single oak tree can support over 2,000 different species!</li>
+                    </ul>
                 </div>
             </div>
 

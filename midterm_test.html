@@ -1,0 +1,786 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mid-Term Review Test - 5th Grade Science</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .test-header {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 30px;
+            border-radius: 20px;
+            text-align: center;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .test-header h1 {
+            font-size: 2.5em;
+            color: #4a90e2;
+            margin-bottom: 10px;
+        }
+
+        .test-header h2 {
+            font-size: 1.5em;
+            color: #666;
+            margin-bottom: 20px;
+        }
+
+        .test-info {
+            background: #e3f2fd;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            border-left: 5px solid #2196F3;
+        }
+
+        .timer-container {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 15px 25px;
+            border-radius: 25px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            font-weight: bold;
+            font-size: 1.2em;
+            color: #4a90e2;
+            z-index: 1000;
+        }
+
+        .timer-running {
+            color: #4CAF50;
+        }
+
+        .timer-warning {
+            color: #ff9800;
+            animation: pulse 1s infinite;
+        }
+
+        .timer-danger {
+            color: #f44336;
+            animation: pulse 0.5s infinite;
+        }
+
+        @keyframes pulse {
+            0% { opacity: 1; }
+            50% { opacity: 0.5; }
+            100% { opacity: 1; }
+        }
+
+        .question-container {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 25px;
+            border-radius: 15px;
+            margin-bottom: 25px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .question-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #e0e0e0;
+        }
+
+        .question-number {
+            background: #4a90e2;
+            color: white;
+            padding: 8px 20px;
+            border-radius: 25px;
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+
+        .question-type {
+            background: #f5f5f5;
+            padding: 5px 15px;
+            border-radius: 15px;
+            font-size: 0.9em;
+            color: #666;
+        }
+
+        .question-text {
+            font-size: 1.1em;
+            margin-bottom: 20px;
+            line-height: 1.7;
+        }
+
+        .answer-options {
+            margin: 20px 0;
+        }
+
+        .answer-option {
+            display: block;
+            padding: 15px 20px;
+            margin: 10px 0;
+            background: #f8f9fa;
+            border: 2px solid #e9ecef;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .answer-option:hover {
+            background: #e3f2fd;
+            border-color: #2196F3;
+        }
+
+        .answer-option.selected {
+            background: #e3f2fd;
+            border-color: #2196F3;
+            box-shadow: 0 3px 10px rgba(33, 150, 243, 0.3);
+        }
+
+        .answer-option input[type="radio"] {
+            margin-right: 15px;
+            transform: scale(1.2);
+        }
+
+        .option-label {
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+        .data-container {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 15px 0;
+            border: 2px solid #dee2e6;
+        }
+
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+            background: white;
+        }
+
+        .data-table th,
+        .data-table td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: center;
+        }
+
+        .data-table th {
+            background: #4a90e2;
+            color: white;
+            font-weight: bold;
+        }
+
+        .data-table tr:nth-child(even) {
+            background: #f8f9fa;
+        }
+
+        .visual-question {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 15px 0;
+            text-align: center;
+            border: 2px dashed #dee2e6;
+        }
+
+        .controls {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+            margin: 30px 0;
+            text-align: center;
+        }
+
+        .btn {
+            padding: 12px 30px;
+            margin: 10px;
+            border: none;
+            border-radius: 25px;
+            font-size: 1.1em;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: #4a90e2;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #357abd;
+            transform: translateY(-2px);
+        }
+
+        .btn-success {
+            background: #4CAF50;
+            color: white;
+        }
+
+        .btn-success:hover {
+            background: #45a049;
+            transform: translateY(-2px);
+        }
+
+        .btn-warning {
+            background: #ff9800;
+            color: white;
+        }
+
+        .btn-warning:hover {
+            background: #f57c00;
+            transform: translateY(-2px);
+        }
+
+        .results-container {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+            margin: 30px 0;
+            display: none;
+        }
+
+        .score-display {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .score-circle {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            display: inline-flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-size: 2em;
+            font-weight: bold;
+            color: white;
+            margin: 20px;
+        }
+
+        .score-excellent {
+            background: linear-gradient(45deg, #4CAF50, #45a049);
+        }
+
+        .score-good {
+            background: linear-gradient(45deg, #2196F3, #1976D2);
+        }
+
+        .score-needs-work {
+            background: linear-gradient(45deg, #ff9800, #f57c00);
+        }
+
+        .score-poor {
+            background: linear-gradient(45deg, #f44336, #d32f2f);
+        }
+
+        .back-link {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background: rgba(255, 255, 255, 0.9);
+            color: #4a90e2;
+            padding: 10px 20px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: bold;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+
+        .back-link:hover {
+            background: #4a90e2;
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 20px;
+            background: #e0e0e0;
+            border-radius: 10px;
+            margin: 20px 0;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(45deg, #4CAF50, #45a049);
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+
+        .progress-text {
+            text-align: center;
+            margin-top: 10px;
+            font-weight: bold;
+            color: #666;
+        }
+
+        @media (max-width: 768px) {
+            .timer-container {
+                position: static;
+                margin-bottom: 20px;
+                text-align: center;
+            }
+
+            .back-link {
+                position: static;
+                display: block;
+                text-align: center;
+                margin-bottom: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <a href="tests.html" class="back-link">← Back to Tests</a>
+
+    <div class="timer-container" id="timer">
+        <div>⏱️ Time: <span id="time-display">35:00</span></div>
+    </div>
+
+    <div class="container">
+        <div class="test-header">
+            <h1>Mid-Term Review Test</h1>
+            <h2>Chapters 1-3: Scientific Method, Earth & Space, and Living Systems</h2>
+
+            <div class="test-info">
+                <p><strong>Instructions:</strong> This comprehensive review test contains 30 challenging questions covering the first three chapters. You have 35 minutes to complete the test. These questions require deeper thinking and connections across chapters.</p>
+                <p><strong>Scoring:</strong> Aim for 24+ correct answers (80%) to demonstrate mastery!</p>
+            </div>
+
+            <div class="progress-bar">
+                <div class="progress-fill" id="progress"></div>
+            </div>
+            <div class="progress-text" id="progress-text">0 / 30 answered</div>
+        </div>
+
+        <div id="test-questions"></div>
+
+        <div class="controls" id="test-controls">
+            <button type="button" class="btn btn-warning" id="review-answers">Review My Answers</button>
+            <button type="button" class="btn btn-success" id="submit-test">Submit Test</button>
+            <button type="button" class="btn btn-primary" id="restart-test">Restart Test</button>
+        </div>
+
+        <div class="results-container" id="results">
+            <h2>Test Results</h2>
+            <div class="score-display">
+                <div class="score-circle" id="score-circle">
+                    <span id="score-text">0/30</span>
+                </div>
+                <div id="score-message"></div>
+            </div>
+            <div id="answers-review"></div>
+        </div>
+    </div>
+
+    <script src="test-engine.js"></script>
+    <script>
+        const testData = {
+            questions: [
+                // Chapter 1: Scientific Method - 10 questions
+                {
+                    question: "A scientist conducts an experiment to test if different types of soil affect plant growth. She uses three identical pots with the same amount of water, sunlight, and plant type, but uses sandy soil, clay soil, and loam soil. Which variable is being tested in this experiment?",
+                    options: [
+                        "The variable being tested is the amount of water given to each plant",
+                        "The variable being tested is the type of soil used in each pot",
+                        "The variable being tested is the amount of sunlight each plant receives",
+                        "The variable being tested is the type of plant used in the experiment"
+                    ],
+                    correct: 1,
+                    explanation: "The variable being tested (independent variable) is the type of soil. All other factors (water, sunlight, plant type) are kept constant so the scientist can isolate and test how soil type alone affects plant growth.",
+                    topic: "Scientific Method - Variables"
+                },
+                {
+                    question: "Students measure the temperature of water samples from different locations. Their data shows: Lake A = 18°C, Lake B = 22°C, Lake C = 20°C. A student concludes that 'Lake B feels warmer because it has more sunshine.' Which part of this statement is an observation and which is an inference?",
+                    options: [
+                        "Both 'Lake B is 22°C' and 'has more sunshine' are observations only",
+                        "'Lake B is 22°C' is an observation; 'has more sunshine' is an inference",
+                        "Both 'Lake B is 22°C' and 'has more sunshine' are inferences only",
+                        "'Lake B is 22°C' is an inference; 'has more sunshine' is an observation"
+                    ],
+                    correct: 1,
+                    explanation: "An observation is something you measure or detect with your senses (the 22°C temperature). An inference is a conclusion based on observations (assuming sunshine is the cause, which wasn't directly measured).",
+                    topic: "Scientific Method - Observations vs Inferences"
+                },
+                {
+                    question: "A researcher tests whether music affects concentration by having one group study with music and another group study in silence. Both groups take the same test afterward. What is the purpose of the group that studies in silence?",
+                    options: [
+                        "The silent group serves as the experimental group to test the hypothesis",
+                        "The silent group serves as the control group to compare results against",
+                        "The silent group serves as the variable group to change conditions constantly",
+                        "The silent group serves as the random group to eliminate bias from testing"
+                    ],
+                    correct: 1,
+                    explanation: "The silent group is the control group - it provides a baseline to compare against. By keeping everything the same except music, researchers can determine if music truly affects concentration by comparing both groups' test scores.",
+                    topic: "Scientific Method - Control Groups"
+                },
+                {
+                    question: "Three students measure the length of the same pencil. Student A records 18.5 cm, Student B records 18.4 cm, and Student C records 18.5 cm. What should the students do to get the most accurate measurement?",
+                    options: [
+                        "They should use Student A's measurement because it was recorded first during testing",
+                        "They should calculate the average of all three measurements for better accuracy",
+                        "They should only use Student C's measurement because it matches Student A exactly",
+                        "They should discard all measurements and use estimation instead of tools completely"
+                    ],
+                    correct: 1,
+                    explanation: "Taking the average of multiple measurements (18.5 + 18.4 + 18.5 = 55.4 ÷ 3 = 18.47 cm) reduces measurement errors and gives a more accurate result. This is why scientists conduct multiple trials in experiments.",
+                    topic: "Scientific Method - Measurement Accuracy"
+                },
+                {
+                    question: "A student designs an experiment with this hypothesis: 'If I increase the amount of fertilizer, then plants will grow taller because fertilizer provides nutrients.' After the experiment, the plants that received the most fertilizer died. What should the student conclude?",
+                    options: [
+                        "The hypothesis was supported because fertilizer does affect plant growth significantly",
+                        "The hypothesis was not supported; too much fertilizer can harm plants instead",
+                        "The experiment was invalid and should not be counted as real data",
+                        "The student should change the data to match the original hypothesis prediction"
+                    ],
+                    correct: 1,
+                    explanation: "A hypothesis doesn't have to be correct to be valuable! The data showed that excessive fertilizer harms plants, which doesn't support the hypothesis but provides important scientific information. This is why testing and analyzing real data is crucial.",
+                    topic: "Scientific Method - Hypothesis Testing"
+                },
+                {
+                    question: "Look at this experimental data table showing the effect of exercise on heart rate:<br><br><div class='data-container'><table class='data-table'><tr><th>Activity</th><th>Trial 1 (bpm)</th><th>Trial 2 (bpm)</th><th>Trial 3 (bpm)</th></tr><tr><td>Resting</td><td>72</td><td>70</td><td>71</td></tr><tr><td>Walking</td><td>95</td><td>98</td><td>96</td></tr><tr><td>Running</td><td>145</td><td>148</td><td>146</td></tr></table></div><br>What conclusion is best supported by this data?",
+                    options: [
+                        "Heart rate decreases as physical activity level increases during exercise sessions",
+                        "Heart rate increases as physical activity level increases during exercise sessions",
+                        "Heart rate stays constant regardless of the type of physical activity performed",
+                        "Heart rate is random and cannot be predicted by physical activity levels"
+                    ],
+                    correct: 1,
+                    explanation: "The data clearly shows a pattern: resting (~71 bpm average), walking (~96 bpm average), and running (~146 bpm average). As activity intensity increases, heart rate increases consistently across all three trials.",
+                    topic: "Scientific Method - Data Analysis"
+                },
+                {
+                    question: "A student wants to test if the color of light affects how fast plants grow. She uses four identical plants and shines red light on one, blue light on another, green light on a third, and white light on the fourth. All other conditions are kept the same. What type of graph would BEST display the final height of each plant?",
+                    options: [
+                        "A line graph showing change over time with connected data points clearly",
+                        "A bar graph comparing the heights of the four different plants easily",
+                        "A circle graph showing percentages of total plant growth across groups",
+                        "A scatter plot showing random distribution of plant heights over time"
+                    ],
+                    correct: 1,
+                    explanation: "A bar graph is best for comparing different categories (different light colors) at one point in time (final height). Line graphs are better for showing changes over time, while circle graphs show parts of a whole.",
+                    topic: "Scientific Method - Data Representation"
+                },
+                {
+                    question: "In a science lab, students must wear safety goggles when mixing liquids, even if the liquids seem harmless like water and food coloring. Why is this safety rule important?",
+                    options: [
+                        "Safety goggles are only required to make the experiment look more professional and official",
+                        "Safety goggles prevent unexpected splashes or reactions from harming your eyes critically",
+                        "Safety goggles are required because all liquids are extremely dangerous to touch or see",
+                        "Safety goggles help students see the liquids more clearly during the mixing process"
+                    ],
+                    correct: 1,
+                    explanation: "Even seemingly safe substances can splash or react unexpectedly. Eyes are extremely sensitive and can be permanently damaged. Wearing safety goggles every time builds good habits and protects against unexpected accidents.",
+                    topic: "Scientific Method - Lab Safety"
+                },
+                {
+                    question: "Two students measure the mass of a rock. Student A uses a triple-beam balance and records 47.3 grams. Student B uses a spring scale and records 0.5 newtons. Why are their measurements different?",
+                    options: [
+                        "They are measuring different properties: mass in grams and weight in newtons correctly",
+                        "One student made an error because the rock should have identical measurements always",
+                        "The rock changed its mass between the two measurements during the experiment",
+                        "The measurements are the same because grams and newtons are identical units"
+                    ],
+                    correct: 0,
+                    explanation: "Mass (measured in grams) and weight (measured in newtons) are different properties. Mass is the amount of matter in an object, while weight is the force of gravity on that mass. The same object has different numerical values for mass and weight.",
+                    topic: "Scientific Method - Measurement Units"
+                },
+                {
+                    question: "A student forms this hypothesis: 'If I add salt to water, then the water will freeze at a lower temperature because salt lowers the freezing point.' What would be the BEST way to test this hypothesis?",
+                    options: [
+                        "Put salt water in the freezer and check if it eventually freezes solid",
+                        "Freeze pure water and salt water separately and compare freezing temperatures precisely",
+                        "Read about salt and freezing points in a textbook without conducting experiments",
+                        "Ask other students if they think salt water freezes at different temperatures"
+                    ],
+                    correct: 1,
+                    explanation: "To test this hypothesis properly, you need to compare pure water (control) with salt water (experimental) under the same freezing conditions, measuring and comparing the exact temperatures at which each freezes. This tests the specific claim about freezing temperature.",
+                    topic: "Scientific Method - Experimental Design"
+                },
+
+                // Chapter 2: Earth & Space - 10 questions
+                {
+                    question: "Scientists use seismic waves from earthquakes to study Earth's interior layers. They discovered that S-waves (shear waves) cannot travel through the outer core, but P-waves (pressure waves) can. What does this evidence suggest about the outer core?",
+                    options: [
+                        "The outer core must be solid because only solids block all waves completely",
+                        "The outer core must be liquid because S-waves cannot travel through liquids",
+                        "The outer core must be gas because gases allow all wave types through easily",
+                        "The outer core must be plasma because plasma reflects seismic waves backward"
+                    ],
+                    correct: 1,
+                    explanation: "S-waves can only travel through solids, not liquids or gases. Since S-waves stop at the outer core but P-waves continue through it, this is strong evidence that the outer core is liquid (molten iron and nickel). This is how scientists determined Earth's interior structure!",
+                    topic: "Earth's Layers - Evidence"
+                },
+                {
+                    question: "The Moon completes one orbit around Earth in about 27.3 days (one lunar month). If you observe a full moon on January 1st, approximately when would you see the NEXT full moon?",
+                    options: [
+                        "You would see the next full moon on approximately January 8th only",
+                        "You would see the next full moon on approximately January 15th only",
+                        "You would see the next full moon on approximately January 22nd only",
+                        "You would see the next full moon on approximately January 29th only"
+                    ],
+                    correct: 3,
+                    explanation: "The lunar cycle (new moon to new moon, or full moon to full moon) takes about 29.5 days. Starting from January 1st, adding approximately 29 days brings us to January 29th or 30th for the next full moon. This cycle repeats throughout the year.",
+                    topic: "Moon Phases - Cycles"
+                },
+                {
+                    question: "Earth is tilted on its axis at 23.5 degrees. During summer in the Northern Hemisphere, which statement correctly describes Earth's position and the Sun's apparent path?",
+                    options: [
+                        "The Northern Hemisphere tilts away from the Sun and the Sun appears lower in sky",
+                        "The Northern Hemisphere tilts toward the Sun and the Sun appears higher in sky",
+                        "The Northern Hemisphere is perpendicular to the Sun and day equals night length",
+                        "The Northern Hemisphere rotates faster in summer causing longer daylight hours daily"
+                    ],
+                    correct: 1,
+                    explanation: "During Northern Hemisphere summer, that half of Earth tilts toward the Sun. This causes the Sun to appear higher in the sky, take a longer path across the sky, and create longer days with more direct sunlight - all reasons why summer is warmer.",
+                    topic: "Earth-Sun System - Seasons"
+                },
+                {
+                    question: "Jupiter has a mass about 318 times greater than Earth's mass, but it is made mostly of hydrogen and helium gases rather than rock. How does Jupiter's composition affect its density compared to Earth?",
+                    options: [
+                        "Jupiter's density is much higher than Earth's because it has more mass overall",
+                        "Jupiter's density is much lower than Earth's because gases are less dense than rock",
+                        "Jupiter's density is the same as Earth's because mass and volume balance out",
+                        "Jupiter's density cannot be calculated because it is made entirely of gases"
+                    ],
+                    correct: 1,
+                    explanation: "Even though Jupiter has much more mass, it also has a much larger volume because it's made of gas. Density = mass ÷ volume. Earth's average density is about 5.5 g/cm³ while Jupiter's is only about 1.3 g/cm³ - less dense than Earth because gases are less dense than rock.",
+                    topic: "Planets - Physical Properties"
+                },
+                {
+                    question: "Astronomers observe that some planets in our solar system have many moons while others have few or none. What property of a planet most affects its ability to capture and hold moons in orbit?",
+                    options: [
+                        "The planet's distance from the Sun determines how many moons it can capture",
+                        "The planet's mass and gravitational force determine how many moons it can hold",
+                        "The planet's rotation speed determines how many moons can orbit around it",
+                        "The planet's color and composition determine how many moons are attracted to it"
+                    ],
+                    correct: 1,
+                    explanation: "A planet's mass creates its gravitational pull. Larger planets like Jupiter (95+ moons) and Saturn (80+ moons) have much more mass and stronger gravity than small planets like Mars (2 moons) or Mercury (0 moons), allowing them to capture and hold more moons.",
+                    topic: "Solar System - Gravity Effects"
+                },
+                {
+                    question: "Ancient sailors used the North Star (Polaris) for navigation because it appears to stay in the same position in the night sky while other stars appear to move. Why does Polaris appear stationary?",
+                    options: [
+                        "Polaris is the closest star to Earth so it doesn't appear to move at all",
+                        "Polaris is directly above Earth's North Pole along the axis of rotation precisely",
+                        "Polaris is the brightest star so it seems not to move across the sky",
+                        "Polaris orbits Earth in the opposite direction of Earth's rotation exactly"
+                    ],
+                    correct: 1,
+                    explanation: "Polaris is located almost directly above Earth's North Pole, aligned with Earth's rotational axis. As Earth spins, Polaris appears to stay in nearly the same spot while all other stars appear to circle around it. This makes it perfect for navigation!",
+                    topic: "Earth's Motion - Stars"
+                },
+                {
+                    question: "The asteroid belt between Mars and Jupiter contains millions of rocky objects. Scientists hypothesize that these asteroids are left over from the solar system's formation and never formed into a planet. What prevented these rocks from forming a planet?",
+                    options: [
+                        "The asteroids are too far from the Sun to receive enough heat for fusion",
+                        "Jupiter's strong gravitational pull disrupted the formation of a planet there regularly",
+                        "Mars and Jupiter collided and broke apart creating the asteroid belt instantly",
+                        "The asteroids are actually pieces of moons that exploded in the past"
+                    ],
+                    correct: 1,
+                    explanation: "Jupiter's immense gravitational force created disturbances in the region between Mars and Jupiter. These gravitational effects prevented the rocky material from combining into a planet, leaving the asteroid belt as 'leftover' pieces from solar system formation 4.6 billion years ago.",
+                    topic: "Solar System Formation"
+                },
+                {
+                    question: "A lunar eclipse occurs when Earth moves between the Sun and the Moon, causing Earth's shadow to fall on the Moon. During what moon phase MUST a lunar eclipse occur?",
+                    options: [
+                        "A lunar eclipse must occur during a new moon phase only",
+                        "A lunar eclipse must occur during a full moon phase only",
+                        "A lunar eclipse must occur during a first quarter moon phase only",
+                        "A lunar eclipse can occur during any moon phase at any time"
+                    ],
+                    correct: 1,
+                    explanation: "For Earth's shadow to fall on the Moon, the Moon must be on the opposite side of Earth from the Sun - which is the full moon position. However, not every full moon causes an eclipse because the Moon's orbit is tilted. The three objects must align perfectly.",
+                    topic: "Moon Phases - Eclipses"
+                },
+                {
+                    question: "Comets have highly elliptical (oval-shaped) orbits around the Sun. As a comet approaches the Sun, it develops a tail that always points away from the Sun. What causes the tail to form and point away from the Sun?",
+                    options: [
+                        "Solar wind and radiation push gas and dust away from the Sun continuously",
+                        "The comet's speed causes the tail to trail behind as it moves forward",
+                        "Earth's magnetic field pulls the comet's tail toward our planet strongly",
+                        "Gravity from other planets pulls the tail away from the Sun's gravity well"
+                    ],
+                    correct: 0,
+                    explanation: "The Sun emits a stream of charged particles (solar wind) and radiation. When a comet gets close to the Sun, this solar wind and radiation pressure push the vaporized gases and dust away from the Sun, creating a tail that always points away from the Sun regardless of the comet's direction of travel.",
+                    topic: "Comets - Solar Wind Effects"
+                },
+                {
+                    question: "Earth's mantle makes up about 84% of Earth's volume and is made of hot, semi-solid rock that moves very slowly in convection currents. How do these mantle convection currents affect Earth's surface?",
+                    options: [
+                        "Mantle currents have no effect on the surface because the crust blocks them",
+                        "Mantle currents cause the movement of tectonic plates on Earth's surface gradually",
+                        "Mantle currents cause the Moon to orbit Earth in a regular circular path",
+                        "Mantle currents make Earth rotate faster causing shorter days over time significantly"
+                    ],
+                    correct: 1,
+                    explanation: "Heat from Earth's core creates convection currents in the semi-solid mantle. These slow-moving currents drag the tectonic plates above them, causing continental drift, earthquakes, volcanic activity, and mountain formation - all the major geological processes we observe on Earth's surface!",
+                    topic: "Earth's Layers - Plate Tectonics"
+                },
+
+                // Chapter 3: Living Systems - 10 questions
+                {
+                    question: "Plant cells contain chloroplasts that perform photosynthesis, converting light energy into chemical energy stored in glucose. Animal cells do not have chloroplasts. How do animal cells obtain the energy stored in glucose?",
+                    options: [
+                        "Animal cells cannot use glucose and must create their own energy differently",
+                        "Animal cells obtain glucose by eating plants or animals that ate plants directly",
+                        "Animal cells absorb glucose from sunlight through their cell membranes continuously",
+                        "Animal cells produce glucose in mitochondria using only water and oxygen molecules"
+                    ],
+                    correct: 1,
+                    explanation: "Animals can't make their own glucose (they lack chloroplasts). They must eat plants (which make glucose through photosynthesis) or eat other animals that ate plants. This glucose is then broken down in mitochondria through cellular respiration to release energy.",
+                    topic: "Cells - Energy Transfer"
+                },
+                {
+                    question: "In an ecosystem, energy flows from producers to consumers in a food chain. A grassland food chain shows: Grass → Grasshopper → Mouse → Snake → Hawk. If a disease kills most of the mice, what would most likely happen to the grasshopper and snake populations?",
+                    options: [
+                        "Grasshopper population would decrease and snake population would decrease significantly overall",
+                        "Grasshopper population would increase and snake population would decrease significantly overall",
+                        "Grasshopper population would decrease and snake population would increase significantly overall",
+                        "Grasshopper population would increase and snake population would increase significantly overall"
+                    ],
+                    correct: 1,
+                    explanation: "With fewer mice, there's less predation on grasshoppers (so grasshopper population increases). However, snakes have less food available (fewer mice to eat), so snake population would decrease. This shows how one change in a food chain affects multiple levels.",
+                    topic: "Food Chains - Population Dynamics"
+                },
+                {
+                    question: "Photosynthesis and cellular respiration are complementary processes. Photosynthesis produces oxygen and glucose, while cellular respiration uses oxygen and glucose. What else do these processes exchange?",
+                    options: [
+                        "Photosynthesis uses carbon dioxide; cellular respiration produces carbon dioxide as waste",
+                        "Photosynthesis uses nitrogen gas; cellular respiration produces nitrogen gas as waste",
+                        "Photosynthesis uses helium gas; cellular respiration produces helium gas as waste",
+                        "Photosynthesis uses hydrogen gas; cellular respiration produces hydrogen gas as waste"
+                    ],
+                    correct: 0,
+                    explanation: "Photosynthesis: 6CO₂ + 6H₂O + light energy → C₆H₁₂O₆ + 6O₂ (uses carbon dioxide, makes oxygen). Cellular respiration: C₆H₁₂O₆ + 6O₂ → 6CO₂ + 6H₂O + energy (uses oxygen, makes carbon dioxide). These processes form a cycle that sustains life on Earth!",
+                    topic: "Life Processes - Chemical Cycles"
+                },
+                {
+                    question: "A scientist observes these organisms in a pond ecosystem: algae, mosquito larvae, small fish, large fish, and herons. She notices that the total mass of algae is much greater than the total mass of herons. Why do ecosystems typically have more producer mass than top predator mass?",
+                    options: [
+                        "Producers reproduce faster than predators so they always outnumber them in ecosystems",
+                        "Energy is lost as heat at each level so more producers are needed to support predators",
+                        "Predators are larger animals so fewer are needed to balance the entire ecosystem",
+                        "Producers need more space than predators so they take up more area in ecosystems"
+                    ],
+                    correct: 1,
+                    explanation: "This is explained by the energy pyramid. Only about 10% of energy transfers to the next level; 90% is lost as heat. To support a few herons, you need many fish; to support those fish, you need even more mosquito larvae; to support larvae, you need a huge amount of algae at the base.",
+                    topic: "Food Chains - Energy Pyramids"
+                },
+                {
+                    question: "Arctic foxes have thick white fur in winter that changes to thin brown fur in summer. This seasonal change is an example of an adaptation. What type of adaptation is this, and why is it beneficial?",
+                    options: [
+                        "This is a behavioral adaptation that helps the fox hunt more effectively year-round",
+                        "This is a structural adaptation that provides camouflage and temperature regulation seasonally",
+                        "This is a physiological adaptation that helps the fox digest different foods each season",
+                        "This is a learned adaptation that the fox develops through practice over many years"
+                    ],
+                    correct: 1,
+                    explanation: "This is a structural (physical) adaptation. The white winter fur provides camouflage in snow and insulation against cold. The brown summer fur provides camouflage in tundra vegetation and prevents overheating. This adaptation increases survival chances year-round.",
+                    topic: "Adaptations - Types and Functions"
+                },
+                {
+                    question: "In a forest ecosystem, decomposers like fungi and bacteria break down dead plants and animals. What would happen to the ecosystem if all decomposers suddenly disappeared?",
+                    options: [
+                        "The ecosystem would improve because decomposers compete with plants for nutrients regularly",
+                        "Dead matter would accumulate and nutrients would not be recycled back to soil completely",
+                        "Plants would grow better because they wouldn't be attacked by fungi anymore at all",
+                        "Animals would increase in number because decomposers normally eat them as primary food"
+                    ],
+                    correct: 1,
+                    explanation: "Decomposers are essential for nutrient cycling. They break down dead organisms and waste, returning nutrients (nitrogen, phosphorus, etc.) to the soil where plants can use them. Without decomposers, dead matter would pile up and nutrients would be locked away, eventually causing the ecosystem to collapse.",
+                    topic: "Ecosystems - Decomposers"
+                },
+                {
+                    question: "A cell membrane is selectively permeable, meaning it controls what enters and leaves the cell. This is similar to a window screen that lets air through but keeps insects out. Why is selective permeability important for cell survival?",
+                    options: [
+                        "It allows the cell to let in needed materials while keeping out harmful substances effectively",
+                        "It allows all substances to flow freely in and out of cells without restrictions",
+                        "It prevents any materials from entering or leaving the cell under any circumstances",
+                        "It only allows water to pass through while blocking all other molecules completely"
+                    ],
+                    correct: 0,
+                    explanation: "Selective permeability is crucial for cell survival. The cell membrane lets in nutrients (glucose, oxygen) and releases waste (carbon dioxide), while keeping out harmful substances and maintaining proper concentrations of materials. Without this control, cells couldn't maintain the specific conditions needed for life processes.",
+                    topic: "Cells - Membrane Function"
+                },
+                {
+                    question: "Clownfish live among sea anemone tentacles that have stinging cells. The anemone's stings protect the clownfish from predators, and the clownfish attracts prey to the anemone. Neither organism is harmed. What type of symbiotic relationship is this?",
+                    options: [
+                        "This is parasitism because the clownfish takes protection without giving anything back",
+                        "This is commensalism because only the clownfish benefits from the relationship clearly",
+                        "This is mutualism because both the clownfish and anemone benefit from each other",
+                        "This is predation because the anemone stings and eats the clownfish regularly"
+                    ],
+                    correct: 2,
+                    explanation: "This is mutualism - both species benefit. The clownfish gets protection from the anemone's stinging tentacles (clownfish are immune to the stings), while the anemone gets food as the clownfish lures prey and may also remove parasites. Both organisms benefit, so it's a mutualistic relationship.",
+                    topic: "Symbiosis - Mutualism"
+                },
+                {
+                    question: "Cactus plants have evolved several adaptations for desert survival: thick stems that store water, waxy coating that reduces water loss, and extensive root systems. A student transplants a cactus to a rainforest. What would most likely happen?",
+                    options: [
+                        "The cactus would thrive because it now has unlimited water available constantly",
+                        "The cactus would likely struggle because its adaptations are for dry environments specifically",
+                        "The cactus would quickly evolve new adaptations to survive in the rainforest successfully",
+                        "The cactus would be unaffected because plants can survive in any environment equally"
+                    ],
+                    correct: 1,
+                    explanation: "Adaptations are specific to an organism's environment. Cacti are adapted to conserve water in dry climates. In a rainforest, the constant moisture, low light (under canopy), and competition with rainforest plants would make survival difficult. The cactus's specialized desert adaptations wouldn't help in this different environment.",
+                    topic: "Adaptations - Environmental Specificity"
+                },
+                {
+                    question: "Scientists classify living things into groups based on shared characteristics. They observe an organism that is multicellular, makes its own food through photosynthesis, has cell walls, and cannot move on its own. To which kingdom does this organism most likely belong?",
+                    options: [
+                        "This organism most likely belongs to the Animal kingdom based on characteristics",
+                        "This organism most likely belongs to the Plant kingdom based on characteristics",
+                        "This organism most likely belongs to the Fungi kingdom based on characteristics",
+                        "This organism most likely belongs to the Bacteria kingdom based on characteristics"
+                    ],
+                    correct: 1,
+                    explanation: "This organism shows key plant characteristics: multicellular (made of many cells), autotrophic (makes own food through photosynthesis), has cell walls, and is sessile (non-moving). Animals don't make their own food or have cell walls. Fungi don't photosynthesize. Bacteria are unicellular. These traits indicate the Plant kingdom.",
+                    topic: "Classification - Kingdoms"
+                }
+            ]
+        };
+
+        // Initialize the test
+        document.addEventListener('DOMContentLoaded', function() {
+            new TestEngine(testData, 'midterm_review', 35);
+        });
+    </script>
+</body>
+</html>
