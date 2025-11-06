@@ -4,7 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mid-Term Review Test - 5th Grade Science</title>
+    <link rel="stylesheet" href="styles.css">
     <style>
+
         * {
             margin: 0;
             padding: 0;
@@ -360,427 +362,1262 @@
                 margin-bottom: 20px;
             }
         }
+    
+        /* Inline Quiz Specific Styles */
+        .inline-question {
+            background: #f8f9fa;
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 30px;
+            border: 2px solid #e0e0e0;
+        }
+
+        .inline-question h3 {
+            color: #4a47a3;
+            margin-bottom: 15px;
+        }
+
+        .question-text {
+            font-size: 1.1em;
+            line-height: 1.7;
+            margin-bottom: 20px;
+        }
+
+        .option-container {
+            background: white;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            padding: 15px;
+            margin: 10px 0;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .option-container:hover {
+            background: #f0f8ff;
+            border-color: #4a90e2;
+            transform: translateX(5px);
+        }
+
+        .option-container.correct-answer {
+            background: #e8f5e9;
+            border: 3px solid #4CAF50;
+            border-left: 8px solid #4CAF50;
+        }
+
+        .option-container.incorrect-answer {
+            background: #ffebee;
+            border: 3px solid #f44336;
+            border-left: 8px solid #f44336;
+        }
+
+        .option-container input[type="radio"] {
+            margin-right: 15px;
+            transform: scale(1.2);
+        }
+
+        .option-container label {
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+        }
+
+        .option-text {
+            flex: 1;
+        }
+
+        .explanation {
+            background: #fff3e0;
+            border-left: 5px solid #FF9800;
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 20px;
+            font-size: 1.05em;
+            display: none;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .question-spacer {
+            height: 40px;
+        }
     </style>
 </head>
 <body>
-    <a href="tests.html" class="back-link">← Back to Tests</a>
+    <a href="tests.html" class="back-link">← Back to Testing Center</a>
 
     <div class="timer-container" id="timer">
-        <div>⏱️ Time: <span id="time-display">35:00</span></div>
+        <div>⏱️ Time Tracker: <span id="time-display">00:00</span></div>
     </div>
 
     <div class="container">
         <div class="test-header">
-            <h1>Mid-Term Review Test</h1>
+            <h1>Mid-Term Review Test - 5th Grade Science</h1>
             <h2>Chapters 1-3: Scientific Method, Earth & Space, and Living Systems</h2>
 
             <div class="test-info">
-                <p><strong>Instructions:</strong> This comprehensive review test contains 30 challenging questions covering the first three chapters. You have 35 minutes to complete the test. These questions require deeper thinking and connections across chapters.</p>
-                <p><strong>Scoring:</strong> Aim for 24+ correct answers (80%) to demonstrate mastery!</p>
+                <p><strong>Instructions:</strong> Select your answer to see immediate feedback! ✅ Correct answers will show in GREEN. ❌ Incorrect answers will show in RED with the correct answer highlighted.</p>
+                <p><strong>Content:</strong> This comprehensive review test contains 30 challenging questions covering the first three chapters. Questions require deeper thinking and connections across chapters.</p>
+                <p><strong>Note:</strong> Take your time and read each question carefully!</p>
             </div>
-
-            <div class="progress-bar">
-                <div class="progress-fill" id="progress"></div>
-            </div>
-            <div class="progress-text" id="progress-text">0 / 30 answered</div>
         </div>
 
-        <div id="test-questions"></div>
+        <div id="inline-quiz">
+            <!-- Question 1 -->
+            <div class="inline-question" data-correct="B">
+                <h3>Question 1: Scientific Method - Variables</h3>
+                <p class="question-text">A scientist conducts an experiment to test if different types of soil affect plant growth. She uses three identical pots with the same amount of water, sunlight, and plant type, but uses sandy soil, clay soil, and loam soil. Which variable is being tested in this experiment?</p>
 
-        <div class="controls" id="test-controls">
-            <button type="button" class="btn btn-warning" id="review-answers">Review My Answers</button>
-            <button type="button" class="btn btn-success" id="submit-test">Submit Test</button>
-            <button type="button" class="btn btn-primary" id="restart-test">Restart Test</button>
-        </div>
-
-        <div class="results-container" id="results">
-            <h2>Test Results</h2>
-            <div class="score-display">
-                <div class="score-circle" id="score-circle">
-                    <span id="score-text">0/30</span>
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q1" value="A">
+                        <span class="option-text">A. The variable being tested is the amount of water given to each plant</span>
+                    </label>
                 </div>
-                <div id="score-message"></div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q1" value="B">
+                        <span class="option-text">B. The variable being tested is the type of soil used in each pot</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q1" value="C">
+                        <span class="option-text">C. The variable being tested is the amount of sunlight each plant receives</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q1" value="D">
+                        <span class="option-text">D. The variable being tested is the type of plant used in the experiment</span>
+                    </label>
+                </div>
+
+                <div class="explanation" data-text="The variable being tested (independent variable) is the type of soil. All other factors (water, sunlight, plant type) are kept constant so the scientist can isolate and test how soil type alone affects plant growth." style="display: none;"></div>
+
+                <div class="question-spacer"></div>
             </div>
-            <div id="answers-review"></div>
+
+            <!-- Question 2 -->
+            <div class="inline-question" data-correct="B">
+                <h3>Question 2: Scientific Method - Observations vs Inferences</h3>
+                <p class="question-text">Students measure the temperature of water samples from different locations. Their data shows: Lake A = 18°C, Lake B = 22°C, Lake C = 20°C. A student concludes that 'Lake B feels warmer because it has more sunshine.' Which part of this statement is an observation and which is an inference?</p>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q2" value="A">
+                        <span class="option-text">A. Both 'Lake B is 22°C' and 'has more sunshine' are observations only</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q2" value="B">
+                        <span class="option-text">B. 'Lake B is 22°C' is an observation; 'has more sunshine' is an inference</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q2" value="C">
+                        <span class="option-text">C. Both 'Lake B is 22°C' and 'has more sunshine' are inferences only</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q2" value="D">
+                        <span class="option-text">D. 'Lake B is 22°C' is an inference; 'has more sunshine' is an observation</span>
+                    </label>
+                </div>
+
+                <div class="explanation" data-text="An observation is something you measure or detect with your senses (the 22°C temperature). An inference is a conclusion based on observations (assuming sunshine is the cause, which wasn&#x27;t directly measured)." style="display: none;"></div>
+
+                <div class="question-spacer"></div>
+            </div>
+
+            <!-- Question 3 -->
+            <div class="inline-question" data-correct="B">
+                <h3>Question 3: Scientific Method - Control Groups</h3>
+                <p class="question-text">A researcher tests whether music affects concentration by having one group study with music and another group study in silence. Both groups take the same test afterward. What is the purpose of the group that studies in silence?</p>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q3" value="A">
+                        <span class="option-text">A. The silent group serves as the experimental group to test the hypothesis</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q3" value="B">
+                        <span class="option-text">B. The silent group serves as the control group to compare results against</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q3" value="C">
+                        <span class="option-text">C. The silent group serves as the variable group to change conditions constantly</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q3" value="D">
+                        <span class="option-text">D. The silent group serves as the random group to eliminate bias from testing</span>
+                    </label>
+                </div>
+
+                <div class="explanation" data-text="The silent group is the control group - it provides a baseline to compare against. By keeping everything the same except music, researchers can determine if music truly affects concentration by comparing both groups&#x27; test scores." style="display: none;"></div>
+
+                <div class="question-spacer"></div>
+            </div>
+
+            <!-- Question 4 -->
+            <div class="inline-question" data-correct="B">
+                <h3>Question 4: Scientific Method - Measurement Accuracy</h3>
+                <p class="question-text">Three students measure the length of the same pencil. Student A records 18.5 cm, Student B records 18.4 cm, and Student C records 18.5 cm. What should the students do to get the most accurate measurement?</p>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q4" value="A">
+                        <span class="option-text">A. They should use Student A's measurement because it was recorded first during testing</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q4" value="B">
+                        <span class="option-text">B. They should calculate the average of all three measurements for better accuracy</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q4" value="C">
+                        <span class="option-text">C. They should only use Student C's measurement because it matches Student A exactly</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q4" value="D">
+                        <span class="option-text">D. They should discard all measurements and use estimation instead of tools completely</span>
+                    </label>
+                </div>
+
+                <div class="explanation" data-text="Taking the average of multiple measurements (18.5 + 18.4 + 18.5 = 55.4 ÷ 3 = 18.47 cm) reduces measurement errors and gives a more accurate result. This is why scientists conduct multiple trials in experiments." style="display: none;"></div>
+
+                <div class="question-spacer"></div>
+            </div>
+
+            <!-- Question 5 -->
+            <div class="inline-question" data-correct="B">
+                <h3>Question 5: Scientific Method - Hypothesis Testing</h3>
+                <p class="question-text">A student designs an experiment with this hypothesis: 'If I increase the amount of fertilizer, then plants will grow taller because fertilizer provides nutrients.' After the experiment, the plants that received the most fertilizer died. What should the student conclude?</p>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q5" value="A">
+                        <span class="option-text">A. The hypothesis was supported because fertilizer does affect plant growth significantly</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q5" value="B">
+                        <span class="option-text">B. The hypothesis was not supported; too much fertilizer can harm plants instead</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q5" value="C">
+                        <span class="option-text">C. The experiment was invalid and should not be counted as real data</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q5" value="D">
+                        <span class="option-text">D. The student should change the data to match the original hypothesis prediction</span>
+                    </label>
+                </div>
+
+                <div class="explanation" data-text="A hypothesis doesn&#x27;t have to be correct to be valuable! The data showed that excessive fertilizer harms plants, which doesn&#x27;t support the hypothesis but provides important scientific information. This is why testing and analyzing real data is crucial." style="display: none;"></div>
+
+                <div class="question-spacer"></div>
+            </div>
+
+            <!-- Question 6 -->
+            <div class="inline-question" data-correct="B">
+                <h3>Question 6: Scientific Method - Data Analysis</h3>
+                <p class="question-text">Look at this experimental data table showing the effect of exercise on heart rate:<br><br><div class='data-container'><table class='data-table'><tr><th>Activity</th><th>Trial 1 (bpm)</th><th>Trial 2 (bpm)</th><th>Trial 3 (bpm)</th></tr><tr><td>Resting</td><td>72</td><td>70</td><td>71</td></tr><tr><td>Walking</td><td>95</td><td>98</td><td>96</td></tr><tr><td>Running</td><td>145</td><td>148</td><td>146</td></tr></table></div><br>What conclusion is best supported by this data?</p>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q6" value="A">
+                        <span class="option-text">A. Heart rate decreases as physical activity level increases during exercise sessions</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q6" value="B">
+                        <span class="option-text">B. Heart rate increases as physical activity level increases during exercise sessions</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q6" value="C">
+                        <span class="option-text">C. Heart rate stays constant regardless of the type of physical activity performed</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q6" value="D">
+                        <span class="option-text">D. Heart rate is random and cannot be predicted by physical activity levels</span>
+                    </label>
+                </div>
+
+                <div class="explanation" data-text="The data clearly shows a pattern: resting (~71 bpm average), walking (~96 bpm average), and running (~146 bpm average). As activity intensity increases, heart rate increases consistently across all three trials." style="display: none;"></div>
+
+                <div class="question-spacer"></div>
+            </div>
+
+            <!-- Question 7 -->
+            <div class="inline-question" data-correct="B">
+                <h3>Question 7: Scientific Method - Data Representation</h3>
+                <p class="question-text">A student wants to test if the color of light affects how fast plants grow. She uses four identical plants and shines red light on one, blue light on another, green light on a third, and white light on the fourth. All other conditions are kept the same. What type of graph would BEST display the final height of each plant?</p>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q7" value="A">
+                        <span class="option-text">A. A line graph showing change over time with connected data points clearly</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q7" value="B">
+                        <span class="option-text">B. A bar graph comparing the heights of the four different plants easily</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q7" value="C">
+                        <span class="option-text">C. A circle graph showing percentages of total plant growth across groups</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q7" value="D">
+                        <span class="option-text">D. A scatter plot showing random distribution of plant heights over time</span>
+                    </label>
+                </div>
+
+                <div class="explanation" data-text="A bar graph is best for comparing different categories (different light colors) at one point in time (final height). Line graphs are better for showing changes over time, while circle graphs show parts of a whole." style="display: none;"></div>
+
+                <div class="question-spacer"></div>
+            </div>
+
+            <!-- Question 8 -->
+            <div class="inline-question" data-correct="B">
+                <h3>Question 8: Scientific Method - Lab Safety</h3>
+                <p class="question-text">In a science lab, students must wear safety goggles when mixing liquids, even if the liquids seem harmless like water and food coloring. Why is this safety rule important?</p>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q8" value="A">
+                        <span class="option-text">A. Safety goggles are only required to make the experiment look more professional and official</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q8" value="B">
+                        <span class="option-text">B. Safety goggles prevent unexpected splashes or reactions from harming your eyes critically</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q8" value="C">
+                        <span class="option-text">C. Safety goggles are required because all liquids are extremely dangerous to touch or see</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q8" value="D">
+                        <span class="option-text">D. Safety goggles help students see the liquids more clearly during the mixing process</span>
+                    </label>
+                </div>
+
+                <div class="explanation" data-text="Even seemingly safe substances can splash or react unexpectedly. Eyes are extremely sensitive and can be permanently damaged. Wearing safety goggles every time builds good habits and protects against unexpected accidents." style="display: none;"></div>
+
+                <div class="question-spacer"></div>
+            </div>
+
+            <!-- Question 9 -->
+            <div class="inline-question" data-correct="A">
+                <h3>Question 9: Scientific Method - Measurement Units</h3>
+                <p class="question-text">Two students measure the mass of a rock. Student A uses a triple-beam balance and records 47.3 grams. Student B uses a spring scale and records 0.5 newtons. Why are their measurements different?</p>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q9" value="A">
+                        <span class="option-text">A. They are measuring different properties: mass in grams and weight in newtons correctly</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q9" value="B">
+                        <span class="option-text">B. One student made an error because the rock should have identical measurements always</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q9" value="C">
+                        <span class="option-text">C. The rock changed its mass between the two measurements during the experiment</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q9" value="D">
+                        <span class="option-text">D. The measurements are the same because grams and newtons are identical units</span>
+                    </label>
+                </div>
+
+                <div class="explanation" data-text="Mass (measured in grams) and weight (measured in newtons) are different properties. Mass is the amount of matter in an object, while weight is the force of gravity on that mass. The same object has different numerical values for mass and weight." style="display: none;"></div>
+
+                <div class="question-spacer"></div>
+            </div>
+
+            <!-- Question 10 -->
+            <div class="inline-question" data-correct="B">
+                <h3>Question 10: Scientific Method - Experimental Design</h3>
+                <p class="question-text">A student forms this hypothesis: 'If I add salt to water, then the water will freeze at a lower temperature because salt lowers the freezing point.' What would be the BEST way to test this hypothesis?</p>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q10" value="A">
+                        <span class="option-text">A. Put salt water in the freezer and check if it eventually freezes solid</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q10" value="B">
+                        <span class="option-text">B. Freeze pure water and salt water separately and compare freezing temperatures precisely</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q10" value="C">
+                        <span class="option-text">C. Read about salt and freezing points in a textbook without conducting experiments</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q10" value="D">
+                        <span class="option-text">D. Ask other students if they think salt water freezes at different temperatures</span>
+                    </label>
+                </div>
+
+                <div class="explanation" data-text="To test this hypothesis properly, you need to compare pure water (control) with salt water (experimental) under the same freezing conditions, measuring and comparing the exact temperatures at which each freezes. This tests the specific claim about freezing temperature." style="display: none;"></div>
+
+                <div class="question-spacer"></div>
+            </div>
+
+            <!-- Question 11 -->
+            <div class="inline-question" data-correct="B">
+                <h3>Question 11: Earth's Layers - Evidence</h3>
+                <p class="question-text">Scientists use seismic waves from earthquakes to study Earth's interior layers. They discovered that S-waves (shear waves) cannot travel through the outer core, but P-waves (pressure waves) can. What does this evidence suggest about the outer core?</p>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q11" value="A">
+                        <span class="option-text">A. The outer core must be solid because only solids block all waves completely</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q11" value="B">
+                        <span class="option-text">B. The outer core must be liquid because S-waves cannot travel through liquids</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q11" value="C">
+                        <span class="option-text">C. The outer core must be gas because gases allow all wave types through easily</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q11" value="D">
+                        <span class="option-text">D. The outer core must be plasma because plasma reflects seismic waves backward</span>
+                    </label>
+                </div>
+
+                <div class="explanation" data-text="S-waves can only travel through solids, not liquids or gases. Since S-waves stop at the outer core but P-waves continue through it, this is strong evidence that the outer core is liquid (molten iron and nickel). This is how scientists determined Earth&#x27;s interior structure!" style="display: none;"></div>
+
+                <div class="question-spacer"></div>
+            </div>
+
+            <!-- Question 12 -->
+            <div class="inline-question" data-correct="D">
+                <h3>Question 12: Moon Phases - Cycles</h3>
+                <p class="question-text">The Moon completes one orbit around Earth in about 27.3 days (one lunar month). If you observe a full moon on January 1st, approximately when would you see the NEXT full moon?</p>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q12" value="A">
+                        <span class="option-text">A. You would see the next full moon on approximately January 8th only</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q12" value="B">
+                        <span class="option-text">B. You would see the next full moon on approximately January 15th only</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q12" value="C">
+                        <span class="option-text">C. You would see the next full moon on approximately January 22nd only</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q12" value="D">
+                        <span class="option-text">D. You would see the next full moon on approximately January 29th only</span>
+                    </label>
+                </div>
+
+                <div class="explanation" data-text="The lunar cycle (new moon to new moon, or full moon to full moon) takes about 29.5 days. Starting from January 1st, adding approximately 29 days brings us to January 29th or 30th for the next full moon. This cycle repeats throughout the year." style="display: none;"></div>
+
+                <div class="question-spacer"></div>
+            </div>
+
+            <!-- Question 13 -->
+            <div class="inline-question" data-correct="B">
+                <h3>Question 13: Earth-Sun System - Seasons</h3>
+                <p class="question-text">Earth is tilted on its axis at 23.5 degrees. During summer in the Northern Hemisphere, which statement correctly describes Earth's position and the Sun's apparent path?</p>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q13" value="A">
+                        <span class="option-text">A. The Northern Hemisphere tilts away from the Sun and the Sun appears lower in sky</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q13" value="B">
+                        <span class="option-text">B. The Northern Hemisphere tilts toward the Sun and the Sun appears higher in sky</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q13" value="C">
+                        <span class="option-text">C. The Northern Hemisphere is perpendicular to the Sun and day equals night length</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q13" value="D">
+                        <span class="option-text">D. The Northern Hemisphere rotates faster in summer causing longer daylight hours daily</span>
+                    </label>
+                </div>
+
+                <div class="explanation" data-text="During Northern Hemisphere summer, that half of Earth tilts toward the Sun. This causes the Sun to appear higher in the sky, take a longer path across the sky, and create longer days with more direct sunlight - all reasons why summer is warmer." style="display: none;"></div>
+
+                <div class="question-spacer"></div>
+            </div>
+
+            <!-- Question 14 -->
+            <div class="inline-question" data-correct="B">
+                <h3>Question 14: Planets - Physical Properties</h3>
+                <p class="question-text">Jupiter has a mass about 318 times greater than Earth's mass, but it is made mostly of hydrogen and helium gases rather than rock. How does Jupiter's composition affect its density compared to Earth?</p>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q14" value="A">
+                        <span class="option-text">A. Jupiter's density is much higher than Earth's because it has more mass overall</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q14" value="B">
+                        <span class="option-text">B. Jupiter's density is much lower than Earth's because gases are less dense than rock</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q14" value="C">
+                        <span class="option-text">C. Jupiter's density is the same as Earth's because mass and volume balance out</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q14" value="D">
+                        <span class="option-text">D. Jupiter's density cannot be calculated because it is made entirely of gases</span>
+                    </label>
+                </div>
+
+                <div class="explanation" data-text="Even though Jupiter has much more mass, it also has a much larger volume because it&#x27;s made of gas. Density = mass ÷ volume. Earth&#x27;s average density is about 5.5 g/cm³ while Jupiter&#x27;s is only about 1.3 g/cm³ - less dense than Earth because gases are less dense than rock." style="display: none;"></div>
+
+                <div class="question-spacer"></div>
+            </div>
+
+            <!-- Question 15 -->
+            <div class="inline-question" data-correct="B">
+                <h3>Question 15: Solar System - Gravity Effects</h3>
+                <p class="question-text">Astronomers observe that some planets in our solar system have many moons while others have few or none. What property of a planet most affects its ability to capture and hold moons in orbit?</p>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q15" value="A">
+                        <span class="option-text">A. The planet's distance from the Sun determines how many moons it can capture</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q15" value="B">
+                        <span class="option-text">B. The planet's mass and gravitational force determine how many moons it can hold</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q15" value="C">
+                        <span class="option-text">C. The planet's rotation speed determines how many moons can orbit around it</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q15" value="D">
+                        <span class="option-text">D. The planet's color and composition determine how many moons are attracted to it</span>
+                    </label>
+                </div>
+
+                <div class="explanation" data-text="A planet&#x27;s mass creates its gravitational pull. Larger planets like Jupiter (95+ moons) and Saturn (80+ moons) have much more mass and stronger gravity than small planets like Mars (2 moons) or Mercury (0 moons), allowing them to capture and hold more moons." style="display: none;"></div>
+
+                <div class="question-spacer"></div>
+            </div>
+
+            <!-- Question 16 -->
+            <div class="inline-question" data-correct="B">
+                <h3>Question 16: Earth's Motion - Stars</h3>
+                <p class="question-text">Ancient sailors used the North Star (Polaris) for navigation because it appears to stay in the same position in the night sky while other stars appear to move. Why does Polaris appear stationary?</p>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q16" value="A">
+                        <span class="option-text">A. Polaris is the closest star to Earth so it doesn't appear to move at all</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q16" value="B">
+                        <span class="option-text">B. Polaris is directly above Earth's North Pole along the axis of rotation precisely</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q16" value="C">
+                        <span class="option-text">C. Polaris is the brightest star so it seems not to move across the sky</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q16" value="D">
+                        <span class="option-text">D. Polaris orbits Earth in the opposite direction of Earth's rotation exactly</span>
+                    </label>
+                </div>
+
+                <div class="explanation" data-text="Polaris is located almost directly above Earth&#x27;s North Pole, aligned with Earth&#x27;s rotational axis. As Earth spins, Polaris appears to stay in nearly the same spot while all other stars appear to circle around it. This makes it perfect for navigation!" style="display: none;"></div>
+
+                <div class="question-spacer"></div>
+            </div>
+
+            <!-- Question 17 -->
+            <div class="inline-question" data-correct="B">
+                <h3>Question 17: Solar System Formation</h3>
+                <p class="question-text">The asteroid belt between Mars and Jupiter contains millions of rocky objects. Scientists hypothesize that these asteroids are left over from the solar system's formation and never formed into a planet. What prevented these rocks from forming a planet?</p>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q17" value="A">
+                        <span class="option-text">A. The asteroids are too far from the Sun to receive enough heat for fusion</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q17" value="B">
+                        <span class="option-text">B. Jupiter's strong gravitational pull disrupted the formation of a planet there regularly</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q17" value="C">
+                        <span class="option-text">C. Mars and Jupiter collided and broke apart creating the asteroid belt instantly</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q17" value="D">
+                        <span class="option-text">D. The asteroids are actually pieces of moons that exploded in the past</span>
+                    </label>
+                </div>
+
+                <div class="explanation" data-text="Jupiter&#x27;s immense gravitational force created disturbances in the region between Mars and Jupiter. These gravitational effects prevented the rocky material from combining into a planet, leaving the asteroid belt as &#x27;leftover&#x27; pieces from solar system formation 4.6 billion years ago." style="display: none;"></div>
+
+                <div class="question-spacer"></div>
+            </div>
+
+            <!-- Question 18 -->
+            <div class="inline-question" data-correct="B">
+                <h3>Question 18: Moon Phases - Eclipses</h3>
+                <p class="question-text">A lunar eclipse occurs when Earth moves between the Sun and the Moon, causing Earth's shadow to fall on the Moon. During what moon phase MUST a lunar eclipse occur?</p>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q18" value="A">
+                        <span class="option-text">A. A lunar eclipse must occur during a new moon phase only</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q18" value="B">
+                        <span class="option-text">B. A lunar eclipse must occur during a full moon phase only</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q18" value="C">
+                        <span class="option-text">C. A lunar eclipse must occur during a first quarter moon phase only</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q18" value="D">
+                        <span class="option-text">D. A lunar eclipse can occur during any moon phase at any time</span>
+                    </label>
+                </div>
+
+                <div class="explanation" data-text="For Earth&#x27;s shadow to fall on the Moon, the Moon must be on the opposite side of Earth from the Sun - which is the full moon position. However, not every full moon causes an eclipse because the Moon&#x27;s orbit is tilted. The three objects must align perfectly." style="display: none;"></div>
+
+                <div class="question-spacer"></div>
+            </div>
+
+            <!-- Question 19 -->
+            <div class="inline-question" data-correct="A">
+                <h3>Question 19: Comets - Solar Wind Effects</h3>
+                <p class="question-text">Comets have highly elliptical (oval-shaped) orbits around the Sun. As a comet approaches the Sun, it develops a tail that always points away from the Sun. What causes the tail to form and point away from the Sun?</p>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q19" value="A">
+                        <span class="option-text">A. Solar wind and radiation push gas and dust away from the Sun continuously</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q19" value="B">
+                        <span class="option-text">B. The comet's speed causes the tail to trail behind as it moves forward</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q19" value="C">
+                        <span class="option-text">C. Earth's magnetic field pulls the comet's tail toward our planet strongly</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q19" value="D">
+                        <span class="option-text">D. Gravity from other planets pulls the tail away from the Sun's gravity well</span>
+                    </label>
+                </div>
+
+                <div class="explanation" data-text="The Sun emits a stream of charged particles (solar wind) and radiation. When a comet gets close to the Sun, this solar wind and radiation pressure push the vaporized gases and dust away from the Sun, creating a tail that always points away from the Sun regardless of the comet&#x27;s direction of travel." style="display: none;"></div>
+
+                <div class="question-spacer"></div>
+            </div>
+
+            <!-- Question 20 -->
+            <div class="inline-question" data-correct="B">
+                <h3>Question 20: Earth's Layers - Plate Tectonics</h3>
+                <p class="question-text">Earth's mantle makes up about 84% of Earth's volume and is made of hot, semi-solid rock that moves very slowly in convection currents. How do these mantle convection currents affect Earth's surface?</p>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q20" value="A">
+                        <span class="option-text">A. Mantle currents have no effect on the surface because the crust blocks them</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q20" value="B">
+                        <span class="option-text">B. Mantle currents cause the movement of tectonic plates on Earth's surface gradually</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q20" value="C">
+                        <span class="option-text">C. Mantle currents cause the Moon to orbit Earth in a regular circular path</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q20" value="D">
+                        <span class="option-text">D. Mantle currents make Earth rotate faster causing shorter days over time significantly</span>
+                    </label>
+                </div>
+
+                <div class="explanation" data-text="Heat from Earth&#x27;s core creates convection currents in the semi-solid mantle. These slow-moving currents drag the tectonic plates above them, causing continental drift, earthquakes, volcanic activity, and mountain formation - all the major geological processes we observe on Earth&#x27;s surface!" style="display: none;"></div>
+
+                <div class="question-spacer"></div>
+            </div>
+
+            <!-- Question 21 -->
+            <div class="inline-question" data-correct="B">
+                <h3>Question 21: Cells - Energy Transfer</h3>
+                <p class="question-text">Plant cells contain chloroplasts that perform photosynthesis, converting light energy into chemical energy stored in glucose. Animal cells do not have chloroplasts. How do animal cells obtain the energy stored in glucose?</p>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q21" value="A">
+                        <span class="option-text">A. Animal cells cannot use glucose and must create their own energy differently</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q21" value="B">
+                        <span class="option-text">B. Animal cells obtain glucose by eating plants or animals that ate plants directly</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q21" value="C">
+                        <span class="option-text">C. Animal cells absorb glucose from sunlight through their cell membranes continuously</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q21" value="D">
+                        <span class="option-text">D. Animal cells produce glucose in mitochondria using only water and oxygen molecules</span>
+                    </label>
+                </div>
+
+                <div class="explanation" data-text="Animals can&#x27;t make their own glucose (they lack chloroplasts). They must eat plants (which make glucose through photosynthesis) or eat other animals that ate plants. This glucose is then broken down in mitochondria through cellular respiration to release energy." style="display: none;"></div>
+
+                <div class="question-spacer"></div>
+            </div>
+
+            <!-- Question 22 -->
+            <div class="inline-question" data-correct="B">
+                <h3>Question 22: Food Chains - Population Dynamics</h3>
+                <p class="question-text">In an ecosystem, energy flows from producers to consumers in a food chain. A grassland food chain shows: Grass → Grasshopper → Mouse → Snake → Hawk. If a disease kills most of the mice, what would most likely happen to the grasshopper and snake populations?</p>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q22" value="A">
+                        <span class="option-text">A. Grasshopper population would decrease and snake population would decrease significantly overall</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q22" value="B">
+                        <span class="option-text">B. Grasshopper population would increase and snake population would decrease significantly overall</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q22" value="C">
+                        <span class="option-text">C. Grasshopper population would decrease and snake population would increase significantly overall</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q22" value="D">
+                        <span class="option-text">D. Grasshopper population would increase and snake population would increase significantly overall</span>
+                    </label>
+                </div>
+
+                <div class="explanation" data-text="With fewer mice, there&#x27;s less predation on grasshoppers (so grasshopper population increases). However, snakes have less food available (fewer mice to eat), so snake population would decrease. This shows how one change in a food chain affects multiple levels." style="display: none;"></div>
+
+                <div class="question-spacer"></div>
+            </div>
+
+            <!-- Question 23 -->
+            <div class="inline-question" data-correct="A">
+                <h3>Question 23: Life Processes - Chemical Cycles</h3>
+                <p class="question-text">Photosynthesis and cellular respiration are complementary processes. Photosynthesis produces oxygen and glucose, while cellular respiration uses oxygen and glucose. What else do these processes exchange?</p>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q23" value="A">
+                        <span class="option-text">A. Photosynthesis uses carbon dioxide; cellular respiration produces carbon dioxide as waste</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q23" value="B">
+                        <span class="option-text">B. Photosynthesis uses nitrogen gas; cellular respiration produces nitrogen gas as waste</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q23" value="C">
+                        <span class="option-text">C. Photosynthesis uses helium gas; cellular respiration produces helium gas as waste</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q23" value="D">
+                        <span class="option-text">D. Photosynthesis uses hydrogen gas; cellular respiration produces hydrogen gas as waste</span>
+                    </label>
+                </div>
+
+                <div class="explanation" data-text="Photosynthesis: 6CO₂ + 6H₂O + light energy → C₆H₁₂O₆ + 6O₂ (uses carbon dioxide, makes oxygen). Cellular respiration: C₆H₁₂O₆ + 6O₂ → 6CO₂ + 6H₂O + energy (uses oxygen, makes carbon dioxide). These processes form a cycle that sustains life on Earth!" style="display: none;"></div>
+
+                <div class="question-spacer"></div>
+            </div>
+
+            <!-- Question 24 -->
+            <div class="inline-question" data-correct="B">
+                <h3>Question 24: Food Chains - Energy Pyramids</h3>
+                <p class="question-text">A scientist observes these organisms in a pond ecosystem: algae, mosquito larvae, small fish, large fish, and herons. She notices that the total mass of algae is much greater than the total mass of herons. Why do ecosystems typically have more producer mass than top predator mass?</p>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q24" value="A">
+                        <span class="option-text">A. Producers reproduce faster than predators so they always outnumber them in ecosystems</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q24" value="B">
+                        <span class="option-text">B. Energy is lost as heat at each level so more producers are needed to support predators</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q24" value="C">
+                        <span class="option-text">C. Predators are larger animals so fewer are needed to balance the entire ecosystem</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q24" value="D">
+                        <span class="option-text">D. Producers need more space than predators so they take up more area in ecosystems</span>
+                    </label>
+                </div>
+
+                <div class="explanation" data-text="This is explained by the energy pyramid. Only about 10% of energy transfers to the next level; 90% is lost as heat. To support a few herons, you need many fish; to support those fish, you need even more mosquito larvae; to support larvae, you need a huge amount of algae at the base." style="display: none;"></div>
+
+                <div class="question-spacer"></div>
+            </div>
+
+            <!-- Question 25 -->
+            <div class="inline-question" data-correct="B">
+                <h3>Question 25: Adaptations - Types and Functions</h3>
+                <p class="question-text">Arctic foxes have thick white fur in winter that changes to thin brown fur in summer. This seasonal change is an example of an adaptation. What type of adaptation is this, and why is it beneficial?</p>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q25" value="A">
+                        <span class="option-text">A. This is a behavioral adaptation that helps the fox hunt more effectively year-round</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q25" value="B">
+                        <span class="option-text">B. This is a structural adaptation that provides camouflage and temperature regulation seasonally</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q25" value="C">
+                        <span class="option-text">C. This is a physiological adaptation that helps the fox digest different foods each season</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q25" value="D">
+                        <span class="option-text">D. This is a learned adaptation that the fox develops through practice over many years</span>
+                    </label>
+                </div>
+
+                <div class="explanation" data-text="This is a structural (physical) adaptation. The white winter fur provides camouflage in snow and insulation against cold. The brown summer fur provides camouflage in tundra vegetation and prevents overheating. This adaptation increases survival chances year-round." style="display: none;"></div>
+
+                <div class="question-spacer"></div>
+            </div>
+
+            <!-- Question 26 -->
+            <div class="inline-question" data-correct="B">
+                <h3>Question 26: Ecosystems - Decomposers</h3>
+                <p class="question-text">In a forest ecosystem, decomposers like fungi and bacteria break down dead plants and animals. What would happen to the ecosystem if all decomposers suddenly disappeared?</p>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q26" value="A">
+                        <span class="option-text">A. The ecosystem would improve because decomposers compete with plants for nutrients regularly</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q26" value="B">
+                        <span class="option-text">B. Dead matter would accumulate and nutrients would not be recycled back to soil completely</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q26" value="C">
+                        <span class="option-text">C. Plants would grow better because they wouldn't be attacked by fungi anymore at all</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q26" value="D">
+                        <span class="option-text">D. Animals would increase in number because decomposers normally eat them as primary food</span>
+                    </label>
+                </div>
+
+                <div class="explanation" data-text="Decomposers are essential for nutrient cycling. They break down dead organisms and waste, returning nutrients (nitrogen, phosphorus, etc.) to the soil where plants can use them. Without decomposers, dead matter would pile up and nutrients would be locked away, eventually causing the ecosystem to collapse." style="display: none;"></div>
+
+                <div class="question-spacer"></div>
+            </div>
+
+            <!-- Question 27 -->
+            <div class="inline-question" data-correct="A">
+                <h3>Question 27: Cells - Membrane Function</h3>
+                <p class="question-text">A cell membrane is selectively permeable, meaning it controls what enters and leaves the cell. This is similar to a window screen that lets air through but keeps insects out. Why is selective permeability important for cell survival?</p>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q27" value="A">
+                        <span class="option-text">A. It allows the cell to let in needed materials while keeping out harmful substances effectively</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q27" value="B">
+                        <span class="option-text">B. It allows all substances to flow freely in and out of cells without restrictions</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q27" value="C">
+                        <span class="option-text">C. It prevents any materials from entering or leaving the cell under any circumstances</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q27" value="D">
+                        <span class="option-text">D. It only allows water to pass through while blocking all other molecules completely</span>
+                    </label>
+                </div>
+
+                <div class="explanation" data-text="Selective permeability is crucial for cell survival. The cell membrane lets in nutrients (glucose, oxygen) and releases waste (carbon dioxide), while keeping out harmful substances and maintaining proper concentrations of materials. Without this control, cells couldn&#x27;t maintain the specific conditions needed for life processes." style="display: none;"></div>
+
+                <div class="question-spacer"></div>
+            </div>
+
+            <!-- Question 28 -->
+            <div class="inline-question" data-correct="C">
+                <h3>Question 28: Symbiosis - Mutualism</h3>
+                <p class="question-text">Clownfish live among sea anemone tentacles that have stinging cells. The anemone's stings protect the clownfish from predators, and the clownfish attracts prey to the anemone. Neither organism is harmed. What type of symbiotic relationship is this?</p>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q28" value="A">
+                        <span class="option-text">A. This is parasitism because the clownfish takes protection without giving anything back</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q28" value="B">
+                        <span class="option-text">B. This is commensalism because only the clownfish benefits from the relationship clearly</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q28" value="C">
+                        <span class="option-text">C. This is mutualism because both the clownfish and anemone benefit from each other</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q28" value="D">
+                        <span class="option-text">D. This is predation because the anemone stings and eats the clownfish regularly</span>
+                    </label>
+                </div>
+
+                <div class="explanation" data-text="This is mutualism - both species benefit. The clownfish gets protection from the anemone&#x27;s stinging tentacles (clownfish are immune to the stings), while the anemone gets food as the clownfish lures prey and may also remove parasites. Both organisms benefit, so it&#x27;s a mutualistic relationship." style="display: none;"></div>
+
+                <div class="question-spacer"></div>
+            </div>
+
+            <!-- Question 29 -->
+            <div class="inline-question" data-correct="B">
+                <h3>Question 29: Adaptations - Environmental Specificity</h3>
+                <p class="question-text">Cactus plants have evolved several adaptations for desert survival: thick stems that store water, waxy coating that reduces water loss, and extensive root systems. A student transplants a cactus to a rainforest. What would most likely happen?</p>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q29" value="A">
+                        <span class="option-text">A. The cactus would thrive because it now has unlimited water available constantly</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q29" value="B">
+                        <span class="option-text">B. The cactus would likely struggle because its adaptations are for dry environments specifically</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q29" value="C">
+                        <span class="option-text">C. The cactus would quickly evolve new adaptations to survive in the rainforest successfully</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q29" value="D">
+                        <span class="option-text">D. The cactus would be unaffected because plants can survive in any environment equally</span>
+                    </label>
+                </div>
+
+                <div class="explanation" data-text="Adaptations are specific to an organism&#x27;s environment. Cacti are adapted to conserve water in dry climates. In a rainforest, the constant moisture, low light (under canopy), and competition with rainforest plants would make survival difficult. The cactus&#x27;s specialized desert adaptations wouldn&#x27;t help in this different environment." style="display: none;"></div>
+
+                <div class="question-spacer"></div>
+            </div>
+
+            <!-- Question 30 -->
+            <div class="inline-question" data-correct="B">
+                <h3>Question 30: Classification - Kingdoms</h3>
+                <p class="question-text">Scientists classify living things into groups based on shared characteristics. They observe an organism that is multicellular, makes its own food through photosynthesis, has cell walls, and cannot move on its own. To which kingdom does this organism most likely belong?</p>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q30" value="A">
+                        <span class="option-text">A. This organism most likely belongs to the Animal kingdom based on characteristics</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q30" value="B">
+                        <span class="option-text">B. This organism most likely belongs to the Plant kingdom based on characteristics</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q30" value="C">
+                        <span class="option-text">C. This organism most likely belongs to the Fungi kingdom based on characteristics</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q30" value="D">
+                        <span class="option-text">D. This organism most likely belongs to the Bacteria kingdom based on characteristics</span>
+                    </label>
+                </div>
+
+                <div class="explanation" data-text="This organism shows key plant characteristics: multicellular (made of many cells), autotrophic (makes own food through photosynthesis), has cell walls, and is sessile (non-moving). Animals don&#x27;t make their own food or have cell walls. Fungi don&#x27;t photosynthesize. Bacteria are unicellular. These traits indicate the Plant kingdom." style="display: none;"></div>
+
+                <div class="question-spacer"></div>
+            </div>
+
+
         </div>
     </div>
 
-    <script src="test-engine.js"></script>
+    <script src="inline-quiz.js"></script>
     <script>
-        const testData = {
-            questions: [
-                // Chapter 1: Scientific Method - 10 questions
-                {
-                    question: "A scientist conducts an experiment to test if different types of soil affect plant growth. She uses three identical pots with the same amount of water, sunlight, and plant type, but uses sandy soil, clay soil, and loam soil. Which variable is being tested in this experiment?",
-                    options: [
-                        "The variable being tested is the amount of water given to each plant",
-                        "The variable being tested is the type of soil used in each pot",
-                        "The variable being tested is the amount of sunlight each plant receives",
-                        "The variable being tested is the type of plant used in the experiment"
-                    ],
-                    correct: 1,
-                    explanation: "The variable being tested (independent variable) is the type of soil. All other factors (water, sunlight, plant type) are kept constant so the scientist can isolate and test how soil type alone affects plant growth.",
-                    topic: "Scientific Method - Variables"
-                },
-                {
-                    question: "Students measure the temperature of water samples from different locations. Their data shows: Lake A = 18°C, Lake B = 22°C, Lake C = 20°C. A student concludes that 'Lake B feels warmer because it has more sunshine.' Which part of this statement is an observation and which is an inference?",
-                    options: [
-                        "Both 'Lake B is 22°C' and 'has more sunshine' are observations only",
-                        "'Lake B is 22°C' is an observation; 'has more sunshine' is an inference",
-                        "Both 'Lake B is 22°C' and 'has more sunshine' are inferences only",
-                        "'Lake B is 22°C' is an inference; 'has more sunshine' is an observation"
-                    ],
-                    correct: 1,
-                    explanation: "An observation is something you measure or detect with your senses (the 22°C temperature). An inference is a conclusion based on observations (assuming sunshine is the cause, which wasn't directly measured).",
-                    topic: "Scientific Method - Observations vs Inferences"
-                },
-                {
-                    question: "A researcher tests whether music affects concentration by having one group study with music and another group study in silence. Both groups take the same test afterward. What is the purpose of the group that studies in silence?",
-                    options: [
-                        "The silent group serves as the experimental group to test the hypothesis",
-                        "The silent group serves as the control group to compare results against",
-                        "The silent group serves as the variable group to change conditions constantly",
-                        "The silent group serves as the random group to eliminate bias from testing"
-                    ],
-                    correct: 1,
-                    explanation: "The silent group is the control group - it provides a baseline to compare against. By keeping everything the same except music, researchers can determine if music truly affects concentration by comparing both groups' test scores.",
-                    topic: "Scientific Method - Control Groups"
-                },
-                {
-                    question: "Three students measure the length of the same pencil. Student A records 18.5 cm, Student B records 18.4 cm, and Student C records 18.5 cm. What should the students do to get the most accurate measurement?",
-                    options: [
-                        "They should use Student A's measurement because it was recorded first during testing",
-                        "They should calculate the average of all three measurements for better accuracy",
-                        "They should only use Student C's measurement because it matches Student A exactly",
-                        "They should discard all measurements and use estimation instead of tools completely"
-                    ],
-                    correct: 1,
-                    explanation: "Taking the average of multiple measurements (18.5 + 18.4 + 18.5 = 55.4 ÷ 3 = 18.47 cm) reduces measurement errors and gives a more accurate result. This is why scientists conduct multiple trials in experiments.",
-                    topic: "Scientific Method - Measurement Accuracy"
-                },
-                {
-                    question: "A student designs an experiment with this hypothesis: 'If I increase the amount of fertilizer, then plants will grow taller because fertilizer provides nutrients.' After the experiment, the plants that received the most fertilizer died. What should the student conclude?",
-                    options: [
-                        "The hypothesis was supported because fertilizer does affect plant growth significantly",
-                        "The hypothesis was not supported; too much fertilizer can harm plants instead",
-                        "The experiment was invalid and should not be counted as real data",
-                        "The student should change the data to match the original hypothesis prediction"
-                    ],
-                    correct: 1,
-                    explanation: "A hypothesis doesn't have to be correct to be valuable! The data showed that excessive fertilizer harms plants, which doesn't support the hypothesis but provides important scientific information. This is why testing and analyzing real data is crucial.",
-                    topic: "Scientific Method - Hypothesis Testing"
-                },
-                {
-                    question: "Look at this experimental data table showing the effect of exercise on heart rate:<br><br><div class='data-container'><table class='data-table'><tr><th>Activity</th><th>Trial 1 (bpm)</th><th>Trial 2 (bpm)</th><th>Trial 3 (bpm)</th></tr><tr><td>Resting</td><td>72</td><td>70</td><td>71</td></tr><tr><td>Walking</td><td>95</td><td>98</td><td>96</td></tr><tr><td>Running</td><td>145</td><td>148</td><td>146</td></tr></table></div><br>What conclusion is best supported by this data?",
-                    options: [
-                        "Heart rate decreases as physical activity level increases during exercise sessions",
-                        "Heart rate increases as physical activity level increases during exercise sessions",
-                        "Heart rate stays constant regardless of the type of physical activity performed",
-                        "Heart rate is random and cannot be predicted by physical activity levels"
-                    ],
-                    correct: 1,
-                    explanation: "The data clearly shows a pattern: resting (~71 bpm average), walking (~96 bpm average), and running (~146 bpm average). As activity intensity increases, heart rate increases consistently across all three trials.",
-                    topic: "Scientific Method - Data Analysis"
-                },
-                {
-                    question: "A student wants to test if the color of light affects how fast plants grow. She uses four identical plants and shines red light on one, blue light on another, green light on a third, and white light on the fourth. All other conditions are kept the same. What type of graph would BEST display the final height of each plant?",
-                    options: [
-                        "A line graph showing change over time with connected data points clearly",
-                        "A bar graph comparing the heights of the four different plants easily",
-                        "A circle graph showing percentages of total plant growth across groups",
-                        "A scatter plot showing random distribution of plant heights over time"
-                    ],
-                    correct: 1,
-                    explanation: "A bar graph is best for comparing different categories (different light colors) at one point in time (final height). Line graphs are better for showing changes over time, while circle graphs show parts of a whole.",
-                    topic: "Scientific Method - Data Representation"
-                },
-                {
-                    question: "In a science lab, students must wear safety goggles when mixing liquids, even if the liquids seem harmless like water and food coloring. Why is this safety rule important?",
-                    options: [
-                        "Safety goggles are only required to make the experiment look more professional and official",
-                        "Safety goggles prevent unexpected splashes or reactions from harming your eyes critically",
-                        "Safety goggles are required because all liquids are extremely dangerous to touch or see",
-                        "Safety goggles help students see the liquids more clearly during the mixing process"
-                    ],
-                    correct: 1,
-                    explanation: "Even seemingly safe substances can splash or react unexpectedly. Eyes are extremely sensitive and can be permanently damaged. Wearing safety goggles every time builds good habits and protects against unexpected accidents.",
-                    topic: "Scientific Method - Lab Safety"
-                },
-                {
-                    question: "Two students measure the mass of a rock. Student A uses a triple-beam balance and records 47.3 grams. Student B uses a spring scale and records 0.5 newtons. Why are their measurements different?",
-                    options: [
-                        "They are measuring different properties: mass in grams and weight in newtons correctly",
-                        "One student made an error because the rock should have identical measurements always",
-                        "The rock changed its mass between the two measurements during the experiment",
-                        "The measurements are the same because grams and newtons are identical units"
-                    ],
-                    correct: 0,
-                    explanation: "Mass (measured in grams) and weight (measured in newtons) are different properties. Mass is the amount of matter in an object, while weight is the force of gravity on that mass. The same object has different numerical values for mass and weight.",
-                    topic: "Scientific Method - Measurement Units"
-                },
-                {
-                    question: "A student forms this hypothesis: 'If I add salt to water, then the water will freeze at a lower temperature because salt lowers the freezing point.' What would be the BEST way to test this hypothesis?",
-                    options: [
-                        "Put salt water in the freezer and check if it eventually freezes solid",
-                        "Freeze pure water and salt water separately and compare freezing temperatures precisely",
-                        "Read about salt and freezing points in a textbook without conducting experiments",
-                        "Ask other students if they think salt water freezes at different temperatures"
-                    ],
-                    correct: 1,
-                    explanation: "To test this hypothesis properly, you need to compare pure water (control) with salt water (experimental) under the same freezing conditions, measuring and comparing the exact temperatures at which each freezes. This tests the specific claim about freezing temperature.",
-                    topic: "Scientific Method - Experimental Design"
-                },
-
-                // Chapter 2: Earth & Space - 10 questions
-                {
-                    question: "Scientists use seismic waves from earthquakes to study Earth's interior layers. They discovered that S-waves (shear waves) cannot travel through the outer core, but P-waves (pressure waves) can. What does this evidence suggest about the outer core?",
-                    options: [
-                        "The outer core must be solid because only solids block all waves completely",
-                        "The outer core must be liquid because S-waves cannot travel through liquids",
-                        "The outer core must be gas because gases allow all wave types through easily",
-                        "The outer core must be plasma because plasma reflects seismic waves backward"
-                    ],
-                    correct: 1,
-                    explanation: "S-waves can only travel through solids, not liquids or gases. Since S-waves stop at the outer core but P-waves continue through it, this is strong evidence that the outer core is liquid (molten iron and nickel). This is how scientists determined Earth's interior structure!",
-                    topic: "Earth's Layers - Evidence"
-                },
-                {
-                    question: "The Moon completes one orbit around Earth in about 27.3 days (one lunar month). If you observe a full moon on January 1st, approximately when would you see the NEXT full moon?",
-                    options: [
-                        "You would see the next full moon on approximately January 8th only",
-                        "You would see the next full moon on approximately January 15th only",
-                        "You would see the next full moon on approximately January 22nd only",
-                        "You would see the next full moon on approximately January 29th only"
-                    ],
-                    correct: 3,
-                    explanation: "The lunar cycle (new moon to new moon, or full moon to full moon) takes about 29.5 days. Starting from January 1st, adding approximately 29 days brings us to January 29th or 30th for the next full moon. This cycle repeats throughout the year.",
-                    topic: "Moon Phases - Cycles"
-                },
-                {
-                    question: "Earth is tilted on its axis at 23.5 degrees. During summer in the Northern Hemisphere, which statement correctly describes Earth's position and the Sun's apparent path?",
-                    options: [
-                        "The Northern Hemisphere tilts away from the Sun and the Sun appears lower in sky",
-                        "The Northern Hemisphere tilts toward the Sun and the Sun appears higher in sky",
-                        "The Northern Hemisphere is perpendicular to the Sun and day equals night length",
-                        "The Northern Hemisphere rotates faster in summer causing longer daylight hours daily"
-                    ],
-                    correct: 1,
-                    explanation: "During Northern Hemisphere summer, that half of Earth tilts toward the Sun. This causes the Sun to appear higher in the sky, take a longer path across the sky, and create longer days with more direct sunlight - all reasons why summer is warmer.",
-                    topic: "Earth-Sun System - Seasons"
-                },
-                {
-                    question: "Jupiter has a mass about 318 times greater than Earth's mass, but it is made mostly of hydrogen and helium gases rather than rock. How does Jupiter's composition affect its density compared to Earth?",
-                    options: [
-                        "Jupiter's density is much higher than Earth's because it has more mass overall",
-                        "Jupiter's density is much lower than Earth's because gases are less dense than rock",
-                        "Jupiter's density is the same as Earth's because mass and volume balance out",
-                        "Jupiter's density cannot be calculated because it is made entirely of gases"
-                    ],
-                    correct: 1,
-                    explanation: "Even though Jupiter has much more mass, it also has a much larger volume because it's made of gas. Density = mass ÷ volume. Earth's average density is about 5.5 g/cm³ while Jupiter's is only about 1.3 g/cm³ - less dense than Earth because gases are less dense than rock.",
-                    topic: "Planets - Physical Properties"
-                },
-                {
-                    question: "Astronomers observe that some planets in our solar system have many moons while others have few or none. What property of a planet most affects its ability to capture and hold moons in orbit?",
-                    options: [
-                        "The planet's distance from the Sun determines how many moons it can capture",
-                        "The planet's mass and gravitational force determine how many moons it can hold",
-                        "The planet's rotation speed determines how many moons can orbit around it",
-                        "The planet's color and composition determine how many moons are attracted to it"
-                    ],
-                    correct: 1,
-                    explanation: "A planet's mass creates its gravitational pull. Larger planets like Jupiter (95+ moons) and Saturn (80+ moons) have much more mass and stronger gravity than small planets like Mars (2 moons) or Mercury (0 moons), allowing them to capture and hold more moons.",
-                    topic: "Solar System - Gravity Effects"
-                },
-                {
-                    question: "Ancient sailors used the North Star (Polaris) for navigation because it appears to stay in the same position in the night sky while other stars appear to move. Why does Polaris appear stationary?",
-                    options: [
-                        "Polaris is the closest star to Earth so it doesn't appear to move at all",
-                        "Polaris is directly above Earth's North Pole along the axis of rotation precisely",
-                        "Polaris is the brightest star so it seems not to move across the sky",
-                        "Polaris orbits Earth in the opposite direction of Earth's rotation exactly"
-                    ],
-                    correct: 1,
-                    explanation: "Polaris is located almost directly above Earth's North Pole, aligned with Earth's rotational axis. As Earth spins, Polaris appears to stay in nearly the same spot while all other stars appear to circle around it. This makes it perfect for navigation!",
-                    topic: "Earth's Motion - Stars"
-                },
-                {
-                    question: "The asteroid belt between Mars and Jupiter contains millions of rocky objects. Scientists hypothesize that these asteroids are left over from the solar system's formation and never formed into a planet. What prevented these rocks from forming a planet?",
-                    options: [
-                        "The asteroids are too far from the Sun to receive enough heat for fusion",
-                        "Jupiter's strong gravitational pull disrupted the formation of a planet there regularly",
-                        "Mars and Jupiter collided and broke apart creating the asteroid belt instantly",
-                        "The asteroids are actually pieces of moons that exploded in the past"
-                    ],
-                    correct: 1,
-                    explanation: "Jupiter's immense gravitational force created disturbances in the region between Mars and Jupiter. These gravitational effects prevented the rocky material from combining into a planet, leaving the asteroid belt as 'leftover' pieces from solar system formation 4.6 billion years ago.",
-                    topic: "Solar System Formation"
-                },
-                {
-                    question: "A lunar eclipse occurs when Earth moves between the Sun and the Moon, causing Earth's shadow to fall on the Moon. During what moon phase MUST a lunar eclipse occur?",
-                    options: [
-                        "A lunar eclipse must occur during a new moon phase only",
-                        "A lunar eclipse must occur during a full moon phase only",
-                        "A lunar eclipse must occur during a first quarter moon phase only",
-                        "A lunar eclipse can occur during any moon phase at any time"
-                    ],
-                    correct: 1,
-                    explanation: "For Earth's shadow to fall on the Moon, the Moon must be on the opposite side of Earth from the Sun - which is the full moon position. However, not every full moon causes an eclipse because the Moon's orbit is tilted. The three objects must align perfectly.",
-                    topic: "Moon Phases - Eclipses"
-                },
-                {
-                    question: "Comets have highly elliptical (oval-shaped) orbits around the Sun. As a comet approaches the Sun, it develops a tail that always points away from the Sun. What causes the tail to form and point away from the Sun?",
-                    options: [
-                        "Solar wind and radiation push gas and dust away from the Sun continuously",
-                        "The comet's speed causes the tail to trail behind as it moves forward",
-                        "Earth's magnetic field pulls the comet's tail toward our planet strongly",
-                        "Gravity from other planets pulls the tail away from the Sun's gravity well"
-                    ],
-                    correct: 0,
-                    explanation: "The Sun emits a stream of charged particles (solar wind) and radiation. When a comet gets close to the Sun, this solar wind and radiation pressure push the vaporized gases and dust away from the Sun, creating a tail that always points away from the Sun regardless of the comet's direction of travel.",
-                    topic: "Comets - Solar Wind Effects"
-                },
-                {
-                    question: "Earth's mantle makes up about 84% of Earth's volume and is made of hot, semi-solid rock that moves very slowly in convection currents. How do these mantle convection currents affect Earth's surface?",
-                    options: [
-                        "Mantle currents have no effect on the surface because the crust blocks them",
-                        "Mantle currents cause the movement of tectonic plates on Earth's surface gradually",
-                        "Mantle currents cause the Moon to orbit Earth in a regular circular path",
-                        "Mantle currents make Earth rotate faster causing shorter days over time significantly"
-                    ],
-                    correct: 1,
-                    explanation: "Heat from Earth's core creates convection currents in the semi-solid mantle. These slow-moving currents drag the tectonic plates above them, causing continental drift, earthquakes, volcanic activity, and mountain formation - all the major geological processes we observe on Earth's surface!",
-                    topic: "Earth's Layers - Plate Tectonics"
-                },
-
-                // Chapter 3: Living Systems - 10 questions
-                {
-                    question: "Plant cells contain chloroplasts that perform photosynthesis, converting light energy into chemical energy stored in glucose. Animal cells do not have chloroplasts. How do animal cells obtain the energy stored in glucose?",
-                    options: [
-                        "Animal cells cannot use glucose and must create their own energy differently",
-                        "Animal cells obtain glucose by eating plants or animals that ate plants directly",
-                        "Animal cells absorb glucose from sunlight through their cell membranes continuously",
-                        "Animal cells produce glucose in mitochondria using only water and oxygen molecules"
-                    ],
-                    correct: 1,
-                    explanation: "Animals can't make their own glucose (they lack chloroplasts). They must eat plants (which make glucose through photosynthesis) or eat other animals that ate plants. This glucose is then broken down in mitochondria through cellular respiration to release energy.",
-                    topic: "Cells - Energy Transfer"
-                },
-                {
-                    question: "In an ecosystem, energy flows from producers to consumers in a food chain. A grassland food chain shows: Grass → Grasshopper → Mouse → Snake → Hawk. If a disease kills most of the mice, what would most likely happen to the grasshopper and snake populations?",
-                    options: [
-                        "Grasshopper population would decrease and snake population would decrease significantly overall",
-                        "Grasshopper population would increase and snake population would decrease significantly overall",
-                        "Grasshopper population would decrease and snake population would increase significantly overall",
-                        "Grasshopper population would increase and snake population would increase significantly overall"
-                    ],
-                    correct: 1,
-                    explanation: "With fewer mice, there's less predation on grasshoppers (so grasshopper population increases). However, snakes have less food available (fewer mice to eat), so snake population would decrease. This shows how one change in a food chain affects multiple levels.",
-                    topic: "Food Chains - Population Dynamics"
-                },
-                {
-                    question: "Photosynthesis and cellular respiration are complementary processes. Photosynthesis produces oxygen and glucose, while cellular respiration uses oxygen and glucose. What else do these processes exchange?",
-                    options: [
-                        "Photosynthesis uses carbon dioxide; cellular respiration produces carbon dioxide as waste",
-                        "Photosynthesis uses nitrogen gas; cellular respiration produces nitrogen gas as waste",
-                        "Photosynthesis uses helium gas; cellular respiration produces helium gas as waste",
-                        "Photosynthesis uses hydrogen gas; cellular respiration produces hydrogen gas as waste"
-                    ],
-                    correct: 0,
-                    explanation: "Photosynthesis: 6CO₂ + 6H₂O + light energy → C₆H₁₂O₆ + 6O₂ (uses carbon dioxide, makes oxygen). Cellular respiration: C₆H₁₂O₆ + 6O₂ → 6CO₂ + 6H₂O + energy (uses oxygen, makes carbon dioxide). These processes form a cycle that sustains life on Earth!",
-                    topic: "Life Processes - Chemical Cycles"
-                },
-                {
-                    question: "A scientist observes these organisms in a pond ecosystem: algae, mosquito larvae, small fish, large fish, and herons. She notices that the total mass of algae is much greater than the total mass of herons. Why do ecosystems typically have more producer mass than top predator mass?",
-                    options: [
-                        "Producers reproduce faster than predators so they always outnumber them in ecosystems",
-                        "Energy is lost as heat at each level so more producers are needed to support predators",
-                        "Predators are larger animals so fewer are needed to balance the entire ecosystem",
-                        "Producers need more space than predators so they take up more area in ecosystems"
-                    ],
-                    correct: 1,
-                    explanation: "This is explained by the energy pyramid. Only about 10% of energy transfers to the next level; 90% is lost as heat. To support a few herons, you need many fish; to support those fish, you need even more mosquito larvae; to support larvae, you need a huge amount of algae at the base.",
-                    topic: "Food Chains - Energy Pyramids"
-                },
-                {
-                    question: "Arctic foxes have thick white fur in winter that changes to thin brown fur in summer. This seasonal change is an example of an adaptation. What type of adaptation is this, and why is it beneficial?",
-                    options: [
-                        "This is a behavioral adaptation that helps the fox hunt more effectively year-round",
-                        "This is a structural adaptation that provides camouflage and temperature regulation seasonally",
-                        "This is a physiological adaptation that helps the fox digest different foods each season",
-                        "This is a learned adaptation that the fox develops through practice over many years"
-                    ],
-                    correct: 1,
-                    explanation: "This is a structural (physical) adaptation. The white winter fur provides camouflage in snow and insulation against cold. The brown summer fur provides camouflage in tundra vegetation and prevents overheating. This adaptation increases survival chances year-round.",
-                    topic: "Adaptations - Types and Functions"
-                },
-                {
-                    question: "In a forest ecosystem, decomposers like fungi and bacteria break down dead plants and animals. What would happen to the ecosystem if all decomposers suddenly disappeared?",
-                    options: [
-                        "The ecosystem would improve because decomposers compete with plants for nutrients regularly",
-                        "Dead matter would accumulate and nutrients would not be recycled back to soil completely",
-                        "Plants would grow better because they wouldn't be attacked by fungi anymore at all",
-                        "Animals would increase in number because decomposers normally eat them as primary food"
-                    ],
-                    correct: 1,
-                    explanation: "Decomposers are essential for nutrient cycling. They break down dead organisms and waste, returning nutrients (nitrogen, phosphorus, etc.) to the soil where plants can use them. Without decomposers, dead matter would pile up and nutrients would be locked away, eventually causing the ecosystem to collapse.",
-                    topic: "Ecosystems - Decomposers"
-                },
-                {
-                    question: "A cell membrane is selectively permeable, meaning it controls what enters and leaves the cell. This is similar to a window screen that lets air through but keeps insects out. Why is selective permeability important for cell survival?",
-                    options: [
-                        "It allows the cell to let in needed materials while keeping out harmful substances effectively",
-                        "It allows all substances to flow freely in and out of cells without restrictions",
-                        "It prevents any materials from entering or leaving the cell under any circumstances",
-                        "It only allows water to pass through while blocking all other molecules completely"
-                    ],
-                    correct: 0,
-                    explanation: "Selective permeability is crucial for cell survival. The cell membrane lets in nutrients (glucose, oxygen) and releases waste (carbon dioxide), while keeping out harmful substances and maintaining proper concentrations of materials. Without this control, cells couldn't maintain the specific conditions needed for life processes.",
-                    topic: "Cells - Membrane Function"
-                },
-                {
-                    question: "Clownfish live among sea anemone tentacles that have stinging cells. The anemone's stings protect the clownfish from predators, and the clownfish attracts prey to the anemone. Neither organism is harmed. What type of symbiotic relationship is this?",
-                    options: [
-                        "This is parasitism because the clownfish takes protection without giving anything back",
-                        "This is commensalism because only the clownfish benefits from the relationship clearly",
-                        "This is mutualism because both the clownfish and anemone benefit from each other",
-                        "This is predation because the anemone stings and eats the clownfish regularly"
-                    ],
-                    correct: 2,
-                    explanation: "This is mutualism - both species benefit. The clownfish gets protection from the anemone's stinging tentacles (clownfish are immune to the stings), while the anemone gets food as the clownfish lures prey and may also remove parasites. Both organisms benefit, so it's a mutualistic relationship.",
-                    topic: "Symbiosis - Mutualism"
-                },
-                {
-                    question: "Cactus plants have evolved several adaptations for desert survival: thick stems that store water, waxy coating that reduces water loss, and extensive root systems. A student transplants a cactus to a rainforest. What would most likely happen?",
-                    options: [
-                        "The cactus would thrive because it now has unlimited water available constantly",
-                        "The cactus would likely struggle because its adaptations are for dry environments specifically",
-                        "The cactus would quickly evolve new adaptations to survive in the rainforest successfully",
-                        "The cactus would be unaffected because plants can survive in any environment equally"
-                    ],
-                    correct: 1,
-                    explanation: "Adaptations are specific to an organism's environment. Cacti are adapted to conserve water in dry climates. In a rainforest, the constant moisture, low light (under canopy), and competition with rainforest plants would make survival difficult. The cactus's specialized desert adaptations wouldn't help in this different environment.",
-                    topic: "Adaptations - Environmental Specificity"
-                },
-                {
-                    question: "Scientists classify living things into groups based on shared characteristics. They observe an organism that is multicellular, makes its own food through photosynthesis, has cell walls, and cannot move on its own. To which kingdom does this organism most likely belong?",
-                    options: [
-                        "This organism most likely belongs to the Animal kingdom based on characteristics",
-                        "This organism most likely belongs to the Plant kingdom based on characteristics",
-                        "This organism most likely belongs to the Fungi kingdom based on characteristics",
-                        "This organism most likely belongs to the Bacteria kingdom based on characteristics"
-                    ],
-                    correct: 1,
-                    explanation: "This organism shows key plant characteristics: multicellular (made of many cells), autotrophic (makes own food through photosynthesis), has cell walls, and is sessile (non-moving). Animals don't make their own food or have cell walls. Fungi don't photosynthesize. Bacteria are unicellular. These traits indicate the Plant kingdom.",
-                    topic: "Classification - Kingdoms"
-                }
-            ]
-        };
-
-        // Initialize the test
-        document.addEventListener('DOMContentLoaded', function() {
-            new TestEngine(testData, 'midterm_review', 35);
-        });
+        // Simple timer to track time spent
+        let seconds = 0;
+        setInterval(function() {
+            seconds++;
+            const mins = Math.floor(seconds / 60);
+            const secs = seconds % 60;
+            document.getElementById('time-display').textContent =
+                String(mins).padStart(2, '0') + ':' + String(secs).padStart(2, '0');
+        }, 1000);
     </script>
 </body>
 </html>

@@ -268,6 +268,104 @@
         .example-card:hover {
             transform: translateY(-5px);
         }
+
+        .inline-practice-section {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 30px;
+            margin: 40px 0;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+
+        .practice-instructions {
+            background: #e3f2fd;
+            padding: 15px;
+            border-radius: 10px;
+            border-left: 5px solid #2196F3;
+            margin-bottom: 30px;
+            font-size: 1.1em;
+        }
+
+        .inline-question {
+            background: #f8f9fa;
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 30px;
+            border: 2px solid #e0e0e0;
+        }
+
+        .inline-question h3 {
+            color: #4a47a3;
+            margin-bottom: 15px;
+        }
+
+        .question-text {
+            font-size: 1.1em;
+            line-height: 1.7;
+            margin-bottom: 20px;
+        }
+
+        .option-container {
+            background: white;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            padding: 15px;
+            margin: 10px 0;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .option-container:hover {
+            border-color: #4a47a3;
+            background: #f5f5f5;
+        }
+
+        .option-container label {
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            width: 100%;
+        }
+
+        .option-container input[type="radio"] {
+            margin-right: 15px;
+            transform: scale(1.3);
+            cursor: pointer;
+        }
+
+        .option-text {
+            font-size: 1.05em;
+        }
+
+        .option-container.correct-answer {
+            background: #e8f5e9;
+            border: 3px solid #4CAF50;
+            border-left: 8px solid #4CAF50;
+        }
+
+        .option-container.incorrect-answer {
+            background: #ffebee;
+            border: 3px solid #f44336;
+            border-left: 8px solid #f44336;
+        }
+
+        .option-container.selected-answer.correct-answer {
+            background: #c8e6c9;
+        }
+
+        .explanation {
+            background: #fff3e0;
+            border-left: 5px solid #FF9800;
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 20px;
+            font-size: 1.05em;
+            line-height: 1.6;
+        }
+
+        .question-spacer {
+            height: 40px;
+        }
     </style>
 </head>
 <body>
@@ -834,6 +932,395 @@
             </div>
         </div>
 
+        <div class="inline-practice-section">
+            <h2>📝 Practice Questions - Immediate Feedback!</h2>
+            <p class="practice-instructions">Select your answer to see if you're correct right away! Green = Correct ✅, Red = Try again ❌</p>
+
+            <div id="inline-quiz-chapter1">
+
+                <!-- Question 1 -->
+                <div class="inline-question" data-correct="B">
+                    <h3>Question 1:</h3>
+                    <p class="question-text">What is the correct order of the first three steps in the scientific method?</p>
+
+                    <div class="option-container">
+                        <label>
+                            <input type="radio" name="q1" value="A">
+                            <span class="option-text">A. Experiment, Hypothesis, Ask a Question</span>
+                        </label>
+                    </div>
+
+                    <div class="option-container">
+                        <label>
+                            <input type="radio" name="q1" value="B">
+                            <span class="option-text">B. Ask a Question, Do Research, Make a Hypothesis</span>
+                        </label>
+                    </div>
+
+                    <div class="option-container">
+                        <label>
+                            <input type="radio" name="q1" value="C">
+                            <span class="option-text">C. Make a Hypothesis, Ask a Question, Do Research</span>
+                        </label>
+                    </div>
+
+                    <div class="option-container">
+                        <label>
+                            <input type="radio" name="q1" value="D">
+                            <span class="option-text">D. Do Research, Experiment, Analyze Results</span>
+                        </label>
+                    </div>
+
+                    <div class="explanation" data-text="The scientific method starts with asking a question about something you're curious about, then doing research to learn what others have discovered, and finally making an educated guess (hypothesis) based on your research!" style="display: none;"></div>
+
+                    <div class="question-spacer"></div>
+                </div>
+
+                <!-- Question 2 -->
+                <div class="inline-question" data-correct="C">
+                    <h3>Question 2:</h3>
+                    <p class="question-text">Which observation is QUANTITATIVE?</p>
+
+                    <div class="option-container">
+                        <label>
+                            <input type="radio" name="q2" value="A">
+                            <span class="option-text">A. The flower smells sweet and is bright pink</span>
+                        </label>
+                    </div>
+
+                    <div class="option-container">
+                        <label>
+                            <input type="radio" name="q2" value="B">
+                            <span class="option-text">B. The dog's fur is soft and fluffy</span>
+                        </label>
+                    </div>
+
+                    <div class="option-container">
+                        <label>
+                            <input type="radio" name="q2" value="C">
+                            <span class="option-text">C. The plant grew 12 centimeters in one week</span>
+                        </label>
+                    </div>
+
+                    <div class="option-container">
+                        <label>
+                            <input type="radio" name="q2" value="D">
+                            <span class="option-text">D. The sky is cloudy and gray today</span>
+                        </label>
+                    </div>
+
+                    <div class="explanation" data-text="Quantitative observations use numbers and measurements! 'The plant grew 12 centimeters' includes a measurement (12 cm), while the other options describe qualities using words like soft, sweet, and cloudy." style="display: none;"></div>
+
+                    <div class="question-spacer"></div>
+                </div>
+
+                <!-- Question 3 -->
+                <div class="inline-question" data-correct="A">
+                    <h3>Question 3:</h3>
+                    <p class="question-text">In an experiment testing which fertilizer makes plants grow tallest, what is the DEPENDENT variable?</p>
+
+                    <div class="option-container">
+                        <label>
+                            <input type="radio" name="q3" value="A">
+                            <span class="option-text">A. The height of the plants (what you measure)</span>
+                        </label>
+                    </div>
+
+                    <div class="option-container">
+                        <label>
+                            <input type="radio" name="q3" value="B">
+                            <span class="option-text">B. The type of fertilizer used (what you change)</span>
+                        </label>
+                    </div>
+
+                    <div class="option-container">
+                        <label>
+                            <input type="radio" name="q3" value="C">
+                            <span class="option-text">C. The amount of water given to each plant</span>
+                        </label>
+                    </div>
+
+                    <div class="option-container">
+                        <label>
+                            <input type="radio" name="q3" value="D">
+                            <span class="option-text">D. The type of soil used for all plants</span>
+                        </label>
+                    </div>
+
+                    <div class="explanation" data-text="The dependent variable is what you MEASURE in an experiment - it depends on what you changed! Plant height is what you're measuring to see the effect of different fertilizers. The fertilizer type is the independent variable (what YOU change)." style="display: none;"></div>
+
+                    <div class="question-spacer"></div>
+                </div>
+
+                <!-- Question 4 -->
+                <div class="inline-question" data-correct="D">
+                    <h3>Question 4:</h3>
+                    <p class="question-text">When reading a graduated cylinder, where should you measure the water level?</p>
+
+                    <div class="option-container">
+                        <label>
+                            <input type="radio" name="q4" value="A">
+                            <span class="option-text">A. At the very top of the water</span>
+                        </label>
+                    </div>
+
+                    <div class="option-container">
+                        <label>
+                            <input type="radio" name="q4" value="B">
+                            <span class="option-text">B. Anywhere on the water surface is fine</span>
+                        </label>
+                    </div>
+
+                    <div class="option-container">
+                        <label>
+                            <input type="radio" name="q4" value="C">
+                            <span class="option-text">C. At the middle of the water level</span>
+                        </label>
+                    </div>
+
+                    <div class="option-container">
+                        <label>
+                            <input type="radio" name="q4" value="D">
+                            <span class="option-text">D. At the bottom of the meniscus (curved surface)</span>
+                        </label>
+                    </div>
+
+                    <div class="explanation" data-text="Always read at eye level and measure at the BOTTOM of the meniscus (the curved surface)! Water molecules stick to glass, creating a U-shaped curve. Reading from the top or middle gives you the wrong measurement!" style="display: none;"></div>
+
+                    <div class="question-spacer"></div>
+                </div>
+
+                <!-- Question 5 -->
+                <div class="inline-question" data-correct="C">
+                    <h3>Question 5:</h3>
+                    <p class="question-text">A hypothesis is best described as:</p>
+
+                    <div class="option-container">
+                        <label>
+                            <input type="radio" name="q5" value="A">
+                            <span class="option-text">A. A proven scientific fact that is always true</span>
+                        </label>
+                    </div>
+
+                    <div class="option-container">
+                        <label>
+                            <input type="radio" name="q5" value="B">
+                            <span class="option-text">B. A random guess with no research behind it</span>
+                        </label>
+                    </div>
+
+                    <div class="option-container">
+                        <label>
+                            <input type="radio" name="q5" value="C">
+                            <span class="option-text">C. An educated guess based on research and observations</span>
+                        </label>
+                    </div>
+
+                    <div class="option-container">
+                        <label>
+                            <input type="radio" name="q5" value="D">
+                            <span class="option-text">D. The final conclusion after analyzing all the data</span>
+                        </label>
+                    </div>
+
+                    <div class="explanation" data-text="A hypothesis is your BEST educated guess based on the research you've done! It's not a proven fact yet - that's why you need to test it with experiments. It's also not random - it's based on background knowledge and observations." style="display: none;"></div>
+
+                    <div class="question-spacer"></div>
+                </div>
+
+                <!-- Question 6 -->
+                <div class="inline-question" data-correct="B">
+                    <h3>Question 6:</h3>
+                    <p class="question-text">Which tool would you use to measure the MASS of a rock?</p>
+
+                    <div class="option-container">
+                        <label>
+                            <input type="radio" name="q6" value="A">
+                            <span class="option-text">A. Graduated cylinder</span>
+                        </label>
+                    </div>
+
+                    <div class="option-container">
+                        <label>
+                            <input type="radio" name="q6" value="B">
+                            <span class="option-text">B. Balance scale</span>
+                        </label>
+                    </div>
+
+                    <div class="option-container">
+                        <label>
+                            <input type="radio" name="q6" value="C">
+                            <span class="option-text">C. Thermometer</span>
+                        </label>
+                    </div>
+
+                    <div class="option-container">
+                        <label>
+                            <input type="radio" name="q6" value="D">
+                            <span class="option-text">D. Ruler or meter stick</span>
+                        </label>
+                    </div>
+
+                    <div class="explanation" data-text="A balance scale measures MASS (how heavy something is) in grams or kilograms! Graduated cylinders measure liquid volume, thermometers measure temperature, and rulers measure length. Each scientific tool has a specific job!" style="display: none;"></div>
+
+                    <div class="question-spacer"></div>
+                </div>
+
+                <!-- Question 7 -->
+                <div class="inline-question" data-correct="D">
+                    <h3>Question 7:</h3>
+                    <p class="question-text">In an experiment, control variables are:</p>
+
+                    <div class="option-container">
+                        <label>
+                            <input type="radio" name="q7" value="A">
+                            <span class="option-text">A. The things you measure during the experiment</span>
+                        </label>
+                    </div>
+
+                    <div class="option-container">
+                        <label>
+                            <input type="radio" name="q7" value="B">
+                            <span class="option-text">B. The things you purposely change to test</span>
+                        </label>
+                    </div>
+
+                    <div class="option-container">
+                        <label>
+                            <input type="radio" name="q7" value="C">
+                            <span class="option-text">C. Not important for a fair experiment</span>
+                        </label>
+                    </div>
+
+                    <div class="option-container">
+                        <label>
+                            <input type="radio" name="q7" value="D">
+                            <span class="option-text">D. The things you keep exactly the same to make it a fair test</span>
+                        </label>
+                    </div>
+
+                    <div class="explanation" data-text="Control variables are SUPER important! They're everything you keep the SAME to make it a fair test. If you're testing plant growth with different amounts of sunlight, you'd keep the water, soil, pot size, and temperature the same - those are your controls!" style="display: none;"></div>
+
+                    <div class="question-spacer"></div>
+                </div>
+
+                <!-- Question 8 -->
+                <div class="inline-question" data-correct="A">
+                    <h3>Question 8:</h3>
+                    <p class="question-text">Why do scientists record data in organized tables and charts?</p>
+
+                    <div class="option-container">
+                        <label>
+                            <input type="radio" name="q8" value="A">
+                            <span class="option-text">A. To make it easier to spot patterns and share results with others</span>
+                        </label>
+                    </div>
+
+                    <div class="option-container">
+                        <label>
+                            <input type="radio" name="q8" value="B">
+                            <span class="option-text">B. To make the experiment look more complicated</span>
+                        </label>
+                    </div>
+
+                    <div class="option-container">
+                        <label>
+                            <input type="radio" name="q8" value="C">
+                            <span class="option-text">C. Because it's required but doesn't help with analysis</span>
+                        </label>
+                    </div>
+
+                    <div class="option-container">
+                        <label>
+                            <input type="radio" name="q8" value="D">
+                            <span class="option-text">D. To confuse other scientists who read their work</span>
+                        </label>
+                    </div>
+
+                    <div class="explanation" data-text="Organized data tables help scientists spot patterns and trends in their results! Good organization makes it easy to compare numbers, calculate averages, and share findings with other scientists. It's all about making the data clear and useful!" style="display: none;"></div>
+
+                    <div class="question-spacer"></div>
+                </div>
+
+                <!-- Question 9 -->
+                <div class="inline-question" data-correct="C">
+                    <h3>Question 9:</h3>
+                    <p class="question-text">Which statement is an example of a good hypothesis?</p>
+
+                    <div class="option-container">
+                        <label>
+                            <input type="radio" name="q9" value="A">
+                            <span class="option-text">A. "Plants are cool and I like them."</span>
+                        </label>
+                    </div>
+
+                    <div class="option-container">
+                        <label>
+                            <input type="radio" name="q9" value="B">
+                            <span class="option-text">B. "What happens if plants get no water?"</span>
+                        </label>
+                    </div>
+
+                    <div class="option-container">
+                        <label>
+                            <input type="radio" name="q9" value="C">
+                            <span class="option-text">C. "If a plant receives more sunlight, then it will grow taller because plants need light for photosynthesis."</span>
+                        </label>
+                    </div>
+
+                    <div class="option-container">
+                        <label>
+                            <input type="radio" name="q9" value="D">
+                            <span class="option-text">D. "The plant grew 5 centimeters this week."</span>
+                        </label>
+                    </div>
+
+                    <div class="explanation" data-text="A good hypothesis uses an 'If...then...because...' format! It makes a testable prediction based on reason. Option C predicts what will happen (plants will grow taller), explains when (with more sunlight), and gives a scientific reason (because plants need light for photosynthesis)." style="display: none;"></div>
+
+                    <div class="question-spacer"></div>
+                </div>
+
+                <!-- Question 10 -->
+                <div class="inline-question" data-correct="B">
+                    <h3>Question 10:</h3>
+                    <p class="question-text">What is the main difference between a microscope and a magnifying glass?</p>
+
+                    <div class="option-container">
+                        <label>
+                            <input type="radio" name="q10" value="A">
+                            <span class="option-text">A. They do exactly the same thing</span>
+                        </label>
+                    </div>
+
+                    <div class="option-container">
+                        <label>
+                            <input type="radio" name="q10" value="B">
+                            <span class="option-text">B. Microscopes can magnify much more (up to 1000x) to see cells and bacteria</span>
+                        </label>
+                    </div>
+
+                    <div class="option-container">
+                        <label>
+                            <input type="radio" name="q10" value="C">
+                            <span class="option-text">C. Magnifying glasses are stronger than microscopes</span>
+                        </label>
+                    </div>
+
+                    <div class="option-container">
+                        <label>
+                            <input type="radio" name="q10" value="D">
+                            <span class="option-text">D. Microscopes are used outdoors, magnifying glasses indoors</span>
+                        </label>
+                    </div>
+
+                    <div class="explanation" data-text="Microscopes are MUCH more powerful! A magnifying glass (hand lens) can magnify about 2-10 times, which is great for looking at insects or leaves. But microscopes can magnify up to 1000 times or more, letting us see tiny things like cells and bacteria that are invisible to the naked eye!" style="display: none;"></div>
+
+                    <div class="question-spacer"></div>
+                </div>
+
+            </div>
+        </div>
+
         <div class="quiz-section">
             <h2>🧠 Test Your Knowledge!</h2>
             <div id="quiz-container">
@@ -917,6 +1404,7 @@
         </div>
     </div>
 
+    <script src="inline-quiz.js"></script>
     <script src="quiz.js"></script>
 </body>
 </html>

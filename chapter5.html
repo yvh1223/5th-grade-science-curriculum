@@ -205,6 +205,104 @@
             margin: 30px 0;
             border: 3px dashed #ff6b9d;
         }
+
+        .inline-practice-section {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 30px;
+            margin: 40px 0;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+
+        .practice-instructions {
+            background: #e3f2fd;
+            padding: 15px;
+            border-radius: 10px;
+            border-left: 5px solid #2196F3;
+            margin-bottom: 30px;
+            font-size: 1.1em;
+        }
+
+        .inline-question {
+            background: #f8f9fa;
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 30px;
+            border: 2px solid #e0e0e0;
+        }
+
+        .inline-question h3 {
+            color: #4a47a3;
+            margin-bottom: 15px;
+        }
+
+        .question-text {
+            font-size: 1.1em;
+            line-height: 1.7;
+            margin-bottom: 20px;
+        }
+
+        .option-container {
+            background: white;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            padding: 15px;
+            margin: 10px 0;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .option-container:hover {
+            border-color: #4a47a3;
+            background: #f5f5f5;
+        }
+
+        .option-container label {
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            width: 100%;
+        }
+
+        .option-container input[type="radio"] {
+            margin-right: 15px;
+            transform: scale(1.3);
+            cursor: pointer;
+        }
+
+        .option-text {
+            font-size: 1.05em;
+        }
+
+        .option-container.correct-answer {
+            background: #e8f5e9;
+            border: 3px solid #4CAF50;
+            border-left: 8px solid #4CAF50;
+        }
+
+        .option-container.incorrect-answer {
+            background: #ffebee;
+            border: 3px solid #f44336;
+            border-left: 8px solid #f44336;
+        }
+
+        .option-container.selected-answer.correct-answer {
+            background: #c8e6c9;
+        }
+
+        .explanation {
+            background: #fff3e0;
+            border-left: 5px solid #FF9800;
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 20px;
+            font-size: 1.05em;
+            line-height: 1.6;
+        }
+
+        .question-spacer {
+            height: 40px;
+        }
     </style>
 </head>
 <body>
@@ -710,6 +808,395 @@
             </div>
         </div>
 
+        <div class="inline-practice-section">
+            <h2>📝 Practice Questions - Immediate Feedback!</h2>
+            <p class="practice-instructions">Select your answer to see if you're correct right away! Green = Correct ✅, Red = Try again ❌</p>
+
+            <div id="inline-quiz-chapter5">
+
+                <!-- Question 1 -->
+                <div class="inline-question" data-correct="B">
+                    <h3>Question 1:</h3>
+                    <p class="question-text">What is the correct order of the water cycle processes?</p>
+
+                    <div class="option-container">
+                        <label>
+                            <input type="radio" name="q1" value="A">
+                            <span class="option-text">A. Precipitation, Evaporation, Collection, Condensation</span>
+                        </label>
+                    </div>
+
+                    <div class="option-container">
+                        <label>
+                            <input type="radio" name="q1" value="B">
+                            <span class="option-text">B. Evaporation, Condensation, Precipitation, Collection</span>
+                        </label>
+                    </div>
+
+                    <div class="option-container">
+                        <label>
+                            <input type="radio" name="q1" value="C">
+                            <span class="option-text">C. Condensation, Evaporation, Collection, Precipitation</span>
+                        </label>
+                    </div>
+
+                    <div class="option-container">
+                        <label>
+                            <input type="radio" name="q1" value="D">
+                            <span class="option-text">D. Collection, Precipitation, Evaporation, Condensation</span>
+                        </label>
+                    </div>
+
+                    <div class="explanation" data-text="The water cycle goes: EVAPORATION (sun heats water into vapor) → CONDENSATION (vapor cools and forms clouds) → PRECIPITATION (water falls as rain/snow) → COLLECTION (water gathers in oceans/rivers) → repeat! Remember: Every Cloud Produces Cool water!" style="display: none;"></div>
+
+                    <div class="question-spacer"></div>
+                </div>
+
+                <!-- Question 2 -->
+                <div class="inline-question" data-correct="D">
+                    <h3>Question 2:</h3>
+                    <p class="question-text">Which cloud type is associated with thunderstorms and can bring heavy rain and lightning?</p>
+
+                    <div class="option-container">
+                        <label>
+                            <input type="radio" name="q2" value="A">
+                            <span class="option-text">A. Cumulus</span>
+                        </label>
+                    </div>
+
+                    <div class="option-container">
+                        <label>
+                            <input type="radio" name="q2" value="B">
+                            <span class="option-text">B. Cirrus</span>
+                        </label>
+                    </div>
+
+                    <div class="option-container">
+                        <label>
+                            <input type="radio" name="q2" value="C">
+                            <span class="option-text">C. Stratus</span>
+                        </label>
+                    </div>
+
+                    <div class="option-container">
+                        <label>
+                            <input type="radio" name="q2" value="D">
+                            <span class="option-text">D. Cumulonimbus</span>
+                        </label>
+                    </div>
+
+                    <div class="explanation" data-text="CUMULONIMBUS clouds are the thunderstorm clouds! They're HUGE - can reach 50,000+ feet tall (10 miles high!) and look like towering mountains or anvils. They bring heavy rain, lightning, strong winds, and sometimes tornadoes. They're the tallest and most powerful clouds!" style="display: none;"></div>
+
+                    <div class="question-spacer"></div>
+                </div>
+
+                <!-- Question 3 -->
+                <div class="inline-question" data-correct="A">
+                    <h3>Question 3:</h3>
+                    <p class="question-text">What is the main difference between weather and climate?</p>
+
+                    <div class="option-container">
+                        <label>
+                            <input type="radio" name="q3" value="A">
+                            <span class="option-text">A. Weather is short-term conditions; climate is long-term average patterns</span>
+                        </label>
+                    </div>
+
+                    <div class="option-container">
+                        <label>
+                            <input type="radio" name="q3" value="B">
+                            <span class="option-text">B. Climate is short-term; weather is long-term</span>
+                        </label>
+                    </div>
+
+                    <div class="option-container">
+                        <label>
+                            <input type="radio" name="q3" value="C">
+                            <span class="option-text">C. They are exactly the same thing</span>
+                        </label>
+                    </div>
+
+                    <div class="option-container">
+                        <label>
+                            <input type="radio" name="q3" value="D">
+                            <span class="option-text">D. Weather only happens in summer</span>
+                        </label>
+                    </div>
+
+                    <div class="explanation" data-text="WEATHER = what's happening RIGHT NOW (today it's raining). CLIMATE = average weather over 30+ years (Florida has a warm, humid climate). Easy way to remember: Climate is what you EXPECT, Weather is what you GET!" style="display: none;"></div>
+
+                    <div class="question-spacer"></div>
+                </div>
+
+                <!-- Question 4 -->
+                <div class="inline-question" data-correct="C">
+                    <h3>Question 4:</h3>
+                    <p class="question-text">In which layer of the atmosphere do we live and where does all weather occur?</p>
+
+                    <div class="option-container">
+                        <label>
+                            <input type="radio" name="q4" value="A">
+                            <span class="option-text">A. Stratosphere</span>
+                        </label>
+                    </div>
+
+                    <div class="option-container">
+                        <label>
+                            <input type="radio" name="q4" value="B">
+                            <span class="option-text">B. Mesosphere</span>
+                        </label>
+                    </div>
+
+                    <div class="option-container">
+                        <label>
+                            <input type="radio" name="q4" value="C">
+                            <span class="option-text">C. Troposphere</span>
+                        </label>
+                    </div>
+
+                    <div class="option-container">
+                        <label>
+                            <input type="radio" name="q4" value="D">
+                            <span class="option-text">D. Thermosphere</span>
+                        </label>
+                    </div>
+
+                    <div class="explanation" data-text="The TROPOSPHERE is where we live and where ALL weather happens! It's the lowest layer (0-12 km) and contains 75% of the atmosphere's air. Temperature DECREASES as you go up. Planes fly at the top of this layer!" style="display: none;"></div>
+
+                    <div class="question-spacer"></div>
+                </div>
+
+                <!-- Question 5 -->
+                <div class="inline-question" data-correct="B">
+                    <h3>Question 5:</h3>
+                    <p class="question-text">What causes water vapor to condense and form clouds?</p>
+
+                    <div class="option-container">
+                        <label>
+                            <input type="radio" name="q5" value="A">
+                            <span class="option-text">A. The water vapor gets hotter</span>
+                        </label>
+                    </div>
+
+                    <div class="option-container">
+                        <label>
+                            <input type="radio" name="q5" value="B">
+                            <span class="option-text">B. The water vapor cools down at high altitudes</span>
+                        </label>
+                    </div>
+
+                    <div class="option-container">
+                        <label>
+                            <input type="radio" name="q5" value="C">
+                            <span class="option-text">C. Wind blows the vapor together</span>
+                        </label>
+                    </div>
+
+                    <div class="option-container">
+                        <label>
+                            <input type="radio" name="q5" value="D">
+                            <span class="option-text">D. The Sun pulls vapor into clouds</span>
+                        </label>
+                    </div>
+
+                    <div class="explanation" data-text="CONDENSATION happens when water vapor rises high into the atmosphere where it's COLD! The vapor COOLS and turns back into tiny liquid water droplets, which cluster together to form clouds. That's why clouds are high up where the air is colder!" style="display: none;"></div>
+
+                    <div class="question-spacer"></div>
+                </div>
+
+                <!-- Question 6 -->
+                <div class="inline-question" data-correct="A">
+                    <h3>Question 6:</h3>
+                    <p class="question-text">What type of precipitation forms when raindrops fall through a layer of cold air and freeze into ice pellets?</p>
+
+                    <div class="option-container">
+                        <label>
+                            <input type="radio" name="q6" value="A">
+                            <span class="option-text">A. Sleet</span>
+                        </label>
+                    </div>
+
+                    <div class="option-container">
+                        <label>
+                            <input type="radio" name="q6" value="B">
+                            <span class="option-text">B. Snow</span>
+                        </label>
+                    </div>
+
+                    <div class="option-container">
+                        <label>
+                            <input type="radio" name="q6" value="C">
+                            <span class="option-text">C. Rain</span>
+                        </label>
+                    </div>
+
+                    <div class="option-container">
+                        <label>
+                            <input type="radio" name="q6" value="D">
+                            <span class="option-text">D. Hail</span>
+                        </label>
+                    </div>
+
+                    <div class="explanation" data-text="SLEET forms when raindrops fall through a layer of freezing air and turn into ice pellets before hitting the ground! You can hear it 'ping' on surfaces. SNOW forms when it's freezing all the way down. HAIL forms in thunderstorm updrafts that freeze water multiple times." style="display: none;"></div>
+
+                    <div class="question-spacer"></div>
+                </div>
+
+                <!-- Question 7 -->
+                <div class="inline-question" data-correct="C">
+                    <h3>Question 7:</h3>
+                    <p class="question-text">Which cloud type looks like wispy, feathery streaks high in the sky and is made of ice crystals?</p>
+
+                    <div class="option-container">
+                        <label>
+                            <input type="radio" name="q7" value="A">
+                            <span class="option-text">A. Cumulus</span>
+                        </label>
+                    </div>
+
+                    <div class="option-container">
+                        <label>
+                            <input type="radio" name="q7" value="B">
+                            <span class="option-text">B. Stratus</span>
+                        </label>
+                    </div>
+
+                    <div class="option-container">
+                        <label>
+                            <input type="radio" name="q7" value="C">
+                            <span class="option-text">C. Cirrus</span>
+                        </label>
+                    </div>
+
+                    <div class="option-container">
+                        <label>
+                            <input type="radio" name="q7" value="D">
+                            <span class="option-text">D. Nimbostratus</span>
+                        </label>
+                    </div>
+
+                    <div class="explanation" data-text="CIRRUS clouds are thin, wispy, feathery clouds very high up (20,000+ feet)! They're made of ICE CRYSTALS (not water droplets) because it's so cold up there. They usually mean fair weather now, but change might be coming. 'Cirro-' means curl or wisp!" style="display: none;"></div>
+
+                    <div class="question-spacer"></div>
+                </div>
+
+                <!-- Question 8 -->
+                <div class="inline-question" data-correct="D">
+                    <h3>Question 8:</h3>
+                    <p class="question-text">What percentage of Earth's water is freshwater (not salty)?</p>
+
+                    <div class="option-container">
+                        <label>
+                            <input type="radio" name="q8" value="A">
+                            <span class="option-text">A. 50%</span>
+                        </label>
+                    </div>
+
+                    <div class="option-container">
+                        <label>
+                            <input type="radio" name="q8" value="B">
+                            <span class="option-text">B. 25%</span>
+                        </label>
+                    </div>
+
+                    <div class="option-container">
+                        <label>
+                            <input type="radio" name="q8" value="C">
+                            <span class="option-text">C. 10%</span>
+                        </label>
+                    </div>
+
+                    <div class="option-container">
+                        <label>
+                            <input type="radio" name="q8" value="D">
+                            <span class="option-text">D. Only 3%</span>
+                        </label>
+                    </div>
+
+                    <div class="explanation" data-text="Only 3% of Earth's water is FRESHWATER! The other 97% is in the oceans (salty!). Of that tiny 3%, most is frozen in ice caps and glaciers. Less than 1% is available for us to drink! That's why we need to conserve water - it's precious!" style="display: none;"></div>
+
+                    <div class="question-spacer"></div>
+                </div>
+
+                <!-- Question 9 -->
+                <div class="inline-question" data-correct="B">
+                    <h3>Question 9:</h3>
+                    <p class="question-text">What provides the energy that powers the water cycle?</p>
+
+                    <div class="option-container">
+                        <label>
+                            <input type="radio" name="q9" value="A">
+                            <span class="option-text">A. The Moon</span>
+                        </label>
+                    </div>
+
+                    <div class="option-container">
+                        <label>
+                            <input type="radio" name="q9" value="B">
+                            <span class="option-text">B. The Sun</span>
+                        </label>
+                    </div>
+
+                    <div class="option-container">
+                        <label>
+                            <input type="radio" name="q9" value="C">
+                            <span class="option-text">C. Wind</span>
+                        </label>
+                    </div>
+
+                    <div class="option-container">
+                        <label>
+                            <input type="radio" name="q9" value="D">
+                            <span class="option-text">D. Earth's rotation</span>
+                        </label>
+                    </div>
+
+                    <div class="explanation" data-text="The SUN powers the water cycle! It provides the HEAT energy needed for evaporation - turning liquid water into water vapor that rises. Without the Sun's energy, water wouldn't evaporate and the cycle wouldn't work. The Sun is Earth's main energy source!" style="display: none;"></div>
+
+                    <div class="question-spacer"></div>
+                </div>
+
+                <!-- Question 10 -->
+                <div class="inline-question" data-correct="A">
+                    <h3>Question 10:</h3>
+                    <p class="question-text">In which atmospheric layer does the ozone layer protect us from harmful UV rays?</p>
+
+                    <div class="option-container">
+                        <label>
+                            <input type="radio" name="q10" value="A">
+                            <span class="option-text">A. Stratosphere</span>
+                        </label>
+                    </div>
+
+                    <div class="option-container">
+                        <label>
+                            <input type="radio" name="q10" value="B">
+                            <span class="option-text">B. Troposphere</span>
+                        </label>
+                    </div>
+
+                    <div class="option-container">
+                        <label>
+                            <input type="radio" name="q10" value="C">
+                            <span class="option-text">C. Mesosphere</span>
+                        </label>
+                    </div>
+
+                    <div class="option-container">
+                        <label>
+                            <input type="radio" name="q10" value="D">
+                            <span class="option-text">D. Exosphere</span>
+                        </label>
+                    </div>
+
+                    <div class="explanation" data-text="The STRATOSPHERE (12-50 km high) contains the OZONE LAYER that protects us from harmful UV radiation from the Sun! Temperature INCREASES as you go up in this layer. It's very stable with no turbulence, so high-altitude planes sometimes fly here!" style="display: none;"></div>
+
+                    <div class="question-spacer"></div>
+                </div>
+
+            </div>
+        </div>
+
         <div class="quiz-section">
             <h2>🧠 Test Your Knowledge!</h2>
             <div id="quiz-container">
@@ -734,6 +1221,7 @@
         </div>
     </div>
 
+    <script src="inline-quiz.js"></script>
     <script>
         // Chapter 5 Quiz Data
         const chapter5QuizData = {

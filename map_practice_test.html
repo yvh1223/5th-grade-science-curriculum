@@ -6,6 +6,7 @@
     <title>MAP Growth Science Practice Test</title>
     <link rel="stylesheet" href="styles.css">
     <style>
+
         * {
             margin: 0;
             padding: 0;
@@ -358,634 +359,1833 @@
                 margin-bottom: 20px;
             }
         }
+    
+        /* Inline Quiz Specific Styles */
+        .inline-question {
+            background: #f8f9fa;
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 30px;
+            border: 2px solid #e0e0e0;
+        }
+
+        .inline-question h3 {
+            color: #4a47a3;
+            margin-bottom: 15px;
+        }
+
+        .question-text {
+            font-size: 1.1em;
+            line-height: 1.7;
+            margin-bottom: 20px;
+        }
+
+        .option-container {
+            background: white;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            padding: 15px;
+            margin: 10px 0;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .option-container:hover {
+            background: #f0f8ff;
+            border-color: #4a90e2;
+            transform: translateX(5px);
+        }
+
+        .option-container.correct-answer {
+            background: #e8f5e9;
+            border: 3px solid #4CAF50;
+            border-left: 8px solid #4CAF50;
+        }
+
+        .option-container.incorrect-answer {
+            background: #ffebee;
+            border: 3px solid #f44336;
+            border-left: 8px solid #f44336;
+        }
+
+        .option-container input[type="radio"] {
+            margin-right: 15px;
+            transform: scale(1.2);
+        }
+
+        .option-container label {
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+        }
+
+        .option-text {
+            flex: 1;
+        }
+
+        .explanation {
+            background: #fff3e0;
+            border-left: 5px solid #FF9800;
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 20px;
+            font-size: 1.05em;
+            display: none;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .question-spacer {
+            height: 40px;
+        }
     </style>
 </head>
 <body>
     <a href="tests.html" class="back-link">← Back to Testing Center</a>
 
     <div class="timer-container" id="timer">
-        <div>⏱️ Time: <span id="time-display">50:00</span></div>
+        <div>⏱️ Time Tracker: <span id="time-display">00:00</span></div>
     </div>
 
     <div class="container">
         <div class="test-header">
             <h1>MAP Growth Science Practice Test</h1>
-            <h2>Computer Adaptive Assessment Simulation</h2>
+            <h2>Computer Adaptive Assessment Simulation - 45 Questions</h2>
 
             <div class="test-info">
-                <p><strong>Instructions:</strong> This practice test simulates the MAP Growth Science assessment with 45 questions covering Life Sciences, Physical Sciences, and Earth & Space Sciences. Questions vary in difficulty to simulate the adaptive nature of MAP testing. You have 50 minutes to complete the test.</p>
+                <p><strong>Instructions:</strong> Select your answer to see immediate feedback! ✅ Correct answers will show in GREEN. ❌ Incorrect answers will show in RED with the correct answer highlighted.</p>
+                <p><strong>Content:</strong> This practice test simulates the MAP Growth Science assessment with 45 questions covering Life Sciences, Physical Sciences, and Earth & Space Sciences. Questions vary in difficulty to simulate the adaptive nature of MAP testing.</p>
                 <p><strong>Scoring:</strong> MAP tests are challenging! Aim for 36+ correct answers (80%) to demonstrate strong performance!</p>
                 <p><strong>Note:</strong> Questions include multiple formats: multiple choice, data interpretation, and diagram analysis.</p>
             </div>
+        </div>
 
-            <div class="progress-bar">
-                <div class="progress-fill" id="progress">
-                    <span id="progress-text">0 / 45 answered</span>
+        <div id="inline-quiz">
+            <!-- Question 1 -->
+            <div class="inline-question" data-correct="A">
+                <h3>Question 1: MAP: Cell Structure</h3>
+                <p class="question-text">Which part of a plant cell contains chlorophyll and is responsible for photosynthesis?</p>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q1" value="A">
+                        <span class="option-text">A. The chloroplasts where sunlight is captured to make food</span>
+                    </label>
                 </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q1" value="B">
+                        <span class="option-text">B. The mitochondria where energy is released from food molecules</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q1" value="C">
+                        <span class="option-text">C. The nucleus where genetic information is stored safely inside</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q1" value="D">
+                        <span class="option-text">D. The cell membrane where materials enter and leave the cell</span>
+                    </label>
+                </div>
+
+                <div class="explanation" data-text="Chloroplasts are organelles found only in plant cells that contain chlorophyll, the green pigment that captures sunlight. During photosynthesis, chloroplasts use light energy to convert carbon dioxide and water into glucose (sugar) and oxygen. This is how plants make their own food!" style="display: none;"></div>
+
+                <div class="question-spacer"></div>
             </div>
-        </div>
 
-        <div id="test-questions">
-            <!-- Questions will be inserted here by JavaScript -->
-        </div>
+            <!-- Question 2 -->
+            <div class="inline-question" data-correct="B">
+                <h3>Question 2: MAP: Food Chains</h3>
+                <p class="question-text">In a simple food chain: Grass → Rabbit → Fox. What role does grass play in this food chain?</p>
 
-        <div class="controls" id="test-controls">
-            <button type="button" class="btn btn-warning" id="review-answers">📝 Review My Answers</button>
-            <button type="button" class="btn btn-success" id="submit-test">✅ Submit Test</button>
-            <button type="button" class="btn btn-primary" id="restart-test">🔄 Restart Test</button>
-        </div>
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q2" value="A">
+                        <span class="option-text">A. Grass is a consumer that eats other organisms for energy</span>
+                    </label>
+                </div>
 
-        <div class="results-container" id="results">
-            <h2 style="text-align: center; margin-bottom: 30px;">📊 Test Results</h2>
-            <div class="score-display">
-                <div class="score-circle" id="score-circle"></div>
-                <div id="score-text"></div>
-                <div id="score-message"></div>
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q2" value="B">
+                        <span class="option-text">B. Grass is a producer that makes its own food through photosynthesis</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q2" value="C">
+                        <span class="option-text">C. Grass is a decomposer that breaks down dead organic matter</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q2" value="D">
+                        <span class="option-text">D. Grass is a predator that hunts smaller organisms for nutrition</span>
+                    </label>
+                </div>
+
+                <div class="explanation" data-text="Grass is a producer (autotroph) because it makes its own food through photosynthesis using sunlight, water, and carbon dioxide. Producers form the base of all food chains, converting solar energy into chemical energy (food) that all other organisms depend on. Without producers, no other life could exist." style="display: none;"></div>
+
+                <div class="question-spacer"></div>
             </div>
-            <div id="answers-review"></div>
 
-            <div style="text-align: center; margin-top: 30px;">
-                <a href="tests.html" class="btn btn-primary">📚 Back to Testing Center</a>
-                <button type="button" class="btn btn-success" onclick="location.reload()">🔄 Retake Test</button>
+            <!-- Question 3 -->
+            <div class="inline-question" data-correct="B">
+                <h3>Question 3: MAP: Adaptations</h3>
+                <p class="question-text">A student observes a bird with a sharp, hooked beak and forward-facing eyes. What can the student infer about this bird's feeding behavior?</p>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q3" value="A">
+                        <span class="option-text">A. It likely eats seeds and grains because the beak cracks seeds</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q3" value="B">
+                        <span class="option-text">B. It likely catches and eats other animals because it is a predator</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q3" value="C">
+                        <span class="option-text">C. It likely filters water to catch small plankton to consume regularly</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q3" value="D">
+                        <span class="option-text">D. It likely eats only plants because the beak picks leaves easily</span>
+                    </label>
+                </div>
+
+                <div class="explanation" data-text="Sharp, hooked beaks and forward-facing eyes are adaptations for predatory birds (like hawks, eagles, owls). The hooked beak tears meat, and forward-facing eyes provide depth perception for hunting. Birds that eat seeds have short, strong beaks; filter feeders have flat beaks; plant-eaters have different beak shapes. Beak shape reflects diet!" style="display: none;"></div>
+
+                <div class="question-spacer"></div>
             </div>
+
+            <!-- Question 4 -->
+            <div class="inline-question" data-correct="B">
+                <h3>Question 4: MAP: Classification</h3>
+                <p class="question-text">Scientists classify living things into kingdoms. Which characteristic is used to separate organisms in the Plant Kingdom from those in the Fungi Kingdom?</p>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q4" value="A">
+                        <span class="option-text">A. Plants can move freely while fungi stay in one place</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q4" value="B">
+                        <span class="option-text">B. Plants make their own food while fungi absorb nutrients from surroundings</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q4" value="C">
+                        <span class="option-text">C. Plants are always multicellular while fungi are always single-celled organisms</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q4" value="D">
+                        <span class="option-text">D. Plants reproduce sexually while fungi can only reproduce asexually always</span>
+                    </label>
+                </div>
+
+                <div class="explanation" data-text="The key difference is nutrition: Plants are autotrophs (make food through photosynthesis), while fungi are heterotrophs (absorb nutrients from living or dead organisms). Fungi are decomposers that secrete enzymes to break down organic matter externally, then absorb the nutrients. Plants have chlorophyll; fungi do not." style="display: none;"></div>
+
+                <div class="question-spacer"></div>
+            </div>
+
+            <!-- Question 5 -->
+            <div class="inline-question" data-correct="B">
+                <h3>Question 5: MAP: Energy Transfer</h3>
+                <p class="question-text">In an ecosystem, energy flows through organisms in a food chain. Which statement correctly describes what happens to energy at each level?</p>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q5" value="A">
+                        <span class="option-text">A. All energy transfers completely to the next level with no losses</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q5" value="B">
+                        <span class="option-text">B. About 10% of energy transfers to the next level and 90% is lost</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q5" value="C">
+                        <span class="option-text">C. Energy increases at each level because organisms grow larger throughout</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q5" value="D">
+                        <span class="option-text">D. Energy stays exactly the same at all levels in the food chain</span>
+                    </label>
+                </div>
+
+                <div class="explanation" data-text="The 10% Rule states that only about 10% of energy from one trophic level is passed to the next. The other 90% is used for life processes (movement, growth, reproduction) or lost as heat. This is why food chains are limited to about 4-5 levels - there isn&#x27;t enough energy to support more levels. It also explains why there are fewer predators than prey." style="display: none;"></div>
+
+                <div class="question-spacer"></div>
+            </div>
+
+            <!-- Question 6 -->
+            <div class="inline-question" data-correct="A">
+                <h3>Question 6: MAP: Natural Selection</h3>
+                <p class="question-text">A population of brown and green beetles lives in a forest. After a wildfire burns the area, making the soil dark, the beetle population changes over several generations. Which process best explains why brown beetles become more common?</p>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q6" value="A">
+                        <span class="option-text">A. Natural selection favors brown beetles because they are better camouflaged against dark soil</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q6" value="B">
+                        <span class="option-text">B. All green beetles immediately change color to brown to match new environment</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q6" value="C">
+                        <span class="option-text">C. The fire caused a mutation that turned green beetles into brown beetles</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q6" value="D">
+                        <span class="option-text">D. Brown beetles reproduce faster than green beetles after any environmental change</span>
+                    </label>
+                </div>
+
+                <div class="explanation" data-text="This is natural selection. After the fire, brown beetles are better camouflaged against dark soil, making them harder for predators to see. They survive and reproduce more successfully. Green beetles are easier to spot and more likely to be eaten. Over generations, the brown trait becomes more common. Organisms don&#x27;t change; populations do, through differential survival and reproduction." style="display: none;"></div>
+
+                <div class="question-spacer"></div>
+            </div>
+
+            <!-- Question 7 -->
+            <div class="inline-question" data-correct="C">
+                <h3>Question 7: MAP: Decomposers</h3>
+                <p class="question-text">A scientist studies a pond ecosystem and creates this diagram showing organism relationships:<br><br>Algae ← Water fleas ← Small fish ← Large fish ← Heron<br>↓<br>Bacteria decompose all dead organisms<br><br>What is the role of bacteria in this ecosystem?</p>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q7" value="A">
+                        <span class="option-text">A. Bacteria are producers that create food for other organisms using sunlight</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q7" value="B">
+                        <span class="option-text">B. Bacteria are consumers that eat living organisms for nutrition and energy</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q7" value="C">
+                        <span class="option-text">C. Bacteria are decomposers that recycle nutrients back into the ecosystem continuously</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q7" value="D">
+                        <span class="option-text">D. Bacteria are predators that hunt and kill larger organisms in pond</span>
+                    </label>
+                </div>
+
+                <div class="explanation" data-text="Bacteria are decomposers (along with fungi) that break down dead plants and animals, releasing nutrients back into the water and soil. These nutrients are then used by producers (algae) to make food, continuing the cycle. Without decomposers, dead matter would accumulate and nutrients would be locked away, eventually stopping all life in the ecosystem." style="display: none;"></div>
+
+                <div class="question-spacer"></div>
+            </div>
+
+            <!-- Question 8 -->
+            <div class="inline-question" data-correct="C">
+                <h3>Question 8: MAP: Kingdom Classification</h3>
+                <p class="question-text">Scientists discover a new organism that: (1) is multicellular, (2) has cell walls made of chitin, (3) reproduces using spores, and (4) absorbs nutrients from dead organic matter. Into which kingdom should this organism be classified?</p>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q8" value="A">
+                        <span class="option-text">A. Plant Kingdom because it has cell walls and reproduces with spores</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q8" value="B">
+                        <span class="option-text">B. Animal Kingdom because it is multicellular and consumes organic matter</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q8" value="C">
+                        <span class="option-text">C. Fungi Kingdom because it has chitin walls and absorbs nutrients</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q8" value="D">
+                        <span class="option-text">D. Protist Kingdom because it reproduces using spores like protists do</span>
+                    </label>
+                </div>
+
+                <div class="explanation" data-text="This organism belongs to the Fungi Kingdom. Key characteristics of fungi: (1) Cell walls made of chitin (not cellulose like plants). (2) Heterotrophic - absorb nutrients from dead/living matter. (3) Reproduce with spores. (4) No chlorophyll - cannot photosynthesize. Examples include mushrooms, molds, and yeasts. The combination of chitin cell walls and nutrient absorption is unique to fungi." style="display: none;"></div>
+
+                <div class="question-spacer"></div>
+            </div>
+
+            <!-- Question 9 -->
+            <div class="inline-question" data-correct="C">
+                <h3>Question 9: MAP: Evolution</h3>
+                <p class="question-text">A biologist studies two related species of finches on different islands. Island A finches have large, strong beaks for cracking hard seeds. Island B finches have thin, pointed beaks for catching insects. Both species descended from a common ancestor. Which process best explains the difference in beak shape?</p>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q9" value="A">
+                        <span class="option-text">A. Artificial selection where humans bred finches with different beak shapes deliberately</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q9" value="B">
+                        <span class="option-text">B. Adaptation where individual finches changed their beak shape to match food</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q9" value="C">
+                        <span class="option-text">C. Natural selection where different food sources favored different beak shapes over time</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q9" value="D">
+                        <span class="option-text">D. Learned behavior where parent finches taught offspring to develop different beaks</span>
+                    </label>
+                </div>
+
+                <div class="explanation" data-text="This is an example of natural selection leading to adaptation (similar to Darwin&#x27;s finches in the Galapagos). On each island, different food sources created different selective pressures. Birds with beaks better suited to available food survived and reproduced more successfully. Over many generations, populations diverged. This demonstrates how natural selection can lead to species diversity when populations are isolated." style="display: none;"></div>
+
+                <div class="question-spacer"></div>
+            </div>
+
+            <!-- Question 10 -->
+            <div class="inline-question" data-correct="A">
+                <h3>Question 10: MAP: Population Dynamics</h3>
+                <p class="question-text">In an experiment, scientists remove all predators from an island ecosystem containing rabbits and grass. Which prediction about the ecosystem is most likely over the next 10 years?</p>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q10" value="A">
+                        <span class="option-text">A. Rabbit population grows exponentially then crashes when grass runs out causing starvation</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q10" value="B">
+                        <span class="option-text">B. Rabbit population stays exactly the same because predators don't affect population size</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q10" value="C">
+                        <span class="option-text">C. Rabbit population decreases immediately because they need predators to survive successfully</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q10" value="D">
+                        <span class="option-text">D. Grass population increases dramatically because rabbits stop eating without predators present</span>
+                    </label>
+                </div>
+
+                <div class="explanation" data-text="Without predators, the rabbit population would grow rapidly (exponential growth) since more rabbits survive to reproduce. However, rabbits would eventually overgraze the grass, destroying their food source. This leads to starvation, disease, and population crash. This demonstrates that predators play a crucial role in maintaining ecosystem balance by controlling prey populations and preventing overpopulation." style="display: none;"></div>
+
+                <div class="question-spacer"></div>
+            </div>
+
+            <!-- Question 11 -->
+            <div class="inline-question" data-correct="A">
+                <h3>Question 11: MAP: Cell Comparison</h3>
+                <p class="question-text">A student examines plant and animal cells under a microscope and creates a comparison table:<br><br><table class='data-table'><tr><th>Structure</th><th>Plant Cell</th><th>Animal Cell</th></tr><tr><td>Cell Wall</td><td>Yes</td><td>No</td></tr><tr><td>Chloroplasts</td><td>Yes</td><td>No</td></tr><tr><td>Large Central Vacuole</td><td>Yes</td><td>No</td></tr><tr><td>Mitochondria</td><td>Yes</td><td>Yes</td></tr></table><br>Why do both plant and animal cells contain mitochondria?</p>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q11" value="A">
+                        <span class="option-text">A. Both plants and animals need to break down glucose to release energy</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q11" value="B">
+                        <span class="option-text">B. Both plants and animals need to capture sunlight to make food</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q11" value="C">
+                        <span class="option-text">C. Both plants and animals need to store water and nutrients safely</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q11" value="D">
+                        <span class="option-text">D. Both plants and animals need to control what enters and leaves cells</span>
+                    </label>
+                </div>
+
+                <div class="explanation" data-text="Both plant and animal cells have mitochondria because all cells need to release energy from glucose through cellular respiration. Plants make glucose through photosynthesis (in chloroplasts), but they still need mitochondria to break down that glucose to release usable energy (ATP). Animals get glucose from food, then use mitochondria to extract energy. Mitochondria are essential for all eukaryotic cells!" style="display: none;"></div>
+
+                <div class="question-spacer"></div>
+            </div>
+
+            <!-- Question 12 -->
+            <div class="inline-question" data-correct="B">
+                <h3>Question 12: MAP: Species Interactions</h3>
+                <p class="question-text">An invasive Asian carp species is introduced into a river ecosystem. The carp reproduce rapidly, eat large amounts of plankton, and have no natural predators in the new environment. How might this affect the native fish species that also depend on plankton?</p>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q12" value="A">
+                        <span class="option-text">A. Native fish populations will increase because more fish means more food</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q12" value="B">
+                        <span class="option-text">B. Native fish populations will likely decrease due to increased competition for food</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q12" value="C">
+                        <span class="option-text">C. Native fish will adapt immediately by developing ability to eat different food</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q12" value="D">
+                        <span class="option-text">D. There will be no effect because different species don't interact with each other</span>
+                    </label>
+                </div>
+
+                <div class="explanation" data-text="This is an example of competitive exclusion. The invasive carp competes with native fish for the same food resource (plankton). Since the carp reproduce rapidly and have no predators, they will likely outcompete native fish, consuming most of the plankton. Native fish populations will decline due to lack of food. This demonstrates why invasive species are so damaging - they disrupt established food webs and can drive native species to local extinction." style="display: none;"></div>
+
+                <div class="question-spacer"></div>
+            </div>
+
+            <!-- Question 13 -->
+            <div class="inline-question" data-correct="A">
+                <h3>Question 13: MAP: Biodiversity</h3>
+                <p class="question-text">Scientists studying a tropical rainforest find 200 different tree species in one hectare (100m × 100m area). In a temperate forest of the same size, they find only 15 tree species. What factor best explains this difference in biodiversity?</p>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q13" value="A">
+                        <span class="option-text">A. Tropical rainforests have year-round warmth and rainfall supporting diverse species</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q13" value="B">
+                        <span class="option-text">B. Tropical rainforests have more volcanic activity creating new species constantly</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q13" value="C">
+                        <span class="option-text">C. Temperate forests are older so species have had more time to evolve</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q13" value="D">
+                        <span class="option-text">D. Temperate forests have better soil so fewer species are needed for ecosystem</span>
+                    </label>
+                </div>
+
+                <div class="explanation" data-text="Tropical rainforests have the highest biodiversity on Earth because of stable, ideal conditions: consistent warmth, abundant rainfall, and year-round sunlight. These conditions allow countless species to specialize in specific niches. Temperate forests have seasonal changes (cold winters, variable rainfall) that limit which species can survive. Harsh or variable conditions reduce biodiversity; stable, energy-rich conditions increase it." style="display: none;"></div>
+
+                <div class="question-spacer"></div>
+            </div>
+
+            <!-- Question 14 -->
+            <div class="inline-question" data-correct="C">
+                <h3>Question 14: MAP: Symbiosis</h3>
+                <p class="question-text">A scientist observes that certain plants grow well in nitrogen-poor soil. Investigation reveals their roots have nodules containing bacteria that convert atmospheric nitrogen (N₂) into ammonia (NH₃) that plants can use. What type of relationship exists between the plant and bacteria?</p>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q14" value="A">
+                        <span class="option-text">A. Predation where the plant hunts and consumes the bacteria for nitrogen</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q14" value="B">
+                        <span class="option-text">B. Competition where plant and bacteria compete for nitrogen in the soil</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q14" value="C">
+                        <span class="option-text">C. Mutualism where both plant and bacteria benefit from the relationship mutually</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q14" value="D">
+                        <span class="option-text">D. Parasitism where the bacteria harm the plant while taking nutrients away</span>
+                    </label>
+                </div>
+
+                <div class="explanation" data-text="This is mutualism (symbiosis) - both organisms benefit. The bacteria (like Rhizobium) get sugars and a place to live from the plant. The plant gets nitrogen compounds it needs for growth. This relationship is essential in ecosystems because atmospheric nitrogen gas cannot be used by plants directly. Only certain bacteria can &#x27;fix&#x27; nitrogen, making it available to plants. Legumes (beans, peas, clover) have these nitrogen-fixing bacteria." style="display: none;"></div>
+
+                <div class="question-spacer"></div>
+            </div>
+
+            <!-- Question 15 -->
+            <div class="inline-question" data-correct="A">
+                <h3>Question 15: MAP: Genetics & Evolution</h3>
+                <p class="question-text">A genetic mutation in a population of moths causes some individuals to produce more offspring than average. If the environment remains stable, what would likely happen to the frequency of this mutation over many generations?</p>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q15" value="A">
+                        <span class="option-text">A. The mutation frequency will increase because these moths reproduce more successfully</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q15" value="B">
+                        <span class="option-text">B. The mutation frequency will decrease because mutations are always harmful to organisms</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q15" value="C">
+                        <span class="option-text">C. The mutation frequency will stay exactly the same across all generations</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q15" value="D">
+                        <span class="option-text">D. The mutation will disappear completely because it doesn't affect survival rate</span>
+                    </label>
+                </div>
+
+                <div class="explanation" data-text="This mutation provides a reproductive advantage - moths with it produce more offspring. In evolution, reproductive success is key. Even if survival isn&#x27;t affected, producing more offspring means more copies of the mutation pass to the next generation. Over time, the mutation frequency increases in the population. This demonstrates that natural selection favors traits that increase reproductive success, not just survival." style="display: none;"></div>
+
+                <div class="question-spacer"></div>
+            </div>
+
+            <!-- Question 16 -->
+            <div class="inline-question" data-correct="B">
+                <h3>Question 16: MAP: Heat Conduction</h3>
+                <p class="question-text">A student places an ice cube on a metal plate and an identical ice cube on a wooden plate, both at room temperature. The ice on metal melts faster. What does this demonstrate about metals?</p>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q16" value="A">
+                        <span class="option-text">A. Metals are colder than wood so ice melts faster there</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q16" value="B">
+                        <span class="option-text">B. Metals conduct heat better than wood so energy transfers faster</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q16" value="C">
+                        <span class="option-text">C. Metals are magnetic which makes ice melt faster on their surface</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q16" value="D">
+                        <span class="option-text">D. Metals produce their own heat which melts the ice cube</span>
+                    </label>
+                </div>
+
+                <div class="explanation" data-text="Metals are good conductors of heat (thermal energy). The metal plate rapidly conducts heat from the room to the ice, causing faster melting. Wood is a poor conductor (good insulator), so heat transfers slowly to the ice. Both plates are at room temperature, but the rate of heat transfer differs. This is why metal feels cold to touch - it conducts heat away from your warm hand quickly!" style="display: none;"></div>
+
+                <div class="question-spacer"></div>
+            </div>
+
+            <!-- Question 17 -->
+            <div class="inline-question" data-correct="B">
+                <h3>Question 17: MAP: Physical Changes</h3>
+                <p class="question-text">When salt (sodium chloride) dissolves in water, the salt crystals seem to disappear. What type of change has occurred?</p>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q17" value="A">
+                        <span class="option-text">A. A chemical change because salt turns into a new substance completely</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q17" value="B">
+                        <span class="option-text">B. A physical change because salt molecules still exist in the solution</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q17" value="C">
+                        <span class="option-text">C. A nuclear change because atoms break apart when salt dissolves fully</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q17" value="D">
+                        <span class="option-text">D. An irreversible change because salt cannot be recovered from water</span>
+                    </label>
+                </div>
+
+                <div class="explanation" data-text="Dissolving is a physical change. The salt doesn&#x27;t become a new substance - salt molecules spread throughout the water but remain unchanged. You can prove this by evaporating the water to recover the original salt crystals. In chemical changes, new substances with different properties form and you can&#x27;t easily reverse the change." style="display: none;"></div>
+
+                <div class="question-spacer"></div>
+            </div>
+
+            <!-- Question 18 -->
+            <div class="inline-question" data-correct="B">
+                <h3>Question 18: MAP: Energy Transformation</h3>
+                <p class="question-text">A ball sitting at the top of a hill has potential energy. As it rolls down the hill, what happens to this potential energy?</p>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q18" value="A">
+                        <span class="option-text">A. Potential energy is destroyed and disappears completely during motion</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q18" value="B">
+                        <span class="option-text">B. Potential energy converts to kinetic energy as the ball speeds up</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q18" value="C">
+                        <span class="option-text">C. Potential energy stays the same throughout the entire motion downhill</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q18" value="D">
+                        <span class="option-text">D. Potential energy increases because the ball moves faster going down</span>
+                    </label>
+                </div>
+
+                <div class="explanation" data-text="Energy is conserved - it changes forms but isn&#x27;t created or destroyed. As the ball rolls down, gravitational potential energy (energy of position) converts to kinetic energy (energy of motion). At the top: high potential, low kinetic. At the bottom: low potential, high kinetic. The total energy remains constant (ignoring friction). This demonstrates energy transformation." style="display: none;"></div>
+
+                <div class="question-spacer"></div>
+            </div>
+
+            <!-- Question 19 -->
+            <div class="inline-question" data-correct="B">
+                <h3>Question 19: MAP: Conservation of Mass</h3>
+                <p class="question-text">A student measures 50 grams of baking soda and 100 grams of vinegar before mixing them in a sealed container. After the reaction (producing carbon dioxide gas), she measures the total mass. What will the total mass be?</p>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q19" value="A">
+                        <span class="option-text">A. Less than 150 grams because gas weighs less than solids</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q19" value="B">
+                        <span class="option-text">B. Exactly 150 grams because mass is conserved during reactions always</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q19" value="C">
+                        <span class="option-text">C. More than 150 grams because chemical reactions create new mass</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q19" value="D">
+                        <span class="option-text">D. Zero grams because matter is converted to pure energy completely</span>
+                    </label>
+                </div>
+
+                <div class="explanation" data-text="The Law of Conservation of Mass states that matter is neither created nor destroyed during chemical reactions. Total mass before = total mass after. 50g + 100g = 150g total, which will remain 150g. Since the container is sealed, even the carbon dioxide gas is trapped inside and counted. Mass is conserved in all chemical reactions - atoms rearrange but don&#x27;t disappear or appear!" style="display: none;"></div>
+
+                <div class="question-spacer"></div>
+            </div>
+
+            <!-- Question 20 -->
+            <div class="inline-question" data-correct="A">
+                <h3>Question 20: MAP: Gas Properties</h3>
+                <p class="question-text">A sealed balloon contains air at room temperature. When placed in a freezer, the balloon shrinks but the mass stays the same. Which statement best explains the observations?</p>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q20" value="A">
+                        <span class="option-text">A. Air particles move slower and closer together decreasing volume but not mass</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q20" value="B">
+                        <span class="option-text">B. Air particles escape through the balloon reducing volume and keeping mass same</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q20" value="C">
+                        <span class="option-text">C. Air particles change into a new substance that takes up less space</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q20" value="D">
+                        <span class="option-text">D. Air particles increase in number but decrease in size keeping mass constant</span>
+                    </label>
+                </div>
+
+                <div class="explanation" data-text="When gas cools, particles lose kinetic energy and move slower. Slower-moving particles don&#x27;t push outward as forcefully, and they move closer together, decreasing volume (balloon shrinks). However, the number of particles remains the same, so mass is unchanged. This demonstrates that volume and mass are different properties - volume depends on temperature and pressure; mass does not." style="display: none;"></div>
+
+                <div class="question-spacer"></div>
+            </div>
+
+            <!-- Question 21 -->
+            <div class="inline-question" data-correct="C">
+                <h3>Question 21: MAP: Dissolving Rates</h3>
+                <p class="question-text">Students test the effect of temperature on sugar dissolving in water. They use equal amounts of sugar and water at three temperatures: 10°C, 25°C, and 50°C. They time how long it takes for all sugar to dissolve. What would you expect the results to show?</p>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q21" value="A">
+                        <span class="option-text">A. Sugar dissolves fastest at 10°C because cold increases dissolving rate</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q21" value="B">
+                        <span class="option-text">B. Sugar dissolves at the same rate at all temperatures because temperature doesn't matter</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q21" value="C">
+                        <span class="option-text">C. Sugar dissolves fastest at 50°C because higher temperature increases dissolving rate</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q21" value="D">
+                        <span class="option-text">D. Sugar cannot dissolve at 10°C because water must be boiling hot</span>
+                    </label>
+                </div>
+
+                <div class="explanation" data-text="Higher temperature increases the rate of dissolving. At higher temperatures, water molecules move faster and collide with sugar more frequently and forcefully, breaking it apart faster. This is why you use hot water for tea or coffee - substances dissolve much faster. Temperature affects the rate of many processes by increasing particle motion and collision frequency." style="display: none;"></div>
+
+                <div class="question-spacer"></div>
+            </div>
+
+            <!-- Question 22 -->
+            <div class="inline-question" data-correct="C">
+                <h3>Question 22: MAP: Density</h3>
+                <p class="question-text">A student compares the densities of three liquids by pouring them into a cylinder. The liquids separate into layers: corn syrup (bottom), water (middle), dish soap (top). What can you conclude about the densities of these liquids?</p>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q22" value="A">
+                        <span class="option-text">A. Corn syrup has the lowest density and dish soap has highest density</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q22" value="B">
+                        <span class="option-text">B. All three liquids have the same density because they're all liquids</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q22" value="C">
+                        <span class="option-text">C. Corn syrup has the highest density and dish soap has lowest density</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q22" value="D">
+                        <span class="option-text">D. Water has the highest density because it's in the middle layer</span>
+                    </label>
+                </div>
+
+                <div class="explanation" data-text="Less dense liquids float on more dense liquids. Since corn syrup sank to the bottom, it has the highest density. Water is in the middle (medium density), and dish soap floated to the top (lowest density). Density = mass ÷ volume. Denser substances have more mass packed into the same volume. This is why oil floats on water - oil is less dense." style="display: none;"></div>
+
+                <div class="question-spacer"></div>
+            </div>
+
+            <!-- Question 23 -->
+            <div class="inline-question" data-correct="C">
+                <h3>Question 23: MAP: Chemical Reactions</h3>
+                <p class="question-text">During a chemical reaction between iron and oxygen, 10 grams of iron combines with 3 grams of oxygen to form iron oxide (rust). What is the mass of iron oxide produced?</p>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q23" value="A">
+                        <span class="option-text">A. 7 grams because oxygen's mass is subtracted from iron's mass</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q23" value="B">
+                        <span class="option-text">B. 10 grams because iron is the main component of rust</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q23" value="C">
+                        <span class="option-text">C. 13 grams because mass is conserved so masses add together</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q23" value="D">
+                        <span class="option-text">D. 30 grams because chemical reactions multiply the original masses</span>
+                    </label>
+                </div>
+
+                <div class="explanation" data-text="The Law of Conservation of Mass: in chemical reactions, total mass before = total mass after. Iron and oxygen atoms combine to form iron oxide, but no atoms are lost or gained. 10g iron + 3g oxygen = 13g iron oxide. The atoms rearrange (chemical change) but the total mass stays constant. This law was discovered by Antoine Lavoisier in the 1700s." style="display: none;"></div>
+
+                <div class="question-spacer"></div>
+            </div>
+
+            <!-- Question 24 -->
+            <div class="inline-question" data-correct="C">
+                <h3>Question 24: MAP: Separating Mixtures</h3>
+                <p class="question-text">A student designs an experiment to separate a mixture containing sand, salt, iron filings, and sugar. Which sequence of methods would successfully separate ALL four components into pure substances?</p>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q24" value="A">
+                        <span class="option-text">A. Use magnet add water filter evaporate then use magnet again finally</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q24" value="B">
+                        <span class="option-text">B. Magnet for iron add water filter sand evaporate water freeze to separate salt and sugar</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q24" value="C">
+                        <span class="option-text">C. Magnet for iron add water filter sand then use solubility differences to separate salt and sugar</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q24" value="D">
+                        <span class="option-text">D. Filter everything first then use magnet evaporate and finally heat everything</span>
+                    </label>
+                </div>
+
+                <div class="explanation" data-text="Correct sequence using different properties: (1) Magnet removes iron (magnetic). (2) Add water - dissolves both salt and sugar but not sand (solubility). (3) Filter to remove sand. (4) Use solubility differences: cool the solution to crystallize out salt first (less soluble), or add ethanol which dissolves sugar but not salt, then separate and evaporate. This demonstrates that complex mixtures require multiple separation methods exploiting different physical properties." style="display: none;"></div>
+
+                <div class="question-spacer"></div>
+            </div>
+
+            <!-- Question 25 -->
+            <div class="inline-question" data-correct="C">
+                <h3>Question 25: MAP: Work & Energy</h3>
+                <p class="question-text">Two students each hold a 5-kg weight at shoulder height for 10 seconds. Student A holds the weight perfectly still. Student B moves the weight up and down slightly. Which statement about work (in physics terms) is correct?</p>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q25" value="A">
+                        <span class="option-text">A. Both students do the same amount of work because they hold equal weight</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q25" value="B">
+                        <span class="option-text">B. Student A does more work because keeping the weight still requires more effort</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q25" value="C">
+                        <span class="option-text">C. Student B does more work because work requires motion in the direction of force</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q25" value="D">
+                        <span class="option-text">D. Neither student does any work because they don't move far enough horizontally</span>
+                    </label>
+                </div>
+
+                <div class="explanation" data-text="In physics, work = force × distance (in the direction of force). Student A does no work (in physics terms) because the weight doesn&#x27;t move - distance = 0, so work = 0. Student B does work because the weight moves up and down. Note: this seems counterintuitive because Student A&#x27;s muscles work hard! But in physics, &#x27;work&#x27; has a specific definition requiring movement. Energy is expended (heat), but no mechanical work is done without movement." style="display: none;"></div>
+
+                <div class="question-spacer"></div>
+            </div>
+
+            <!-- Question 26 -->
+            <div class="inline-question" data-correct="C">
+                <h3>Question 26: MAP: Phase Changes</h3>
+                <p class="question-text">Scientists heat a sealed container with 100g of water inside from 25°C to 100°C. Some water evaporates into steam (gas) inside the container. What happens to the total mass of the container and its contents?</p>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q26" value="A">
+                        <span class="option-text">A. Total mass decreases because steam weighs less than liquid water does</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q26" value="B">
+                        <span class="option-text">B. Total mass increases because heating adds energy which has mass itself</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q26" value="C">
+                        <span class="option-text">C. Total mass remains exactly 100g because mass is conserved during changes</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q26" value="D">
+                        <span class="option-text">D. Total mass becomes zero because water vapor is invisible and weightless</span>
+                    </label>
+                </div>
+
+                <div class="explanation" data-text="Mass is conserved during physical changes (phase changes). Whether water is liquid or gas, it contains the same number of H₂O molecules, so mass remains 100g. The container is sealed, so no water escapes. Volume changes dramatically (gas takes up more space than liquid), but mass stays constant. This demonstrates that mass is conserved during phase changes." style="display: none;"></div>
+
+                <div class="question-spacer"></div>
+            </div>
+
+            <!-- Question 27 -->
+            <div class="inline-question" data-correct="A">
+                <h3>Question 27: MAP: Density & Temperature</h3>
+                <p class="question-text">A hot air balloon rises because heated air inside the balloon is less dense than the cooler air outside. What happens to the air molecules inside the balloon when they are heated?</p>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q27" value="A">
+                        <span class="option-text">A. Air molecules move faster and spread farther apart decreasing density overall</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q27" value="B">
+                        <span class="option-text">B. Air molecules move slower and pack closer together decreasing density overall</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q27" value="C">
+                        <span class="option-text">C. Air molecules break apart into smaller pieces making them lighter in weight</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q27" value="D">
+                        <span class="option-text">D. Air molecules combine with heat molecules creating new lighter gas molecules</span>
+                    </label>
+                </div>
+
+                <div class="explanation" data-text="When heated, air molecules gain kinetic energy and move faster. Faster-moving molecules collide more forcefully and push farther apart, expanding the volume. The same mass now occupies a larger volume, so density decreases (density = mass/volume). Less dense air rises in denser air, lifting the balloon. This explains why hot air rises and creates convection currents." style="display: none;"></div>
+
+                <div class="question-spacer"></div>
+            </div>
+
+            <!-- Question 28 -->
+            <div class="inline-question" data-correct="A">
+                <h3>Question 28: MAP: Energy Chain</h3>
+                <p class="question-text">Burning wood releases energy that was originally captured from the Sun millions of years ago. Trace the energy transformations from the Sun to the burning wood.</p>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q28" value="A">
+                        <span class="option-text">A. Light energy to chemical energy in wood to thermal and light energy when burning</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q28" value="B">
+                        <span class="option-text">B. Thermal energy to kinetic energy in wood to chemical energy when burning</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q28" value="C">
+                        <span class="option-text">C. Electrical energy to mechanical energy in wood to nuclear energy when burning</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q28" value="D">
+                        <span class="option-text">D. Magnetic energy to light energy in wood to gravitational energy when burning</span>
+                    </label>
+                </div>
+
+                <div class="explanation" data-text="Energy transformation chain: (1) Sun produces light energy. (2) Ancient trees captured light through photosynthesis, converting it to chemical energy (stored in bonds). (3) Trees died and over millions of years became fossilized (wood/coal). (4) Burning releases that stored chemical energy as thermal (heat) and light energy. This demonstrates that most Earth&#x27;s energy originates from the Sun and transforms between forms." style="display: none;"></div>
+
+                <div class="question-spacer"></div>
+            </div>
+
+            <!-- Question 29 -->
+            <div class="inline-question" data-correct="A">
+                <h3>Question 29: MAP: Buoyancy</h3>
+                <p class="question-text">A student fills two identical balloons - one with air and one with helium gas - to the same size. The helium balloon floats and the air balloon sinks. Both gases are at the same temperature and pressure. What property of helium explains why it floats?</p>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q29" value="A">
+                        <span class="option-text">A. Helium has lower density than air so it experiences greater buoyant force</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q29" value="B">
+                        <span class="option-text">B. Helium has higher density than air so it pushes air down harder</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q29" value="C">
+                        <span class="option-text">C. Helium molecules are magnetic and attracted upward by Earth's magnetic field</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q29" value="D">
+                        <span class="option-text">D. Helium is lighter because it lacks electrons that air molecules have</span>
+                    </label>
+                </div>
+
+                <div class="explanation" data-text="Helium floats because it&#x27;s less dense than air (helium: 0.18 g/L vs. air: 1.29 g/L at sea level). Archimedes&#x27; Principle: objects less dense than the surrounding fluid float. Helium atoms (2 protons) are lighter than nitrogen and oxygen molecules (14 and 16 protons). At the same temperature and pressure, helium occupies the same volume but has less mass, resulting in lower density. Buoyancy depends on density difference." style="display: none;"></div>
+
+                <div class="question-spacer"></div>
+            </div>
+
+            <!-- Question 30 -->
+            <div class="inline-question" data-correct="D">
+                <h3>Question 30: MAP: Conservation in Reactions</h3>
+                <p class="question-text">A closed system contains 20g of reactant A and 30g of reactant B. After a complete chemical reaction, 15g of product C is formed, along with another product D. What is the mass of product D?</p>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q30" value="A">
+                        <span class="option-text">A. 15 grams because products always have equal masses in reactions</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q30" value="B">
+                        <span class="option-text">B. 35 grams because mass increases during chemical reactions always throughout</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q30" value="C">
+                        <span class="option-text">C. 50 grams because total mass doubles during any chemical reaction process</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q30" value="D">
+                        <span class="option-text">D. 35 grams because total mass of products equals total mass of reactants</span>
+                    </label>
+                </div>
+
+                <div class="explanation" data-text="Law of Conservation of Mass: mass of reactants = mass of products. Total reactants: 20g + 30g = 50g. Product C = 15g, so Product D must be: 50g - 15g = 35g. In chemical reactions, atoms rearrange to form new substances, but the total number of atoms (and thus total mass) remains constant. This is a fundamental principle of chemistry discovered by Lavoisier." style="display: none;"></div>
+
+                <div class="question-spacer"></div>
+            </div>
+
+            <!-- Question 31 -->
+            <div class="inline-question" data-correct="B">
+                <h3>Question 31: MAP: Earth's Rotation</h3>
+                <p class="question-text">Earth rotates on its axis once every 24 hours, causing day and night. What would happen to the length of a day if Earth rotated faster?</p>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q31" value="A">
+                        <span class="option-text">A. Days would become longer because rotation takes more time overall</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q31" value="B">
+                        <span class="option-text">B. Days would become shorter because rotation takes less time overall</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q31" value="C">
+                        <span class="option-text">C. Days would stay the same length regardless of rotation speed</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q31" value="D">
+                        <span class="option-text">D. Days would disappear completely because of the faster spinning motion</span>
+                    </label>
+                </div>
+
+                <div class="explanation" data-text="One complete rotation = one day. If Earth rotated faster, each rotation would take less time, making days shorter. For example, Jupiter rotates once every 10 hours, so a Jupiter day is only 10 hours! If Earth rotated slower, days would be longer. Mars rotates slightly slower than Earth (24.6 hours), so Mars days are 37 minutes longer than Earth days." style="display: none;"></div>
+
+                <div class="question-spacer"></div>
+            </div>
+
+            <!-- Question 32 -->
+            <div class="inline-question" data-correct="B">
+                <h3>Question 32: MAP: Apparent Motion</h3>
+                <p class="question-text">The Sun appears to rise in the east and set in the west each day. What causes this apparent motion of the Sun across the sky?</p>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q32" value="A">
+                        <span class="option-text">A. The Sun orbits around Earth from east to west daily</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q32" value="B">
+                        <span class="option-text">B. Earth rotates on its axis from west to east creating apparent motion</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q32" value="C">
+                        <span class="option-text">C. The Moon pushes the Sun across the sky from east to west</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q32" value="D">
+                        <span class="option-text">D. Earth orbits the Sun which makes the Sun appear to move</span>
+                    </label>
+                </div>
+
+                <div class="explanation" data-text="Earth rotates counterclockwise (west to east) when viewed from above the North Pole. As Earth rotates eastward, objects in the sky appear to move westward. This creates the illusion that the Sun rises in the east and sets in the west. The Sun isn&#x27;t actually moving across our sky - we&#x27;re rotating! This is why different time zones exist - different parts of Earth face the Sun at different times." style="display: none;"></div>
+
+                <div class="question-spacer"></div>
+            </div>
+
+            <!-- Question 33 -->
+            <div class="inline-question" data-correct="B">
+                <h3>Question 33: MAP: Water Cycle Energy</h3>
+                <p class="question-text">Water evaporates from the ocean and forms clouds. Eventually, the water falls back to Earth as rain. What provides the energy that drives this water cycle?</p>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q33" value="A">
+                        <span class="option-text">A. The Moon's gravity pulls water into the atmosphere creating rain</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q33" value="B">
+                        <span class="option-text">B. The Sun's energy heats water causing evaporation and atmospheric circulation</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q33" value="C">
+                        <span class="option-text">C. Earth's rotation creates wind that carries water around the planet</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q33" value="D">
+                        <span class="option-text">D. Ocean currents generate heat that makes water evaporate into clouds</span>
+                    </label>
+                </div>
+
+                <div class="explanation" data-text="The Sun is the primary energy source for the water cycle. Solar energy: (1) Heats water, providing energy for evaporation. (2) Warms air, creating wind and weather patterns. (3) Drives atmospheric circulation. Without the Sun&#x27;s energy, water would remain frozen and the cycle would stop. The water cycle is fundamentally an energy-driven system, converting solar energy into the movement of water." style="display: none;"></div>
+
+                <div class="question-spacer"></div>
+            </div>
+
+            <!-- Question 34 -->
+            <div class="inline-question" data-correct="B">
+                <h3>Question 34: MAP: Earth's Core</h3>
+                <p class="question-text">Scientists have discovered that Earth's outer core is liquid, but the inner core is solid, even though the inner core is hotter. What best explains why the inner core remains solid?</p>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q34" value="A">
+                        <span class="option-text">A. The inner core is made of different material than the outer core</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q34" value="B">
+                        <span class="option-text">B. The inner core has extreme pressure that keeps it solid despite heat</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q34" value="C">
+                        <span class="option-text">C. The inner core is actually cooler than the outer core is overall</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q34" value="D">
+                        <span class="option-text">D. The inner core receives less heat from radioactive decay than outer core</span>
+                    </label>
+                </div>
+
+                <div class="explanation" data-text="The inner core remains solid due to extreme pressure from all the layers above it. Both inner and outer cores are made of iron and nickel. Generally, high temperature causes melting, but extremely high pressure prevents particles from moving freely, keeping the inner core solid. The outer core has lower pressure, so despite being slightly cooler, it remains liquid. Pressure increases melting point!" style="display: none;"></div>
+
+                <div class="question-spacer"></div>
+            </div>
+
+            <!-- Question 35 -->
+            <div class="inline-question" data-correct="B">
+                <h3>Question 35: MAP: Planetary Atmospheres</h3>
+                <p class="question-text">The table shows data about rocky planets:<br><br><table class='data-table'><tr><th>Planet</th><th>Distance from Sun</th><th>Surface Temperature</th></tr><tr><td>Mercury</td><td>36 million mi</td><td>167°C average</td></tr><tr><td>Venus</td><td>67 million mi</td><td>464°C average</td></tr><tr><td>Earth</td><td>93 million mi</td><td>15°C average</td></tr><tr><td>Mars</td><td>142 million mi</td><td>-60°C average</td></tr></table><br>Venus is farther from the Sun than Mercury but much hotter. What explains this?</p>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q35" value="A">
+                        <span class="option-text">A. Venus is larger than Mercury so it produces more internal heat</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q35" value="B">
+                        <span class="option-text">B. Venus has a thick atmosphere with greenhouse gases that trap heat</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q35" value="C">
+                        <span class="option-text">C. Venus rotates faster than Mercury generating more friction and heat</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q35" value="D">
+                        <span class="option-text">D. Venus has more volcanoes that constantly heat up the planet's surface</span>
+                    </label>
+                </div>
+
+                <div class="explanation" data-text="Venus is the hottest planet due to extreme greenhouse effect. Its thick atmosphere (96% CO₂) traps heat like a blanket. Sunlight enters, warms the surface, but heat cannot escape. This raises temperature to 464°C - hot enough to melt lead! Mercury has almost no atmosphere, so heat escapes easily. This demonstrates how atmosphere composition dramatically affects planetary temperature - a lesson relevant to Earth&#x27;s climate!" style="display: none;"></div>
+
+                <div class="question-spacer"></div>
+            </div>
+
+            <!-- Question 36 -->
+            <div class="inline-question" data-correct="C">
+                <h3>Question 36: MAP: Moon Phases</h3>
+                <p class="question-text">A student observes the Moon every night for a month and sees it change from crescent to full to crescent again. What causes these moon phases that we observe from Earth?</p>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q36" value="A">
+                        <span class="option-text">A. Earth's shadow covers different amounts of the Moon each night regularly</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q36" value="B">
+                        <span class="option-text">B. The Moon rotates showing us different sides each night completely</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q36" value="C">
+                        <span class="option-text">C. The Moon's position relative to Sun and Earth changes showing different portions</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q36" value="D">
+                        <span class="option-text">D. The Sun produces different amounts of light each night affecting Moon brightness</span>
+                    </label>
+                </div>
+
+                <div class="explanation" data-text="Moon phases are caused by the Moon&#x27;s changing position as it orbits Earth. The Sun always illuminates half of the Moon, but we see different portions of that lit half depending on the Moon&#x27;s position relative to Earth and Sun. When Moon is between Earth and Sun (new moon), we see the dark side. When Moon is opposite Sun (full moon), we see the fully lit side. Phases result from viewing geometry, not shadows!" style="display: none;"></div>
+
+                <div class="question-spacer"></div>
+            </div>
+
+            <!-- Question 37 -->
+            <div class="inline-question" data-correct="B">
+                <h3>Question 37: MAP: Seasons</h3>
+                <p class="question-text">Earth's tilt on its axis (23.5°) causes seasons. When the Northern Hemisphere tilts toward the Sun (summer), what season is the Southern Hemisphere experiencing?</p>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q37" value="A">
+                        <span class="option-text">A. Summer because both hemispheres receive sunlight at the same time always</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q37" value="B">
+                        <span class="option-text">B. Winter because it tilts away from the Sun receiving less direct sunlight</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q37" value="C">
+                        <span class="option-text">C. Spring because seasons change at the same time everywhere on Earth</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q37" value="D">
+                        <span class="option-text">D. Fall because the Southern Hemisphere is always opposite in temperature patterns</span>
+                    </label>
+                </div>
+
+                <div class="explanation" data-text="When the Northern Hemisphere tilts toward the Sun (June - summer), the Southern Hemisphere tilts away (winter). The hemisphere tilted toward the Sun receives more direct sunlight and longer days, creating summer. The hemisphere tilted away receives less direct (slanted) sunlight and shorter days, creating winter. Six months later, Earth has moved to the opposite side of its orbit, and the seasons reverse. This is why Australia has Christmas in summer!" style="display: none;"></div>
+
+                <div class="question-spacer"></div>
+            </div>
+
+            <!-- Question 38 -->
+            <div class="inline-question" data-correct="A">
+                <h3>Question 38: MAP: Earth's Interior</h3>
+                <p class="question-text">Scientists measure that S-waves (seismic waves) from earthquakes cannot pass through Earth's outer core, creating a 'shadow zone' on the opposite side of Earth. What important conclusion do scientists draw from this evidence?</p>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q38" value="A">
+                        <span class="option-text">A. The outer core must be liquid because S-waves only travel through solids</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q38" value="B">
+                        <span class="option-text">B. The outer core must be solid because S-waves bounce off solid surfaces</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q38" value="C">
+                        <span class="option-text">C. The outer core must be empty space because waves cannot cross gaps</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q38" value="D">
+                        <span class="option-text">D. The outer core must be gas because S-waves move through gases slowly</span>
+                    </label>
+                </div>
+
+                <div class="explanation" data-text="S-waves (shear/secondary waves) can only propagate through solids, not liquids or gases. When seismologists observed that S-waves stopped at a certain depth while P-waves (pressure waves) continued through, they concluded the outer core must be liquid. This indirect evidence proves the outer core is molten iron and nickel. We cannot drill to the core (too deep and hot), so seismic waves provide our evidence!" style="display: none;"></div>
+
+                <div class="question-spacer"></div>
+            </div>
+
+            <!-- Question 39 -->
+            <div class="inline-question" data-correct="B">
+                <h3>Question 39: MAP: Planetary Change</h3>
+                <p class="question-text">Mars has ice caps at its poles and scientists have found evidence of ancient river valleys and lake beds. However, liquid water cannot exist on Mars' surface today. What changed on Mars that prevents liquid water from existing now?</p>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q39" value="A">
+                        <span class="option-text">A. Mars moved farther from the Sun so temperature dropped permanently below freezing</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q39" value="B">
+                        <span class="option-text">B. Mars lost most of its atmosphere so pressure and temperature are too low</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q39" value="C">
+                        <span class="option-text">C. Mars stopped rotating so one side became too hot and other too cold</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q39" value="D">
+                        <span class="option-text">D. Mars's magnetic field strengthened repelling all water molecules away into space</span>
+                    </label>
+                </div>
+
+                <div class="explanation" data-text="Mars lost most of its atmosphere over billions of years (solar wind stripped it away after Mars&#x27; magnetic field collapsed). With thin atmosphere: (1) Pressure is too low - water boils/sublimates even at low temperatures. (2) Temperature is too cold (average -60°C). (3) No greenhouse effect to trap heat. Ancient Mars likely had a thicker atmosphere, allowing liquid water. This demonstrates how atmosphere is crucial for habitable conditions." style="display: none;"></div>
+
+                <div class="question-spacer"></div>
+            </div>
+
+            <!-- Question 40 -->
+            <div class="inline-question" data-correct="B">
+                <h3>Question 40: MAP: Continental Drift</h3>
+                <p class="question-text">Scientists have found identical fossils of Glossopteris (an ancient fern) on continents now separated by oceans: South America, Africa, Antarctica, India, and Australia. What does this evidence support?</p>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q40" value="A">
+                        <span class="option-text">A. Glossopteris could fly between continents to spread seeds everywhere regularly</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q40" value="B">
+                        <span class="option-text">B. These continents were once connected allowing the plant to spread naturally</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q40" value="C">
+                        <span class="option-text">C. Ocean currents carried Glossopteris seeds between all continents over time</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q40" value="D">
+                        <span class="option-text">D. Glossopteris evolved independently on each continent by convergent evolution process</span>
+                    </label>
+                </div>
+
+                <div class="explanation" data-text="This is strong evidence for continental drift and plate tectonics. Glossopteris lived 250 million years ago when these continents formed the supercontinent Pangaea. The plant spread across the connected landmass. When Pangaea broke apart, fossils ended up on now-separated continents. The plant couldn&#x27;t fly or survive ocean crossings. Similar fossils across continents prove they were once joined - powerful evidence for Wegener&#x27;s theory!" style="display: none;"></div>
+
+                <div class="question-spacer"></div>
+            </div>
+
+            <!-- Question 41 -->
+            <div class="inline-question" data-correct="A">
+                <h3>Question 41: MAP: Planet Composition</h3>
+                <p class="question-text">Jupiter is more than 300 times more massive than Earth, yet its density is only about 1/4 of Earth's density. What best explains this difference?</p>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q41" value="A">
+                        <span class="option-text">A. Jupiter is mostly gas and liquid hydrogen while Earth is rocky and metallic</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q41" value="B">
+                        <span class="option-text">B. Jupiter is hollow inside while Earth is solid throughout its interior completely</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q41" value="C">
+                        <span class="option-text">C. Jupiter has less gravity so materials are more spread out than on Earth</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q41" value="D">
+                        <span class="option-text">D. Jupiter is older so materials have had more time to expand outward</span>
+                    </label>
+                </div>
+
+                <div class="explanation" data-text="Jupiter is a gas giant made primarily of hydrogen (75%) and helium (24%) - light gases. Earth is terrestrial, made of dense rocks (silicates) and metals (iron core). Density = mass/volume. Jupiter is enormous (1,300 Earths could fit inside), but made of light materials, so its density is low (1.33 g/cm³). Earth is small but made of dense materials (5.5 g/cm³). This demonstrates how composition, not just size, determines density." style="display: none;"></div>
+
+                <div class="question-spacer"></div>
+            </div>
+
+            <!-- Question 42 -->
+            <div class="inline-question" data-correct="B">
+                <h3>Question 42: MAP: Lunar Eclipses</h3>
+                <p class="question-text">A lunar eclipse occurs when Earth passes between the Sun and Moon, casting Earth's shadow on the Moon. Why can we sometimes see the Moon during a lunar eclipse (appearing reddish) instead of it being completely dark?</p>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q42" value="A">
+                        <span class="option-text">A. The Moon produces its own light that glows red during eclipses</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q42" value="B">
+                        <span class="option-text">B. Earth's atmosphere bends and filters sunlight casting red light on Moon</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q42" value="C">
+                        <span class="option-text">C. The Sun's light changes to red color when passing by Earth's surface</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q42" value="D">
+                        <span class="option-text">D. Mars reflects red light onto the Moon during the eclipse alignment</span>
+                    </label>
+                </div>
+
+                <div class="explanation" data-text="During lunar eclipses, the Moon often appears reddish (blood moon). This occurs because Earth&#x27;s atmosphere bends (refracts) sunlight around Earth. The atmosphere filters out blue light (scattering) but allows red light to pass through and reach the Moon. This is the same reason sunsets are red! The Moon reflects this reddish light back to us. Without our atmosphere, the Moon would appear completely black during eclipse." style="display: none;"></div>
+
+                <div class="question-spacer"></div>
+            </div>
+
+            <!-- Question 43 -->
+            <div class="inline-question" data-correct="B">
+                <h3>Question 43: MAP: Climate Science</h3>
+                <p class="question-text">Scientists studying climate change analyze ice cores from Antarctica containing air bubbles trapped 100,000 years ago. What information can scientists obtain from these ancient air bubbles?</p>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q43" value="A">
+                        <span class="option-text">A. The exact temperature and weather conditions on every day in the past</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q43" value="B">
+                        <span class="option-text">B. The atmospheric composition including CO₂ levels from ancient times accurately</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q43" value="C">
+                        <span class="option-text">C. The population of animals that lived near the ice sheet historically</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q43" value="D">
+                        <span class="option-text">D. The amount of sunlight that reached Earth during that time period</span>
+                    </label>
+                </div>
+
+                <div class="explanation" data-text="Ice cores contain trapped air bubbles that preserve ancient atmospheric composition. Scientists analyze these bubbles to measure CO₂, methane, and other gas concentrations from the past. They also analyze ice isotopes to estimate past temperatures. This provides a climate record going back 800,000 years! Data shows CO₂ levels are now higher than any time in the ice core record, providing evidence for human impact on climate." style="display: none;"></div>
+
+                <div class="question-spacer"></div>
+            </div>
+
+            <!-- Question 44 -->
+            <div class="inline-question" data-correct="A">
+                <h3>Question 44: MAP: The Sun</h3>
+                <p class="question-text">The Sun converts 4 million tons of matter into energy every second through nuclear fusion (hydrogen → helium). Despite this massive loss, why does the Sun remain stable and not shrink noticeably over human timescales?</p>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q44" value="A">
+                        <span class="option-text">A. The Sun is so massive that 4 million tons is insignificant compared to total mass</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q44" value="B">
+                        <span class="option-text">B. The Sun creates new matter to replace what is converted to energy</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q44" value="C">
+                        <span class="option-text">C. The Sun absorbs matter from space at the same rate it loses matter</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q44" value="D">
+                        <span class="option-text">D. The Sun doesn't actually lose matter because energy has no mass</span>
+                    </label>
+                </div>
+
+                <div class="explanation" data-text="The Sun&#x27;s mass is approximately 2 × 10³⁰ kg (2 followed by 30 zeros). Losing 4 million tons (4 × 10⁹ kg) per second seems huge, but it&#x27;s only 0.0000000002% of the Sun&#x27;s mass per second. At this rate, the Sun has enough hydrogen to continue fusion for another 5 billion years! The Sun has already burned for 4.6 billion years and is only about halfway through its life. Scale matters in astronomy!" style="display: none;"></div>
+
+                <div class="question-spacer"></div>
+            </div>
+
+            <!-- Question 45 -->
+            <div class="inline-question" data-correct="B">
+                <h3>Question 45: MAP: Ocean Currents & Climate</h3>
+                <p class="question-text">Ocean water near the equator is warmer than near the poles. This temperature difference drives ocean currents that redistribute heat around the planet. What would likely happen to Earth's climate if these ocean currents stopped flowing?</p>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q45" value="A">
+                        <span class="option-text">A. Global temperature would increase because heat stays at the equator</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q45" value="B">
+                        <span class="option-text">B. Regional climate extremes would increase with hotter tropics and colder poles</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q45" value="C">
+                        <span class="option-text">C. Nothing would change because ocean currents don't affect climate patterns</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q45" value="D">
+                        <span class="option-text">D. Global temperature would become uniform with no temperature differences anywhere</span>
+                    </label>
+                </div>
+
+                <div class="explanation" data-text="Ocean currents (like the Gulf Stream) transport heat from the equator toward the poles, moderating climate. Without currents: (1) Tropical regions would get even hotter - heat wouldn&#x27;t be carried away. (2) Polar regions would get even colder - warm water wouldn&#x27;t arrive. (3) Weather patterns would change dramatically. (4) Some regions (like Western Europe) would become much colder. Ocean currents are crucial for distributing heat and regulating Earth&#x27;s climate!" style="display: none;"></div>
+
+                <div class="question-spacer"></div>
+            </div>
+
+
         </div>
     </div>
 
-    <script src="test-engine.js"></script>
+    <script src="inline-quiz.js"></script>
     <script>
-        // MAP Growth Science Practice Test
-        const testData = {
-            questions: [
-                // LIFE SCIENCES (15 questions - Mix of difficulty levels)
-
-                // Easier Life Science Questions
-                {
-                    question: "Which part of a plant cell contains chlorophyll and is responsible for photosynthesis?",
-                    options: [
-                        "The chloroplasts where sunlight is captured to make food",
-                        "The mitochondria where energy is released from food molecules",
-                        "The nucleus where genetic information is stored safely inside",
-                        "The cell membrane where materials enter and leave the cell"
-                    ],
-                    correct: 0,
-                    explanation: "Chloroplasts are organelles found only in plant cells that contain chlorophyll, the green pigment that captures sunlight. During photosynthesis, chloroplasts use light energy to convert carbon dioxide and water into glucose (sugar) and oxygen. This is how plants make their own food!",
-                    topic: "MAP: Cell Structure"
-                },
-                {
-                    question: "In a simple food chain: Grass → Rabbit → Fox. What role does grass play in this food chain?",
-                    options: [
-                        "Grass is a consumer that eats other organisms for energy",
-                        "Grass is a producer that makes its own food through photosynthesis",
-                        "Grass is a decomposer that breaks down dead organic matter",
-                        "Grass is a predator that hunts smaller organisms for nutrition"
-                    ],
-                    correct: 1,
-                    explanation: "Grass is a producer (autotroph) because it makes its own food through photosynthesis using sunlight, water, and carbon dioxide. Producers form the base of all food chains, converting solar energy into chemical energy (food) that all other organisms depend on. Without producers, no other life could exist.",
-                    topic: "MAP: Food Chains"
-                },
-                {
-                    question: "A student observes a bird with a sharp, hooked beak and forward-facing eyes. What can the student infer about this bird's feeding behavior?",
-                    options: [
-                        "It likely eats seeds and grains because the beak cracks seeds",
-                        "It likely catches and eats other animals because it is a predator",
-                        "It likely filters water to catch small plankton to consume regularly",
-                        "It likely eats only plants because the beak picks leaves easily"
-                    ],
-                    correct: 1,
-                    explanation: "Sharp, hooked beaks and forward-facing eyes are adaptations for predatory birds (like hawks, eagles, owls). The hooked beak tears meat, and forward-facing eyes provide depth perception for hunting. Birds that eat seeds have short, strong beaks; filter feeders have flat beaks; plant-eaters have different beak shapes. Beak shape reflects diet!",
-                    topic: "MAP: Adaptations"
-                },
-
-                // Medium Life Science Questions
-                {
-                    question: "Scientists classify living things into kingdoms. Which characteristic is used to separate organisms in the Plant Kingdom from those in the Fungi Kingdom?",
-                    options: [
-                        "Plants can move freely while fungi stay in one place",
-                        "Plants make their own food while fungi absorb nutrients from surroundings",
-                        "Plants are always multicellular while fungi are always single-celled organisms",
-                        "Plants reproduce sexually while fungi can only reproduce asexually always"
-                    ],
-                    correct: 1,
-                    explanation: "The key difference is nutrition: Plants are autotrophs (make food through photosynthesis), while fungi are heterotrophs (absorb nutrients from living or dead organisms). Fungi are decomposers that secrete enzymes to break down organic matter externally, then absorb the nutrients. Plants have chlorophyll; fungi do not.",
-                    topic: "MAP: Classification"
-                },
-                {
-                    question: "In an ecosystem, energy flows through organisms in a food chain. Which statement correctly describes what happens to energy at each level?",
-                    options: [
-                        "All energy transfers completely to the next level with no losses",
-                        "About 10% of energy transfers to the next level and 90% is lost",
-                        "Energy increases at each level because organisms grow larger throughout",
-                        "Energy stays exactly the same at all levels in the food chain"
-                    ],
-                    correct: 1,
-                    explanation: "The 10% Rule states that only about 10% of energy from one trophic level is passed to the next. The other 90% is used for life processes (movement, growth, reproduction) or lost as heat. This is why food chains are limited to about 4-5 levels - there isn't enough energy to support more levels. It also explains why there are fewer predators than prey.",
-                    topic: "MAP: Energy Transfer"
-                },
-                {
-                    question: "A population of brown and green beetles lives in a forest. After a wildfire burns the area, making the soil dark, the beetle population changes over several generations. Which process best explains why brown beetles become more common?",
-                    options: [
-                        "Natural selection favors brown beetles because they are better camouflaged against dark soil",
-                        "All green beetles immediately change color to brown to match new environment",
-                        "The fire caused a mutation that turned green beetles into brown beetles",
-                        "Brown beetles reproduce faster than green beetles after any environmental change"
-                    ],
-                    correct: 0,
-                    explanation: "This is natural selection. After the fire, brown beetles are better camouflaged against dark soil, making them harder for predators to see. They survive and reproduce more successfully. Green beetles are easier to spot and more likely to be eaten. Over generations, the brown trait becomes more common. Organisms don't change; populations do, through differential survival and reproduction.",
-                    topic: "MAP: Natural Selection"
-                },
-                {
-                    question: "A scientist studies a pond ecosystem and creates this diagram showing organism relationships:<br><br>Algae ← Water fleas ← Small fish ← Large fish ← Heron<br>↓<br>Bacteria decompose all dead organisms<br><br>What is the role of bacteria in this ecosystem?",
-                    options: [
-                        "Bacteria are producers that create food for other organisms using sunlight",
-                        "Bacteria are consumers that eat living organisms for nutrition and energy",
-                        "Bacteria are decomposers that recycle nutrients back into the ecosystem continuously",
-                        "Bacteria are predators that hunt and kill larger organisms in pond"
-                    ],
-                    correct: 2,
-                    explanation: "Bacteria are decomposers (along with fungi) that break down dead plants and animals, releasing nutrients back into the water and soil. These nutrients are then used by producers (algae) to make food, continuing the cycle. Without decomposers, dead matter would accumulate and nutrients would be locked away, eventually stopping all life in the ecosystem.",
-                    topic: "MAP: Decomposers"
-                },
-
-                // Harder Life Science Questions
-                {
-                    question: "Scientists discover a new organism that: (1) is multicellular, (2) has cell walls made of chitin, (3) reproduces using spores, and (4) absorbs nutrients from dead organic matter. Into which kingdom should this organism be classified?",
-                    options: [
-                        "Plant Kingdom because it has cell walls and reproduces with spores",
-                        "Animal Kingdom because it is multicellular and consumes organic matter",
-                        "Fungi Kingdom because it has chitin walls and absorbs nutrients",
-                        "Protist Kingdom because it reproduces using spores like protists do"
-                    ],
-                    correct: 2,
-                    explanation: "This organism belongs to the Fungi Kingdom. Key characteristics of fungi: (1) Cell walls made of chitin (not cellulose like plants). (2) Heterotrophic - absorb nutrients from dead/living matter. (3) Reproduce with spores. (4) No chlorophyll - cannot photosynthesize. Examples include mushrooms, molds, and yeasts. The combination of chitin cell walls and nutrient absorption is unique to fungi.",
-                    topic: "MAP: Kingdom Classification"
-                },
-                {
-                    question: "A biologist studies two related species of finches on different islands. Island A finches have large, strong beaks for cracking hard seeds. Island B finches have thin, pointed beaks for catching insects. Both species descended from a common ancestor. Which process best explains the difference in beak shape?",
-                    options: [
-                        "Artificial selection where humans bred finches with different beak shapes deliberately",
-                        "Adaptation where individual finches changed their beak shape to match food",
-                        "Natural selection where different food sources favored different beak shapes over time",
-                        "Learned behavior where parent finches taught offspring to develop different beaks"
-                    ],
-                    correct: 2,
-                    explanation: "This is an example of natural selection leading to adaptation (similar to Darwin's finches in the Galapagos). On each island, different food sources created different selective pressures. Birds with beaks better suited to available food survived and reproduced more successfully. Over many generations, populations diverged. This demonstrates how natural selection can lead to species diversity when populations are isolated.",
-                    topic: "MAP: Evolution"
-                },
-                {
-                    question: "In an experiment, scientists remove all predators from an island ecosystem containing rabbits and grass. Which prediction about the ecosystem is most likely over the next 10 years?",
-                    options: [
-                        "Rabbit population grows exponentially then crashes when grass runs out causing starvation",
-                        "Rabbit population stays exactly the same because predators don't affect population size",
-                        "Rabbit population decreases immediately because they need predators to survive successfully",
-                        "Grass population increases dramatically because rabbits stop eating without predators present"
-                    ],
-                    correct: 0,
-                    explanation: "Without predators, the rabbit population would grow rapidly (exponential growth) since more rabbits survive to reproduce. However, rabbits would eventually overgraze the grass, destroying their food source. This leads to starvation, disease, and population crash. This demonstrates that predators play a crucial role in maintaining ecosystem balance by controlling prey populations and preventing overpopulation.",
-                    topic: "MAP: Population Dynamics"
-                },
-                {
-                    question: "A student examines plant and animal cells under a microscope and creates a comparison table:<br><br><table class='data-table'><tr><th>Structure</th><th>Plant Cell</th><th>Animal Cell</th></tr><tr><td>Cell Wall</td><td>Yes</td><td>No</td></tr><tr><td>Chloroplasts</td><td>Yes</td><td>No</td></tr><tr><td>Large Central Vacuole</td><td>Yes</td><td>No</td></tr><tr><td>Mitochondria</td><td>Yes</td><td>Yes</td></tr></table><br>Why do both plant and animal cells contain mitochondria?",
-                    options: [
-                        "Both plants and animals need to break down glucose to release energy",
-                        "Both plants and animals need to capture sunlight to make food",
-                        "Both plants and animals need to store water and nutrients safely",
-                        "Both plants and animals need to control what enters and leaves cells"
-                    ],
-                    correct: 0,
-                    explanation: "Both plant and animal cells have mitochondria because all cells need to release energy from glucose through cellular respiration. Plants make glucose through photosynthesis (in chloroplasts), but they still need mitochondria to break down that glucose to release usable energy (ATP). Animals get glucose from food, then use mitochondria to extract energy. Mitochondria are essential for all eukaryotic cells!",
-                    topic: "MAP: Cell Comparison"
-                },
-                {
-                    question: "An invasive Asian carp species is introduced into a river ecosystem. The carp reproduce rapidly, eat large amounts of plankton, and have no natural predators in the new environment. How might this affect the native fish species that also depend on plankton?",
-                    options: [
-                        "Native fish populations will increase because more fish means more food",
-                        "Native fish populations will likely decrease due to increased competition for food",
-                        "Native fish will adapt immediately by developing ability to eat different food",
-                        "There will be no effect because different species don't interact with each other"
-                    ],
-                    correct: 1,
-                    explanation: "This is an example of competitive exclusion. The invasive carp competes with native fish for the same food resource (plankton). Since the carp reproduce rapidly and have no predators, they will likely outcompete native fish, consuming most of the plankton. Native fish populations will decline due to lack of food. This demonstrates why invasive species are so damaging - they disrupt established food webs and can drive native species to local extinction.",
-                    topic: "MAP: Species Interactions"
-                },
-                {
-                    question: "Scientists studying a tropical rainforest find 200 different tree species in one hectare (100m × 100m area). In a temperate forest of the same size, they find only 15 tree species. What factor best explains this difference in biodiversity?",
-                    options: [
-                        "Tropical rainforests have year-round warmth and rainfall supporting diverse species",
-                        "Tropical rainforests have more volcanic activity creating new species constantly",
-                        "Temperate forests are older so species have had more time to evolve",
-                        "Temperate forests have better soil so fewer species are needed for ecosystem"
-                    ],
-                    correct: 0,
-                    explanation: "Tropical rainforests have the highest biodiversity on Earth because of stable, ideal conditions: consistent warmth, abundant rainfall, and year-round sunlight. These conditions allow countless species to specialize in specific niches. Temperate forests have seasonal changes (cold winters, variable rainfall) that limit which species can survive. Harsh or variable conditions reduce biodiversity; stable, energy-rich conditions increase it.",
-                    topic: "MAP: Biodiversity"
-                },
-                {
-                    question: "A scientist observes that certain plants grow well in nitrogen-poor soil. Investigation reveals their roots have nodules containing bacteria that convert atmospheric nitrogen (N₂) into ammonia (NH₃) that plants can use. What type of relationship exists between the plant and bacteria?",
-                    options: [
-                        "Predation where the plant hunts and consumes the bacteria for nitrogen",
-                        "Competition where plant and bacteria compete for nitrogen in the soil",
-                        "Mutualism where both plant and bacteria benefit from the relationship mutually",
-                        "Parasitism where the bacteria harm the plant while taking nutrients away"
-                    ],
-                    correct: 2,
-                    explanation: "This is mutualism (symbiosis) - both organisms benefit. The bacteria (like Rhizobium) get sugars and a place to live from the plant. The plant gets nitrogen compounds it needs for growth. This relationship is essential in ecosystems because atmospheric nitrogen gas cannot be used by plants directly. Only certain bacteria can 'fix' nitrogen, making it available to plants. Legumes (beans, peas, clover) have these nitrogen-fixing bacteria.",
-                    topic: "MAP: Symbiosis"
-                },
-                {
-                    question: "A genetic mutation in a population of moths causes some individuals to produce more offspring than average. If the environment remains stable, what would likely happen to the frequency of this mutation over many generations?",
-                    options: [
-                        "The mutation frequency will increase because these moths reproduce more successfully",
-                        "The mutation frequency will decrease because mutations are always harmful to organisms",
-                        "The mutation frequency will stay exactly the same across all generations",
-                        "The mutation will disappear completely because it doesn't affect survival rate"
-                    ],
-                    correct: 0,
-                    explanation: "This mutation provides a reproductive advantage - moths with it produce more offspring. In evolution, reproductive success is key. Even if survival isn't affected, producing more offspring means more copies of the mutation pass to the next generation. Over time, the mutation frequency increases in the population. This demonstrates that natural selection favors traits that increase reproductive success, not just survival.",
-                    topic: "MAP: Genetics & Evolution"
-                },
-
-                // PHYSICAL SCIENCES (15 questions - Mix of difficulty levels)
-
-                // Easier Physical Science Questions
-                {
-                    question: "A student places an ice cube on a metal plate and an identical ice cube on a wooden plate, both at room temperature. The ice on metal melts faster. What does this demonstrate about metals?",
-                    options: [
-                        "Metals are colder than wood so ice melts faster there",
-                        "Metals conduct heat better than wood so energy transfers faster",
-                        "Metals are magnetic which makes ice melt faster on their surface",
-                        "Metals produce their own heat which melts the ice cube"
-                    ],
-                    correct: 1,
-                    explanation: "Metals are good conductors of heat (thermal energy). The metal plate rapidly conducts heat from the room to the ice, causing faster melting. Wood is a poor conductor (good insulator), so heat transfers slowly to the ice. Both plates are at room temperature, but the rate of heat transfer differs. This is why metal feels cold to touch - it conducts heat away from your warm hand quickly!",
-                    topic: "MAP: Heat Conduction"
-                },
-                {
-                    question: "When salt (sodium chloride) dissolves in water, the salt crystals seem to disappear. What type of change has occurred?",
-                    options: [
-                        "A chemical change because salt turns into a new substance completely",
-                        "A physical change because salt molecules still exist in the solution",
-                        "A nuclear change because atoms break apart when salt dissolves fully",
-                        "An irreversible change because salt cannot be recovered from water"
-                    ],
-                    correct: 1,
-                    explanation: "Dissolving is a physical change. The salt doesn't become a new substance - salt molecules spread throughout the water but remain unchanged. You can prove this by evaporating the water to recover the original salt crystals. In chemical changes, new substances with different properties form and you can't easily reverse the change.",
-                    topic: "MAP: Physical Changes"
-                },
-                {
-                    question: "A ball sitting at the top of a hill has potential energy. As it rolls down the hill, what happens to this potential energy?",
-                    options: [
-                        "Potential energy is destroyed and disappears completely during motion",
-                        "Potential energy converts to kinetic energy as the ball speeds up",
-                        "Potential energy stays the same throughout the entire motion downhill",
-                        "Potential energy increases because the ball moves faster going down"
-                    ],
-                    correct: 1,
-                    explanation: "Energy is conserved - it changes forms but isn't created or destroyed. As the ball rolls down, gravitational potential energy (energy of position) converts to kinetic energy (energy of motion). At the top: high potential, low kinetic. At the bottom: low potential, high kinetic. The total energy remains constant (ignoring friction). This demonstrates energy transformation.",
-                    topic: "MAP: Energy Transformation"
-                },
-
-                // Medium Physical Science Questions
-                {
-                    question: "A student measures 50 grams of baking soda and 100 grams of vinegar before mixing them in a sealed container. After the reaction (producing carbon dioxide gas), she measures the total mass. What will the total mass be?",
-                    options: [
-                        "Less than 150 grams because gas weighs less than solids",
-                        "Exactly 150 grams because mass is conserved during reactions always",
-                        "More than 150 grams because chemical reactions create new mass",
-                        "Zero grams because matter is converted to pure energy completely"
-                    ],
-                    correct: 1,
-                    explanation: "The Law of Conservation of Mass states that matter is neither created nor destroyed during chemical reactions. Total mass before = total mass after. 50g + 100g = 150g total, which will remain 150g. Since the container is sealed, even the carbon dioxide gas is trapped inside and counted. Mass is conserved in all chemical reactions - atoms rearrange but don't disappear or appear!",
-                    topic: "MAP: Conservation of Mass"
-                },
-                {
-                    question: "A sealed balloon contains air at room temperature. When placed in a freezer, the balloon shrinks but the mass stays the same. Which statement best explains the observations?",
-                    options: [
-                        "Air particles move slower and closer together decreasing volume but not mass",
-                        "Air particles escape through the balloon reducing volume and keeping mass same",
-                        "Air particles change into a new substance that takes up less space",
-                        "Air particles increase in number but decrease in size keeping mass constant"
-                    ],
-                    correct: 0,
-                    explanation: "When gas cools, particles lose kinetic energy and move slower. Slower-moving particles don't push outward as forcefully, and they move closer together, decreasing volume (balloon shrinks). However, the number of particles remains the same, so mass is unchanged. This demonstrates that volume and mass are different properties - volume depends on temperature and pressure; mass does not.",
-                    topic: "MAP: Gas Properties"
-                },
-                {
-                    question: "Students test the effect of temperature on sugar dissolving in water. They use equal amounts of sugar and water at three temperatures: 10°C, 25°C, and 50°C. They time how long it takes for all sugar to dissolve. What would you expect the results to show?",
-                    options: [
-                        "Sugar dissolves fastest at 10°C because cold increases dissolving rate",
-                        "Sugar dissolves at the same rate at all temperatures because temperature doesn't matter",
-                        "Sugar dissolves fastest at 50°C because higher temperature increases dissolving rate",
-                        "Sugar cannot dissolve at 10°C because water must be boiling hot"
-                    ],
-                    correct: 2,
-                    explanation: "Higher temperature increases the rate of dissolving. At higher temperatures, water molecules move faster and collide with sugar more frequently and forcefully, breaking it apart faster. This is why you use hot water for tea or coffee - substances dissolve much faster. Temperature affects the rate of many processes by increasing particle motion and collision frequency.",
-                    topic: "MAP: Dissolving Rates"
-                },
-                {
-                    question: "A student compares the densities of three liquids by pouring them into a cylinder. The liquids separate into layers: corn syrup (bottom), water (middle), dish soap (top). What can you conclude about the densities of these liquids?",
-                    options: [
-                        "Corn syrup has the lowest density and dish soap has highest density",
-                        "All three liquids have the same density because they're all liquids",
-                        "Corn syrup has the highest density and dish soap has lowest density",
-                        "Water has the highest density because it's in the middle layer"
-                    ],
-                    correct: 2,
-                    explanation: "Less dense liquids float on more dense liquids. Since corn syrup sank to the bottom, it has the highest density. Water is in the middle (medium density), and dish soap floated to the top (lowest density). Density = mass ÷ volume. Denser substances have more mass packed into the same volume. This is why oil floats on water - oil is less dense.",
-                    topic: "MAP: Density"
-                },
-                {
-                    question: "During a chemical reaction between iron and oxygen, 10 grams of iron combines with 3 grams of oxygen to form iron oxide (rust). What is the mass of iron oxide produced?",
-                    options: [
-                        "7 grams because oxygen's mass is subtracted from iron's mass",
-                        "10 grams because iron is the main component of rust",
-                        "13 grams because mass is conserved so masses add together",
-                        "30 grams because chemical reactions multiply the original masses"
-                    ],
-                    correct: 2,
-                    explanation: "The Law of Conservation of Mass: in chemical reactions, total mass before = total mass after. Iron and oxygen atoms combine to form iron oxide, but no atoms are lost or gained. 10g iron + 3g oxygen = 13g iron oxide. The atoms rearrange (chemical change) but the total mass stays constant. This law was discovered by Antoine Lavoisier in the 1700s.",
-                    topic: "MAP: Chemical Reactions"
-                },
-
-                // Harder Physical Science Questions
-                {
-                    question: "A student designs an experiment to separate a mixture containing sand, salt, iron filings, and sugar. Which sequence of methods would successfully separate ALL four components into pure substances?",
-                    options: [
-                        "Use magnet add water filter evaporate then use magnet again finally",
-                        "Magnet for iron add water filter sand evaporate water freeze to separate salt and sugar",
-                        "Magnet for iron add water filter sand then use solubility differences to separate salt and sugar",
-                        "Filter everything first then use magnet evaporate and finally heat everything"
-                    ],
-                    correct: 2,
-                    explanation: "Correct sequence using different properties: (1) Magnet removes iron (magnetic). (2) Add water - dissolves both salt and sugar but not sand (solubility). (3) Filter to remove sand. (4) Use solubility differences: cool the solution to crystallize out salt first (less soluble), or add ethanol which dissolves sugar but not salt, then separate and evaporate. This demonstrates that complex mixtures require multiple separation methods exploiting different physical properties.",
-                    topic: "MAP: Separating Mixtures"
-                },
-                {
-                    question: "Two students each hold a 5-kg weight at shoulder height for 10 seconds. Student A holds the weight perfectly still. Student B moves the weight up and down slightly. Which statement about work (in physics terms) is correct?",
-                    options: [
-                        "Both students do the same amount of work because they hold equal weight",
-                        "Student A does more work because keeping the weight still requires more effort",
-                        "Student B does more work because work requires motion in the direction of force",
-                        "Neither student does any work because they don't move far enough horizontally"
-                    ],
-                    correct: 2,
-                    explanation: "In physics, work = force × distance (in the direction of force). Student A does no work (in physics terms) because the weight doesn't move - distance = 0, so work = 0. Student B does work because the weight moves up and down. Note: this seems counterintuitive because Student A's muscles work hard! But in physics, 'work' has a specific definition requiring movement. Energy is expended (heat), but no mechanical work is done without movement.",
-                    topic: "MAP: Work & Energy"
-                },
-                {
-                    question: "Scientists heat a sealed container with 100g of water inside from 25°C to 100°C. Some water evaporates into steam (gas) inside the container. What happens to the total mass of the container and its contents?",
-                    options: [
-                        "Total mass decreases because steam weighs less than liquid water does",
-                        "Total mass increases because heating adds energy which has mass itself",
-                        "Total mass remains exactly 100g because mass is conserved during changes",
-                        "Total mass becomes zero because water vapor is invisible and weightless"
-                    ],
-                    correct: 2,
-                    explanation: "Mass is conserved during physical changes (phase changes). Whether water is liquid or gas, it contains the same number of H₂O molecules, so mass remains 100g. The container is sealed, so no water escapes. Volume changes dramatically (gas takes up more space than liquid), but mass stays constant. This demonstrates that mass is conserved during phase changes.",
-                    topic: "MAP: Phase Changes"
-                },
-                {
-                    question: "A hot air balloon rises because heated air inside the balloon is less dense than the cooler air outside. What happens to the air molecules inside the balloon when they are heated?",
-                    options: [
-                        "Air molecules move faster and spread farther apart decreasing density overall",
-                        "Air molecules move slower and pack closer together decreasing density overall",
-                        "Air molecules break apart into smaller pieces making them lighter in weight",
-                        "Air molecules combine with heat molecules creating new lighter gas molecules"
-                    ],
-                    correct: 0,
-                    explanation: "When heated, air molecules gain kinetic energy and move faster. Faster-moving molecules collide more forcefully and push farther apart, expanding the volume. The same mass now occupies a larger volume, so density decreases (density = mass/volume). Less dense air rises in denser air, lifting the balloon. This explains why hot air rises and creates convection currents.",
-                    topic: "MAP: Density & Temperature"
-                },
-                {
-                    question: "Burning wood releases energy that was originally captured from the Sun millions of years ago. Trace the energy transformations from the Sun to the burning wood.",
-                    options: [
-                        "Light energy to chemical energy in wood to thermal and light energy when burning",
-                        "Thermal energy to kinetic energy in wood to chemical energy when burning",
-                        "Electrical energy to mechanical energy in wood to nuclear energy when burning",
-                        "Magnetic energy to light energy in wood to gravitational energy when burning"
-                    ],
-                    correct: 0,
-                    explanation: "Energy transformation chain: (1) Sun produces light energy. (2) Ancient trees captured light through photosynthesis, converting it to chemical energy (stored in bonds). (3) Trees died and over millions of years became fossilized (wood/coal). (4) Burning releases that stored chemical energy as thermal (heat) and light energy. This demonstrates that most Earth's energy originates from the Sun and transforms between forms.",
-                    topic: "MAP: Energy Chain"
-                },
-                {
-                    question: "A student fills two identical balloons - one with air and one with helium gas - to the same size. The helium balloon floats and the air balloon sinks. Both gases are at the same temperature and pressure. What property of helium explains why it floats?",
-                    options: [
-                        "Helium has lower density than air so it experiences greater buoyant force",
-                        "Helium has higher density than air so it pushes air down harder",
-                        "Helium molecules are magnetic and attracted upward by Earth's magnetic field",
-                        "Helium is lighter because it lacks electrons that air molecules have"
-                    ],
-                    correct: 0,
-                    explanation: "Helium floats because it's less dense than air (helium: 0.18 g/L vs. air: 1.29 g/L at sea level). Archimedes' Principle: objects less dense than the surrounding fluid float. Helium atoms (2 protons) are lighter than nitrogen and oxygen molecules (14 and 16 protons). At the same temperature and pressure, helium occupies the same volume but has less mass, resulting in lower density. Buoyancy depends on density difference.",
-                    topic: "MAP: Buoyancy"
-                },
-                {
-                    question: "A closed system contains 20g of reactant A and 30g of reactant B. After a complete chemical reaction, 15g of product C is formed, along with another product D. What is the mass of product D?",
-                    options: [
-                        "15 grams because products always have equal masses in reactions",
-                        "35 grams because mass increases during chemical reactions always throughout",
-                        "50 grams because total mass doubles during any chemical reaction process",
-                        "35 grams because total mass of products equals total mass of reactants"
-                    ],
-                    correct: 3,
-                    explanation: "Law of Conservation of Mass: mass of reactants = mass of products. Total reactants: 20g + 30g = 50g. Product C = 15g, so Product D must be: 50g - 15g = 35g. In chemical reactions, atoms rearrange to form new substances, but the total number of atoms (and thus total mass) remains constant. This is a fundamental principle of chemistry discovered by Lavoisier.",
-                    topic: "MAP: Conservation in Reactions"
-                },
-
-                // EARTH & SPACE SCIENCES (15 questions - Mix of difficulty levels)
-
-                // Easier Earth & Space Questions
-                {
-                    question: "Earth rotates on its axis once every 24 hours, causing day and night. What would happen to the length of a day if Earth rotated faster?",
-                    options: [
-                        "Days would become longer because rotation takes more time overall",
-                        "Days would become shorter because rotation takes less time overall",
-                        "Days would stay the same length regardless of rotation speed",
-                        "Days would disappear completely because of the faster spinning motion"
-                    ],
-                    correct: 1,
-                    explanation: "One complete rotation = one day. If Earth rotated faster, each rotation would take less time, making days shorter. For example, Jupiter rotates once every 10 hours, so a Jupiter day is only 10 hours! If Earth rotated slower, days would be longer. Mars rotates slightly slower than Earth (24.6 hours), so Mars days are 37 minutes longer than Earth days.",
-                    topic: "MAP: Earth's Rotation"
-                },
-                {
-                    question: "The Sun appears to rise in the east and set in the west each day. What causes this apparent motion of the Sun across the sky?",
-                    options: [
-                        "The Sun orbits around Earth from east to west daily",
-                        "Earth rotates on its axis from west to east creating apparent motion",
-                        "The Moon pushes the Sun across the sky from east to west",
-                        "Earth orbits the Sun which makes the Sun appear to move"
-                    ],
-                    correct: 1,
-                    explanation: "Earth rotates counterclockwise (west to east) when viewed from above the North Pole. As Earth rotates eastward, objects in the sky appear to move westward. This creates the illusion that the Sun rises in the east and sets in the west. The Sun isn't actually moving across our sky - we're rotating! This is why different time zones exist - different parts of Earth face the Sun at different times.",
-                    topic: "MAP: Apparent Motion"
-                },
-                {
-                    question: "Water evaporates from the ocean and forms clouds. Eventually, the water falls back to Earth as rain. What provides the energy that drives this water cycle?",
-                    options: [
-                        "The Moon's gravity pulls water into the atmosphere creating rain",
-                        "The Sun's energy heats water causing evaporation and atmospheric circulation",
-                        "Earth's rotation creates wind that carries water around the planet",
-                        "Ocean currents generate heat that makes water evaporate into clouds"
-                    ],
-                    correct: 1,
-                    explanation: "The Sun is the primary energy source for the water cycle. Solar energy: (1) Heats water, providing energy for evaporation. (2) Warms air, creating wind and weather patterns. (3) Drives atmospheric circulation. Without the Sun's energy, water would remain frozen and the cycle would stop. The water cycle is fundamentally an energy-driven system, converting solar energy into the movement of water.",
-                    topic: "MAP: Water Cycle Energy"
-                },
-
-                // Medium Earth & Space Questions
-                {
-                    question: "Scientists have discovered that Earth's outer core is liquid, but the inner core is solid, even though the inner core is hotter. What best explains why the inner core remains solid?",
-                    options: [
-                        "The inner core is made of different material than the outer core",
-                        "The inner core has extreme pressure that keeps it solid despite heat",
-                        "The inner core is actually cooler than the outer core is overall",
-                        "The inner core receives less heat from radioactive decay than outer core"
-                    ],
-                    correct: 1,
-                    explanation: "The inner core remains solid due to extreme pressure from all the layers above it. Both inner and outer cores are made of iron and nickel. Generally, high temperature causes melting, but extremely high pressure prevents particles from moving freely, keeping the inner core solid. The outer core has lower pressure, so despite being slightly cooler, it remains liquid. Pressure increases melting point!",
-                    topic: "MAP: Earth's Core"
-                },
-                {
-                    question: "The table shows data about rocky planets:<br><br><table class='data-table'><tr><th>Planet</th><th>Distance from Sun</th><th>Surface Temperature</th></tr><tr><td>Mercury</td><td>36 million mi</td><td>167°C average</td></tr><tr><td>Venus</td><td>67 million mi</td><td>464°C average</td></tr><tr><td>Earth</td><td>93 million mi</td><td>15°C average</td></tr><tr><td>Mars</td><td>142 million mi</td><td>-60°C average</td></tr></table><br>Venus is farther from the Sun than Mercury but much hotter. What explains this?",
-                    options: [
-                        "Venus is larger than Mercury so it produces more internal heat",
-                        "Venus has a thick atmosphere with greenhouse gases that trap heat",
-                        "Venus rotates faster than Mercury generating more friction and heat",
-                        "Venus has more volcanoes that constantly heat up the planet's surface"
-                    ],
-                    correct: 1,
-                    explanation: "Venus is the hottest planet due to extreme greenhouse effect. Its thick atmosphere (96% CO₂) traps heat like a blanket. Sunlight enters, warms the surface, but heat cannot escape. This raises temperature to 464°C - hot enough to melt lead! Mercury has almost no atmosphere, so heat escapes easily. This demonstrates how atmosphere composition dramatically affects planetary temperature - a lesson relevant to Earth's climate!",
-                    topic: "MAP: Planetary Atmospheres"
-                },
-                {
-                    question: "A student observes the Moon every night for a month and sees it change from crescent to full to crescent again. What causes these moon phases that we observe from Earth?",
-                    options: [
-                        "Earth's shadow covers different amounts of the Moon each night regularly",
-                        "The Moon rotates showing us different sides each night completely",
-                        "The Moon's position relative to Sun and Earth changes showing different portions",
-                        "The Sun produces different amounts of light each night affecting Moon brightness"
-                    ],
-                    correct: 2,
-                    explanation: "Moon phases are caused by the Moon's changing position as it orbits Earth. The Sun always illuminates half of the Moon, but we see different portions of that lit half depending on the Moon's position relative to Earth and Sun. When Moon is between Earth and Sun (new moon), we see the dark side. When Moon is opposite Sun (full moon), we see the fully lit side. Phases result from viewing geometry, not shadows!",
-                    topic: "MAP: Moon Phases"
-                },
-                {
-                    question: "Earth's tilt on its axis (23.5°) causes seasons. When the Northern Hemisphere tilts toward the Sun (summer), what season is the Southern Hemisphere experiencing?",
-                    options: [
-                        "Summer because both hemispheres receive sunlight at the same time always",
-                        "Winter because it tilts away from the Sun receiving less direct sunlight",
-                        "Spring because seasons change at the same time everywhere on Earth",
-                        "Fall because the Southern Hemisphere is always opposite in temperature patterns"
-                    ],
-                    correct: 1,
-                    explanation: "When the Northern Hemisphere tilts toward the Sun (June - summer), the Southern Hemisphere tilts away (winter). The hemisphere tilted toward the Sun receives more direct sunlight and longer days, creating summer. The hemisphere tilted away receives less direct (slanted) sunlight and shorter days, creating winter. Six months later, Earth has moved to the opposite side of its orbit, and the seasons reverse. This is why Australia has Christmas in summer!",
-                    topic: "MAP: Seasons"
-                },
-
-                // Harder Earth & Space Questions
-                {
-                    question: "Scientists measure that S-waves (seismic waves) from earthquakes cannot pass through Earth's outer core, creating a 'shadow zone' on the opposite side of Earth. What important conclusion do scientists draw from this evidence?",
-                    options: [
-                        "The outer core must be liquid because S-waves only travel through solids",
-                        "The outer core must be solid because S-waves bounce off solid surfaces",
-                        "The outer core must be empty space because waves cannot cross gaps",
-                        "The outer core must be gas because S-waves move through gases slowly"
-                    ],
-                    correct: 0,
-                    explanation: "S-waves (shear/secondary waves) can only propagate through solids, not liquids or gases. When seismologists observed that S-waves stopped at a certain depth while P-waves (pressure waves) continued through, they concluded the outer core must be liquid. This indirect evidence proves the outer core is molten iron and nickel. We cannot drill to the core (too deep and hot), so seismic waves provide our evidence!",
-                    topic: "MAP: Earth's Interior"
-                },
-                {
-                    question: "Mars has ice caps at its poles and scientists have found evidence of ancient river valleys and lake beds. However, liquid water cannot exist on Mars' surface today. What changed on Mars that prevents liquid water from existing now?",
-                    options: [
-                        "Mars moved farther from the Sun so temperature dropped permanently below freezing",
-                        "Mars lost most of its atmosphere so pressure and temperature are too low",
-                        "Mars stopped rotating so one side became too hot and other too cold",
-                        "Mars's magnetic field strengthened repelling all water molecules away into space"
-                    ],
-                    correct: 1,
-                    explanation: "Mars lost most of its atmosphere over billions of years (solar wind stripped it away after Mars' magnetic field collapsed). With thin atmosphere: (1) Pressure is too low - water boils/sublimates even at low temperatures. (2) Temperature is too cold (average -60°C). (3) No greenhouse effect to trap heat. Ancient Mars likely had a thicker atmosphere, allowing liquid water. This demonstrates how atmosphere is crucial for habitable conditions.",
-                    topic: "MAP: Planetary Change"
-                },
-                {
-                    question: "Scientists have found identical fossils of Glossopteris (an ancient fern) on continents now separated by oceans: South America, Africa, Antarctica, India, and Australia. What does this evidence support?",
-                    options: [
-                        "Glossopteris could fly between continents to spread seeds everywhere regularly",
-                        "These continents were once connected allowing the plant to spread naturally",
-                        "Ocean currents carried Glossopteris seeds between all continents over time",
-                        "Glossopteris evolved independently on each continent by convergent evolution process"
-                    ],
-                    correct: 1,
-                    explanation: "This is strong evidence for continental drift and plate tectonics. Glossopteris lived 250 million years ago when these continents formed the supercontinent Pangaea. The plant spread across the connected landmass. When Pangaea broke apart, fossils ended up on now-separated continents. The plant couldn't fly or survive ocean crossings. Similar fossils across continents prove they were once joined - powerful evidence for Wegener's theory!",
-                    topic: "MAP: Continental Drift"
-                },
-                {
-                    question: "Jupiter is more than 300 times more massive than Earth, yet its density is only about 1/4 of Earth's density. What best explains this difference?",
-                    options: [
-                        "Jupiter is mostly gas and liquid hydrogen while Earth is rocky and metallic",
-                        "Jupiter is hollow inside while Earth is solid throughout its interior completely",
-                        "Jupiter has less gravity so materials are more spread out than on Earth",
-                        "Jupiter is older so materials have had more time to expand outward"
-                    ],
-                    correct: 0,
-                    explanation: "Jupiter is a gas giant made primarily of hydrogen (75%) and helium (24%) - light gases. Earth is terrestrial, made of dense rocks (silicates) and metals (iron core). Density = mass/volume. Jupiter is enormous (1,300 Earths could fit inside), but made of light materials, so its density is low (1.33 g/cm³). Earth is small but made of dense materials (5.5 g/cm³). This demonstrates how composition, not just size, determines density.",
-                    topic: "MAP: Planet Composition"
-                },
-                {
-                    question: "A lunar eclipse occurs when Earth passes between the Sun and Moon, casting Earth's shadow on the Moon. Why can we sometimes see the Moon during a lunar eclipse (appearing reddish) instead of it being completely dark?",
-                    options: [
-                        "The Moon produces its own light that glows red during eclipses",
-                        "Earth's atmosphere bends and filters sunlight casting red light on Moon",
-                        "The Sun's light changes to red color when passing by Earth's surface",
-                        "Mars reflects red light onto the Moon during the eclipse alignment"
-                    ],
-                    correct: 1,
-                    explanation: "During lunar eclipses, the Moon often appears reddish (blood moon). This occurs because Earth's atmosphere bends (refracts) sunlight around Earth. The atmosphere filters out blue light (scattering) but allows red light to pass through and reach the Moon. This is the same reason sunsets are red! The Moon reflects this reddish light back to us. Without our atmosphere, the Moon would appear completely black during eclipse.",
-                    topic: "MAP: Lunar Eclipses"
-                },
-                {
-                    question: "Scientists studying climate change analyze ice cores from Antarctica containing air bubbles trapped 100,000 years ago. What information can scientists obtain from these ancient air bubbles?",
-                    options: [
-                        "The exact temperature and weather conditions on every day in the past",
-                        "The atmospheric composition including CO₂ levels from ancient times accurately",
-                        "The population of animals that lived near the ice sheet historically",
-                        "The amount of sunlight that reached Earth during that time period"
-                    ],
-                    correct: 1,
-                    explanation: "Ice cores contain trapped air bubbles that preserve ancient atmospheric composition. Scientists analyze these bubbles to measure CO₂, methane, and other gas concentrations from the past. They also analyze ice isotopes to estimate past temperatures. This provides a climate record going back 800,000 years! Data shows CO₂ levels are now higher than any time in the ice core record, providing evidence for human impact on climate.",
-                    topic: "MAP: Climate Science"
-                },
-                {
-                    question: "The Sun converts 4 million tons of matter into energy every second through nuclear fusion (hydrogen → helium). Despite this massive loss, why does the Sun remain stable and not shrink noticeably over human timescales?",
-                    options: [
-                        "The Sun is so massive that 4 million tons is insignificant compared to total mass",
-                        "The Sun creates new matter to replace what is converted to energy",
-                        "The Sun absorbs matter from space at the same rate it loses matter",
-                        "The Sun doesn't actually lose matter because energy has no mass"
-                    ],
-                    correct: 0,
-                    explanation: "The Sun's mass is approximately 2 × 10³⁰ kg (2 followed by 30 zeros). Losing 4 million tons (4 × 10⁹ kg) per second seems huge, but it's only 0.0000000002% of the Sun's mass per second. At this rate, the Sun has enough hydrogen to continue fusion for another 5 billion years! The Sun has already burned for 4.6 billion years and is only about halfway through its life. Scale matters in astronomy!",
-                    topic: "MAP: The Sun"
-                },
-                {
-                    question: "Ocean water near the equator is warmer than near the poles. This temperature difference drives ocean currents that redistribute heat around the planet. What would likely happen to Earth's climate if these ocean currents stopped flowing?",
-                    options: [
-                        "Global temperature would increase because heat stays at the equator",
-                        "Regional climate extremes would increase with hotter tropics and colder poles",
-                        "Nothing would change because ocean currents don't affect climate patterns",
-                        "Global temperature would become uniform with no temperature differences anywhere"
-                    ],
-                    correct: 1,
-                    explanation: "Ocean currents (like the Gulf Stream) transport heat from the equator toward the poles, moderating climate. Without currents: (1) Tropical regions would get even hotter - heat wouldn't be carried away. (2) Polar regions would get even colder - warm water wouldn't arrive. (3) Weather patterns would change dramatically. (4) Some regions (like Western Europe) would become much colder. Ocean currents are crucial for distributing heat and regulating Earth's climate!",
-                    topic: "MAP: Ocean Currents & Climate"
-                }
-            ]
-        };
-
-        // Initialize the test
-        document.addEventListener('DOMContentLoaded', function() {
-            new TestEngine(testData, 'map_practice_growth', 50);
-        });
+        // Simple timer to track time spent
+        let seconds = 0;
+        setInterval(function() {
+            seconds++;
+            const mins = Math.floor(seconds / 60);
+            const secs = seconds % 60;
+            document.getElementById('time-display').textContent =
+                String(mins).padStart(2, '0') + ':' + String(secs).padStart(2, '0');
+        }, 1000);
     </script>
 </body>
 </html>

@@ -275,6 +275,614 @@
         .waxing-gibbous { background: linear-gradient(90deg, #2c3e50 70%, #ecf0f1 70%); }
         .waning-gibbous { background: linear-gradient(90deg, #ecf0f1 70%, #2c3e50 70%); }
         .waning-crescent { background: linear-gradient(90deg, #ecf0f1 30%, #2c3e50 30%); }
+
+        .solar-system-diagram {
+            background: linear-gradient(135deg, #000428, #004e92);
+            border-radius: 20px;
+            padding: 50px;
+            margin: 40px 0;
+            position: relative;
+            min-height: 600px;
+            overflow: hidden;
+        }
+
+        .sun {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 80px;
+            height: 80px;
+            background: radial-gradient(circle, #FFD700, #FF8C00);
+            border-radius: 50%;
+            box-shadow: 0 0 40px #FFA500;
+            z-index: 10;
+        }
+
+        .orbit {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            border: 2px dashed rgba(255,255,255,0.3);
+            border-radius: 50%;
+        }
+
+        .planet-container {
+            position: absolute;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .planet-dot {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            margin-bottom: 5px;
+        }
+
+        .planet-label {
+            color: white;
+            font-size: 0.85em;
+            font-weight: bold;
+            text-align: center;
+            white-space: nowrap;
+        }
+
+        .solar-system-visual {
+            margin: 40px 0;
+        }
+
+        .solar-system-visual h3 {
+            color: white;
+            text-align: center;
+            font-size: 2em;
+            margin-bottom: 10px;
+        }
+
+        .diagram-note {
+            color: white;
+            text-align: center;
+            font-size: 1.1em;
+            margin-top: 30px;
+            background: rgba(255,255,255,0.1);
+            padding: 15px;
+            border-radius: 10px;
+        }
+
+        .did-you-know-box {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            border-radius: 15px;
+            padding: 25px;
+            margin: 30px 0;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+        }
+
+        .did-you-know-box h4 {
+            color: #FFD700;
+            font-size: 1.5em;
+            margin-bottom: 15px;
+        }
+
+        .did-you-know-box ul {
+            margin: 15px 0;
+            padding-left: 20px;
+            line-height: 1.8;
+        }
+
+        .did-you-know-box li {
+            margin: 10px 0;
+        }
+
+        .inline-practice-section {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 30px;
+            margin: 40px 0;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+
+        .practice-instructions {
+            background: #e3f2fd;
+            padding: 15px;
+            border-radius: 10px;
+            border-left: 5px solid #2196F3;
+            margin-bottom: 30px;
+            font-size: 1.1em;
+        }
+
+        .inline-question {
+            background: #f8f9fa;
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 30px;
+            border: 2px solid #e0e0e0;
+        }
+
+        .inline-question h3 {
+            color: #4a47a3;
+            margin-bottom: 15px;
+        }
+
+        .question-text {
+            font-size: 1.1em;
+            line-height: 1.7;
+            margin-bottom: 20px;
+        }
+
+        .option-container {
+            background: white;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            padding: 15px;
+            margin: 10px 0;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .option-container:hover {
+            border-color: #4a47a3;
+            background: #f5f5f5;
+        }
+
+        .option-container label {
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            width: 100%;
+        }
+
+        .option-container input[type="radio"] {
+            margin-right: 15px;
+            transform: scale(1.3);
+            cursor: pointer;
+        }
+
+        .option-text {
+            font-size: 1.05em;
+        }
+
+        .option-container.correct-answer {
+            background: #e8f5e9;
+            border: 3px solid #4CAF50;
+            border-left: 8px solid #4CAF50;
+        }
+
+        .option-container.incorrect-answer {
+            background: #ffebee;
+            border: 3px solid #f44336;
+            border-left: 8px solid #f44336;
+        }
+
+        .option-container.selected-answer.correct-answer {
+            background: #c8e6c9;
+        }
+
+        .explanation {
+            background: #fff3e0;
+            border-left: 5px solid #FF9800;
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 20px;
+            font-size: 1.05em;
+            line-height: 1.6;
+        }
+
+        .question-spacer {
+            height: 40px;
+        }
+
+        /* Solar System Visual Styles */
+        .solar-system-section {
+            margin: 50px 0;
+            padding: 40px;
+            background: linear-gradient(135deg, #0c0c1e, #1a1a3e, #0c0c1e);
+            border-radius: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .solar-system-section h3 {
+            color: white;
+            text-align: center;
+            font-size: 2.2em;
+            margin-bottom: 15px;
+            text-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
+        }
+
+        .solar-system-section > p {
+            color: #fff;
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 1.2em;
+        }
+
+        .solar-system-visual {
+            position: relative;
+            width: 100%;
+            height: 700px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 40px 0;
+        }
+
+        .sun {
+            position: absolute;
+            width: 120px;
+            height: 120px;
+            background: radial-gradient(circle, #FFD700, #FFA500, #FF8C00);
+            border-radius: 50%;
+            box-shadow: 0 0 60px #FFD700, 0 0 100px #FFA500, 0 0 140px rgba(255, 165, 0, 0.5);
+            z-index: 10;
+            animation: sunGlow 3s ease-in-out infinite alternate;
+        }
+
+        @keyframes sunGlow {
+            0% {
+                box-shadow: 0 0 60px #FFD700, 0 0 100px #FFA500, 0 0 140px rgba(255, 165, 0, 0.5);
+            }
+            100% {
+                box-shadow: 0 0 80px #FFD700, 0 0 120px #FFA500, 0 0 160px rgba(255, 165, 0, 0.7);
+            }
+        }
+
+        .orbit {
+            position: absolute;
+            border: 2px dashed rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .planet {
+            position: absolute;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .planet:hover {
+            transform: scale(1.3);
+            z-index: 100;
+        }
+
+        .planet-label {
+            position: absolute;
+            color: white;
+            font-weight: bold;
+            font-size: 0.9em;
+            white-space: nowrap;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
+            pointer-events: none;
+        }
+
+        /* Mercury */
+        .mercury {
+            width: 15px;
+            height: 15px;
+            background: radial-gradient(circle, #8C8C8C, #696969);
+            left: calc(50% + 140px);
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .mercury-label {
+            left: calc(50% + 140px);
+            top: calc(50% + 20px);
+        }
+
+        /* Venus */
+        .venus {
+            width: 20px;
+            height: 20px;
+            background: radial-gradient(circle, #FFC649, #F0B040);
+            left: calc(50% + 190px);
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .venus-label {
+            left: calc(50% + 190px);
+            top: calc(50% + 25px);
+        }
+
+        /* Earth */
+        .earth {
+            width: 22px;
+            height: 22px;
+            background: radial-gradient(circle, #1E90FF 40%, #228B22 60%);
+            left: calc(50% + 240px);
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .earth-label {
+            left: calc(50% + 240px);
+            top: calc(50% + 25px);
+        }
+
+        /* Mars */
+        .mars {
+            width: 18px;
+            height: 18px;
+            background: radial-gradient(circle, #CD5C5C, #8B0000);
+            left: calc(50% - 180px);
+            top: calc(50% - 150px);
+        }
+
+        .mars-label {
+            left: calc(50% - 180px);
+            top: calc(50% - 125px);
+        }
+
+        /* Jupiter */
+        .jupiter {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(180deg, #D2691E 0%, #CD853F 25%, #DEB887 50%, #CD853F 75%, #D2691E 100%);
+            left: calc(50% - 230px);
+            top: calc(50% + 80px);
+        }
+
+        .jupiter-label {
+            left: calc(50% - 230px);
+            top: calc(50% + 150px);
+        }
+
+        /* Saturn */
+        .saturn {
+            width: 50px;
+            height: 50px;
+            background: radial-gradient(circle, #F4A460, #DAA520);
+            left: calc(50% + 180px);
+            top: calc(50% + 200px);
+        }
+
+        .saturn-label {
+            left: calc(50% + 180px);
+            top: calc(50% + 260px);
+        }
+
+        .saturn-ring {
+            position: absolute;
+            width: 80px;
+            height: 80px;
+            border: 8px solid rgba(210, 180, 140, 0.6);
+            border-radius: 50%;
+            left: calc(50% + 165px);
+            top: calc(50% + 185px);
+            pointer-events: none;
+            transform: rotateX(70deg);
+        }
+
+        /* Uranus */
+        .uranus {
+            width: 35px;
+            height: 35px;
+            background: radial-gradient(circle, #4FD8EB, #1E90FF);
+            left: calc(50% - 290px);
+            top: calc(50% - 80px);
+        }
+
+        .uranus-label {
+            left: calc(50% - 290px);
+            top: calc(50% - 35px);
+        }
+
+        /* Neptune */
+        .neptune {
+            width: 34px;
+            height: 34px;
+            background: radial-gradient(circle, #1E3A8A, #0000CD);
+            left: calc(50% + 280px);
+            top: calc(50% - 200px);
+        }
+
+        .neptune-label {
+            left: calc(50% + 280px);
+            top: calc(50% - 155px);
+        }
+
+        /* Orbit sizes */
+        .orbit-mercury {
+            width: 280px;
+            height: 280px;
+        }
+
+        .orbit-venus {
+            width: 380px;
+            height: 380px;
+        }
+
+        .orbit-earth {
+            width: 480px;
+            height: 480px;
+        }
+
+        .orbit-mars {
+            width: 580px;
+            height: 580px;
+        }
+
+        .orbit-jupiter {
+            width: 680px;
+            height: 680px;
+        }
+
+        .orbit-saturn {
+            width: 780px;
+            height: 780px;
+        }
+
+        .orbit-uranus {
+            width: 880px;
+            height: 880px;
+        }
+
+        .orbit-neptune {
+            width: 980px;
+            height: 980px;
+        }
+
+        .planet-facts-comparison {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 30px;
+            margin: 40px 0;
+        }
+
+        .planet-facts-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .planet-card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+            transition: transform 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .planet-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .planet-card h4 {
+            color: #4a47a3;
+            margin-bottom: 15px;
+            font-size: 1.3em;
+        }
+
+        .planet-card p {
+            margin: 8px 0;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .planet-card strong {
+            color: #4a90e2;
+        }
+
+        .inner-outer-legend {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin: 30px 0;
+        }
+
+        .legend-box {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 25px;
+            border-left: 6px solid;
+        }
+
+        .inner-planets-legend {
+            border-left-color: #CD5C5C;
+        }
+
+        .outer-planets-legend {
+            border-left-color: #4A90E2;
+        }
+
+        .legend-box h4 {
+            color: white;
+            font-size: 1.4em;
+            margin-bottom: 15px;
+        }
+
+        .legend-box ul {
+            color: white;
+            margin-left: 20px;
+            line-height: 1.8;
+        }
+
+        .distance-scale {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 25px;
+            margin: 30px 0;
+            text-align: center;
+        }
+
+        .distance-scale h4 {
+            color: white;
+            font-size: 1.3em;
+            margin-bottom: 15px;
+        }
+
+        .distance-scale p {
+            color: white;
+            font-size: 1.1em;
+            line-height: 1.7;
+        }
+
+        /* Hover information boxes */
+        .planet-info {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.98);
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+            color: #333;
+            font-size: 0.9em;
+            min-width: 220px;
+            display: none;
+            z-index: 1000;
+            border-left: 4px solid #4a90e2;
+        }
+
+        .planet:hover + .planet-info {
+            display: block;
+        }
+
+        .planet-info h5 {
+            color: #4a47a3;
+            margin-bottom: 8px;
+            font-size: 1.1em;
+        }
+
+        .planet-info p {
+            margin: 4px 0;
+            line-height: 1.5;
+        }
+
+        @media (max-width: 1024px) {
+            .solar-system-visual {
+                height: 600px;
+            }
+
+            .sun {
+                width: 100px;
+                height: 100px;
+            }
+
+            .orbit {
+                transform: translate(-50%, -50%) scale(0.8);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .solar-system-visual {
+                height: 500px;
+            }
+
+            .orbit {
+                transform: translate(-50%, -50%) scale(0.6);
+            }
+
+            .inner-outer-legend {
+                grid-template-columns: 1fr;
+            }
+        }
     </style>
 </head>
 <body>
@@ -389,6 +997,89 @@
                         <div class="fact">📍 Distance: 93 million miles from Earth</div>
                         <div class="fact">⚡ Energy: Powers all life on Earth!</div>
                     </div>
+                </div>
+
+                <!-- Visual Solar System Diagram -->
+                <div class="solar-system-visual">
+                    <h3>🌌 Our Solar System</h3>
+                    <div class="solar-system-diagram">
+                        <div class="sun"></div>
+
+                        <!-- Orbital paths -->
+                        <div class="orbit" style="width: 120px; height: 120px;"></div>
+                        <div class="orbit" style="width: 180px; height: 180px;"></div>
+                        <div class="orbit" style="width: 240px; height: 240px;"></div>
+                        <div class="orbit" style="width: 300px; height: 300px;"></div>
+                        <div class="orbit" style="width: 370px; height: 370px;"></div>
+                        <div class="orbit" style="width: 440px; height: 440px;"></div>
+                        <div class="orbit" style="width: 500px; height: 500px;"></div>
+                        <div class="orbit" style="width: 560px; height: 560px;"></div>
+
+                        <!-- Mercury -->
+                        <div class="planet-container" style="top: 50%; left: calc(50% + 60px); transform: translate(-50%, -50%);">
+                            <div class="planet-dot" style="background: #888888; width: 12px; height: 12px;"></div>
+                            <div class="planet-label">Mercury</div>
+                        </div>
+
+                        <!-- Venus -->
+                        <div class="planet-container" style="top: 50%; left: calc(50% - 90px); transform: translate(-50%, -50%);">
+                            <div class="planet-dot" style="background: #FFC649; width: 16px; height: 16px;"></div>
+                            <div class="planet-label">Venus</div>
+                        </div>
+
+                        <!-- Earth -->
+                        <div class="planet-container" style="top: calc(50% - 120px); left: 50%; transform: translate(-50%, -50%);">
+                            <div class="planet-dot" style="background: linear-gradient(135deg, #1E90FF, #32CD32); width: 18px; height: 18px;"></div>
+                            <div class="planet-label">Earth</div>
+                        </div>
+
+                        <!-- Mars -->
+                        <div class="planet-container" style="top: calc(50% + 150px); left: 50%; transform: translate(-50%, -50%);">
+                            <div class="planet-dot" style="background: #CD5C5C; width: 14px; height: 14px;"></div>
+                            <div class="planet-label">Mars</div>
+                        </div>
+
+                        <!-- Jupiter (largest) -->
+                        <div class="planet-container" style="top: 50%; left: calc(50% + 185px); transform: translate(-50%, -50%);">
+                            <div class="planet-dot" style="background: linear-gradient(180deg, #D2691E 0%, #F4A460 50%, #D2691E 100%); width: 45px; height: 45px;"></div>
+                            <div class="planet-label">Jupiter</div>
+                        </div>
+
+                        <!-- Saturn (with ring indicator) -->
+                        <div class="planet-container" style="top: calc(50% - 220px); left: 50%; transform: translate(-50%, -50%);">
+                            <div class="planet-dot" style="background: #F0E68C; width: 38px; height: 38px; box-shadow: 0 0 0 8px rgba(218, 165, 32, 0.4);"></div>
+                            <div class="planet-label">Saturn</div>
+                        </div>
+
+                        <!-- Uranus -->
+                        <div class="planet-container" style="top: 50%; left: calc(50% - 250px); transform: translate(-50%, -50%);">
+                            <div class="planet-dot" style="background: #87CEEB; width: 28px; height: 28px;"></div>
+                            <div class="planet-label">Uranus</div>
+                        </div>
+
+                        <!-- Neptune -->
+                        <div class="planet-container" style="top: calc(50% + 280px); left: 50%; transform: translate(-50%, -50%);">
+                            <div class="planet-dot" style="background: #0000CD; width: 27px; height: 27px;"></div>
+                            <div class="planet-label">Neptune</div>
+                        </div>
+                    </div>
+
+                    <p class="diagram-note">💡 Note: Sizes and distances are not to scale - this helps us see all planets clearly!</p>
+                </div>
+
+                <!-- Did You Know Box -->
+                <div class="did-you-know-box">
+                    <h4>💡 Did You Know? - Amazing Solar System Facts!</h4>
+                    <ul>
+                        <li>🌟 <strong>The Sun is HUGE!</strong> About 1.3 million Earths could fit inside the Sun!</li>
+                        <li>⚡ <strong>Light Speed:</strong> Sunlight takes 8 minutes and 20 seconds to reach Earth!</li>
+                        <li>🪐 <strong>Saturn's Rings:</strong> They're made of billions of pieces of ice and rock, some as small as grains of sand and others as big as houses!</li>
+                        <li>🌍 <strong>Earth's Special Shield:</strong> Our magnetic field protects us from harmful solar radiation - without it, life wouldn't exist!</li>
+                        <li>🔴 <strong>Mars' Giant Volcano:</strong> Olympus Mons on Mars is the largest volcano in our solar system - it's nearly 3 times the height of Mount Everest!</li>
+                        <li>💨 <strong>Neptune's Wild Winds:</strong> Wind speeds on Neptune can reach up to 1,200 mph - that's faster than the speed of sound on Earth!</li>
+                        <li>🌙 <strong>Moon Count:</strong> Jupiter has over 95 moons! Scientists keep discovering more!</li>
+                        <li>⏱️ <strong>Venus' Slow Spin:</strong> A day on Venus (243 Earth days) is actually longer than a year on Venus (225 Earth days)!</li>
+                    </ul>
                 </div>
 
                 <div class="planets-grid">
@@ -575,6 +1266,220 @@
                 </div>
             </div>
 
+            <!-- NEW SOLAR SYSTEM VISUAL DIAGRAM -->
+            <div class="solar-system-section">
+                <h3>🌌 Our Solar System - All 8 Planets!</h3>
+                <p>Here's our amazing solar system! The Sun is at the center, and all planets orbit around it. Hover over each planet to learn more!</p>
+
+                <div class="solar-system-visual">
+                    <!-- Sun -->
+                    <div class="sun"></div>
+
+                    <!-- Orbit paths -->
+                    <div class="orbit orbit-mercury"></div>
+                    <div class="orbit orbit-venus"></div>
+                    <div class="orbit orbit-earth"></div>
+                    <div class="orbit orbit-mars"></div>
+                    <div class="orbit orbit-jupiter"></div>
+                    <div class="orbit orbit-saturn"></div>
+                    <div class="orbit orbit-uranus"></div>
+                    <div class="orbit orbit-neptune"></div>
+
+                    <!-- Mercury -->
+                    <div class="planet mercury"></div>
+                    <div class="planet-label mercury-label">Mercury</div>
+                    <div class="planet-info" style="left: calc(50% + 165px); top: calc(50% + 40px);">
+                        <h5>Mercury</h5>
+                        <p><strong>Distance:</strong> 36 million miles</p>
+                        <p><strong>Size:</strong> Smallest planet</p>
+                        <p><strong>Day:</strong> 59 Earth days</p>
+                        <p><strong>Fact:</strong> Hottest days & coldest nights!</p>
+                    </div>
+
+                    <!-- Venus -->
+                    <div class="planet venus"></div>
+                    <div class="planet-label venus-label">Venus</div>
+                    <div class="planet-info" style="left: calc(50% + 215px); top: calc(50% + 45px);">
+                        <h5>Venus</h5>
+                        <p><strong>Distance:</strong> 67 million miles</p>
+                        <p><strong>Size:</strong> Similar to Earth</p>
+                        <p><strong>Day:</strong> 243 Earth days</p>
+                        <p><strong>Fact:</strong> Spins backwards!</p>
+                    </div>
+
+                    <!-- Earth -->
+                    <div class="planet earth"></div>
+                    <div class="planet-label earth-label">Earth</div>
+                    <div class="planet-info" style="left: calc(50% + 265px); top: calc(50% + 50px);">
+                        <h5>Earth (Home!)</h5>
+                        <p><strong>Distance:</strong> 93 million miles</p>
+                        <p><strong>Size:</strong> Medium</p>
+                        <p><strong>Day:</strong> 24 hours</p>
+                        <p><strong>Fact:</strong> Only planet with life!</p>
+                    </div>
+
+                    <!-- Mars -->
+                    <div class="planet mars"></div>
+                    <div class="planet-label mars-label">Mars</div>
+                    <div class="planet-info" style="left: calc(50% - 180px); top: calc(50% - 100px);">
+                        <h5>Mars</h5>
+                        <p><strong>Distance:</strong> 142 million miles</p>
+                        <p><strong>Size:</strong> About half Earth</p>
+                        <p><strong>Day:</strong> 24.6 hours</p>
+                        <p><strong>Fact:</strong> Red from iron oxide (rust)!</p>
+                    </div>
+
+                    <!-- Jupiter -->
+                    <div class="planet jupiter"></div>
+                    <div class="planet-label jupiter-label">Jupiter</div>
+                    <div class="planet-info" style="left: calc(50% - 280px); top: calc(50% + 140px);">
+                        <h5>Jupiter</h5>
+                        <p><strong>Distance:</strong> 484 million miles</p>
+                        <p><strong>Size:</strong> BIGGEST! 11x Earth</p>
+                        <p><strong>Day:</strong> 10 hours</p>
+                        <p><strong>Fact:</strong> 95+ moons!</p>
+                    </div>
+
+                    <!-- Saturn & Ring -->
+                    <div class="saturn-ring"></div>
+                    <div class="planet saturn"></div>
+                    <div class="planet-label saturn-label">Saturn</div>
+                    <div class="planet-info" style="left: calc(50% + 230px); top: calc(50% + 220px);">
+                        <h5>Saturn</h5>
+                        <p><strong>Distance:</strong> 887 million miles</p>
+                        <p><strong>Size:</strong> 9x Earth</p>
+                        <p><strong>Day:</strong> 10.7 hours</p>
+                        <p><strong>Fact:</strong> Beautiful ice rings!</p>
+                    </div>
+
+                    <!-- Uranus -->
+                    <div class="planet uranus"></div>
+                    <div class="planet-label uranus-label">Uranus</div>
+                    <div class="planet-info" style="left: calc(50% - 340px); top: calc(50% - 50px);">
+                        <h5>Uranus</h5>
+                        <p><strong>Distance:</strong> 1.8 billion miles</p>
+                        <p><strong>Size:</strong> 4x Earth</p>
+                        <p><strong>Day:</strong> 17 hours</p>
+                        <p><strong>Fact:</strong> Tilted on its side!</p>
+                    </div>
+
+                    <!-- Neptune -->
+                    <div class="planet neptune"></div>
+                    <div class="planet-label neptune-label">Neptune</div>
+                    <div class="planet-info" style="left: calc(50% + 310px); top: calc(50% - 160px);">
+                        <h5>Neptune</h5>
+                        <p><strong>Distance:</strong> 2.8 billion miles</p>
+                        <p><strong>Size:</strong> 4x Earth</p>
+                        <p><strong>Day:</strong> 16 hours</p>
+                        <p><strong>Fact:</strong> Windiest planet - 1,200 mph!</p>
+                    </div>
+                </div>
+
+                <!-- Inner vs Outer Planets Legend -->
+                <div class="inner-outer-legend">
+                    <div class="legend-box inner-planets-legend">
+                        <h4>🪨 Inner Planets (Rocky)</h4>
+                        <ul>
+                            <li><strong>Planets:</strong> Mercury, Venus, Earth, Mars</li>
+                            <li><strong>Made of:</strong> Rock and metal</li>
+                            <li><strong>Size:</strong> Small</li>
+                            <li><strong>Moons:</strong> Few or none</li>
+                            <li><strong>Surface:</strong> Solid - you can walk on them!</li>
+                        </ul>
+                    </div>
+
+                    <div class="legend-box outer-planets-legend">
+                        <h4>🌀 Outer Planets (Gas Giants)</h4>
+                        <ul>
+                            <li><strong>Planets:</strong> Jupiter, Saturn, Uranus, Neptune</li>
+                            <li><strong>Made of:</strong> Gas and liquid (hydrogen, helium)</li>
+                            <li><strong>Size:</strong> HUGE!</li>
+                            <li><strong>Moons:</strong> Many moons (Jupiter has 95+!)</li>
+                            <li><strong>Surface:</strong> No solid surface to land on!</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Distance Scale Indicator -->
+                <div class="distance-scale">
+                    <h4>📏 Understanding Distance in Space</h4>
+                    <p><strong>NOTE:</strong> This diagram shows relative planet sizes, but true distances are MUCH greater! If we showed real distances, Neptune would be a mile away from the Sun in this model!</p>
+                    <p><strong>Earth to Sun:</strong> 93 million miles (called 1 AU - Astronomical Unit)</p>
+                    <p><strong>Neptune to Sun:</strong> 2.8 BILLION miles (30 AU) - that's 30 times farther than Earth!</p>
+                </div>
+
+                <!-- Planet Facts Comparison Cards -->
+                <div class="planet-facts-comparison">
+                    <h4 style="color: white; text-align: center; font-size: 1.6em; margin-bottom: 20px;">Planet Comparison - Quick Facts!</h4>
+
+                    <div class="planet-facts-grid">
+                        <div class="planet-card">
+                            <h4>Mercury ☿</h4>
+                            <p><strong>Order:</strong> 1st from Sun</p>
+                            <p><strong>Type:</strong> Rocky inner planet</p>
+                            <p><strong>Special:</strong> Fastest orbit (88 days)</p>
+                            <p><strong>Cool Fact:</strong> No atmosphere or moons!</p>
+                        </div>
+
+                        <div class="planet-card">
+                            <h4>Venus ♀</h4>
+                            <p><strong>Order:</strong> 2nd from Sun</p>
+                            <p><strong>Type:</strong> Rocky inner planet</p>
+                            <p><strong>Special:</strong> Hottest planet (464°C!)</p>
+                            <p><strong>Cool Fact:</strong> Rotates backwards!</p>
+                        </div>
+
+                        <div class="planet-card">
+                            <h4>Earth 🌍</h4>
+                            <p><strong>Order:</strong> 3rd from Sun</p>
+                            <p><strong>Type:</strong> Rocky inner planet</p>
+                            <p><strong>Special:</strong> Only planet with life!</p>
+                            <p><strong>Cool Fact:</strong> 71% water coverage!</p>
+                        </div>
+
+                        <div class="planet-card">
+                            <h4>Mars ♂</h4>
+                            <p><strong>Order:</strong> 4th from Sun</p>
+                            <p><strong>Type:</strong> Rocky inner planet</p>
+                            <p><strong>Special:</strong> "Red Planet" from rust</p>
+                            <p><strong>Cool Fact:</strong> Largest volcano in solar system!</p>
+                        </div>
+
+                        <div class="planet-card">
+                            <h4>Jupiter ♃</h4>
+                            <p><strong>Order:</strong> 5th from Sun</p>
+                            <p><strong>Type:</strong> Gas giant outer planet</p>
+                            <p><strong>Special:</strong> Biggest! (1,300 Earths fit inside)</p>
+                            <p><strong>Cool Fact:</strong> Great Red Spot storm for 400+ years!</p>
+                        </div>
+
+                        <div class="planet-card">
+                            <h4>Saturn ♄</h4>
+                            <p><strong>Order:</strong> 6th from Sun</p>
+                            <p><strong>Type:</strong> Gas giant outer planet</p>
+                            <p><strong>Special:</strong> Spectacular ring system!</p>
+                            <p><strong>Cool Fact:</strong> Would float in water (low density)!</p>
+                        </div>
+
+                        <div class="planet-card">
+                            <h4>Uranus ♅</h4>
+                            <p><strong>Order:</strong> 7th from Sun</p>
+                            <p><strong>Type:</strong> Ice giant outer planet</p>
+                            <p><strong>Special:</strong> Tilted 98° on its side!</p>
+                            <p><strong>Cool Fact:</strong> Made of ice, water, methane!</p>
+                        </div>
+
+                        <div class="planet-card">
+                            <h4>Neptune ♆</h4>
+                            <p><strong>Order:</strong> 8th from Sun</p>
+                            <p><strong>Type:</strong> Ice giant outer planet</p>
+                            <p><strong>Special:</strong> Windiest planet!</p>
+                            <p><strong>Cool Fact:</strong> Takes 165 Earth years to orbit Sun!</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <div class="moon-phases">
                 <h3>🌙 Moon Phases - Why Does the Moon Change Shape?</h3>
                 <p>The Moon doesn't actually change shape! We just see different parts of it lit up by the Sun as it moves around Earth.</p>
@@ -734,6 +1639,395 @@
             </div>
         </div>
 
+        <div class="inline-practice-section">
+            <h2>📝 Practice Questions - Immediate Feedback!</h2>
+            <p class="practice-instructions">Select your answer to see if you're correct right away! Green = Correct ✅, Red = Try again ❌</p>
+
+            <div id="inline-quiz-chapter2">
+
+                <!-- Question 1 -->
+                <div class="inline-question" data-correct="C">
+                    <h3>Question 1:</h3>
+                    <p class="question-text">Which layer of Earth is the thickest?</p>
+
+                    <div class="option-container">
+                        <label>
+                            <input type="radio" name="q1" value="A">
+                            <span class="option-text">A. Crust</span>
+                        </label>
+                    </div>
+
+                    <div class="option-container">
+                        <label>
+                            <input type="radio" name="q1" value="B">
+                            <span class="option-text">B. Outer Core</span>
+                        </label>
+                    </div>
+
+                    <div class="option-container">
+                        <label>
+                            <input type="radio" name="q1" value="C">
+                            <span class="option-text">C. Mantle</span>
+                        </label>
+                    </div>
+
+                    <div class="option-container">
+                        <label>
+                            <input type="radio" name="q1" value="D">
+                            <span class="option-text">D. Inner Core</span>
+                        </label>
+                    </div>
+
+                    <div class="explanation" data-text="The mantle is Earth's thickest layer at 2,900 km thick! It's made of hot, thick rock that flows slowly. The crust (where we live) is actually the thinnest layer!" style="display: none;"></div>
+
+                    <div class="question-spacer"></div>
+                </div>
+
+                <!-- Question 2 -->
+                <div class="inline-question" data-correct="B">
+                    <h3>Question 2:</h3>
+                    <p class="question-text">What causes Earth to have day and night?</p>
+
+                    <div class="option-container">
+                        <label>
+                            <input type="radio" name="q2" value="A">
+                            <span class="option-text">A. Earth's revolution around the Sun</span>
+                        </label>
+                    </div>
+
+                    <div class="option-container">
+                        <label>
+                            <input type="radio" name="q2" value="B">
+                            <span class="option-text">B. Earth's rotation on its axis</span>
+                        </label>
+                    </div>
+
+                    <div class="option-container">
+                        <label>
+                            <input type="radio" name="q2" value="C">
+                            <span class="option-text">C. The Moon blocking the Sun's light</span>
+                        </label>
+                    </div>
+
+                    <div class="option-container">
+                        <label>
+                            <input type="radio" name="q2" value="D">
+                            <span class="option-text">D. Clouds covering the Sun</span>
+                        </label>
+                    </div>
+
+                    <div class="explanation" data-text="Earth ROTATES (spins) on its axis once every 24 hours, which creates day and night! When your side of Earth faces the Sun, it's daytime. When you rotate away from the Sun, it's nighttime. Revolution (orbiting around the Sun) causes seasons, not day and night!" style="display: none;"></div>
+
+                    <div class="question-spacer"></div>
+                </div>
+
+                <!-- Question 3 -->
+                <div class="inline-question" data-correct="D">
+                    <h3>Question 3:</h3>
+                    <p class="question-text">Which planets are considered the "Gas Giants"?</p>
+
+                    <div class="option-container">
+                        <label>
+                            <input type="radio" name="q3" value="A">
+                            <span class="option-text">A. Mercury, Venus, Earth, Mars</span>
+                        </label>
+                    </div>
+
+                    <div class="option-container">
+                        <label>
+                            <input type="radio" name="q3" value="B">
+                            <span class="option-text">B. Earth, Mars, Jupiter, Saturn</span>
+                        </label>
+                    </div>
+
+                    <div class="option-container">
+                        <label>
+                            <input type="radio" name="q3" value="C">
+                            <span class="option-text">C. Mercury, Venus, Uranus, Neptune</span>
+                        </label>
+                    </div>
+
+                    <div class="option-container">
+                        <label>
+                            <input type="radio" name="q3" value="D">
+                            <span class="option-text">D. Jupiter, Saturn, Uranus, Neptune</span>
+                        </label>
+                    </div>
+
+                    <div class="explanation" data-text="Jupiter, Saturn, Uranus, and Neptune are the outer planets called Gas Giants! They're HUGE, made mostly of gas and liquid (not rock), have many moons, and all have rings. The inner planets (Mercury, Venus, Earth, Mars) are small and rocky!" style="display: none;"></div>
+
+                    <div class="question-spacer"></div>
+                </div>
+
+                <!-- Question 4 -->
+                <div class="inline-question" data-correct="A">
+                    <h3>Question 4:</h3>
+                    <p class="question-text">How long does it take for Earth to complete ONE revolution around the Sun?</p>
+
+                    <div class="option-container">
+                        <label>
+                            <input type="radio" name="q4" value="A">
+                            <span class="option-text">A. 365.25 days (1 year)</span>
+                        </label>
+                    </div>
+
+                    <div class="option-container">
+                        <label>
+                            <input type="radio" name="q4" value="B">
+                            <span class="option-text">B. 24 hours (1 day)</span>
+                        </label>
+                    </div>
+
+                    <div class="option-container">
+                        <label>
+                            <input type="radio" name="q4" value="C">
+                            <span class="option-text">C. 30 days (1 month)</span>
+                        </label>
+                    </div>
+
+                    <div class="option-container">
+                        <label>
+                            <input type="radio" name="q4" value="D">
+                            <span class="option-text">D. 7 days (1 week)</span>
+                        </label>
+                    </div>
+
+                    <div class="explanation" data-text="Earth takes 365.25 days to orbit (revolve) around the Sun - that's ONE YEAR! The extra 0.25 day is why we have leap year every 4 years (to add that extra day back). Earth's rotation (spinning) takes 24 hours and causes day and night!" style="display: none;"></div>
+
+                    <div class="question-spacer"></div>
+                </div>
+
+                <!-- Question 5 -->
+                <div class="inline-question" data-correct="C">
+                    <h3>Question 5:</h3>
+                    <p class="question-text">Which moon phase occurs when the Moon is between Earth and the Sun?</p>
+
+                    <div class="option-container">
+                        <label>
+                            <input type="radio" name="q5" value="A">
+                            <span class="option-text">A. Full Moon</span>
+                        </label>
+                    </div>
+
+                    <div class="option-container">
+                        <label>
+                            <input type="radio" name="q5" value="B">
+                            <span class="option-text">B. First Quarter</span>
+                        </label>
+                    </div>
+
+                    <div class="option-container">
+                        <label>
+                            <input type="radio" name="q5" value="C">
+                            <span class="option-text">C. New Moon</span>
+                        </label>
+                    </div>
+
+                    <div class="option-container">
+                        <label>
+                            <input type="radio" name="q5" value="D">
+                            <span class="option-text">D. Last Quarter</span>
+                        </label>
+                    </div>
+
+                    <div class="explanation" data-text="When the Moon is between Earth and the Sun, we get a NEW MOON - we can't see it from Earth! The sunlit side faces the Sun (away from us), so the dark side faces Earth. During a Full Moon, Earth is between the Sun and Moon, so we see the fully lit side!" style="display: none;"></div>
+
+                    <div class="question-spacer"></div>
+                </div>
+
+                <!-- Question 6 -->
+                <div class="inline-question" data-correct="B">
+                    <h3>Question 6:</h3>
+                    <p class="question-text">What creates Earth's magnetic field?</p>
+
+                    <div class="option-container">
+                        <label>
+                            <input type="radio" name="q6" value="A">
+                            <span class="option-text">A. The solid inner core</span>
+                        </label>
+                    </div>
+
+                    <div class="option-container">
+                        <label>
+                            <input type="radio" name="q6" value="B">
+                            <span class="option-text">B. The liquid outer core made of iron and nickel</span>
+                        </label>
+                    </div>
+
+                    <div class="option-container">
+                        <label>
+                            <input type="radio" name="q6" value="C">
+                            <span class="option-text">C. The mantle's hot rock</span>
+                        </label>
+                    </div>
+
+                    <div class="option-container">
+                        <label>
+                            <input type="radio" name="q6" value="D">
+                            <span class="option-text">D. The crust where we live</span>
+                        </label>
+                    </div>
+
+                    <div class="explanation" data-text="Earth's magnetic field is created by the OUTER CORE! It's made of liquid iron and nickel that flows and moves, creating electrical currents that produce a magnetic field. This field protects us from harmful solar radiation - like a giant invisible shield!" style="display: none;"></div>
+
+                    <div class="question-spacer"></div>
+                </div>
+
+                <!-- Question 7 -->
+                <div class="inline-question" data-correct="D">
+                    <h3>Question 7:</h3>
+                    <p class="question-text">Why does Mars appear red?</p>
+
+                    <div class="option-container">
+                        <label>
+                            <input type="radio" name="q7" value="A">
+                            <span class="option-text">A. It's covered in red flowers</span>
+                        </label>
+                    </div>
+
+                    <div class="option-container">
+                        <label>
+                            <input type="radio" name="q7" value="B">
+                            <span class="option-text">B. The atmosphere makes it look red</span>
+                        </label>
+                    </div>
+
+                    <div class="option-container">
+                        <label>
+                            <input type="radio" name="q7" value="C">
+                            <span class="option-text">C. It reflects red light from the Sun</span>
+                        </label>
+                    </div>
+
+                    <div class="option-container">
+                        <label>
+                            <input type="radio" name="q7" value="D">
+                            <span class="option-text">D. Its soil contains iron oxide (rust)</span>
+                        </label>
+                    </div>
+
+                    <div class="explanation" data-text="Mars looks red because its soil contains IRON OXIDE - that's rust! Just like when metal rusts on Earth and turns reddish-orange, the iron in Mars' soil has rusted, giving the planet its famous red color. That's why we call it the 'Red Planet'!" style="display: none;"></div>
+
+                    <div class="question-spacer"></div>
+                </div>
+
+                <!-- Question 8 -->
+                <div class="inline-question" data-correct="A">
+                    <h3>Question 8:</h3>
+                    <p class="question-text">What is the main difference between the inner planets and outer planets?</p>
+
+                    <div class="option-container">
+                        <label>
+                            <input type="radio" name="q8" value="A">
+                            <span class="option-text">A. Inner planets are small and rocky; outer planets are large and gaseous</span>
+                        </label>
+                    </div>
+
+                    <div class="option-container">
+                        <label>
+                            <input type="radio" name="q8" value="B">
+                            <span class="option-text">B. Inner planets are cold; outer planets are hot</span>
+                        </label>
+                    </div>
+
+                    <div class="option-container">
+                        <label>
+                            <input type="radio" name="q8" value="C">
+                            <span class="option-text">C. Inner planets have rings; outer planets don't</span>
+                        </label>
+                    </div>
+
+                    <div class="option-container">
+                        <label>
+                            <input type="radio" name="q8" value="D">
+                            <span class="option-text">D. There is no difference between them</span>
+                        </label>
+                    </div>
+
+                    <div class="explanation" data-text="Inner planets (Mercury, Venus, Earth, Mars) are small, rocky, and have solid surfaces you could walk on! Outer planets (Jupiter, Saturn, Uranus, Neptune) are HUGE gas giants with no solid surface - you'd just sink into gas and liquid. Outer planets also have more moons and rings!" style="display: none;"></div>
+
+                    <div class="question-spacer"></div>
+                </div>
+
+                <!-- Question 9 -->
+                <div class="inline-question" data-correct="B">
+                    <h3>Question 9:</h3>
+                    <p class="question-text">How long does a complete lunar cycle (all 8 moon phases) take?</p>
+
+                    <div class="option-container">
+                        <label>
+                            <input type="radio" name="q9" value="A">
+                            <span class="option-text">A. 7 days</span>
+                        </label>
+                    </div>
+
+                    <div class="option-container">
+                        <label>
+                            <input type="radio" name="q9" value="B">
+                            <span class="option-text">B. About 29.5 days</span>
+                        </label>
+                    </div>
+
+                    <div class="option-container">
+                        <label>
+                            <input type="radio" name="q9" value="C">
+                            <span class="option-text">C. 365 days</span>
+                        </label>
+                    </div>
+
+                    <div class="option-container">
+                        <label>
+                            <input type="radio" name="q9" value="D">
+                            <span class="option-text">D. 24 hours</span>
+                        </label>
+                    </div>
+
+                    <div class="explanation" data-text="A complete lunar cycle from New Moon through all 8 phases and back to New Moon takes about 29.5 days (roughly one month)! The Moon orbits Earth during this time, and we see different amounts of its sunlit side, creating the moon phases we observe!" style="display: none;"></div>
+
+                    <div class="question-spacer"></div>
+                </div>
+
+                <!-- Question 10 -->
+                <div class="inline-question" data-correct="C">
+                    <h3>Question 10:</h3>
+                    <p class="question-text">Which planet is the largest in our solar system?</p>
+
+                    <div class="option-container">
+                        <label>
+                            <input type="radio" name="q10" value="A">
+                            <span class="option-text">A. Earth</span>
+                        </label>
+                    </div>
+
+                    <div class="option-container">
+                        <label>
+                            <input type="radio" name="q10" value="B">
+                            <span class="option-text">B. Saturn</span>
+                        </label>
+                    </div>
+
+                    <div class="option-container">
+                        <label>
+                            <input type="radio" name="q10" value="C">
+                            <span class="option-text">C. Jupiter</span>
+                        </label>
+                    </div>
+
+                    <div class="option-container">
+                        <label>
+                            <input type="radio" name="q10" value="D">
+                            <span class="option-text">D. Neptune</span>
+                        </label>
+                    </div>
+
+                    <div class="explanation" data-text="Jupiter is the LARGEST planet in our solar system! It's so massive that all the other planets could fit inside it! Jupiter has over 80 moons and the Great Red Spot - a storm bigger than Earth that's been raging for over 400 years!" style="display: none;"></div>
+
+                    <div class="question-spacer"></div>
+                </div>
+
+            </div>
+        </div>
+
         <div class="quiz-section">
             <h2>🧠 Test Your Knowledge!</h2>
             <div id="quiz-container">
@@ -758,6 +2052,7 @@
         </div>
     </div>
 
+    <script src="inline-quiz.js"></script>
     <script>
         // Chapter 2 Quiz Data
         const chapter2QuizData = {

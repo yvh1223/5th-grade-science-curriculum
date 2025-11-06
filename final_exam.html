@@ -6,6 +6,7 @@
     <title>Final Exam - Complete 5th Grade Science Review</title>
     <link rel="stylesheet" href="styles.css">
     <style>
+
         * {
             margin: 0;
             padding: 0;
@@ -63,222 +64,6 @@
             z-index: 1000;
         }
 
-        .timer-running { color: #4CAF50; }
-        .timer-warning { color: #ff9800; animation: pulse 1s infinite; }
-        .timer-danger { color: #f44336; animation: pulse 0.5s infinite; }
-
-        @keyframes pulse {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.5; }
-        }
-
-        .question-container {
-            background: rgba(255, 255, 255, 0.95);
-            padding: 25px;
-            border-radius: 15px;
-            margin-bottom: 25px;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
-        }
-
-        .question-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 20px;
-            padding-bottom: 10px;
-            border-bottom: 2px solid #e0e0e0;
-        }
-
-        .question-number {
-            background: #4a90e2;
-            color: white;
-            padding: 8px 20px;
-            border-radius: 25px;
-            font-weight: bold;
-            font-size: 1.1em;
-        }
-
-        .question-type {
-            background: #f5f5f5;
-            padding: 5px 15px;
-            border-radius: 15px;
-            font-size: 0.9em;
-            color: #666;
-        }
-
-        .question-text {
-            font-size: 1.1em;
-            margin-bottom: 20px;
-            line-height: 1.7;
-        }
-
-        .answer-options {
-            margin: 20px 0;
-        }
-
-        .answer-option {
-            display: block;
-            padding: 15px 20px;
-            margin: 10px 0;
-            background: #f8f9fa;
-            border: 2px solid #e9ecef;
-            border-radius: 10px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            position: relative;
-        }
-
-        .answer-option:hover {
-            background: #e3f2fd;
-            border-color: #2196F3;
-        }
-
-        .answer-option.selected {
-            background: #e3f2fd;
-            border-color: #2196F3;
-            box-shadow: 0 3px 10px rgba(33, 150, 243, 0.3);
-        }
-
-        .answer-option input[type="radio"] {
-            margin-right: 15px;
-            transform: scale(1.2);
-        }
-
-        .option-label {
-            font-weight: bold;
-            color: #4a90e2;
-            margin-right: 10px;
-        }
-
-        .visual-question {
-            background: #f8f9fa;
-            padding: 20px;
-            border-radius: 10px;
-            margin: 15px 0;
-            text-align: center;
-            border: 2px dashed #dee2e6;
-        }
-
-        .data-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 15px 0;
-            background: white;
-        }
-
-        .data-table th,
-        .data-table td {
-            border: 1px solid #ddd;
-            padding: 12px;
-            text-align: center;
-        }
-
-        .data-table th {
-            background: #4a90e2;
-            color: white;
-            font-weight: bold;
-        }
-
-        .data-table tr:nth-child(even) {
-            background: #f8f9fa;
-        }
-
-        .controls {
-            background: rgba(255, 255, 255, 0.95);
-            padding: 25px;
-            border-radius: 15px;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
-            margin: 30px 0;
-            text-align: center;
-        }
-
-        .btn {
-            padding: 12px 30px;
-            margin: 10px;
-            border: none;
-            border-radius: 25px;
-            font-size: 1.1em;
-            font-weight: bold;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-decoration: none;
-            display: inline-block;
-        }
-
-        .btn-primary {
-            background: #4a90e2;
-            color: white;
-        }
-
-        .btn-primary:hover {
-            background: #357abd;
-            transform: translateY(-2px);
-        }
-
-        .btn-success {
-            background: #4CAF50;
-            color: white;
-        }
-
-        .btn-success:hover {
-            background: #45a049;
-            transform: translateY(-2px);
-        }
-
-        .btn-warning {
-            background: #ff9800;
-            color: white;
-        }
-
-        .btn-warning:hover {
-            background: #f57c00;
-            transform: translateY(-2px);
-        }
-
-        .results-container {
-            background: rgba(255, 255, 255, 0.95);
-            padding: 30px;
-            border-radius: 15px;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
-            margin: 30px 0;
-            display: none;
-        }
-
-        .score-display {
-            text-align: center;
-            margin-bottom: 30px;
-        }
-
-        .score-circle {
-            width: 200px;
-            height: 200px;
-            border-radius: 50%;
-            display: inline-flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            font-size: 2em;
-            font-weight: bold;
-            color: white;
-            margin: 20px;
-        }
-
-        .score-excellent {
-            background: linear-gradient(45deg, #4CAF50, #45a049);
-        }
-
-        .score-good {
-            background: linear-gradient(45deg, #2196F3, #1976D2);
-        }
-
-        .score-needs-work {
-            background: linear-gradient(45deg, #ff9800, #f57c00);
-        }
-
-        .score-poor {
-            background: linear-gradient(45deg, #f44336, #d32f2f);
-        }
-
         .back-link {
             position: fixed;
             top: 20px;
@@ -300,48 +85,82 @@
             transform: translateY(-2px);
         }
 
-        .progress-bar {
-            width: 100%;
-            height: 25px;
-            background: #e0e0e0;
-            border-radius: 10px;
-            margin: 20px 0;
-            overflow: hidden;
+        .inline-question {
+            background: #f8f9fa;
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 30px;
+            border: 2px solid #e0e0e0;
         }
 
-        .progress-fill {
-            height: 100%;
-            background: linear-gradient(45deg, #4CAF50, #45a049);
-            width: 0%;
-            transition: width 0.3s ease;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-weight: bold;
-            font-size: 0.9em;
+        .inline-question h3 {
+            color: #4a47a3;
+            margin-bottom: 15px;
         }
 
-        .answer-reveal {
-            margin-top: 30px;
-        }
-
-        .reveal-spacer {
-            height: 40px;
-            border-bottom: 2px dashed #ccc;
+        .question-text {
+            font-size: 1.1em;
+            line-height: 1.7;
             margin-bottom: 20px;
         }
 
-        .reveal-content {
-            background: #e8f5e9;
-            padding: 20px;
+        .option-container {
+            background: white;
+            border: 2px solid #e0e0e0;
             border-radius: 10px;
-            border-left: 5px solid #4CAF50;
+            padding: 15px;
+            margin: 10px 0;
+            cursor: pointer;
+            transition: all 0.3s ease;
         }
 
-        .reveal-content h4 {
-            color: #2e7d32;
-            margin-bottom: 10px;
+        .option-container:hover {
+            background: #f0f8ff;
+            border-color: #4a90e2;
+            transform: translateX(5px);
+        }
+
+        .option-container.correct-answer {
+            background: #e8f5e9;
+            border: 3px solid #4CAF50;
+            border-left: 8px solid #4CAF50;
+        }
+
+        .option-container.incorrect-answer {
+            background: #ffebee;
+            border: 3px solid #f44336;
+            border-left: 8px solid #f44336;
+        }
+
+        .option-container input[type="radio"] {
+            margin-right: 15px;
+            transform: scale(1.2);
+        }
+
+        .option-container label {
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+        }
+
+        .option-text {
+            flex: 1;
+        }
+
+        .explanation {
+            background: #fff3e0;
+            border-left: 5px solid #FF9800;
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 20px;
+            font-size: 1.05em;
+            display: none;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .question-spacer {
+            height: 40px;
         }
 
         @media (max-width: 768px) {
@@ -358,680 +177,2022 @@
                 margin-bottom: 20px;
             }
         }
+    
+        /* Inline Quiz Specific Styles */
+        .inline-question {
+            background: #f8f9fa;
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 30px;
+            border: 2px solid #e0e0e0;
+        }
+
+        .inline-question h3 {
+            color: #4a47a3;
+            margin-bottom: 15px;
+        }
+
+        .question-text {
+            font-size: 1.1em;
+            line-height: 1.7;
+            margin-bottom: 20px;
+        }
+
+        .option-container {
+            background: white;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            padding: 15px;
+            margin: 10px 0;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .option-container:hover {
+            background: #f0f8ff;
+            border-color: #4a90e2;
+            transform: translateX(5px);
+        }
+
+        .option-container.correct-answer {
+            background: #e8f5e9;
+            border: 3px solid #4CAF50;
+            border-left: 8px solid #4CAF50;
+        }
+
+        .option-container.incorrect-answer {
+            background: #ffebee;
+            border: 3px solid #f44336;
+            border-left: 8px solid #f44336;
+        }
+
+        .option-container input[type="radio"] {
+            margin-right: 15px;
+            transform: scale(1.2);
+        }
+
+        .option-container label {
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+        }
+
+        .option-text {
+            flex: 1;
+        }
+
+        .explanation {
+            background: #fff3e0;
+            border-left: 5px solid #FF9800;
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 20px;
+            font-size: 1.05em;
+            display: none;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .question-spacer {
+            height: 40px;
+        }
     </style>
 </head>
 <body>
     <a href="tests.html" class="back-link">← Back to Testing Center</a>
 
     <div class="timer-container" id="timer">
-        <div>⏱️ Time: <span id="time-display">60:00</span></div>
+        <div>⏱️ Time Tracker: <span id="time-display">00:00</span></div>
     </div>
 
     <div class="container">
         <div class="test-header">
-            <h1>Final Exam</h1>
-            <h2>Complete 5th Grade Science Review</h2>
+            <h1>Final Exam - Complete 5th Grade Science Review</h1>
+            <h2>All 5 Chapters - 50 Comprehensive Questions</h2>
 
             <div class="test-info">
-                <p><strong>Instructions:</strong> This comprehensive final exam contains 50 challenging questions covering ALL 5 chapters: Scientific Method, Earth & Space, Living Systems, Matter & Energy, and Water Cycle. You have 60 minutes to complete the test.</p>
-                <p><strong>Scoring:</strong> This is a difficult test! Aim for 40+ correct answers (80%) to demonstrate excellent mastery!</p>
-                <p><strong>Note:</strong> Answers are randomized - the correct answer won't always be in the same position!</p>
+                <p><strong>Instructions:</strong> Select your answer to see immediate feedback! ✅ Correct answers will show in GREEN. ❌ Incorrect answers will show in RED with the correct answer highlighted.</p>
+                <p><strong>Content:</strong> This comprehensive final exam contains 50 challenging questions covering ALL 5 chapters: Scientific Method, Earth & Space, Living Systems, Matter & Energy, and Water Cycle.</p>
+                <p><strong>Note:</strong> Take your time and read each question carefully!</p>
             </div>
+        </div>
 
-            <div class="progress-bar">
-                <div class="progress-fill" id="progress">
-                    <span id="progress-text">0 / 50 answered</span>
+        <div id="inline-quiz">
+            <!-- Question 1 -->
+            <div class="inline-question" data-correct="A">
+                <h3>Question 1: Scientific Method Steps</h3>
+                <p class="question-text">A scientist notices that plants near a window grow taller than plants in the middle of a room. She wonders if light affects plant growth. What should be her next step in the scientific method?</p>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q1" value="A">
+                        <span class="option-text">A. Form a testable hypothesis about light and plant growth carefully</span>
+                    </label>
                 </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q1" value="B">
+                        <span class="option-text">B. Draw conclusions about why plants need light for all growth</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q1" value="C">
+                        <span class="option-text">C. Immediately publish her observation in a scientific journal now</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q1" value="D">
+                        <span class="option-text">D. Conduct multiple experiments without making any predictions first</span>
+                    </label>
+                </div>
+
+                <div class="explanation" data-text="After making an observation and asking a question, the next step in the scientific method is to form a testable hypothesis. A good hypothesis would be: &#x27;If plants receive more light, then they will grow taller because light provides energy for photosynthesis.&#x27;" style="display: none;"></div>
+
+                <div class="question-spacer"></div>
             </div>
-        </div>
 
-        <div id="test-questions">
-            <!-- Questions will be inserted here by JavaScript -->
-        </div>
+            <!-- Question 2 -->
+            <div class="inline-question" data-correct="C">
+                <h3>Question 2: Variables</h3>
+                <p class="question-text">A student wants to test whether temperature affects how fast ice melts. Which variable should be the independent variable (the one she changes)?</p>
 
-        <div class="controls" id="test-controls">
-            <button type="button" class="btn btn-warning" id="review-answers">📝 Review My Answers</button>
-            <button type="button" class="btn btn-success" id="submit-test">✅ Submit Test</button>
-            <button type="button" class="btn btn-primary" id="restart-test">🔄 Restart Test</button>
-        </div>
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q2" value="A">
+                        <span class="option-text">A. The time it takes for ice to melt completely away</span>
+                    </label>
+                </div>
 
-        <div class="results-container" id="results">
-            <h2 style="text-align: center; margin-bottom: 30px;">📊 Test Results</h2>
-            <div class="score-display">
-                <div class="score-circle" id="score-circle"></div>
-                <div id="score-text"></div>
-                <div id="score-message"></div>
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q2" value="B">
+                        <span class="option-text">B. The amount of water produced from the melted ice cubes</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q2" value="C">
+                        <span class="option-text">C. The temperature of the room where ice is placed carefully</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q2" value="D">
+                        <span class="option-text">D. The size and shape of the ice cubes used always</span>
+                    </label>
+                </div>
+
+                <div class="explanation" data-text="The independent variable is what the scientist deliberately changes. In this experiment, the student should change the temperature to see how it affects melting time. Temperature is what&#x27;s being manipulated, while melting time is measured (dependent variable)." style="display: none;"></div>
+
+                <div class="question-spacer"></div>
             </div>
-            <div id="answers-review"></div>
 
-            <div style="text-align: center; margin-top: 30px;">
-                <a href="tests.html" class="btn btn-primary">📚 Back to Testing Center</a>
-                <button type="button" class="btn btn-success" onclick="location.reload()">🔄 Retake Test</button>
+            <!-- Question 3 -->
+            <div class="inline-question" data-correct="B">
+                <h3>Question 3: Reliable Measurements</h3>
+                <p class="question-text">Three students measure the mass of the same rock using a balance. Student A gets 245g, Student B gets 244g, and Student C gets 246g. What should they do to increase the reliability of their measurement?</p>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q3" value="A">
+                        <span class="option-text">A. Choose the middle value and ignore the other measurements obtained</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q3" value="B">
+                        <span class="option-text">B. Calculate the average of all three measurements taken carefully</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q3" value="C">
+                        <span class="option-text">C. Repeat the experiment only once more to get data quickly</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q3" value="D">
+                        <span class="option-text">D. Select the highest value since it seems most accurate overall</span>
+                    </label>
+                </div>
+
+                <div class="explanation" data-text="To increase reliability, scientists should calculate the average (mean) of multiple measurements. This reduces the impact of small errors. The average of 245g, 244g, and 246g is 245g, which is likely the most accurate measurement." style="display: none;"></div>
+
+                <div class="question-spacer"></div>
             </div>
+
+            <!-- Question 4 -->
+            <div class="inline-question" data-correct="C">
+                <h3>Question 4: Data Representation</h3>
+                <p class="question-text">A scientist collects this data on plant growth:<br><br>Week 1: 5cm | Week 2: 8cm | Week 3: 12cm | Week 4: 17cm<br><br>What type of graph would best show how plant height changes over time?</p>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q4" value="A">
+                        <span class="option-text">A. A pie chart showing percentages of growth each week clearly</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q4" value="B">
+                        <span class="option-text">B. A bar graph comparing plant heights at different times shown</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q4" value="C">
+                        <span class="option-text">C. A line graph showing continuous change over time period displayed</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q4" value="D">
+                        <span class="option-text">D. A pictograph using plant symbols to represent each week simply</span>
+                    </label>
+                </div>
+
+                <div class="explanation" data-text="A line graph is best for showing change over time because it displays continuous data and makes it easy to see trends. The line connecting data points shows how the plant&#x27;s height increased steadily week by week." style="display: none;"></div>
+
+                <div class="question-spacer"></div>
+            </div>
+
+            <!-- Question 5 -->
+            <div class="inline-question" data-correct="A">
+                <h3>Question 5: Controlled Experiments</h3>
+                <p class="question-text">A researcher wants to determine if a new fertilizer helps tomato plants produce more fruit. She uses 20 plants: 10 receive the new fertilizer and 10 receive no fertilizer. What is the purpose of the 10 plants without fertilizer?</p>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q5" value="A">
+                        <span class="option-text">A. They serve as the control group to compare results properly</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q5" value="B">
+                        <span class="option-text">B. They serve as backup plants in case others die completely</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q5" value="C">
+                        <span class="option-text">C. They serve to save money by using less fertilizer overall</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q5" value="D">
+                        <span class="option-text">D. They serve as the independent variable in the experiment design</span>
+                    </label>
+                </div>
+
+                <div class="explanation" data-text="The 10 plants without fertilizer are the control group. They provide a baseline for comparison. By comparing the fertilized plants to the control group, the scientist can determine if the fertilizer actually caused any difference in fruit production." style="display: none;"></div>
+
+                <div class="question-spacer"></div>
+            </div>
+
+            <!-- Question 6 -->
+            <div class="inline-question" data-correct="C">
+                <h3>Question 6: Analyzing Results</h3>
+                <p class="question-text">A student hypothesizes that heavier objects fall faster than lighter objects. He drops a bowling ball and a basketball from the same height at the same time. They hit the ground simultaneously. What should the student conclude?</p>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q6" value="A">
+                        <span class="option-text">A. The hypothesis is correct but the experiment was flawed badly</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q6" value="B">
+                        <span class="option-text">B. The hypothesis is supported by the experimental data collected here</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q6" value="C">
+                        <span class="option-text">C. The hypothesis is not supported by the experimental data obtained</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q6" value="D">
+                        <span class="option-text">D. More objects must be tested before any conclusions are made</span>
+                    </label>
+                </div>
+
+                <div class="explanation" data-text="When experimental results don&#x27;t match the hypothesis, the hypothesis is not supported. The student&#x27;s data shows that the bowling ball (heavier) and basketball (lighter) fell at the same rate, contradicting the hypothesis. This is actually what Galileo discovered!" style="display: none;"></div>
+
+                <div class="question-spacer"></div>
+            </div>
+
+            <!-- Question 7 -->
+            <div class="inline-question" data-correct="B">
+                <h3>Question 7: Types of Data</h3>
+                <p class="question-text">Which of the following is an example of qualitative data (descriptive observations) rather than quantitative data (numerical measurements)?</p>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q7" value="A">
+                        <span class="option-text">A. The plant grew 15 centimeters in three weeks of observation</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q7" value="B">
+                        <span class="option-text">B. The chemical solution changed from clear to cloudy white color</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q7" value="C">
+                        <span class="option-text">C. The temperature increased by 25 degrees Celsius during heating procedure</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q7" value="D">
+                        <span class="option-text">D. The experiment was repeated five times to ensure accurate results</span>
+                    </label>
+                </div>
+
+                <div class="explanation" data-text="Qualitative data describes qualities or characteristics without numbers (like color, texture, smell). &#x27;Changed from clear to cloudy white&#x27; is descriptive. The other options contain numbers, making them quantitative data." style="display: none;"></div>
+
+                <div class="question-spacer"></div>
+            </div>
+
+            <!-- Question 8 -->
+            <div class="inline-question" data-correct="A">
+                <h3>Question 8: Scientific Process</h3>
+                <p class="question-text">A scientist publishes her experimental results in a journal. Other scientists read her work and repeat her experiment to verify the results. What is this process called, and why is it important?</p>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q8" value="A">
+                        <span class="option-text">A. Replication ensures results are reliable and not due to errors</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q8" value="B">
+                        <span class="option-text">B. Competition helps scientists win awards for their discoveries quickly</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q8" value="C">
+                        <span class="option-text">C. Publication allows scientists to become famous for their work</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q8" value="D">
+                        <span class="option-text">D. Verification prevents other scientists from stealing research ideas completely</span>
+                    </label>
+                </div>
+
+                <div class="explanation" data-text="Replication means other scientists repeat an experiment to verify results. This is crucial in science because it confirms that results are reliable and reproducible, not due to errors or chance. Replicated results strengthen scientific knowledge." style="display: none;"></div>
+
+                <div class="question-spacer"></div>
+            </div>
+
+            <!-- Question 9 -->
+            <div class="inline-question" data-correct="B">
+                <h3>Question 9: Fair Tests</h3>
+                <p class="question-text">A student wants to test whether music affects concentration while studying. She studies math with music for 1 hour on Monday and without music for 30 minutes on Tuesday. What is the main flaw in her experiment design?</p>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q9" value="A">
+                        <span class="option-text">A. She should have studied a different subject each day instead</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q9" value="B">
+                        <span class="option-text">B. She changed multiple variables at once making results unclear</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q9" value="C">
+                        <span class="option-text">C. She should have tested more than just two days total</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q9" value="D">
+                        <span class="option-text">D. She should have used louder music to see bigger effects</span>
+                    </label>
+                </div>
+
+                <div class="explanation" data-text="The major flaw is that she changed two variables: presence of music AND study time (1 hour vs 30 minutes). In a fair test, only ONE variable should change. She should have studied for the same amount of time with and without music." style="display: none;"></div>
+
+                <div class="question-spacer"></div>
+            </div>
+
+            <!-- Question 10 -->
+            <div class="inline-question" data-correct="A">
+                <h3>Question 10: Scientific Models</h3>
+                <p class="question-text">Scientists use models to represent complex systems. A student builds a model of the solar system using balls of different sizes. What is the main limitation of this model?</p>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q10" value="A">
+                        <span class="option-text">A. The model cannot accurately represent the vast distances between planets</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q10" value="B">
+                        <span class="option-text">B. The model cannot show that all planets are perfectly round</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q10" value="C">
+                        <span class="option-text">C. The model cannot demonstrate that planets are made of matter</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q10" value="D">
+                        <span class="option-text">D. The model cannot prove that the Sun is at the center</span>
+                    </label>
+                </div>
+
+                <div class="explanation" data-text="The main limitation of a small-scale solar system model is that it cannot accurately represent the enormous distances between planets. If Earth were the size of a marble, the nearest planet would be across a football field! True scale is impossible to show in a classroom model." style="display: none;"></div>
+
+                <div class="question-spacer"></div>
+            </div>
+
+            <!-- Question 11 -->
+            <div class="inline-question" data-correct="B">
+                <h3>Question 11: Earth's Layers</h3>
+                <p class="question-text">Scientists study seismic waves (vibrations from earthquakes) to learn about Earth's interior layers. Why can't S-waves (shear waves) travel through Earth's outer core?</p>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q11" value="A">
+                        <span class="option-text">A. The outer core is too hot for any waves to pass</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q11" value="B">
+                        <span class="option-text">B. The outer core is liquid and S-waves only travel through solids</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q11" value="C">
+                        <span class="option-text">C. The outer core is too dense for S-waves to penetrate deeply</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q11" value="D">
+                        <span class="option-text">D. The outer core is magnetic and blocks all S-wave transmission</span>
+                    </label>
+                </div>
+
+                <div class="explanation" data-text="S-waves (secondary waves) cannot travel through liquids, only solids. Since S-waves stop at the outer core, this proves the outer core is liquid (molten iron and nickel). P-waves can travel through both solids and liquids, which is how we know about all of Earth&#x27;s layers." style="display: none;"></div>
+
+                <div class="question-spacer"></div>
+            </div>
+
+            <!-- Question 12 -->
+            <div class="inline-question" data-correct="A">
+                <h3>Question 12: Continental Drift</h3>
+                <p class="question-text">The continents were once joined together in a supercontinent called Pangaea. Which evidence best supports this theory of continental drift?</p>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q12" value="A">
+                        <span class="option-text">A. Similar fossils of ancient organisms found on different continents today</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q12" value="B">
+                        <span class="option-text">B. All continents have mountains and valleys on their surfaces clearly</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q12" value="C">
+                        <span class="option-text">C. Ocean water flows between all the continents on Earth currently</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q12" value="D">
+                        <span class="option-text">D. The continents all have similar climates and weather patterns today</span>
+                    </label>
+                </div>
+
+                <div class="explanation" data-text="The strongest evidence for continental drift is finding identical fossils of ancient plants and animals on continents now separated by oceans. For example, fossils of Mesosaurus (an ancient reptile) are found in both South America and Africa, suggesting these continents were once connected." style="display: none;"></div>
+
+                <div class="question-spacer"></div>
+            </div>
+
+            <!-- Question 13 -->
+            <div class="inline-question" data-correct="C">
+                <h3>Question 13: Planet Formation</h3>
+                <p class="question-text">The inner planets (Mercury, Venus, Earth, Mars) are much smaller than the outer planets (Jupiter, Saturn, Uranus, Neptune). What is the main reason for this difference in size?</p>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q13" value="A">
+                        <span class="option-text">A. Inner planets formed from heavier rocky materials with less volume</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q13" value="B">
+                        <span class="option-text">B. Inner planets were closer to the Sun which limited their growth</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q13" value="C">
+                        <span class="option-text">C. Outer planets captured more gases and grew much larger overall</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q13" value="D">
+                        <span class="option-text">D. Inner planets lost most of their mass through collisions early on</span>
+                    </label>
+                </div>
+
+                <div class="explanation" data-text="The outer planets (gas giants) are much larger because they formed in the colder outer solar system where gases like hydrogen and helium didn&#x27;t blow away. They captured huge amounts of gas, growing massive. Inner planets formed in the hot inner solar system where only rock and metal could remain." style="display: none;"></div>
+
+                <div class="question-spacer"></div>
+            </div>
+
+            <!-- Question 14 -->
+            <div class="inline-question" data-correct="B">
+                <h3>Question 14: Eclipses</h3>
+                <p class="question-text">A lunar eclipse occurs when Earth passes between the Sun and Moon, casting Earth's shadow on the Moon. Why don't lunar eclipses happen every month during the full moon phase?</p>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q14" value="A">
+                        <span class="option-text">A. The Moon is too far away to enter Earth's shadow</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q14" value="B">
+                        <span class="option-text">B. The Moon's orbit is tilted so it usually passes above or below</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q14" value="C">
+                        <span class="option-text">C. Earth's shadow is too small to cover the entire Moon</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q14" value="D">
+                        <span class="option-text">D. The Sun's position changes too quickly for alignment to occur</span>
+                    </label>
+                </div>
+
+                <div class="explanation" data-text="The Moon&#x27;s orbit is tilted about 5 degrees relative to Earth&#x27;s orbit around the Sun. During most full moons, the Moon passes slightly above or below Earth&#x27;s shadow. Lunar eclipses only occur when the full moon happens at a point where the Moon crosses Earth&#x27;s orbital plane." style="display: none;"></div>
+
+                <div class="question-spacer"></div>
+            </div>
+
+            <!-- Question 15 -->
+            <div class="inline-question" data-correct="A">
+                <h3>Question 15: Planetary Science</h3>
+                <p class="question-text">Mars appears reddish in color due to iron oxide (rust) on its surface. What does the presence of iron oxide suggest about Mars' past?</p>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q15" value="A">
+                        <span class="option-text">A. Mars once had liquid water that caused iron to rust</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q15" value="B">
+                        <span class="option-text">B. Mars was once much hotter than it is today overall</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q15" value="C">
+                        <span class="option-text">C. Mars had volcanic eruptions that produced iron oxide everywhere</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q15" value="D">
+                        <span class="option-text">D. Mars collided with another planet made entirely of iron</span>
+                    </label>
+                </div>
+
+                <div class="explanation" data-text="Iron oxide (rust) forms when iron reacts with oxygen and water. The widespread iron oxide on Mars suggests that liquid water once flowed on the surface. This is supported by other evidence like dried river valleys and ancient lake beds discovered by Mars rovers." style="display: none;"></div>
+
+                <div class="question-spacer"></div>
+            </div>
+
+            <!-- Question 16 -->
+            <div class="inline-question" data-correct="A">
+                <h3>Question 16: Gas Giants</h3>
+                <p class="question-text">Jupiter's Great Red Spot is a massive storm that has been raging for at least 400 years. Why can storms on Jupiter last so much longer than Earth's storms?</p>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q16" value="A">
+                        <span class="option-text">A. Jupiter has no solid surface to slow down the storm</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q16" value="B">
+                        <span class="option-text">B. Jupiter is much colder so storms freeze and stay stable</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q16" value="C">
+                        <span class="option-text">C. Jupiter has more oxygen to fuel the storm continuously</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q16" value="D">
+                        <span class="option-text">D. Jupiter rotates slower giving storms more time to develop fully</span>
+                    </label>
+                </div>
+
+                <div class="explanation" data-text="Jupiter&#x27;s storms can last for centuries because Jupiter has no solid surface. On Earth, storms lose energy when they encounter land or mountains. On Jupiter, storms just keep swirling in the gas atmosphere with nothing to stop them. Jupiter also rotates very fast (10-hour day), creating strong winds." style="display: none;"></div>
+
+                <div class="question-spacer"></div>
+            </div>
+
+            <!-- Question 17 -->
+            <div class="inline-question" data-correct="B">
+                <h3>Question 17: Asteroid Belt</h3>
+                <p class="question-text">The asteroid belt contains millions of rocky objects orbiting between Mars and Jupiter. Why didn't these objects form into a planet?</p>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q17" value="A">
+                        <span class="option-text">A. There wasn't enough material in this region to form a planet</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q17" value="B">
+                        <span class="option-text">B. Jupiter's strong gravity prevented the rocks from joining together</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q17" value="C">
+                        <span class="option-text">C. The Sun's heat made the rocks too hot to stick together</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q17" value="D">
+                        <span class="option-text">D. A planet did form but was destroyed by a collision</span>
+                    </label>
+                </div>
+
+                <div class="explanation" data-text="Jupiter&#x27;s enormous gravity prevented the asteroids from coming together to form a planet. Jupiter&#x27;s gravitational pull kept the rocky fragments stirred up and moving too fast to stick together. The total mass of all asteroids combined is less than Earth&#x27;s moon!" style="display: none;"></div>
+
+                <div class="question-spacer"></div>
+            </div>
+
+            <!-- Question 18 -->
+            <div class="inline-question" data-correct="B">
+                <h3>Question 18: Moon Phases</h3>
+                <p class="question-text">A student observes the Moon at 8 PM and sees it is a waxing crescent (thin crescent on the right side). If she observes the Moon again one week later at 8 PM, what phase should she expect to see?</p>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q18" value="A">
+                        <span class="option-text">A. A waning crescent because the Moon is decreasing in light</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q18" value="B">
+                        <span class="option-text">B. A first quarter because seven days is one quarter of cycle</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q18" value="C">
+                        <span class="option-text">C. A full moon because the Moon completes its cycle weekly</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q18" value="D">
+                        <span class="option-text">D. A new moon because the Moon resets after one week</span>
+                    </label>
+                </div>
+
+                <div class="explanation" data-text="The Moon&#x27;s phases follow a predictable cycle taking about 29.5 days. After a waxing crescent (about day 3), one week later (day 10) would show a first quarter moon - when the right half appears illuminated. The sequence is: new moon → waxing crescent → first quarter → waxing gibbous → full moon." style="display: none;"></div>
+
+                <div class="question-spacer"></div>
+            </div>
+
+            <!-- Question 19 -->
+            <div class="inline-question" data-correct="B">
+                <h3>Question 19: Space Exploration</h3>
+                <p class="question-text">Astronomers have discovered thousands of exoplanets (planets orbiting other stars). The nearest star system, Alpha Centauri, is 4.3 light-years away. Why haven't we sent spacecraft to explore it?</p>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q19" value="A">
+                        <span class="option-text">A. Current spacecraft are too large to travel that far away</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q19" value="B">
+                        <span class="option-text">B. The distance is so vast it would take thousands of years</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q19" value="C">
+                        <span class="option-text">C. Alpha Centauri has no planets orbiting around it at all</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q19" value="D">
+                        <span class="option-text">D. Spacecraft cannot survive the extreme cold of deep space travel</span>
+                    </label>
+                </div>
+
+                <div class="explanation" data-text="A light-year is the distance light travels in one year - about 6 trillion miles! Alpha Centauri is 4.3 light-years (26 trillion miles) away. Our fastest spacecraft (Voyager 1) travels at 38,000 mph. At that speed, it would take over 73,000 years to reach Alpha Centauri!" style="display: none;"></div>
+
+                <div class="question-spacer"></div>
+            </div>
+
+            <!-- Question 20 -->
+            <div class="inline-question" data-correct="C">
+                <h3>Question 20: The Sun</h3>
+                <p class="question-text">The Sun produces energy through nuclear fusion, converting hydrogen into helium. Scientists estimate the Sun has enough hydrogen to continue this process for approximately how much longer?</p>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q20" value="A">
+                        <span class="option-text">A. About 100 million years before hydrogen runs out completely</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q20" value="B">
+                        <span class="option-text">B. About 1 billion years before hydrogen runs out completely</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q20" value="C">
+                        <span class="option-text">C. About 5 billion years before hydrogen runs out completely</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q20" value="D">
+                        <span class="option-text">D. About 100 billion years before hydrogen runs out completely</span>
+                    </label>
+                </div>
+
+                <div class="explanation" data-text="The Sun is about 4.6 billion years old and has enough hydrogen fuel to keep shining for another 5 billion years. After that, it will expand into a red giant, eventually becoming a white dwarf. Don&#x27;t worry - humans have plenty of time to prepare!" style="display: none;"></div>
+
+                <div class="question-spacer"></div>
+            </div>
+
+            <!-- Question 21 -->
+            <div class="inline-question" data-correct="A">
+                <h3>Question 21: Food Webs</h3>
+                <p class="question-text">In a food web, arrows point from prey to predator showing energy flow. If a disease killed most of the rabbits in an ecosystem, what would most likely happen to the wolf and grass populations?</p>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q21" value="A">
+                        <span class="option-text">A. Wolf population decreases and grass population increases over time clearly</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q21" value="B">
+                        <span class="option-text">B. Wolf population increases and grass population decreases over time clearly</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q21" value="C">
+                        <span class="option-text">C. Both wolf and grass populations would decrease together simultaneously</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q21" value="D">
+                        <span class="option-text">D. Both wolf and grass populations would increase together simultaneously</span>
+                    </label>
+                </div>
+
+                <div class="explanation" data-text="Rabbits eat grass (primary consumers) and wolves eat rabbits (secondary consumers). With fewer rabbits, wolves would have less food and their population would decrease. Grass would be eaten less, so the grass population would increase. This demonstrates how populations in a food web are interconnected." style="display: none;"></div>
+
+                <div class="question-spacer"></div>
+            </div>
+
+            <!-- Question 22 -->
+            <div class="inline-question" data-correct="C">
+                <h3>Question 22: Energy Pyramids</h3>
+                <p class="question-text">A scientist studies an ecosystem and finds: 10,000 grass plants, 1,000 grasshoppers, 100 mice, and 10 hawks. What does this data demonstrate about energy flow in ecosystems?</p>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q22" value="A">
+                        <span class="option-text">A. Producers must be least numerous because they need less energy</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q22" value="B">
+                        <span class="option-text">B. Predators must be most numerous because they are strongest animals</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q22" value="C">
+                        <span class="option-text">C. Energy is lost at each level so fewer organisms can be supported</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q22" value="D">
+                        <span class="option-text">D. Energy increases at each level so populations grow larger upward</span>
+                    </label>
+                </div>
+
+                <div class="explanation" data-text="This demonstrates the energy pyramid. Only about 10% of energy passes from one trophic level to the next. The other 90% is used for life processes or lost as heat. Since less energy is available at higher levels, fewer organisms can be supported. That&#x27;s why there are many more plants than hawks." style="display: none;"></div>
+
+                <div class="question-spacer"></div>
+            </div>
+
+            <!-- Question 23 -->
+            <div class="inline-question" data-correct="B">
+                <h3>Question 23: Cell Organelles</h3>
+                <p class="question-text">A plant's leaves contain chloroplasts that perform photosynthesis. Which organelle in animal cells performs a similar opposite function by breaking down glucose for energy?</p>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q23" value="A">
+                        <span class="option-text">A. The cell membrane controls what enters and leaves cells always</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q23" value="B">
+                        <span class="option-text">B. The mitochondria breaks down glucose to release energy for use</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q23" value="C">
+                        <span class="option-text">C. The nucleus contains genetic information and controls the cell completely</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q23" value="D">
+                        <span class="option-text">D. The vacuole stores water and other materials inside the cell</span>
+                    </label>
+                </div>
+
+                <div class="explanation" data-text="Mitochondria are the &#x27;powerhouses&#x27; of cells. They break down glucose (sugar) through cellular respiration to release energy (ATP). This is the opposite of photosynthesis: chloroplasts build glucose using light energy, while mitochondria break down glucose to release energy. Both plant and animal cells have mitochondria." style="display: none;"></div>
+
+                <div class="question-spacer"></div>
+            </div>
+
+            <!-- Question 24 -->
+            <div class="inline-question" data-correct="B">
+                <h3>Question 24: Adaptations</h3>
+                <p class="question-text">An adaptation is an inherited trait that helps an organism survive. A desert cactus has thick, waxy stems that store water. How does this adaptation help the cactus survive in its environment?</p>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q24" value="A">
+                        <span class="option-text">A. It helps the cactus compete with other plants for sunlight</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q24" value="B">
+                        <span class="option-text">B. It allows the cactus to survive long periods without rainfall</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q24" value="C">
+                        <span class="option-text">C. It protects the cactus from extremely cold nighttime temperatures</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q24" value="D">
+                        <span class="option-text">D. It helps the cactus attract pollinators to reproduce successfully</span>
+                    </label>
+                </div>
+
+                <div class="explanation" data-text="The thick, waxy stem is a water storage adaptation perfect for the desert. The thick stem stores large amounts of water during rare rainfalls. The waxy coating prevents water loss through evaporation. This adaptation allows cacti to survive months without rain in harsh desert conditions." style="display: none;"></div>
+
+                <div class="question-spacer"></div>
+            </div>
+
+            <!-- Question 25 -->
+            <div class="inline-question" data-correct="B">
+                <h3>Question 25: Classification</h3>
+                <p class="question-text">Scientists group organisms into kingdoms based on shared characteristics. Which characteristic best distinguishes organisms in the Plant Kingdom from those in the Animal Kingdom?</p>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q25" value="A">
+                        <span class="option-text">A. Plants can move while animals stay in one place always</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q25" value="B">
+                        <span class="option-text">B. Plants make their own food while animals consume other organisms</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q25" value="C">
+                        <span class="option-text">C. Plants reproduce sexually while animals reproduce asexually only</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q25" value="D">
+                        <span class="option-text">D. Plants are single-celled while animals are always multicellular organisms</span>
+                    </label>
+                </div>
+
+                <div class="explanation" data-text="The key difference is nutrition: plants are autotrophs (self-feeders) that make their own food through photosynthesis, while animals are heterotrophs (other-feeders) that must consume other organisms for energy. This is the fundamental distinction between these kingdoms." style="display: none;"></div>
+
+                <div class="question-spacer"></div>
+            </div>
+
+            <!-- Question 26 -->
+            <div class="inline-question" data-correct="B">
+                <h3>Question 26: Natural Selection</h3>
+                <p class="question-text">A population of beetles lives in a forest. Some beetles are green and some are brown. After a fire kills many green plants, mostly brown beetles survive. This is an example of what process?</p>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q26" value="A">
+                        <span class="option-text">A. Artificial selection where humans choose which beetles survive clearly</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q26" value="B">
+                        <span class="option-text">B. Natural selection where environment determines which traits help survival</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q26" value="C">
+                        <span class="option-text">C. Genetic mutation where beetles change their color to match surroundings</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q26" value="D">
+                        <span class="option-text">D. Selective breeding where beetles choose mates based on color preferences</span>
+                    </label>
+                </div>
+
+                <div class="explanation" data-text="This is natural selection. After the fire, brown beetles were better camouflaged against the darkened forest floor, so they were less visible to predators. Green beetles were easier to spot and eaten. Over time, the brown trait became more common because brown beetles survived and reproduced more successfully." style="display: none;"></div>
+
+                <div class="question-spacer"></div>
+            </div>
+
+            <!-- Question 27 -->
+            <div class="inline-question" data-correct="B">
+                <h3>Question 27: Invasive Species</h3>
+                <p class="question-text">An invasive species is an organism introduced to a new ecosystem where it doesn't naturally belong. Why are invasive species often harmful to native ecosystems?</p>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q27" value="A">
+                        <span class="option-text">A. They always carry diseases that kill native species quickly</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q27" value="B">
+                        <span class="option-text">B. They have no natural predators to control their population growth</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q27" value="C">
+                        <span class="option-text">C. They are always larger and stronger than native species</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q27" value="D">
+                        <span class="option-text">D. They cannot adapt to the new environment and die out</span>
+                    </label>
+                </div>
+
+                <div class="explanation" data-text="Invasive species are harmful because they often lack natural predators in their new environment. Without predators to control them, their populations can explode. They may outcompete native species for food and habitat, or prey on native species that have no defenses against them. Example: Burmese pythons in the Florida Everglades." style="display: none;"></div>
+
+                <div class="question-spacer"></div>
+            </div>
+
+            <!-- Question 28 -->
+            <div class="inline-question" data-correct="C">
+                <h3>Question 28: Decomposers</h3>
+                <p class="question-text">In a healthy pond ecosystem, algae (producers) convert sunlight into energy, small fish eat algae, large fish eat small fish, and bacteria decompose dead organisms. What role do the bacteria play?</p>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q28" value="A">
+                        <span class="option-text">A. Bacteria are producers that create new nutrients from sunlight energy</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q28" value="B">
+                        <span class="option-text">B. Bacteria are consumers that eat other living organisms for energy</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q28" value="C">
+                        <span class="option-text">C. Bacteria are decomposers that recycle nutrients back to the soil</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q28" value="D">
+                        <span class="option-text">D. Bacteria are predators that control fish populations in the pond</span>
+                    </label>
+                </div>
+
+                <div class="explanation" data-text="Bacteria are decomposers that break down dead plants and animals, recycling nutrients back into the ecosystem. Without decomposers, dead matter would pile up and nutrients would be locked away. Decomposers are essential - they complete the cycle by returning nutrients to the soil where plants can use them again." style="display: none;"></div>
+
+                <div class="question-spacer"></div>
+            </div>
+
+            <!-- Question 29 -->
+            <div class="inline-question" data-correct="A">
+                <h3>Question 29: Predator-Prey Adaptations</h3>
+                <p class="question-text">A student observes that owls have forward-facing eyes while rabbits have eyes on the sides of their heads. What does this difference in eye position indicate about these animals?</p>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q29" value="A">
+                        <span class="option-text">A. Owls are predators that need depth perception to catch prey</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q29" value="B">
+                        <span class="option-text">B. Owls are prey animals that need to watch for danger</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q29" value="C">
+                        <span class="option-text">C. Rabbits are predators that hunt for food at night</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q29" value="D">
+                        <span class="option-text">D. Rabbits are nocturnal and need better vision in darkness</span>
+                    </label>
+                </div>
+
+                <div class="explanation" data-text="Forward-facing eyes (like owls have) provide excellent depth perception and focus, which is crucial for hunting and catching prey. Side-facing eyes (like rabbits have) provide a wider field of vision to detect predators approaching from many directions. Eye position is a strong indicator of whether an animal is a predator or prey." style="display: none;"></div>
+
+                <div class="question-spacer"></div>
+            </div>
+
+            <!-- Question 30 -->
+            <div class="inline-question" data-correct="A">
+                <h3>Question 30: Biomes</h3>
+                <p class="question-text">A biome is a large region with similar climate, plants, and animals. The tropical rainforest biome has the greatest biodiversity (variety of species) on Earth. What environmental factor most contributes to this high biodiversity?</p>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q30" value="A">
+                        <span class="option-text">A. Year-round warmth and abundant rainfall support many different life forms</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q30" value="B">
+                        <span class="option-text">B. Frequent wildfires clear space for new species to move in regularly</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q30" value="C">
+                        <span class="option-text">C. Extreme temperature changes force species to adapt or die quickly</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q30" value="D">
+                        <span class="option-text">D. Very low rainfall means only the strongest species survive there</span>
+                    </label>
+                </div>
+
+                <div class="explanation" data-text="Tropical rainforests have high biodiversity because they provide ideal conditions: consistent warmth year-round, abundant rainfall, and lots of sunlight. These stable, energy-rich conditions allow countless species to specialize in different niches. In contrast, harsh environments like deserts have low biodiversity because few species can survive the extreme conditions." style="display: none;"></div>
+
+                <div class="question-spacer"></div>
+            </div>
+
+            <!-- Question 31 -->
+            <div class="inline-question" data-correct="C">
+                <h3>Question 31: Conservation of Mass</h3>
+                <p class="question-text">A student measures 100 mL of water at 25°C and heats it until it completely evaporates. The water vapor is captured and measured. What would be the mass of the water vapor compared to the original liquid water?</p>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q31" value="A">
+                        <span class="option-text">A. The water vapor has less mass because steam is lighter</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q31" value="B">
+                        <span class="option-text">B. The water vapor has more mass because it takes up more space</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q31" value="C">
+                        <span class="option-text">C. The water vapor has the same mass as the original water</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q31" value="D">
+                        <span class="option-text">D. The water vapor has no mass because it is invisible gas</span>
+                    </label>
+                </div>
+
+                <div class="explanation" data-text="This demonstrates the Law of Conservation of Mass - matter is neither created nor destroyed during physical changes. The water molecules simply changed from liquid to gas, but the same number of molecules exist. Therefore, the mass remains the same even though the volume (space taken up) increased dramatically." style="display: none;"></div>
+
+                <div class="question-spacer"></div>
+            </div>
+
+            <!-- Question 32 -->
+            <div class="inline-question" data-correct="B">
+                <h3>Question 32: Chemical Changes</h3>
+                <p class="question-text">Steel wool (iron) has a mass of 5 grams. After burning in oxygen, the rust (iron oxide) has a mass of 7 grams. Does this violate the Law of Conservation of Mass? Explain.</p>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q32" value="A">
+                        <span class="option-text">A. Yes, it violates the law because mass increased from nothing magically</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q32" value="B">
+                        <span class="option-text">B. No, oxygen from air combined with iron so total mass stayed same</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q32" value="C">
+                        <span class="option-text">C. Yes, it violates the law because burning always destroys matter completely</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q32" value="D">
+                        <span class="option-text">D. No, heat was added which increased the mass of the material</span>
+                    </label>
+                </div>
+
+                <div class="explanation" data-text="This does NOT violate conservation of mass. The iron (5g) combined with oxygen from the air (2g) to form iron oxide (7g). The mass increased because oxygen was added to the system. If you measured the mass of everything (including oxygen used), total mass would be conserved: 5g iron + 2g oxygen = 7g iron oxide." style="display: none;"></div>
+
+                <div class="question-spacer"></div>
+            </div>
+
+            <!-- Question 33 -->
+            <div class="inline-question" data-correct="B">
+                <h3>Question 33: Energy Transformation</h3>
+                <p class="question-text">A ball is held at the top of a ramp. It has potential energy due to its position. When released, it rolls down the ramp. What happens to the potential energy as the ball rolls downward?</p>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q33" value="A">
+                        <span class="option-text">A. Potential energy disappears completely and is lost to surroundings</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q33" value="B">
+                        <span class="option-text">B. Potential energy converts to kinetic energy as the ball speeds up</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q33" value="C">
+                        <span class="option-text">C. Potential energy increases as the ball picks up more speed downward</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q33" value="D">
+                        <span class="option-text">D. Potential energy stays constant because the ball's mass doesn't change</span>
+                    </label>
+                </div>
+
+                <div class="explanation" data-text="Energy is conserved - it changes forms but isn&#x27;t created or destroyed. As the ball rolls down, its potential energy (stored energy of position) converts to kinetic energy (energy of motion). At the top, it has maximum potential energy and zero kinetic energy. At the bottom, it has maximum kinetic energy and minimum potential energy." style="display: none;"></div>
+
+                <div class="question-spacer"></div>
+            </div>
+
+            <!-- Question 34 -->
+            <div class="inline-question" data-correct="C">
+                <h3>Question 34: Thermal Energy</h3>
+                <p class="question-text">Two objects are heated to the same temperature: a cup of water and a swimming pool of water. Which statement about thermal energy is true?</p>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q34" value="A">
+                        <span class="option-text">A. They have the same thermal energy because temperature is equal</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q34" value="B">
+                        <span class="option-text">B. The cup has more thermal energy because water heats faster</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q34" value="C">
+                        <span class="option-text">C. The pool has more thermal energy because it has more mass</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q34" value="D">
+                        <span class="option-text">D. They have zero thermal energy because water cannot store energy</span>
+                    </label>
+                </div>
+
+                <div class="explanation" data-text="Temperature and thermal energy are different! Temperature measures average kinetic energy of particles (how fast they&#x27;re moving). Thermal energy is the TOTAL energy of all particles. The pool has more thermal energy than the cup at the same temperature because it has many more water molecules, even though each molecule moves at the same average speed." style="display: none;"></div>
+
+                <div class="question-spacer"></div>
+            </div>
+
+            <!-- Question 35 -->
+            <div class="inline-question" data-correct="B">
+                <h3>Question 35: Properties of Matter</h3>
+                <p class="question-text">A sealed plastic bottle containing air is squeezed, decreasing its volume. What happens to the pressure and density of the air inside?</p>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q35" value="A">
+                        <span class="option-text">A. Pressure decreases and density decreases because molecules spread out further</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q35" value="B">
+                        <span class="option-text">B. Pressure increases and density increases because molecules are compressed together</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q35" value="C">
+                        <span class="option-text">C. Pressure increases and density decreases because molecules move faster overall</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q35" value="D">
+                        <span class="option-text">D. Pressure decreases and density increases because molecules slow down quickly</span>
+                    </label>
+                </div>
+
+                <div class="explanation" data-text="When volume decreases, the same number of air molecules are squeezed into a smaller space. This increases density (more molecules per unit volume) and increases pressure (molecules collide with walls more frequently). This relationship is described by Boyle&#x27;s Law: when volume decreases, pressure increases (at constant temperature)." style="display: none;"></div>
+
+                <div class="question-spacer"></div>
+            </div>
+
+            <!-- Question 36 -->
+            <div class="inline-question" data-correct="C">
+                <h3>Question 36: Physical vs Chemical Changes</h3>
+                <p class="question-text">Salt (sodium chloride) dissolves in water to form a salt solution. A student boils the solution until all the water evaporates, leaving salt crystals behind. What type of change occurred?</p>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q36" value="A">
+                        <span class="option-text">A. Chemical change because the salt and water combined permanently</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q36" value="B">
+                        <span class="option-text">B. Chemical change because new substances were created during boiling process</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q36" value="C">
+                        <span class="option-text">C. Physical change because both salt and water can be recovered unchanged</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q36" value="D">
+                        <span class="option-text">D. Physical change because the temperature increased during the heating process</span>
+                    </label>
+                </div>
+
+                <div class="explanation" data-text="This is a physical change. Dissolving and evaporating are both physical changes - no new substances are formed. The salt and water molecules remain unchanged; they just mix together and then separate. The salt can be recovered by evaporation, and the water could be recovered by condensation, proving both substances still exist." style="display: none;"></div>
+
+                <div class="question-spacer"></div>
+            </div>
+
+            <!-- Question 37 -->
+            <div class="inline-question" data-correct="C">
+                <h3>Question 37: Separating Mixtures</h3>
+                <p class="question-text">A scientist needs to separate a mixture of sand, iron filings, and salt. Which sequence of methods would successfully separate all three components?</p>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q37" value="A">
+                        <span class="option-text">A. Use magnet for iron then filter to separate sand from salt</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q37" value="B">
+                        <span class="option-text">B. Use magnet for iron then evaporate water to get salt and sand</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q37" value="C">
+                        <span class="option-text">C. Use magnet for iron add water and filter for sand then evaporate for salt</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q37" value="D">
+                        <span class="option-text">D. Filter out sand first then use magnet for iron and evaporate salt</span>
+                    </label>
+                </div>
+
+                <div class="explanation" data-text="Correct sequence: (1) Use a magnet to remove iron filings (magnetic property). (2) Add water to dissolve salt but not sand. (3) Filter to separate sand (doesn&#x27;t dissolve) from salt solution. (4) Evaporate water to recover salt crystals. This uses different physical properties: magnetism, solubility, and boiling point." style="display: none;"></div>
+
+                <div class="question-spacer"></div>
+            </div>
+
+            <!-- Question 38 -->
+            <div class="inline-question" data-correct="B">
+                <h3>Question 38: Changes of State</h3>
+                <p class="question-text">An ice cube (solid water) is placed in a warm room. Over time, it melts into liquid water, then eventually evaporates into water vapor. What provides the energy for these changes of state?</p>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q38" value="A">
+                        <span class="option-text">A. The ice cube releases stored energy as it melts completely</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q38" value="B">
+                        <span class="option-text">B. Heat energy from the surrounding warm air is absorbed continuously</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q38" value="C">
+                        <span class="option-text">C. Chemical reactions in water create energy for phase changes</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q38" value="D">
+                        <span class="option-text">D. Gravity pulls water molecules apart to cause state changes</span>
+                    </label>
+                </div>
+
+                <div class="explanation" data-text="Changes of state require energy. Melting (solid→liquid) and evaporation (liquid→gas) require heat energy to be absorbed. This energy comes from the surroundings (the warm room). The heat makes water molecules vibrate faster, breaking the bonds holding them in solid or liquid form. Freezing and condensation release energy." style="display: none;"></div>
+
+                <div class="question-spacer"></div>
+            </div>
+
+            <!-- Question 39 -->
+            <div class="inline-question" data-correct="B">
+                <h3>Question 39: Conservation in Chemical Reactions</h3>
+                <p class="question-text">When wood burns, it produces ash, smoke, water vapor, and carbon dioxide. The mass of the ash left behind is less than the original wood. Does this violate conservation of mass?</p>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q39" value="A">
+                        <span class="option-text">A. Yes because mass disappeared when the wood burned completely away</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q39" value="B">
+                        <span class="option-text">B. No because smoke and gases escaped taking mass with them</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q39" value="C">
+                        <span class="option-text">C. Yes because fire destroys matter and converts it to pure energy</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q39" value="D">
+                        <span class="option-text">D. No because ash is compressed wood so it weighs less overall</span>
+                    </label>
+                </div>
+
+                <div class="explanation" data-text="No violation occurs! The &#x27;missing&#x27; mass went into gases (carbon dioxide, water vapor, smoke) that escaped into the air. If you could capture and weigh ALL products (ash + all gases), the total mass would equal the original wood plus oxygen from air. In an open system, it appears mass is lost, but it just moved elsewhere." style="display: none;"></div>
+
+                <div class="question-spacer"></div>
+            </div>
+
+            <!-- Question 40 -->
+            <div class="inline-question" data-correct="A">
+                <h3>Question 40: Heat Transfer</h3>
+                <p class="question-text">A metal spoon is placed in a cup of hot cocoa. After a minute, the handle of the spoon feels warm even though it wasn't in the liquid. What process transferred thermal energy to the handle?</p>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q40" value="A">
+                        <span class="option-text">A. Conduction where heat travels through the solid metal spoon directly</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q40" value="B">
+                        <span class="option-text">B. Convection where hot liquid circulates around the entire spoon completely</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q40" value="C">
+                        <span class="option-text">C. Radiation where heat travels as invisible waves through the air</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q40" value="D">
+                        <span class="option-text">D. Evaporation where liquid turns to gas and heats the spoon</span>
+                    </label>
+                </div>
+
+                <div class="explanation" data-text="This is conduction - the transfer of thermal energy through direct contact in solids. Heat from the hot cocoa makes molecules in the submerged part of the spoon vibrate faster. These vibrations pass energy to neighboring molecules, traveling up the metal spoon to the handle. Metals are excellent conductors because their electrons move freely." style="display: none;"></div>
+
+                <div class="question-spacer"></div>
+            </div>
+
+            <!-- Question 41 -->
+            <div class="inline-question" data-correct="C">
+                <h3>Question 41: Water Cycle Energy</h3>
+                <p class="question-text">The water cycle is powered by energy from the Sun. Which process requires the MOST energy input to occur?</p>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q41" value="A">
+                        <span class="option-text">A. Condensation when water vapor cools and forms cloud droplets</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q41" value="B">
+                        <span class="option-text">B. Precipitation when water droplets fall from clouds as rain</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q41" value="C">
+                        <span class="option-text">C. Evaporation when liquid water changes to water vapor gas</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q41" value="D">
+                        <span class="option-text">D. Collection when water gathers in rivers lakes and oceans</span>
+                    </label>
+                </div>
+
+                <div class="explanation" data-text="Evaporation requires the most energy because water molecules must absorb heat energy to break free from liquid bonds and become gas. This is why the Sun is essential - it provides energy for evaporation. Condensation and precipitation actually release energy. The Sun drives the entire water cycle by providing energy for evaporation." style="display: none;"></div>
+
+                <div class="question-spacer"></div>
+            </div>
+
+            <!-- Question 42 -->
+            <div class="inline-question" data-correct="B">
+                <h3>Question 42: Condensation</h3>
+                <p class="question-text">A glass of ice water sits on a table. After a while, water droplets form on the outside of the glass. What process causes this condensation?</p>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q42" value="A">
+                        <span class="option-text">A. Water from inside the glass leaks through tiny pores in glass</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q42" value="B">
+                        <span class="option-text">B. Cold glass causes water vapor in air to condense into droplets</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q42" value="C">
+                        <span class="option-text">C. Ice melts and somehow passes through the glass to outside surface</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q42" value="D">
+                        <span class="option-text">D. Humidity in the room deposits minerals that look like water</span>
+                    </label>
+                </div>
+
+                <div class="explanation" data-text="The cold glass cools the air around it. When warm air touches the cold glass, the water vapor in the air loses energy and condenses into liquid droplets on the glass surface. This is the same process that forms dew on grass in the morning - warm, moist air touches a cool surface and condensation occurs." style="display: none;"></div>
+
+                <div class="question-spacer"></div>
+            </div>
+
+            <!-- Question 43 -->
+            <div class="inline-question" data-correct="B">
+                <h3>Question 43: Factors Affecting Evaporation</h3>
+                <p class="question-text">A scientist measures the amount of water that evaporates from two identical pans over one week. One pan is in direct sunlight and the other is in shade. Both start with 500 mL of water. What would you expect the results to show?</p>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q43" value="A">
+                        <span class="option-text">A. Both pans lose equal amounts because evaporation rate is constant</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q43" value="B">
+                        <span class="option-text">B. The sunny pan loses more water because heat increases evaporation</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q43" value="C">
+                        <span class="option-text">C. The shady pan loses more water because it's cooler outside</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q43" value="D">
+                        <span class="option-text">D. Neither pan loses water because it's contained in closed pans</span>
+                    </label>
+                </div>
+
+                <div class="explanation" data-text="The sunny pan will lose more water. Evaporation is faster when temperature is higher because heat energy helps water molecules escape into the air. This is why puddles dry faster on hot, sunny days than on cool, cloudy days. Heat energy is essential for evaporation to occur quickly." style="display: none;"></div>
+
+                <div class="question-spacer"></div>
+            </div>
+
+            <!-- Question 44 -->
+            <div class="inline-question" data-correct="A">
+                <h3>Question 44: Transpiration</h3>
+                <p class="question-text">Transpiration is the process where plants release water vapor through tiny pores in their leaves. How does transpiration contribute to the water cycle?</p>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q44" value="A">
+                        <span class="option-text">A. It adds water vapor to atmosphere just like evaporation from oceans</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q44" value="B">
+                        <span class="option-text">B. It removes water from atmosphere and stores it in plant roots</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q44" value="C">
+                        <span class="option-text">C. It converts liquid water into ice crystals in the upper atmosphere</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q44" value="D">
+                        <span class="option-text">D. It prevents water from returning to the ground as precipitation</span>
+                    </label>
+                </div>
+
+                <div class="explanation" data-text="Transpiration adds water vapor to the atmosphere, contributing significantly to the water cycle. Plants absorb water through roots, use it for photosynthesis, and release water vapor through leaf pores (stomata). Forests can transpire enormous amounts of water - a large oak tree can release 40,000 gallons per year!" style="display: none;"></div>
+
+                <div class="question-spacer"></div>
+            </div>
+
+            <!-- Question 45 -->
+            <div class="inline-question" data-correct="A">
+                <h3>Question 45: Cloud Formation</h3>
+                <p class="question-text">In mountainous regions, warm, moist air rises up mountain slopes. As the air rises, it cools and clouds form. Why does rising air cool and form clouds?</p>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q45" value="A">
+                        <span class="option-text">A. Higher altitude has lower pressure causing air to expand and cool</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q45" value="B">
+                        <span class="option-text">B. Higher altitude has more wind which blows away all the heat</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q45" value="C">
+                        <span class="option-text">C. Higher altitude has more sunlight which evaporates water faster</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q45" value="D">
+                        <span class="option-text">D. Higher altitude has less oxygen which makes air feel much colder</span>
+                    </label>
+                </div>
+
+                <div class="explanation" data-text="As air rises, atmospheric pressure decreases. Lower pressure allows air to expand. When air expands, it cools (like releasing compressed air from a can). As air cools, its capacity to hold water vapor decreases, so water vapor condenses into tiny droplets, forming clouds. This is why mountains often have clouds at their peaks." style="display: none;"></div>
+
+                <div class="question-spacer"></div>
+            </div>
+
+            <!-- Question 46 -->
+            <div class="inline-question" data-correct="A">
+                <h3>Question 46: Groundwater</h3>
+                <p class="question-text">Groundwater is water stored underground in spaces between rocks and soil particles. How does water naturally become groundwater?</p>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q46" value="A">
+                        <span class="option-text">A. Rainwater infiltrates through soil and accumulates in underground spaces below</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q46" value="B">
+                        <span class="option-text">B. Ocean water flows through underground tunnels into the land areas</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q46" value="C">
+                        <span class="option-text">C. Rivers dig deep underground channels where water is stored permanently</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q46" value="D">
+                        <span class="option-text">D. Plants pump water deep underground through their extensive root systems</span>
+                    </label>
+                </div>
+
+                <div class="explanation" data-text="Groundwater forms through infiltration - rainwater soaks into the soil and slowly seeps down through permeable layers until it reaches impermeable rock. It accumulates in aquifers (underground layers of rock and soil that hold water). This process can take years or even centuries, which is why pumping groundwater faster than it&#x27;s replenished causes problems." style="display: none;"></div>
+
+                <div class="question-spacer"></div>
+            </div>
+
+            <!-- Question 47 -->
+            <div class="inline-question" data-correct="D">
+                <h3>Question 47: Water Distribution</h3>
+                <p class="question-text">A student learns that approximately 97% of Earth's water is salt water in oceans, and only 3% is freshwater. Of that 3% freshwater, most is frozen in glaciers and ice caps. What percentage of Earth's water is readily available fresh liquid water in lakes and rivers?</p>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q47" value="A">
+                        <span class="option-text">A. About 50% of Earth's water is available fresh liquid water</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q47" value="B">
+                        <span class="option-text">B. About 25% of Earth's water is available fresh liquid water</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q47" value="C">
+                        <span class="option-text">C. About 10% of Earth's water is available fresh liquid water</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q47" value="D">
+                        <span class="option-text">D. Less than 1% of Earth's water is available fresh liquid water</span>
+                    </label>
+                </div>
+
+                <div class="explanation" data-text="Less than 1% of Earth&#x27;s water is readily available freshwater! Here&#x27;s the breakdown: 97% saltwater (oceans), 3% freshwater. Of that 3%: about 69% is frozen in glaciers/ice caps, 30% is underground, and less than 1% is in lakes and rivers. This tiny amount is what we depend on, which is why water conservation is so important!" style="display: none;"></div>
+
+                <div class="question-spacer"></div>
+            </div>
+
+            <!-- Question 48 -->
+            <div class="inline-question" data-correct="A">
+                <h3>Question 48: Water Cycle Balance</h3>
+                <p class="question-text">During a severe drought, a lake's water level drops significantly. Scientists measure that water is still evaporating from the lake at the same rate. What explains the dropping water level?</p>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q48" value="A">
+                        <span class="option-text">A. Evaporation rate stayed same but precipitation rate decreased significantly below</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q48" value="B">
+                        <span class="option-text">B. Precipitation rate stayed same but evaporation rate increased above normal</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q48" value="C">
+                        <span class="option-text">C. Both evaporation and precipitation stopped during the drought completely</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q48" value="D">
+                        <span class="option-text">D. Underground water is draining away faster than rainfall can replenish it</span>
+                    </label>
+                </div>
+
+                <div class="explanation" data-text="A drought means much less precipitation (rain/snow) than normal. If evaporation continues at the same rate but precipitation decreases dramatically, the lake loses more water than it gains. Water level drops because output (evaporation) exceeds input (precipitation). This demonstrates that the water cycle requires balance between evaporation and precipitation." style="display: none;"></div>
+
+                <div class="question-spacer"></div>
+            </div>
+
+            <!-- Question 49 -->
+            <div class="inline-question" data-correct="B">
+                <h3>Question 49: Water Resources</h3>
+                <p class="question-text">Desalination is a process that removes salt from ocean water to produce fresh drinking water. Why isn't desalination used everywhere to solve freshwater shortages?</p>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q49" value="A">
+                        <span class="option-text">A. Desalination is impossible because salt cannot be separated from water</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q49" value="B">
+                        <span class="option-text">B. Desalination requires enormous amounts of energy making it very expensive</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q49" value="C">
+                        <span class="option-text">C. Desalinated water is unsafe to drink because it contains chemicals</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q49" value="D">
+                        <span class="option-text">D. Desalination takes thousands of years to produce usable freshwater amounts</span>
+                    </label>
+                </div>
+
+                <div class="explanation" data-text="Desalination works but requires enormous amounts of energy, making it very expensive. Methods include heating water to evaporate it (leaving salt behind) or forcing water through membranes. Both processes use a lot of electricity. Desalination is used in water-scarce regions like the Middle East, but it&#x27;s not economically practical everywhere. Natural freshwater is much cheaper!" style="display: none;"></div>
+
+                <div class="question-spacer"></div>
+            </div>
+
+            <!-- Question 50 -->
+            <div class="inline-question" data-correct="A">
+                <h3>Question 50: Cloud Types</h3>
+                <p class="question-text">Clouds form at different altitudes. Cumulus clouds (puffy, low clouds) form at lower altitudes while cirrus clouds (wispy, high clouds) form at very high altitudes where temperatures are extremely cold. Why do cirrus clouds appear wispy and thin compared to cumulus clouds?</p>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q50" value="A">
+                        <span class="option-text">A. Cirrus clouds are made of ice crystals not water droplets</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q50" value="B">
+                        <span class="option-text">B. Cirrus clouds have less water because they are smaller overall</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q50" value="C">
+                        <span class="option-text">C. Cirrus clouds form during summer when there's less moisture available</span>
+                    </label>
+                </div>
+
+                <div class="option-container">
+                    <label>
+                        <input type="radio" name="q50" value="D">
+                        <span class="option-text">D. Cirrus clouds dissolve quickly because of strong winds up high</span>
+                    </label>
+                </div>
+
+                <div class="explanation" data-text="Cirrus clouds appear wispy because they&#x27;re made of ice crystals rather than water droplets. At high altitudes (above 20,000 feet), temperatures are below freezing, so water vapor condenses and immediately freezes into ice crystals. These ice crystals create the thin, feathery appearance. Lower cumulus clouds form where it&#x27;s warmer, so they&#x27;re made of liquid water droplets, appearing puffier." style="display: none;"></div>
+
+                <div class="question-spacer"></div>
+            </div>
+
+
         </div>
     </div>
 
-    <script src="test-engine.js"></script>
+    <script src="inline-quiz.js"></script>
     <script>
-        // Final Exam: Complete 5th Grade Science Review
-        const testData = {
-            questions: [
-                // CHAPTER 1: Scientific Method (Questions 1-10)
-                {
-                    question: "A scientist notices that plants near a window grow taller than plants in the middle of a room. She wonders if light affects plant growth. What should be her next step in the scientific method?",
-                    options: [
-                        "Form a testable hypothesis about light and plant growth carefully",
-                        "Draw conclusions about why plants need light for all growth",
-                        "Immediately publish her observation in a scientific journal now",
-                        "Conduct multiple experiments without making any predictions first"
-                    ],
-                    correct: 0,
-                    explanation: "After making an observation and asking a question, the next step in the scientific method is to form a testable hypothesis. A good hypothesis would be: 'If plants receive more light, then they will grow taller because light provides energy for photosynthesis.'",
-                    topic: "Scientific Method Steps"
-                },
-                {
-                    question: "A student wants to test whether temperature affects how fast ice melts. Which variable should be the independent variable (the one she changes)?",
-                    options: [
-                        "The time it takes for ice to melt completely away",
-                        "The amount of water produced from the melted ice cubes",
-                        "The temperature of the room where ice is placed carefully",
-                        "The size and shape of the ice cubes used always"
-                    ],
-                    correct: 2,
-                    explanation: "The independent variable is what the scientist deliberately changes. In this experiment, the student should change the temperature to see how it affects melting time. Temperature is what's being manipulated, while melting time is measured (dependent variable).",
-                    topic: "Variables"
-                },
-                {
-                    question: "Three students measure the mass of the same rock using a balance. Student A gets 245g, Student B gets 244g, and Student C gets 246g. What should they do to increase the reliability of their measurement?",
-                    options: [
-                        "Choose the middle value and ignore the other measurements obtained",
-                        "Calculate the average of all three measurements taken carefully",
-                        "Repeat the experiment only once more to get data quickly",
-                        "Select the highest value since it seems most accurate overall"
-                    ],
-                    correct: 1,
-                    explanation: "To increase reliability, scientists should calculate the average (mean) of multiple measurements. This reduces the impact of small errors. The average of 245g, 244g, and 246g is 245g, which is likely the most accurate measurement.",
-                    topic: "Reliable Measurements"
-                },
-                {
-                    question: "A scientist collects this data on plant growth:<br><br>Week 1: 5cm | Week 2: 8cm | Week 3: 12cm | Week 4: 17cm<br><br>What type of graph would best show how plant height changes over time?",
-                    options: [
-                        "A pie chart showing percentages of growth each week clearly",
-                        "A bar graph comparing plant heights at different times shown",
-                        "A line graph showing continuous change over time period displayed",
-                        "A pictograph using plant symbols to represent each week simply"
-                    ],
-                    correct: 2,
-                    explanation: "A line graph is best for showing change over time because it displays continuous data and makes it easy to see trends. The line connecting data points shows how the plant's height increased steadily week by week.",
-                    topic: "Data Representation"
-                },
-                {
-                    question: "A researcher wants to determine if a new fertilizer helps tomato plants produce more fruit. She uses 20 plants: 10 receive the new fertilizer and 10 receive no fertilizer. What is the purpose of the 10 plants without fertilizer?",
-                    options: [
-                        "They serve as the control group to compare results properly",
-                        "They serve as backup plants in case others die completely",
-                        "They serve to save money by using less fertilizer overall",
-                        "They serve as the independent variable in the experiment design"
-                    ],
-                    correct: 0,
-                    explanation: "The 10 plants without fertilizer are the control group. They provide a baseline for comparison. By comparing the fertilized plants to the control group, the scientist can determine if the fertilizer actually caused any difference in fruit production.",
-                    topic: "Controlled Experiments"
-                },
-                {
-                    question: "A student hypothesizes that heavier objects fall faster than lighter objects. He drops a bowling ball and a basketball from the same height at the same time. They hit the ground simultaneously. What should the student conclude?",
-                    options: [
-                        "The hypothesis is correct but the experiment was flawed badly",
-                        "The hypothesis is supported by the experimental data collected here",
-                        "The hypothesis is not supported by the experimental data obtained",
-                        "More objects must be tested before any conclusions are made"
-                    ],
-                    correct: 2,
-                    explanation: "When experimental results don't match the hypothesis, the hypothesis is not supported. The student's data shows that the bowling ball (heavier) and basketball (lighter) fell at the same rate, contradicting the hypothesis. This is actually what Galileo discovered!",
-                    topic: "Analyzing Results"
-                },
-                {
-                    question: "Which of the following is an example of qualitative data (descriptive observations) rather than quantitative data (numerical measurements)?",
-                    options: [
-                        "The plant grew 15 centimeters in three weeks of observation",
-                        "The chemical solution changed from clear to cloudy white color",
-                        "The temperature increased by 25 degrees Celsius during heating procedure",
-                        "The experiment was repeated five times to ensure accurate results"
-                    ],
-                    correct: 1,
-                    explanation: "Qualitative data describes qualities or characteristics without numbers (like color, texture, smell). 'Changed from clear to cloudy white' is descriptive. The other options contain numbers, making them quantitative data.",
-                    topic: "Types of Data"
-                },
-                {
-                    question: "A scientist publishes her experimental results in a journal. Other scientists read her work and repeat her experiment to verify the results. What is this process called, and why is it important?",
-                    options: [
-                        "Replication ensures results are reliable and not due to errors",
-                        "Competition helps scientists win awards for their discoveries quickly",
-                        "Publication allows scientists to become famous for their work",
-                        "Verification prevents other scientists from stealing research ideas completely"
-                    ],
-                    correct: 0,
-                    explanation: "Replication means other scientists repeat an experiment to verify results. This is crucial in science because it confirms that results are reliable and reproducible, not due to errors or chance. Replicated results strengthen scientific knowledge.",
-                    topic: "Scientific Process"
-                },
-                {
-                    question: "A student wants to test whether music affects concentration while studying. She studies math with music for 1 hour on Monday and without music for 30 minutes on Tuesday. What is the main flaw in her experiment design?",
-                    options: [
-                        "She should have studied a different subject each day instead",
-                        "She changed multiple variables at once making results unclear",
-                        "She should have tested more than just two days total",
-                        "She should have used louder music to see bigger effects"
-                    ],
-                    correct: 1,
-                    explanation: "The major flaw is that she changed two variables: presence of music AND study time (1 hour vs 30 minutes). In a fair test, only ONE variable should change. She should have studied for the same amount of time with and without music.",
-                    topic: "Fair Tests"
-                },
-                {
-                    question: "Scientists use models to represent complex systems. A student builds a model of the solar system using balls of different sizes. What is the main limitation of this model?",
-                    options: [
-                        "The model cannot accurately represent the vast distances between planets",
-                        "The model cannot show that all planets are perfectly round",
-                        "The model cannot demonstrate that planets are made of matter",
-                        "The model cannot prove that the Sun is at the center"
-                    ],
-                    correct: 0,
-                    explanation: "The main limitation of a small-scale solar system model is that it cannot accurately represent the enormous distances between planets. If Earth were the size of a marble, the nearest planet would be across a football field! True scale is impossible to show in a classroom model.",
-                    topic: "Scientific Models"
-                },
-
-                // CHAPTER 2: Earth & Space (Questions 11-20)
-                {
-                    question: "Scientists study seismic waves (vibrations from earthquakes) to learn about Earth's interior layers. Why can't S-waves (shear waves) travel through Earth's outer core?",
-                    options: [
-                        "The outer core is too hot for any waves to pass",
-                        "The outer core is liquid and S-waves only travel through solids",
-                        "The outer core is too dense for S-waves to penetrate deeply",
-                        "The outer core is magnetic and blocks all S-wave transmission"
-                    ],
-                    correct: 1,
-                    explanation: "S-waves (secondary waves) cannot travel through liquids, only solids. Since S-waves stop at the outer core, this proves the outer core is liquid (molten iron and nickel). P-waves can travel through both solids and liquids, which is how we know about all of Earth's layers.",
-                    topic: "Earth's Layers"
-                },
-                {
-                    question: "The continents were once joined together in a supercontinent called Pangaea. Which evidence best supports this theory of continental drift?",
-                    options: [
-                        "Similar fossils of ancient organisms found on different continents today",
-                        "All continents have mountains and valleys on their surfaces clearly",
-                        "Ocean water flows between all the continents on Earth currently",
-                        "The continents all have similar climates and weather patterns today"
-                    ],
-                    correct: 0,
-                    explanation: "The strongest evidence for continental drift is finding identical fossils of ancient plants and animals on continents now separated by oceans. For example, fossils of Mesosaurus (an ancient reptile) are found in both South America and Africa, suggesting these continents were once connected.",
-                    topic: "Continental Drift"
-                },
-                {
-                    question: "The inner planets (Mercury, Venus, Earth, Mars) are much smaller than the outer planets (Jupiter, Saturn, Uranus, Neptune). What is the main reason for this difference in size?",
-                    options: [
-                        "Inner planets formed from heavier rocky materials with less volume",
-                        "Inner planets were closer to the Sun which limited their growth",
-                        "Outer planets captured more gases and grew much larger overall",
-                        "Inner planets lost most of their mass through collisions early on"
-                    ],
-                    correct: 2,
-                    explanation: "The outer planets (gas giants) are much larger because they formed in the colder outer solar system where gases like hydrogen and helium didn't blow away. They captured huge amounts of gas, growing massive. Inner planets formed in the hot inner solar system where only rock and metal could remain.",
-                    topic: "Planet Formation"
-                },
-                {
-                    question: "A lunar eclipse occurs when Earth passes between the Sun and Moon, casting Earth's shadow on the Moon. Why don't lunar eclipses happen every month during the full moon phase?",
-                    options: [
-                        "The Moon is too far away to enter Earth's shadow",
-                        "The Moon's orbit is tilted so it usually passes above or below",
-                        "Earth's shadow is too small to cover the entire Moon",
-                        "The Sun's position changes too quickly for alignment to occur"
-                    ],
-                    correct: 1,
-                    explanation: "The Moon's orbit is tilted about 5 degrees relative to Earth's orbit around the Sun. During most full moons, the Moon passes slightly above or below Earth's shadow. Lunar eclipses only occur when the full moon happens at a point where the Moon crosses Earth's orbital plane.",
-                    topic: "Eclipses"
-                },
-                {
-                    question: "Mars appears reddish in color due to iron oxide (rust) on its surface. What does the presence of iron oxide suggest about Mars' past?",
-                    options: [
-                        "Mars once had liquid water that caused iron to rust",
-                        "Mars was once much hotter than it is today overall",
-                        "Mars had volcanic eruptions that produced iron oxide everywhere",
-                        "Mars collided with another planet made entirely of iron"
-                    ],
-                    correct: 0,
-                    explanation: "Iron oxide (rust) forms when iron reacts with oxygen and water. The widespread iron oxide on Mars suggests that liquid water once flowed on the surface. This is supported by other evidence like dried river valleys and ancient lake beds discovered by Mars rovers.",
-                    topic: "Planetary Science"
-                },
-                {
-                    question: "Jupiter's Great Red Spot is a massive storm that has been raging for at least 400 years. Why can storms on Jupiter last so much longer than Earth's storms?",
-                    options: [
-                        "Jupiter has no solid surface to slow down the storm",
-                        "Jupiter is much colder so storms freeze and stay stable",
-                        "Jupiter has more oxygen to fuel the storm continuously",
-                        "Jupiter rotates slower giving storms more time to develop fully"
-                    ],
-                    correct: 0,
-                    explanation: "Jupiter's storms can last for centuries because Jupiter has no solid surface. On Earth, storms lose energy when they encounter land or mountains. On Jupiter, storms just keep swirling in the gas atmosphere with nothing to stop them. Jupiter also rotates very fast (10-hour day), creating strong winds.",
-                    topic: "Gas Giants"
-                },
-                {
-                    question: "The asteroid belt contains millions of rocky objects orbiting between Mars and Jupiter. Why didn't these objects form into a planet?",
-                    options: [
-                        "There wasn't enough material in this region to form a planet",
-                        "Jupiter's strong gravity prevented the rocks from joining together",
-                        "The Sun's heat made the rocks too hot to stick together",
-                        "A planet did form but was destroyed by a collision"
-                    ],
-                    correct: 1,
-                    explanation: "Jupiter's enormous gravity prevented the asteroids from coming together to form a planet. Jupiter's gravitational pull kept the rocky fragments stirred up and moving too fast to stick together. The total mass of all asteroids combined is less than Earth's moon!",
-                    topic: "Asteroid Belt"
-                },
-                {
-                    question: "A student observes the Moon at 8 PM and sees it is a waxing crescent (thin crescent on the right side). If she observes the Moon again one week later at 8 PM, what phase should she expect to see?",
-                    options: [
-                        "A waning crescent because the Moon is decreasing in light",
-                        "A first quarter because seven days is one quarter of cycle",
-                        "A full moon because the Moon completes its cycle weekly",
-                        "A new moon because the Moon resets after one week"
-                    ],
-                    correct: 1,
-                    explanation: "The Moon's phases follow a predictable cycle taking about 29.5 days. After a waxing crescent (about day 3), one week later (day 10) would show a first quarter moon - when the right half appears illuminated. The sequence is: new moon → waxing crescent → first quarter → waxing gibbous → full moon.",
-                    topic: "Moon Phases"
-                },
-                {
-                    question: "Astronomers have discovered thousands of exoplanets (planets orbiting other stars). The nearest star system, Alpha Centauri, is 4.3 light-years away. Why haven't we sent spacecraft to explore it?",
-                    options: [
-                        "Current spacecraft are too large to travel that far away",
-                        "The distance is so vast it would take thousands of years",
-                        "Alpha Centauri has no planets orbiting around it at all",
-                        "Spacecraft cannot survive the extreme cold of deep space travel"
-                    ],
-                    correct: 1,
-                    explanation: "A light-year is the distance light travels in one year - about 6 trillion miles! Alpha Centauri is 4.3 light-years (26 trillion miles) away. Our fastest spacecraft (Voyager 1) travels at 38,000 mph. At that speed, it would take over 73,000 years to reach Alpha Centauri!",
-                    topic: "Space Exploration"
-                },
-                {
-                    question: "The Sun produces energy through nuclear fusion, converting hydrogen into helium. Scientists estimate the Sun has enough hydrogen to continue this process for approximately how much longer?",
-                    options: [
-                        "About 100 million years before hydrogen runs out completely",
-                        "About 1 billion years before hydrogen runs out completely",
-                        "About 5 billion years before hydrogen runs out completely",
-                        "About 100 billion years before hydrogen runs out completely"
-                    ],
-                    correct: 2,
-                    explanation: "The Sun is about 4.6 billion years old and has enough hydrogen fuel to keep shining for another 5 billion years. After that, it will expand into a red giant, eventually becoming a white dwarf. Don't worry - humans have plenty of time to prepare!",
-                    topic: "The Sun"
-                },
-
-                // CHAPTER 3: Living Systems (Questions 21-30)
-                {
-                    question: "In a food web, arrows point from prey to predator showing energy flow. If a disease killed most of the rabbits in an ecosystem, what would most likely happen to the wolf and grass populations?",
-                    options: [
-                        "Wolf population decreases and grass population increases over time clearly",
-                        "Wolf population increases and grass population decreases over time clearly",
-                        "Both wolf and grass populations would decrease together simultaneously",
-                        "Both wolf and grass populations would increase together simultaneously"
-                    ],
-                    correct: 0,
-                    explanation: "Rabbits eat grass (primary consumers) and wolves eat rabbits (secondary consumers). With fewer rabbits, wolves would have less food and their population would decrease. Grass would be eaten less, so the grass population would increase. This demonstrates how populations in a food web are interconnected.",
-                    topic: "Food Webs"
-                },
-                {
-                    question: "A scientist studies an ecosystem and finds: 10,000 grass plants, 1,000 grasshoppers, 100 mice, and 10 hawks. What does this data demonstrate about energy flow in ecosystems?",
-                    options: [
-                        "Producers must be least numerous because they need less energy",
-                        "Predators must be most numerous because they are strongest animals",
-                        "Energy is lost at each level so fewer organisms can be supported",
-                        "Energy increases at each level so populations grow larger upward"
-                    ],
-                    correct: 2,
-                    explanation: "This demonstrates the energy pyramid. Only about 10% of energy passes from one trophic level to the next. The other 90% is used for life processes or lost as heat. Since less energy is available at higher levels, fewer organisms can be supported. That's why there are many more plants than hawks.",
-                    topic: "Energy Pyramids"
-                },
-                {
-                    question: "A plant's leaves contain chloroplasts that perform photosynthesis. Which organelle in animal cells performs a similar opposite function by breaking down glucose for energy?",
-                    options: [
-                        "The cell membrane controls what enters and leaves cells always",
-                        "The mitochondria breaks down glucose to release energy for use",
-                        "The nucleus contains genetic information and controls the cell completely",
-                        "The vacuole stores water and other materials inside the cell"
-                    ],
-                    correct: 1,
-                    explanation: "Mitochondria are the 'powerhouses' of cells. They break down glucose (sugar) through cellular respiration to release energy (ATP). This is the opposite of photosynthesis: chloroplasts build glucose using light energy, while mitochondria break down glucose to release energy. Both plant and animal cells have mitochondria.",
-                    topic: "Cell Organelles"
-                },
-                {
-                    question: "An adaptation is an inherited trait that helps an organism survive. A desert cactus has thick, waxy stems that store water. How does this adaptation help the cactus survive in its environment?",
-                    options: [
-                        "It helps the cactus compete with other plants for sunlight",
-                        "It allows the cactus to survive long periods without rainfall",
-                        "It protects the cactus from extremely cold nighttime temperatures",
-                        "It helps the cactus attract pollinators to reproduce successfully"
-                    ],
-                    correct: 1,
-                    explanation: "The thick, waxy stem is a water storage adaptation perfect for the desert. The thick stem stores large amounts of water during rare rainfalls. The waxy coating prevents water loss through evaporation. This adaptation allows cacti to survive months without rain in harsh desert conditions.",
-                    topic: "Adaptations"
-                },
-                {
-                    question: "Scientists group organisms into kingdoms based on shared characteristics. Which characteristic best distinguishes organisms in the Plant Kingdom from those in the Animal Kingdom?",
-                    options: [
-                        "Plants can move while animals stay in one place always",
-                        "Plants make their own food while animals consume other organisms",
-                        "Plants reproduce sexually while animals reproduce asexually only",
-                        "Plants are single-celled while animals are always multicellular organisms"
-                    ],
-                    correct: 1,
-                    explanation: "The key difference is nutrition: plants are autotrophs (self-feeders) that make their own food through photosynthesis, while animals are heterotrophs (other-feeders) that must consume other organisms for energy. This is the fundamental distinction between these kingdoms.",
-                    topic: "Classification"
-                },
-                {
-                    question: "A population of beetles lives in a forest. Some beetles are green and some are brown. After a fire kills many green plants, mostly brown beetles survive. This is an example of what process?",
-                    options: [
-                        "Artificial selection where humans choose which beetles survive clearly",
-                        "Natural selection where environment determines which traits help survival",
-                        "Genetic mutation where beetles change their color to match surroundings",
-                        "Selective breeding where beetles choose mates based on color preferences"
-                    ],
-                    correct: 1,
-                    explanation: "This is natural selection. After the fire, brown beetles were better camouflaged against the darkened forest floor, so they were less visible to predators. Green beetles were easier to spot and eaten. Over time, the brown trait became more common because brown beetles survived and reproduced more successfully.",
-                    topic: "Natural Selection"
-                },
-                {
-                    question: "An invasive species is an organism introduced to a new ecosystem where it doesn't naturally belong. Why are invasive species often harmful to native ecosystems?",
-                    options: [
-                        "They always carry diseases that kill native species quickly",
-                        "They have no natural predators to control their population growth",
-                        "They are always larger and stronger than native species",
-                        "They cannot adapt to the new environment and die out"
-                    ],
-                    correct: 1,
-                    explanation: "Invasive species are harmful because they often lack natural predators in their new environment. Without predators to control them, their populations can explode. They may outcompete native species for food and habitat, or prey on native species that have no defenses against them. Example: Burmese pythons in the Florida Everglades.",
-                    topic: "Invasive Species"
-                },
-                {
-                    question: "In a healthy pond ecosystem, algae (producers) convert sunlight into energy, small fish eat algae, large fish eat small fish, and bacteria decompose dead organisms. What role do the bacteria play?",
-                    options: [
-                        "Bacteria are producers that create new nutrients from sunlight energy",
-                        "Bacteria are consumers that eat other living organisms for energy",
-                        "Bacteria are decomposers that recycle nutrients back to the soil",
-                        "Bacteria are predators that control fish populations in the pond"
-                    ],
-                    correct: 2,
-                    explanation: "Bacteria are decomposers that break down dead plants and animals, recycling nutrients back into the ecosystem. Without decomposers, dead matter would pile up and nutrients would be locked away. Decomposers are essential - they complete the cycle by returning nutrients to the soil where plants can use them again.",
-                    topic: "Decomposers"
-                },
-                {
-                    question: "A student observes that owls have forward-facing eyes while rabbits have eyes on the sides of their heads. What does this difference in eye position indicate about these animals?",
-                    options: [
-                        "Owls are predators that need depth perception to catch prey",
-                        "Owls are prey animals that need to watch for danger",
-                        "Rabbits are predators that hunt for food at night",
-                        "Rabbits are nocturnal and need better vision in darkness"
-                    ],
-                    correct: 0,
-                    explanation: "Forward-facing eyes (like owls have) provide excellent depth perception and focus, which is crucial for hunting and catching prey. Side-facing eyes (like rabbits have) provide a wider field of vision to detect predators approaching from many directions. Eye position is a strong indicator of whether an animal is a predator or prey.",
-                    topic: "Predator-Prey Adaptations"
-                },
-                {
-                    question: "A biome is a large region with similar climate, plants, and animals. The tropical rainforest biome has the greatest biodiversity (variety of species) on Earth. What environmental factor most contributes to this high biodiversity?",
-                    options: [
-                        "Year-round warmth and abundant rainfall support many different life forms",
-                        "Frequent wildfires clear space for new species to move in regularly",
-                        "Extreme temperature changes force species to adapt or die quickly",
-                        "Very low rainfall means only the strongest species survive there"
-                    ],
-                    correct: 0,
-                    explanation: "Tropical rainforests have high biodiversity because they provide ideal conditions: consistent warmth year-round, abundant rainfall, and lots of sunlight. These stable, energy-rich conditions allow countless species to specialize in different niches. In contrast, harsh environments like deserts have low biodiversity because few species can survive the extreme conditions.",
-                    topic: "Biomes"
-                },
-
-                // CHAPTER 4: Matter & Energy (Questions 31-40)
-                {
-                    question: "A student measures 100 mL of water at 25°C and heats it until it completely evaporates. The water vapor is captured and measured. What would be the mass of the water vapor compared to the original liquid water?",
-                    options: [
-                        "The water vapor has less mass because steam is lighter",
-                        "The water vapor has more mass because it takes up more space",
-                        "The water vapor has the same mass as the original water",
-                        "The water vapor has no mass because it is invisible gas"
-                    ],
-                    correct: 2,
-                    explanation: "This demonstrates the Law of Conservation of Mass - matter is neither created nor destroyed during physical changes. The water molecules simply changed from liquid to gas, but the same number of molecules exist. Therefore, the mass remains the same even though the volume (space taken up) increased dramatically.",
-                    topic: "Conservation of Mass"
-                },
-                {
-                    question: "Steel wool (iron) has a mass of 5 grams. After burning in oxygen, the rust (iron oxide) has a mass of 7 grams. Does this violate the Law of Conservation of Mass? Explain.",
-                    options: [
-                        "Yes, it violates the law because mass increased from nothing magically",
-                        "No, oxygen from air combined with iron so total mass stayed same",
-                        "Yes, it violates the law because burning always destroys matter completely",
-                        "No, heat was added which increased the mass of the material"
-                    ],
-                    correct: 1,
-                    explanation: "This does NOT violate conservation of mass. The iron (5g) combined with oxygen from the air (2g) to form iron oxide (7g). The mass increased because oxygen was added to the system. If you measured the mass of everything (including oxygen used), total mass would be conserved: 5g iron + 2g oxygen = 7g iron oxide.",
-                    topic: "Chemical Changes"
-                },
-                {
-                    question: "A ball is held at the top of a ramp. It has potential energy due to its position. When released, it rolls down the ramp. What happens to the potential energy as the ball rolls downward?",
-                    options: [
-                        "Potential energy disappears completely and is lost to surroundings",
-                        "Potential energy converts to kinetic energy as the ball speeds up",
-                        "Potential energy increases as the ball picks up more speed downward",
-                        "Potential energy stays constant because the ball's mass doesn't change"
-                    ],
-                    correct: 1,
-                    explanation: "Energy is conserved - it changes forms but isn't created or destroyed. As the ball rolls down, its potential energy (stored energy of position) converts to kinetic energy (energy of motion). At the top, it has maximum potential energy and zero kinetic energy. At the bottom, it has maximum kinetic energy and minimum potential energy.",
-                    topic: "Energy Transformation"
-                },
-                {
-                    question: "Two objects are heated to the same temperature: a cup of water and a swimming pool of water. Which statement about thermal energy is true?",
-                    options: [
-                        "They have the same thermal energy because temperature is equal",
-                        "The cup has more thermal energy because water heats faster",
-                        "The pool has more thermal energy because it has more mass",
-                        "They have zero thermal energy because water cannot store energy"
-                    ],
-                    correct: 2,
-                    explanation: "Temperature and thermal energy are different! Temperature measures average kinetic energy of particles (how fast they're moving). Thermal energy is the TOTAL energy of all particles. The pool has more thermal energy than the cup at the same temperature because it has many more water molecules, even though each molecule moves at the same average speed.",
-                    topic: "Thermal Energy"
-                },
-                {
-                    question: "A sealed plastic bottle containing air is squeezed, decreasing its volume. What happens to the pressure and density of the air inside?",
-                    options: [
-                        "Pressure decreases and density decreases because molecules spread out further",
-                        "Pressure increases and density increases because molecules are compressed together",
-                        "Pressure increases and density decreases because molecules move faster overall",
-                        "Pressure decreases and density increases because molecules slow down quickly"
-                    ],
-                    correct: 1,
-                    explanation: "When volume decreases, the same number of air molecules are squeezed into a smaller space. This increases density (more molecules per unit volume) and increases pressure (molecules collide with walls more frequently). This relationship is described by Boyle's Law: when volume decreases, pressure increases (at constant temperature).",
-                    topic: "Properties of Matter"
-                },
-                {
-                    question: "Salt (sodium chloride) dissolves in water to form a salt solution. A student boils the solution until all the water evaporates, leaving salt crystals behind. What type of change occurred?",
-                    options: [
-                        "Chemical change because the salt and water combined permanently",
-                        "Chemical change because new substances were created during boiling process",
-                        "Physical change because both salt and water can be recovered unchanged",
-                        "Physical change because the temperature increased during the heating process"
-                    ],
-                    correct: 2,
-                    explanation: "This is a physical change. Dissolving and evaporating are both physical changes - no new substances are formed. The salt and water molecules remain unchanged; they just mix together and then separate. The salt can be recovered by evaporation, and the water could be recovered by condensation, proving both substances still exist.",
-                    topic: "Physical vs Chemical Changes"
-                },
-                {
-                    question: "A scientist needs to separate a mixture of sand, iron filings, and salt. Which sequence of methods would successfully separate all three components?",
-                    options: [
-                        "Use magnet for iron then filter to separate sand from salt",
-                        "Use magnet for iron then evaporate water to get salt and sand",
-                        "Use magnet for iron add water and filter for sand then evaporate for salt",
-                        "Filter out sand first then use magnet for iron and evaporate salt"
-                    ],
-                    correct: 2,
-                    explanation: "Correct sequence: (1) Use a magnet to remove iron filings (magnetic property). (2) Add water to dissolve salt but not sand. (3) Filter to separate sand (doesn't dissolve) from salt solution. (4) Evaporate water to recover salt crystals. This uses different physical properties: magnetism, solubility, and boiling point.",
-                    topic: "Separating Mixtures"
-                },
-                {
-                    question: "An ice cube (solid water) is placed in a warm room. Over time, it melts into liquid water, then eventually evaporates into water vapor. What provides the energy for these changes of state?",
-                    options: [
-                        "The ice cube releases stored energy as it melts completely",
-                        "Heat energy from the surrounding warm air is absorbed continuously",
-                        "Chemical reactions in water create energy for phase changes",
-                        "Gravity pulls water molecules apart to cause state changes"
-                    ],
-                    correct: 1,
-                    explanation: "Changes of state require energy. Melting (solid→liquid) and evaporation (liquid→gas) require heat energy to be absorbed. This energy comes from the surroundings (the warm room). The heat makes water molecules vibrate faster, breaking the bonds holding them in solid or liquid form. Freezing and condensation release energy.",
-                    topic: "Changes of State"
-                },
-                {
-                    question: "When wood burns, it produces ash, smoke, water vapor, and carbon dioxide. The mass of the ash left behind is less than the original wood. Does this violate conservation of mass?",
-                    options: [
-                        "Yes because mass disappeared when the wood burned completely away",
-                        "No because smoke and gases escaped taking mass with them",
-                        "Yes because fire destroys matter and converts it to pure energy",
-                        "No because ash is compressed wood so it weighs less overall"
-                    ],
-                    correct: 1,
-                    explanation: "No violation occurs! The 'missing' mass went into gases (carbon dioxide, water vapor, smoke) that escaped into the air. If you could capture and weigh ALL products (ash + all gases), the total mass would equal the original wood plus oxygen from air. In an open system, it appears mass is lost, but it just moved elsewhere.",
-                    topic: "Conservation in Chemical Reactions"
-                },
-                {
-                    question: "A metal spoon is placed in a cup of hot cocoa. After a minute, the handle of the spoon feels warm even though it wasn't in the liquid. What process transferred thermal energy to the handle?",
-                    options: [
-                        "Conduction where heat travels through the solid metal spoon directly",
-                        "Convection where hot liquid circulates around the entire spoon completely",
-                        "Radiation where heat travels as invisible waves through the air",
-                        "Evaporation where liquid turns to gas and heats the spoon"
-                    ],
-                    correct: 0,
-                    explanation: "This is conduction - the transfer of thermal energy through direct contact in solids. Heat from the hot cocoa makes molecules in the submerged part of the spoon vibrate faster. These vibrations pass energy to neighboring molecules, traveling up the metal spoon to the handle. Metals are excellent conductors because their electrons move freely.",
-                    topic: "Heat Transfer"
-                },
-
-                // CHAPTER 5: Water Cycle (Questions 41-50)
-                {
-                    question: "The water cycle is powered by energy from the Sun. Which process requires the MOST energy input to occur?",
-                    options: [
-                        "Condensation when water vapor cools and forms cloud droplets",
-                        "Precipitation when water droplets fall from clouds as rain",
-                        "Evaporation when liquid water changes to water vapor gas",
-                        "Collection when water gathers in rivers lakes and oceans"
-                    ],
-                    correct: 2,
-                    explanation: "Evaporation requires the most energy because water molecules must absorb heat energy to break free from liquid bonds and become gas. This is why the Sun is essential - it provides energy for evaporation. Condensation and precipitation actually release energy. The Sun drives the entire water cycle by providing energy for evaporation.",
-                    topic: "Water Cycle Energy"
-                },
-                {
-                    question: "A glass of ice water sits on a table. After a while, water droplets form on the outside of the glass. What process causes this condensation?",
-                    options: [
-                        "Water from inside the glass leaks through tiny pores in glass",
-                        "Cold glass causes water vapor in air to condense into droplets",
-                        "Ice melts and somehow passes through the glass to outside surface",
-                        "Humidity in the room deposits minerals that look like water"
-                    ],
-                    correct: 1,
-                    explanation: "The cold glass cools the air around it. When warm air touches the cold glass, the water vapor in the air loses energy and condenses into liquid droplets on the glass surface. This is the same process that forms dew on grass in the morning - warm, moist air touches a cool surface and condensation occurs.",
-                    topic: "Condensation"
-                },
-                {
-                    question: "A scientist measures the amount of water that evaporates from two identical pans over one week. One pan is in direct sunlight and the other is in shade. Both start with 500 mL of water. What would you expect the results to show?",
-                    options: [
-                        "Both pans lose equal amounts because evaporation rate is constant",
-                        "The sunny pan loses more water because heat increases evaporation",
-                        "The shady pan loses more water because it's cooler outside",
-                        "Neither pan loses water because it's contained in closed pans"
-                    ],
-                    correct: 1,
-                    explanation: "The sunny pan will lose more water. Evaporation is faster when temperature is higher because heat energy helps water molecules escape into the air. This is why puddles dry faster on hot, sunny days than on cool, cloudy days. Heat energy is essential for evaporation to occur quickly.",
-                    topic: "Factors Affecting Evaporation"
-                },
-                {
-                    question: "Transpiration is the process where plants release water vapor through tiny pores in their leaves. How does transpiration contribute to the water cycle?",
-                    options: [
-                        "It adds water vapor to atmosphere just like evaporation from oceans",
-                        "It removes water from atmosphere and stores it in plant roots",
-                        "It converts liquid water into ice crystals in the upper atmosphere",
-                        "It prevents water from returning to the ground as precipitation"
-                    ],
-                    correct: 0,
-                    explanation: "Transpiration adds water vapor to the atmosphere, contributing significantly to the water cycle. Plants absorb water through roots, use it for photosynthesis, and release water vapor through leaf pores (stomata). Forests can transpire enormous amounts of water - a large oak tree can release 40,000 gallons per year!",
-                    topic: "Transpiration"
-                },
-                {
-                    question: "In mountainous regions, warm, moist air rises up mountain slopes. As the air rises, it cools and clouds form. Why does rising air cool and form clouds?",
-                    options: [
-                        "Higher altitude has lower pressure causing air to expand and cool",
-                        "Higher altitude has more wind which blows away all the heat",
-                        "Higher altitude has more sunlight which evaporates water faster",
-                        "Higher altitude has less oxygen which makes air feel much colder"
-                    ],
-                    correct: 0,
-                    explanation: "As air rises, atmospheric pressure decreases. Lower pressure allows air to expand. When air expands, it cools (like releasing compressed air from a can). As air cools, its capacity to hold water vapor decreases, so water vapor condenses into tiny droplets, forming clouds. This is why mountains often have clouds at their peaks.",
-                    topic: "Cloud Formation"
-                },
-                {
-                    question: "Groundwater is water stored underground in spaces between rocks and soil particles. How does water naturally become groundwater?",
-                    options: [
-                        "Rainwater infiltrates through soil and accumulates in underground spaces below",
-                        "Ocean water flows through underground tunnels into the land areas",
-                        "Rivers dig deep underground channels where water is stored permanently",
-                        "Plants pump water deep underground through their extensive root systems"
-                    ],
-                    correct: 0,
-                    explanation: "Groundwater forms through infiltration - rainwater soaks into the soil and slowly seeps down through permeable layers until it reaches impermeable rock. It accumulates in aquifers (underground layers of rock and soil that hold water). This process can take years or even centuries, which is why pumping groundwater faster than it's replenished causes problems.",
-                    topic: "Groundwater"
-                },
-                {
-                    question: "A student learns that approximately 97% of Earth's water is salt water in oceans, and only 3% is freshwater. Of that 3% freshwater, most is frozen in glaciers and ice caps. What percentage of Earth's water is readily available fresh liquid water in lakes and rivers?",
-                    options: [
-                        "About 50% of Earth's water is available fresh liquid water",
-                        "About 25% of Earth's water is available fresh liquid water",
-                        "About 10% of Earth's water is available fresh liquid water",
-                        "Less than 1% of Earth's water is available fresh liquid water"
-                    ],
-                    correct: 3,
-                    explanation: "Less than 1% of Earth's water is readily available freshwater! Here's the breakdown: 97% saltwater (oceans), 3% freshwater. Of that 3%: about 69% is frozen in glaciers/ice caps, 30% is underground, and less than 1% is in lakes and rivers. This tiny amount is what we depend on, which is why water conservation is so important!",
-                    topic: "Water Distribution"
-                },
-                {
-                    question: "During a severe drought, a lake's water level drops significantly. Scientists measure that water is still evaporating from the lake at the same rate. What explains the dropping water level?",
-                    options: [
-                        "Evaporation rate stayed same but precipitation rate decreased significantly below",
-                        "Precipitation rate stayed same but evaporation rate increased above normal",
-                        "Both evaporation and precipitation stopped during the drought completely",
-                        "Underground water is draining away faster than rainfall can replenish it"
-                    ],
-                    correct: 0,
-                    explanation: "A drought means much less precipitation (rain/snow) than normal. If evaporation continues at the same rate but precipitation decreases dramatically, the lake loses more water than it gains. Water level drops because output (evaporation) exceeds input (precipitation). This demonstrates that the water cycle requires balance between evaporation and precipitation.",
-                    topic: "Water Cycle Balance"
-                },
-                {
-                    question: "Desalination is a process that removes salt from ocean water to produce fresh drinking water. Why isn't desalination used everywhere to solve freshwater shortages?",
-                    options: [
-                        "Desalination is impossible because salt cannot be separated from water",
-                        "Desalination requires enormous amounts of energy making it very expensive",
-                        "Desalinated water is unsafe to drink because it contains chemicals",
-                        "Desalination takes thousands of years to produce usable freshwater amounts"
-                    ],
-                    correct: 1,
-                    explanation: "Desalination works but requires enormous amounts of energy, making it very expensive. Methods include heating water to evaporate it (leaving salt behind) or forcing water through membranes. Both processes use a lot of electricity. Desalination is used in water-scarce regions like the Middle East, but it's not economically practical everywhere. Natural freshwater is much cheaper!",
-                    topic: "Water Resources"
-                },
-                {
-                    question: "Clouds form at different altitudes. Cumulus clouds (puffy, low clouds) form at lower altitudes while cirrus clouds (wispy, high clouds) form at very high altitudes where temperatures are extremely cold. Why do cirrus clouds appear wispy and thin compared to cumulus clouds?",
-                    options: [
-                        "Cirrus clouds are made of ice crystals not water droplets",
-                        "Cirrus clouds have less water because they are smaller overall",
-                        "Cirrus clouds form during summer when there's less moisture available",
-                        "Cirrus clouds dissolve quickly because of strong winds up high"
-                    ],
-                    correct: 0,
-                    explanation: "Cirrus clouds appear wispy because they're made of ice crystals rather than water droplets. At high altitudes (above 20,000 feet), temperatures are below freezing, so water vapor condenses and immediately freezes into ice crystals. These ice crystals create the thin, feathery appearance. Lower cumulus clouds form where it's warmer, so they're made of liquid water droplets, appearing puffier.",
-                    topic: "Cloud Types"
-                }
-            ]
-        };
-
-        // Initialize the test
-        document.addEventListener('DOMContentLoaded', function() {
-            new TestEngine(testData, 'final_exam_all_chapters', 60);
-        });
+        // Simple timer to track time spent
+        let seconds = 0;
+        setInterval(function() {
+            seconds++;
+            const mins = Math.floor(seconds / 60);
+            const secs = seconds % 60;
+            document.getElementById('time-display').textContent =
+                String(mins).padStart(2, '0') + ':' + String(secs).padStart(2, '0');
+        }, 1000);
     </script>
 </body>
 </html>

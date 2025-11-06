@@ -317,6 +317,127 @@
 
         .physical-change { border-top-color: #3498db; }
         .chemical-change { border-top-color: #e74c3c; }
+
+        .inline-practice-section {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 30px;
+            margin: 40px 0;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+
+        .practice-instructions {
+            background: #e3f2fd;
+            padding: 15px;
+            border-radius: 10px;
+            border-left: 5px solid #2196F3;
+            margin-bottom: 30px;
+            font-size: 1.1em;
+        }
+
+        .inline-question {
+            background: #f8f9fa;
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 30px;
+            border: 2px solid #e0e0e0;
+        }
+
+        .inline-question h3 {
+            color: #4a47a3;
+            margin-bottom: 15px;
+        }
+
+        .question-text {
+            font-size: 1.1em;
+            line-height: 1.7;
+            margin-bottom: 20px;
+        }
+
+        .option-container {
+            background: white;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            padding: 15px;
+            margin: 10px 0;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .option-container:hover {
+            border-color: #4a47a3;
+            background: #f5f5f5;
+        }
+
+        .option-container label {
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            width: 100%;
+        }
+
+        .option-container input[type="radio"] {
+            margin-right: 15px;
+            transform: scale(1.3);
+            cursor: pointer;
+        }
+
+        .option-text {
+            font-size: 1.05em;
+        }
+
+        .option-container.correct-answer {
+            background: #e8f5e9;
+            border: 3px solid #4CAF50;
+            border-left: 8px solid #4CAF50;
+        }
+
+        .option-container.incorrect-answer {
+            background: #ffebee;
+            border: 3px solid #f44336;
+            border-left: 8px solid #f44336;
+        }
+
+        .option-container.selected-answer.correct-answer {
+            background: #c8e6c9;
+        }
+
+        .explanation {
+            background: #fff3e0;
+            border-left: 5px solid #FF9800;
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 20px;
+            font-size: 1.05em;
+            line-height: 1.6;
+        }
+
+        .question-spacer {
+            height: 40px;
+        }
+
+        .force-motion-section {
+            background: linear-gradient(135deg, #a29bfe, #6c5ce7);
+            color: white;
+            border-radius: 15px;
+            padding: 30px;
+            margin: 30px 0;
+        }
+
+        .force-card {
+            background: rgba(255, 255, 255, 0.95);
+            color: #333;
+            border-radius: 12px;
+            padding: 20px;
+            margin: 15px 0;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+            border-left: 5px solid;
+        }
+
+        .gravity-force { border-left-color: #3498db; }
+        .friction-force { border-left-color: #e74c3c; }
+        .magnetic-force { border-left-color: #9b59b6; }
+        .applied-force { border-left-color: #f39c12; }
     </style>
 </head>
 <body>
@@ -794,7 +915,7 @@
                 <div style="font-size: 2em; margin: 20px 0;">⚡ = ⚡</div>
                 <h4>Energy can NEVER be created or destroyed!</h4>
                 <p style="font-size: 1.2em; margin: 15px 0;">It can only change from one form to another!</p>
-                
+
                 <div style="background: rgba(255,255,255,0.7); padding: 20px; border-radius: 10px; margin: 20px 0;">
                     <h5>🌟 What this means:</h5>
                     <ul style="text-align: left; display: inline-block;">
@@ -802,6 +923,257 @@
                         <li>When energy seems to "disappear," it just changed form</li>
                         <li>Energy is constantly transforming all around us</li>
                         <li>This is one of the most important laws in science!</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="force-motion-section">
+                <h3>🚀 Force and Motion - Making Things Move!</h3>
+                <p>Everything that moves needs a FORCE to make it happen! Let's explore how forces affect motion and discover Newton's amazing laws!</p>
+
+                <div style="background: rgba(255,255,255,0.9); color: #333; padding: 25px; border-radius: 12px; margin: 25px 0;">
+                    <h4>💪 What is a FORCE?</h4>
+                    <p style="font-size: 1.2em; margin: 15px 0;"><strong>A force is a PUSH or a PULL that can change an object's motion!</strong></p>
+                    <ul style="font-size: 1.1em;">
+                        <li>🏀 <strong>Push:</strong> Kicking a soccer ball, pushing a shopping cart</li>
+                        <li>🪢 <strong>Pull:</strong> Opening a door, pulling a wagon</li>
+                        <li>📏 <strong>Measured in:</strong> Newtons (N) - named after Sir Isaac Newton!</li>
+                    </ul>
+
+                    <div style="background: #fff3cd; padding: 15px; border-radius: 8px; margin-top: 15px; border-left: 5px solid #f39c12;">
+                        <p><strong>🔬 Forces can:</strong></p>
+                        <ul>
+                            <li>Make things start moving (from rest)</li>
+                            <li>Make moving things stop</li>
+                            <li>Change the direction of motion</li>
+                            <li>Change the speed (faster or slower)</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <h4 style="margin-top: 30px;">⚡ Types of Forces</h4>
+                <p>There are many different types of forces acting on objects all the time! Let's meet the main ones:</p>
+
+                <div class="force-card gravity-force">
+                    <h5>🌍 GRAVITY</h5>
+                    <p><strong>What it is:</strong> The force that pulls objects toward Earth (or any large mass)</p>
+                    <p><strong>Direction:</strong> Always pulls DOWN toward the center of Earth</p>
+                    <p><strong>Examples:</strong></p>
+                    <ul>
+                        <li>🍎 Apples falling from trees</li>
+                        <li>🏀 Basketball coming back down after you throw it</li>
+                        <li>🚶 Keeping your feet on the ground when you walk</li>
+                        <li>🌙 Keeping the Moon orbiting around Earth</li>
+                    </ul>
+                    <p style="margin-top: 10px;"><strong>Fun Fact:</strong> Everything with mass has gravity! Earth's gravity is stronger because it's so massive!</p>
+                </div>
+
+                <div class="force-card friction-force">
+                    <h5>🛑 FRICTION</h5>
+                    <p><strong>What it is:</strong> The force that opposes motion when two surfaces rub together</p>
+                    <p><strong>Direction:</strong> Always opposes the direction of motion (slows things down)</p>
+                    <p><strong>Examples:</strong></p>
+                    <ul>
+                        <li>🚗 Brakes stopping a car</li>
+                        <li>🤲 Rubbing hands together creates heat</li>
+                        <li>✏️ Eraser rubbing on paper</li>
+                        <li>⚽ Soccer ball rolling to a stop on grass</li>
+                    </ul>
+                    <p style="margin-top: 10px;"><strong>Good or Bad?</strong> Friction can be helpful (walking, writing, stopping) or unhelpful (wearing out shoes, slowing down machines)</p>
+                </div>
+
+                <div class="force-card magnetic-force">
+                    <h5>🧲 MAGNETIC FORCE</h5>
+                    <p><strong>What it is:</strong> The force between magnets or magnetic materials</p>
+                    <p><strong>Direction:</strong> Can attract (pull together) or repel (push apart)</p>
+                    <p><strong>Examples:</strong></p>
+                    <ul>
+                        <li>🧲 Magnets sticking to refrigerator</li>
+                        <li>🧭 Compass needle pointing north</li>
+                        <li>🔌 Electric motors and generators</li>
+                        <li>💾 Storing data on computer hard drives</li>
+                    </ul>
+                    <p style="margin-top: 10px;"><strong>Remember:</strong> Opposite poles attract (N-S), like poles repel (N-N or S-S)!</p>
+                </div>
+
+                <div class="force-card applied-force">
+                    <h5>💪 APPLIED FORCE</h5>
+                    <p><strong>What it is:</strong> A force applied directly by a person or object</p>
+                    <p><strong>Direction:</strong> In the direction you push or pull</p>
+                    <p><strong>Examples:</strong></p>
+                    <ul>
+                        <li>🏋️ Lifting weights</li>
+                        <li>🚪 Opening a door</li>
+                        <li>⚽ Kicking a ball</li>
+                        <li>🚲 Pedaling a bicycle</li>
+                    </ul>
+                    <p style="margin-top: 10px;"><strong>Key Point:</strong> The harder you push or pull, the greater the force!</p>
+                </div>
+
+                <div style="background: rgba(255,255,255,0.9); color: #333; padding: 25px; border-radius: 12px; margin: 25px 0;">
+                    <h4>📜 Newton's First Law of Motion (Law of Inertia)</h4>
+                    <p style="font-size: 1.3em; text-align: center; margin: 20px 0; background: #e3f2fd; padding: 15px; border-radius: 10px;">
+                        <strong>"An object at rest stays at rest, and an object in motion stays in motion, unless acted upon by an outside force."</strong>
+                    </p>
+
+                    <h5>🤔 What does this mean?</h5>
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin: 20px 0;">
+                        <div style="background: #fff3e0; padding: 15px; border-radius: 10px;">
+                            <h6>📍 Objects at REST:</h6>
+                            <ul>
+                                <li>A book on a table stays there unless you push it</li>
+                                <li>A soccer ball won't move by itself</li>
+                                <li>You need a force to START motion!</li>
+                            </ul>
+                        </div>
+
+                        <div style="background: #e8f5e9; padding: 15px; border-radius: 10px;">
+                            <h6>🏃 Objects in MOTION:</h6>
+                            <ul>
+                                <li>A rolling ball would roll forever without friction</li>
+                                <li>Objects keep moving in a straight line</li>
+                                <li>You need a force to STOP or CHANGE motion!</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div style="background: #ffebee; padding: 15px; border-radius: 10px; margin-top: 15px;">
+                        <p><strong>💡 INERTIA</strong> = An object's resistance to changes in motion</p>
+                        <p style="margin-top: 10px;">More mass = more inertia = harder to start or stop moving!</p>
+                        <p><strong>Example:</strong> It's easier to push an empty shopping cart than a full one!</p>
+                    </div>
+                </div>
+
+                <div style="background: rgba(255,255,255,0.9); color: #333; padding: 25px; border-radius: 12px; margin: 25px 0;">
+                    <h4>📏 Speed, Velocity, and Acceleration</h4>
+
+                    <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 15px; margin: 20px 0;">
+                        <div style="background: #e3f2fd; padding: 15px; border-radius: 10px; border-left: 5px solid #2196F3;">
+                            <h5>🏃 SPEED</h5>
+                            <p><strong>Definition:</strong> How fast something is moving</p>
+                            <p><strong>Formula:</strong> Distance ÷ Time</p>
+                            <p><strong>Units:</strong> mph, m/s, km/h</p>
+                            <p style="margin-top: 10px;"><strong>Example:</strong> A car going 60 mph</p>
+                        </div>
+
+                        <div style="background: #f3e5f5; padding: 15px; border-radius: 10px; border-left: 5px solid #9c27b0;">
+                            <h5>🎯 VELOCITY</h5>
+                            <p><strong>Definition:</strong> Speed + Direction</p>
+                            <p><strong>Includes:</strong> How fast AND which way</p>
+                            <p><strong>Example:</strong> 60 mph north</p>
+                            <p style="margin-top: 10px;"><strong>Note:</strong> Velocity changes if speed OR direction changes!</p>
+                        </div>
+
+                        <div style="background: #fff3e0; padding: 15px; border-radius: 10px; border-left: 5px solid #ff9800;">
+                            <h5>⚡ ACCELERATION</h5>
+                            <p><strong>Definition:</strong> Change in velocity over time</p>
+                            <p><strong>Means:</strong> Speeding up, slowing down, or changing direction</p>
+                            <p><strong>Formula:</strong> Change in velocity ÷ Time</p>
+                            <p style="margin-top: 10px;"><strong>Example:</strong> A car going from 0 to 60 mph in 5 seconds</p>
+                        </div>
+                    </div>
+
+                    <div style="background: #c8e6c9; padding: 15px; border-radius: 10px; margin-top: 15px;">
+                        <p><strong>🔑 Key Difference:</strong></p>
+                        <ul>
+                            <li><strong>Speed:</strong> Just how fast (30 mph)</li>
+                            <li><strong>Velocity:</strong> How fast + which direction (30 mph east)</li>
+                            <li><strong>Acceleration:</strong> How quickly speed or direction is changing</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div style="background: rgba(255,255,255,0.9); color: #333; padding: 25px; border-radius: 12px; margin: 25px 0;">
+                    <h4>🎯 Forces in Action - Real-World Examples</h4>
+
+                    <div class="examples-grid">
+                        <div class="example-card-visual" style="border-top-color: #4CAF50;">
+                            <h5>🚗 Car Braking</h5>
+                            <p style="font-size: 2em; text-align: center;">🚗 → 🛑</p>
+                            <p><strong>Forces at work:</strong></p>
+                            <ul>
+                                <li>Applied force (foot on brake)</li>
+                                <li>Friction (brakes on wheels)</li>
+                            </ul>
+                            <p style="margin-top: 10px;"><strong>Result:</strong> Car slows down and stops!</p>
+                        </div>
+
+                        <div class="example-card-visual" style="border-top-color: #2196F3;">
+                            <h5>⚽ Kicking a Ball</h5>
+                            <p style="font-size: 2em; text-align: center;">🦵 → ⚽ →</p>
+                            <p><strong>Forces at work:</strong></p>
+                            <ul>
+                                <li>Applied force (foot kicking)</li>
+                                <li>Gravity (pulls ball down)</li>
+                                <li>Friction (slows it on grass)</li>
+                            </ul>
+                            <p style="margin-top: 10px;"><strong>Result:</strong> Ball flies through air then stops!</p>
+                        </div>
+
+                        <div class="example-card-visual" style="border-top-color: #ff9800;">
+                            <h5>🧲 Magnets</h5>
+                            <p style="font-size: 2em; text-align: center;">N ← → S</p>
+                            <p><strong>Forces at work:</strong></p>
+                            <ul>
+                                <li>Magnetic force (attraction)</li>
+                                <li>No touching needed!</li>
+                            </ul>
+                            <p style="margin-top: 10px;"><strong>Result:</strong> Magnets pull together or push apart!</p>
+                        </div>
+
+                        <div class="example-card-visual" style="border-top-color: #9c27b0;">
+                            <h5>🎢 Roller Coaster</h5>
+                            <p style="font-size: 2em; text-align: center;">⬆️ 🎢 ⬇️</p>
+                            <p><strong>Forces at work:</strong></p>
+                            <ul>
+                                <li>Gravity (pulls down hills)</li>
+                                <li>Inertia (keeps you moving)</li>
+                                <li>Applied force (motor pulls up)</li>
+                            </ul>
+                            <p style="margin-top: 10px;"><strong>Result:</strong> Thrilling ride with speed changes!</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="try-this-home">
+                    <h4>🏠 Try This at Home: Demonstrating Inertia!</h4>
+                    <p><strong>🎯 Goal:</strong> See Newton's First Law in action!</p>
+
+                    <div style="background: white; padding: 15px; border-radius: 10px; margin: 15px 0;">
+                        <h5>Experiment 1: Tablecloth Trick</h5>
+                        <p><strong>📋 Materials:</strong> Smooth tablecloth or paper, plastic cup with a few coins in it</p>
+                        <p><strong>📋 Instructions:</strong></p>
+                        <ol>
+                            <li>Place cup on the edge of the tablecloth on a smooth table</li>
+                            <li>Quickly pull the tablecloth straight out (horizontally!)</li>
+                            <li>Watch the cup stay in place!</li>
+                        </ol>
+                        <p style="margin-top: 10px;"><strong>🤔 Why?</strong> The cup wants to stay at rest (inertia)! If you pull fast enough, the cup doesn't have time to move with the cloth!</p>
+
+                        <h5 style="margin-top: 20px;">Experiment 2: Coin Drop</h5>
+                        <p><strong>📋 Materials:</strong> Index card, coin, empty cup</p>
+                        <p><strong>📋 Instructions:</strong></p>
+                        <ol>
+                            <li>Place the cup on a table</li>
+                            <li>Put the index card over the cup's opening</li>
+                            <li>Place coin on the card above the cup</li>
+                            <li>QUICKLY flick the card away horizontally</li>
+                            <li>Watch the coin drop into the cup!</li>
+                        </ol>
+                        <p style="margin-top: 10px;"><strong>🤔 Why?</strong> The coin wants to stay at rest! When you remove the card quickly, gravity pulls the coin straight down into the cup!</p>
+                    </div>
+
+                    <p><strong>🌟 Challenge:</strong> Can you find other examples of inertia in your daily life?</p>
+                </div>
+
+                <div class="callout-box">
+                    <h4>💡 Did You Know?</h4>
+                    <ul style="margin: 10px 0;">
+                        <li>🚀 In space, there's no air resistance or friction, so objects really DO keep moving forever!</li>
+                        <li>⚖️ Isaac Newton discovered these laws of motion over 300 years ago!</li>
+                        <li>🏃 When you walk, you push backward on the ground (applied force), and the ground pushes you forward (friction)!</li>
+                        <li>🌍 Without gravity, you'd float away into space!</li>
+                        <li>🏀 Professional basketball players use Newton's laws to calculate the perfect shot!</li>
                     </ul>
                 </div>
             </div>
@@ -844,6 +1216,395 @@
             </div>
         </div>
 
+        <div class="inline-practice-section">
+            <h2>📝 Practice Questions - Immediate Feedback!</h2>
+            <p class="practice-instructions">Select your answer to see if you're correct right away! Green = Correct ✅, Red = Try again ❌</p>
+
+            <div id="inline-quiz-chapter4">
+
+                <!-- Question 1 -->
+                <div class="inline-question" data-correct="B">
+                    <h3>Question 1:</h3>
+                    <p class="question-text">What are the three main states of matter?</p>
+
+                    <div class="option-container">
+                        <label>
+                            <input type="radio" name="q1" value="A">
+                            <span class="option-text">A. Hot, cold, and warm</span>
+                        </label>
+                    </div>
+
+                    <div class="option-container">
+                        <label>
+                            <input type="radio" name="q1" value="B">
+                            <span class="option-text">B. Solid, liquid, and gas</span>
+                        </label>
+                    </div>
+
+                    <div class="option-container">
+                        <label>
+                            <input type="radio" name="q1" value="C">
+                            <span class="option-text">C. Big, medium, and small</span>
+                        </label>
+                    </div>
+
+                    <div class="option-container">
+                        <label>
+                            <input type="radio" name="q1" value="D">
+                            <span class="option-text">D. Fast, slow, and stopped</span>
+                        </label>
+                    </div>
+
+                    <div class="explanation" data-text="The three main states of matter are SOLID (particles packed tightly, definite shape), LIQUID (particles move around, takes shape of container), and GAS (particles far apart, fills entire container). There's also a fourth state called plasma!" style="display: none;"></div>
+
+                    <div class="question-spacer"></div>
+                </div>
+
+                <!-- Question 2 -->
+                <div class="inline-question" data-correct="A">
+                    <h3>Question 2:</h3>
+                    <p class="question-text">Which of these is a CHEMICAL change?</p>
+
+                    <div class="option-container">
+                        <label>
+                            <input type="radio" name="q2" value="A">
+                            <span class="option-text">A. Burning wood into ash</span>
+                        </label>
+                    </div>
+
+                    <div class="option-container">
+                        <label>
+                            <input type="radio" name="q2" value="B">
+                            <span class="option-text">B. Melting ice into water</span>
+                        </label>
+                    </div>
+
+                    <div class="option-container">
+                        <label>
+                            <input type="radio" name="q2" value="C">
+                            <span class="option-text">C. Cutting paper into pieces</span>
+                        </label>
+                    </div>
+
+                    <div class="option-container">
+                        <label>
+                            <input type="radio" name="q2" value="D">
+                            <span class="option-text">D. Crushing a can</span>
+                        </label>
+                    </div>
+
+                    <div class="explanation" data-text="Burning wood is a CHEMICAL change because it creates NEW substances (ash, smoke, carbon dioxide) that you can't change back! Melting, cutting, and crushing are physical changes - the material is still the same, just in a different form. Look for signs like color change, gas/smell, heat/light, or new substances!" style="display: none;"></div>
+
+                    <div class="question-spacer"></div>
+                </div>
+
+                <!-- Question 3 -->
+                <div class="inline-question" data-correct="C">
+                    <h3>Question 3:</h3>
+                    <p class="question-text">What form of energy does a battery-powered flashlight demonstrate transforming?</p>
+
+                    <div class="option-container">
+                        <label>
+                            <input type="radio" name="q3" value="A">
+                            <span class="option-text">A. Sound energy to mechanical energy</span>
+                        </label>
+                    </div>
+
+                    <div class="option-container">
+                        <label>
+                            <input type="radio" name="q3" value="B">
+                            <span class="option-text">B. Thermal energy to light energy</span>
+                        </label>
+                    </div>
+
+                    <div class="option-container">
+                        <label>
+                            <input type="radio" name="q3" value="C">
+                            <span class="option-text">C. Chemical energy to electrical energy to light energy</span>
+                        </label>
+                    </div>
+
+                    <div class="option-container">
+                        <label>
+                            <input type="radio" name="q3" value="D">
+                            <span class="option-text">D. Nuclear energy to light energy</span>
+                        </label>
+                    </div>
+
+                    <div class="explanation" data-text="A flashlight transforms energy in a chain! Battery stores CHEMICAL energy → converts to ELECTRICAL energy → light bulb changes it to LIGHT energy (and some heat). This is a perfect example of energy transformation!" style="display: none;"></div>
+
+                    <div class="question-spacer"></div>
+                </div>
+
+                <!-- Question 4 -->
+                <div class="inline-question" data-correct="D">
+                    <h3>Question 4:</h3>
+                    <p class="question-text">What is the definition of a FORCE?</p>
+
+                    <div class="option-container">
+                        <label>
+                            <input type="radio" name="q4" value="A">
+                            <span class="option-text">A. The speed of an object</span>
+                        </label>
+                    </div>
+
+                    <div class="option-container">
+                        <label>
+                            <input type="radio" name="q4" value="B">
+                            <span class="option-text">B. The weight of an object</span>
+                        </label>
+                    </div>
+
+                    <div class="option-container">
+                        <label>
+                            <input type="radio" name="q4" value="C">
+                            <span class="option-text">C. The temperature of matter</span>
+                        </label>
+                    </div>
+
+                    <div class="option-container">
+                        <label>
+                            <input type="radio" name="q4" value="D">
+                            <span class="option-text">D. A push or pull that can change an object's motion</span>
+                        </label>
+                    </div>
+
+                    <div class="explanation" data-text="A force is a PUSH or PULL that can change how an object moves! Forces can make things start moving, stop moving, speed up, slow down, or change direction. Forces are measured in Newtons (N), named after Isaac Newton!" style="display: none;"></div>
+
+                    <div class="question-spacer"></div>
+                </div>
+
+                <!-- Question 5 -->
+                <div class="inline-question" data-correct="B">
+                    <h3>Question 5:</h3>
+                    <p class="question-text">When ice melts into water, what kind of change has occurred?</p>
+
+                    <div class="option-container">
+                        <label>
+                            <input type="radio" name="q5" value="A">
+                            <span class="option-text">A. Chemical change - new substances formed</span>
+                        </label>
+                    </div>
+
+                    <div class="option-container">
+                        <label>
+                            <input type="radio" name="q5" value="B">
+                            <span class="option-text">B. Physical change - same substance, different state</span>
+                        </label>
+                    </div>
+
+                    <div class="option-container">
+                        <label>
+                            <input type="radio" name="q5" value="C">
+                            <span class="option-text">C. No change occurred</span>
+                        </label>
+                    </div>
+
+                    <div class="option-container">
+                        <label>
+                            <input type="radio" name="q5" value="D">
+                            <span class="option-text">D. Molecular change - atoms rearranged</span>
+                        </label>
+                    </div>
+
+                    <div class="explanation" data-text="Melting is a PHYSICAL change! Ice (solid) and water (liquid) are BOTH H₂O - the same substance! The molecules are just arranged differently. You can freeze it back to ice. Chemical changes create NEW substances that you can't easily change back." style="display: none;"></div>
+
+                    <div class="question-spacer"></div>
+                </div>
+
+                <!-- Question 6 -->
+                <div class="inline-question" data-correct="A">
+                    <h3>Question 6:</h3>
+                    <p class="question-text">Which type of force always pulls objects toward the center of Earth?</p>
+
+                    <div class="option-container">
+                        <label>
+                            <input type="radio" name="q6" value="A">
+                            <span class="option-text">A. Gravity</span>
+                        </label>
+                    </div>
+
+                    <div class="option-container">
+                        <label>
+                            <input type="radio" name="q6" value="B">
+                            <span class="option-text">B. Friction</span>
+                        </label>
+                    </div>
+
+                    <div class="option-container">
+                        <label>
+                            <input type="radio" name="q6" value="C">
+                            <span class="option-text">C. Magnetic force</span>
+                        </label>
+                    </div>
+
+                    <div class="option-container">
+                        <label>
+                            <input type="radio" name="q6" value="D">
+                            <span class="option-text">D. Applied force</span>
+                        </label>
+                    </div>
+
+                    <div class="explanation" data-text="GRAVITY is the force that pulls all objects toward the center of Earth! It's why things fall down when you drop them, why we stay on the ground, and why the Moon orbits Earth. Every object with mass has gravity, but Earth's is super strong because it's so massive!" style="display: none;"></div>
+
+                    <div class="question-spacer"></div>
+                </div>
+
+                <!-- Question 7 -->
+                <div class="inline-question" data-correct="C">
+                    <h3>Question 7:</h3>
+                    <p class="question-text">According to the Law of Conservation of Energy, what happens to energy?</p>
+
+                    <div class="option-container">
+                        <label>
+                            <input type="radio" name="q7" value="A">
+                            <span class="option-text">A. It can be created and destroyed</span>
+                        </label>
+                    </div>
+
+                    <div class="option-container">
+                        <label>
+                            <input type="radio" name="q7" value="B">
+                            <span class="option-text">B. It disappears when used</span>
+                        </label>
+                    </div>
+
+                    <div class="option-container">
+                        <label>
+                            <input type="radio" name="q7" value="C">
+                            <span class="option-text">C. It can only change from one form to another, never created or destroyed</span>
+                        </label>
+                    </div>
+
+                    <div class="option-container">
+                        <label>
+                            <input type="radio" name="q7" value="D">
+                            <span class="option-text">D. It stays in the same form forever</span>
+                        </label>
+                    </div>
+
+                    <div class="explanation" data-text="The Law of Conservation of Energy states that energy can NEVER be created or destroyed - it can ONLY change forms! When you think energy disappears, it just transformed into a different type. The total amount of energy in the universe stays the same! This is one of the most important laws in science!" style="display: none;"></div>
+
+                    <div class="question-spacer"></div>
+                </div>
+
+                <!-- Question 8 -->
+                <div class="inline-question" data-correct="B">
+                    <h3>Question 8:</h3>
+                    <p class="question-text">What is Newton's First Law of Motion also called?</p>
+
+                    <div class="option-container">
+                        <label>
+                            <input type="radio" name="q8" value="A">
+                            <span class="option-text">A. Law of Acceleration</span>
+                        </label>
+                    </div>
+
+                    <div class="option-container">
+                        <label>
+                            <input type="radio" name="q8" value="B">
+                            <span class="option-text">B. Law of Inertia</span>
+                        </label>
+                    </div>
+
+                    <div class="option-container">
+                        <label>
+                            <input type="radio" name="q8" value="C">
+                            <span class="option-text">C. Law of Gravity</span>
+                        </label>
+                    </div>
+
+                    <div class="option-container">
+                        <label>
+                            <input type="radio" name="q8" value="D">
+                            <span class="option-text">D. Law of Energy</span>
+                        </label>
+                    </div>
+
+                    <div class="explanation" data-text="Newton's First Law is the Law of INERTIA! It states: An object at rest stays at rest, and an object in motion stays in motion, unless acted upon by an outside force. Inertia is an object's resistance to changes in motion. More mass = more inertia!" style="display: none;"></div>
+
+                    <div class="question-spacer"></div>
+                </div>
+
+                <!-- Question 9 -->
+                <div class="inline-question" data-correct="D">
+                    <h3>Question 9:</h3>
+                    <p class="question-text">Which of the following is an example of thermal energy?</p>
+
+                    <div class="option-container">
+                        <label>
+                            <input type="radio" name="q9" value="A">
+                            <span class="option-text">A. A flashlight beam</span>
+                        </label>
+                    </div>
+
+                    <div class="option-container">
+                        <label>
+                            <input type="radio" name="q9" value="B">
+                            <span class="option-text">B. A guitar playing music</span>
+                        </label>
+                    </div>
+
+                    <div class="option-container">
+                        <label>
+                            <input type="radio" name="q9" value="C">
+                            <span class="option-text">C. A ball rolling down a hill</span>
+                        </label>
+                    </div>
+
+                    <div class="option-container">
+                        <label>
+                            <input type="radio" name="q9" value="D">
+                            <span class="option-text">D. Hot soup cooling on a table</span>
+                        </label>
+                    </div>
+
+                    <div class="explanation" data-text="Hot soup is thermal energy (heat)! Thermal energy comes from the movement of particles - the faster they move, the hotter it is. A flashlight is light energy, guitar is sound energy, and a rolling ball is mechanical energy. Thermal energy always flows from hot to cold objects!" style="display: none;"></div>
+
+                    <div class="question-spacer"></div>
+                </div>
+
+                <!-- Question 10 -->
+                <div class="inline-question" data-correct="A">
+                    <h3>Question 10:</h3>
+                    <p class="question-text">What is the difference between speed and velocity?</p>
+
+                    <div class="option-container">
+                        <label>
+                            <input type="radio" name="q10" value="A">
+                            <span class="option-text">A. Velocity includes direction, speed does not</span>
+                        </label>
+                    </div>
+
+                    <div class="option-container">
+                        <label>
+                            <input type="radio" name="q10" value="B">
+                            <span class="option-text">B. Speed includes direction, velocity does not</span>
+                        </label>
+                    </div>
+
+                    <div class="option-container">
+                        <label>
+                            <input type="radio" name="q10" value="C">
+                            <span class="option-text">C. They are exactly the same thing</span>
+                        </label>
+                    </div>
+
+                    <div class="option-container">
+                        <label>
+                            <input type="radio" name="q10" value="D">
+                            <span class="option-text">D. Velocity is always faster than speed</span>
+                        </label>
+                    </div>
+
+                    <div class="explanation" data-text="VELOCITY includes both speed AND direction! Speed just tells you how fast (60 mph), but velocity tells you how fast AND which way (60 mph north). If a car changes direction but keeps the same speed, its velocity has changed!" style="display: none;"></div>
+
+                    <div class="question-spacer"></div>
+                </div>
+
+            </div>
+        </div>
+
         <div class="quiz-section">
             <h2>🧠 Test Your Knowledge!</h2>
             <div id="quiz-container">
@@ -868,6 +1629,7 @@
         </div>
     </div>
 
+    <script src="inline-quiz.js"></script>
     <script>
         // Chapter 4 Quiz Data
         const chapter4QuizData = {
