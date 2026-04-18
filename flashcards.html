@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>STAAR Flashcards - 5th Grade Science</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh; color: #222;
+        }
+        .container { max-width: 900px; margin: 0 auto; padding: 20px; }
+        .back-link {
+            display: inline-block; background: rgba(255,255,255,0.9); color: #4a47a3;
+            padding: 10px 20px; border-radius: 20px; text-decoration: none;
+            font-weight: bold; margin-bottom: 15px;
+        }
+        .back-link:hover { background: #4a47a3; color: white; }
+        .header {
+            background: white; border-radius: 20px; padding: 25px;
+            text-align: center; margin-bottom: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        .header h1 { color: #4a47a3; font-size: 2em; margin-bottom: 8px; }
+        .filters {
+            background: white; border-radius: 15px; padding: 15px 20px;
+            margin-bottom: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            display: flex; flex-wrap: wrap; gap: 8px; align-items: center;
+        }
+        .filters label { font-weight: bold; color: #4a47a3; margin-right: 8px; }
+        .filter-btn {
+            background: #eef1ff; color: #4a47a3; border: 2px solid transparent;
+            padding: 6px 14px; border-radius: 18px; cursor: pointer;
+            font-size: 0.9em; font-weight: 600;
+        }
+        .filter-btn.active { background: #4a47a3; color: white; }
+        .filter-btn:hover { border-color: #4a47a3; }
+        .stats {
+            background: white; border-radius: 15px; padding: 15px;
+            margin-bottom: 15px; display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 12px; text-align: center;
+        }
+        .stat-box { padding: 8px; }
+        .stat-num { font-size: 1.8em; font-weight: bold; color: #4a47a3; }
+        .stat-label { font-size: 0.9em; color: #666; }
+        .card-area {
+            perspective: 1000px;
+            margin: 20px 0;
+        }
+        .card {
+            background: white; border-radius: 20px;
+            min-height: 320px; padding: 30px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.25);
+            position: relative;
+            transition: transform 0.6s;
+            transform-style: preserve-3d;
+            cursor: pointer;
+        }
+        .card.flipped { transform: rotateY(180deg); }
+        .card-face {
+            position: absolute; inset: 30px;
+            backface-visibility: hidden;
+            display: flex; flex-direction: column;
+            justify-content: center; align-items: center;
+            text-align: center;
+        }
+        .card-back { transform: rotateY(180deg); }
+        .card-label {
+            position: absolute; top: 15px; left: 20px;
+            background: #4a47a3; color: white;
+            padding: 4px 12px; border-radius: 12px;
+            font-size: 0.8em; backface-visibility: hidden;
+        }
+        .card-counter {
+            position: absolute; top: 15px; right: 20px;
+            color: #888; font-size: 0.9em;
+            backface-visibility: hidden;
+        }
+        .term { font-size: 2em; color: #4a47a3; font-weight: bold; margin-bottom: 10px; }
+        .hint { color: #888; font-size: 0.95em; margin-top: 20px; }
+        .definition { font-size: 1.2em; line-height: 1.6; color: #333; }
+        .controls {
+            display: flex; gap: 10px; justify-content: center;
+            margin-top: 15px; flex-wrap: wrap;
+        }
+        .btn {
+            padding: 12px 24px; border: none; border-radius: 25px;
+            font-size: 1em; font-weight: bold; cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .btn:hover { transform: translateY(-2px); box-shadow: 0 5px 15px rgba(0,0,0,0.2); }
+        .btn-nav { background: #4a47a3; color: white; }
+        .btn-again { background: #f44336; color: white; }
+        .btn-hard { background: #ff9800; color: white; }
+        .btn-good { background: #4CAF50; color: white; }
+        .shortcut-tip {
+            text-align: center; color: white; opacity: 0.85;
+            margin-top: 15px; font-size: 0.9em;
+        }
+        .empty-state {
+            text-align: center; color: #888; padding: 40px 20px;
+            font-size: 1.1em;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="index.html" class="back-link">← Back to Home</a>
+        <a href="quick_review.html" class="back-link">📖 Quick Review</a>
+
+        <div class="header">
+            <h1>🎴 STAAR Vocabulary Flashcards</h1>
+            <p>Click a card to flip it. Tap <b>Again</b>, <b>Hard</b>, or <b>Good</b> to sort cards smartly.</p>
+        </div>
+
+        <div class="filters">
+            <label>Topic:</label>
+            <button class="filter-btn active" data-filter="all">All</button>
+            <button class="filter-btn" data-filter="method">🔬 Method</button>
+            <button class="filter-btn" data-filter="matter">🧪 Matter</button>
+            <button class="filter-btn" data-filter="energy">⚡ Energy</button>
+            <button class="filter-btn" data-filter="earth">🌍 Earth & Space</button>
+            <button class="filter-btn" data-filter="life">🌱 Living Things</button>
+            <button class="filter-btn" data-filter="due">🔁 Needs Review</button>
+        </div>
+
+        <div class="stats">
+            <div class="stat-box"><div class="stat-num" id="total">0</div><div class="stat-label">Cards in deck</div></div>
+            <div class="stat-box"><div class="stat-num" id="mastered">0</div><div class="stat-label">Mastered</div></div>
+            <div class="stat-box"><div class="stat-num" id="review">0</div><div class="stat-label">Needs review</div></div>
+            <div class="stat-box"><div class="stat-num" id="current">0/0</div><div class="stat-label">Current card</div></div>
+        </div>
+
+        <div class="card-area">
+            <div class="card" id="card" onclick="flip()">
+                <div class="card-label" id="cardLabel">Topic</div>
+                <div class="card-counter" id="cardCounter">1 / 1</div>
+                <div class="card-face">
+                    <div class="term" id="term">Loading...</div>
+                    <div class="hint">Tap card or press Space to see the answer</div>
+                </div>
+                <div class="card-face card-back">
+                    <div class="definition" id="definition"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="controls">
+            <button class="btn btn-nav" onclick="prev()">← Previous</button>
+            <button class="btn btn-again" onclick="rate('again')">Again 🔁</button>
+            <button class="btn btn-hard" onclick="rate('hard')">Hard 🤔</button>
+            <button class="btn btn-good" onclick="rate('good')">Good ✅</button>
+            <button class="btn btn-nav" onclick="next()">Next →</button>
+        </div>
+        <div class="controls" style="margin-top: 8px;">
+            <button class="btn btn-nav" style="background:#666;" onclick="shuffle()">🔀 Shuffle</button>
+            <button class="btn btn-nav" style="background:#666;" onclick="resetProgress()">♻️ Reset progress</button>
+        </div>
+        <div class="shortcut-tip">Keyboard: <b>Space</b> flip · <b>1</b> Again · <b>2</b> Hard · <b>3</b> Good · <b>←/→</b> prev/next</div>
+    </div>
+
+    <script>
+        const allCards = [
+            // 🔬 SCIENTIFIC METHOD
+            {topic:'method', term:'Hypothesis', def:'An educated "if-then" guess that can be tested by an experiment.'},
+            {topic:'method', term:'Independent variable', def:'The ONE thing the scientist changes on purpose.'},
+            {topic:'method', term:'Dependent variable', def:'What the scientist MEASURES (the result that depends on the independent variable).'},
+            {topic:'method', term:'Controlled variable', def:'Things kept the SAME so the test is fair.'},
+            {topic:'method', term:'Observation', def:'Information gathered using your senses or tools.'},
+            {topic:'method', term:'Inference', def:'A conclusion based on observations and prior knowledge.'},
+            {topic:'method', term:'Data', def:'Measurements and observations collected during an experiment.'},
+            {topic:'method', term:'Conclusion', def:'What the data tells you about the hypothesis.'},
+            {topic:'method', term:'Model', def:'A simplified representation of a real thing — useful but never perfect.'},
+            {topic:'method', term:'Graduated cylinder', def:'Measures the VOLUME of a liquid in mL.'},
+            {topic:'method', term:'Triple-beam balance', def:'Measures MASS in grams.'},
+            {topic:'method', term:'Spring scale', def:'Measures WEIGHT (a force) in Newtons.'},
+            {topic:'method', term:'Line graph', def:'Shows how something CHANGES OVER TIME.'},
+            {topic:'method', term:'Bar graph', def:'COMPARES amounts for different categories.'},
+
+            // 🧪 MATTER
+            {topic:'matter', term:'Matter', def:'Anything that has mass and takes up space.'},
+            {topic:'matter', term:'Mass', def:'The amount of matter in an object, measured in grams.'},
+            {topic:'matter', term:'Volume', def:'The amount of space matter takes up (mL or cm³).'},
+            {topic:'matter', term:'Density', def:'How much mass is packed into a volume. More dense things SINK.'},
+            {topic:'matter', term:'Solid', def:'Matter with a definite shape and volume. Particles are packed tightly.'},
+            {topic:'matter', term:'Liquid', def:'Matter with a definite volume but takes the SHAPE of its container.'},
+            {topic:'matter', term:'Gas', def:'Matter that fills its container — no definite shape or volume.'},
+            {topic:'matter', term:'Physical change', def:'Only the appearance changes — no new substance. (melting, cutting, dissolving)'},
+            {topic:'matter', term:'Chemical change', def:'A NEW substance forms. (burning, rusting, baking)'},
+            {topic:'matter', term:'Conservation of Mass', def:'Mass is never created or destroyed. Before = after, in a closed system.'},
+            {topic:'matter', term:'Mixture', def:'Two or more materials mixed together but each keeps its own properties.'},
+            {topic:'matter', term:'Solution', def:'A mixture where one thing dissolves evenly into another (salt water).'},
+            {topic:'matter', term:'Soluble', def:'Able to dissolve in a liquid. (Salt is soluble in water; sand is not.)'},
+            {topic:'matter', term:'Magnetism', def:'A physical property — attracted to magnets (iron, nickel, cobalt).'},
+            {topic:'matter', term:'Conductor (heat/electricity)', def:'A material that lets heat or electricity flow through it easily (metals).'},
+            {topic:'matter', term:'Insulator', def:'A material that blocks heat or electricity (rubber, wood, plastic, foam).'},
+            {topic:'matter', term:'Melting point', def:'The temperature where a solid becomes a liquid. (Water: 0°C)'},
+            {topic:'matter', term:'Boiling point', def:'The temperature where a liquid becomes a gas. (Water: 100°C)'},
+
+            // ⚡ ENERGY & FORCE
+            {topic:'energy', term:'Energy', def:'The ability to cause change or do work.'},
+            {topic:'energy', term:'Kinetic energy', def:'Energy of motion. A moving object has kinetic energy.'},
+            {topic:'energy', term:'Potential energy', def:'Stored energy from position (ball at top of hill) or chemistry (battery).'},
+            {topic:'energy', term:'Mechanical energy', def:'Energy of moving objects OR stored in position (kinetic + potential).'},
+            {topic:'energy', term:'Thermal energy', def:'Heat energy — total motion of particles in a substance.'},
+            {topic:'energy', term:'Light energy', def:'Energy from the Sun, lamps, fire. Travels in waves / straight lines.'},
+            {topic:'energy', term:'Sound energy', def:'Energy from vibrations traveling as waves. Needs a medium (air, water, solid).'},
+            {topic:'energy', term:'Electrical energy', def:'Energy of flowing electric charge in a circuit.'},
+            {topic:'energy', term:'Chemical energy', def:'Energy stored in the bonds of food, fuel, and batteries.'},
+            {topic:'energy', term:'Energy transformation', def:'Energy changing from one form to another. Total energy is conserved.'},
+            {topic:'energy', term:'Circuit', def:'A complete loop through which electricity can flow.'},
+            {topic:'energy', term:'Closed circuit', def:'Complete loop — electricity flows and the bulb lights.'},
+            {topic:'energy', term:'Open circuit', def:'Broken loop — no electricity flows.'},
+            {topic:'energy', term:'Series circuit', def:'One single path. If one bulb burns out, ALL bulbs go dark.'},
+            {topic:'energy', term:'Parallel circuit', def:'Multiple paths. If one bulb goes out, others STAY lit.'},
+            {topic:'energy', term:'Force', def:'A push or pull, measured in Newtons (N).'},
+            {topic:'energy', term:'Friction', def:'A force that slows motion when surfaces rub together. Makes heat.'},
+            {topic:'energy', term:'Gravity', def:'The force that pulls objects toward the center of Earth (or another mass).'},
+            {topic:'energy', term:'Balanced forces', def:'Equal forces in opposite directions — no change in motion.'},
+            {topic:'energy', term:'Unbalanced forces', def:'Forces that are NOT equal — cause speed or direction to change.'},
+            {topic:'energy', term:'Reflection', def:'Light bouncing off a surface (mirror).'},
+            {topic:'energy', term:'Refraction', def:'Light bending as it passes through a different material (water).'},
+
+            // 🌍 EARTH & SPACE
+            {topic:'earth', term:'Evaporation', def:'Liquid water becomes gas (water vapor) when heated by the Sun.'},
+            {topic:'earth', term:'Condensation', def:'Water vapor cools and turns back into liquid droplets (forming clouds).'},
+            {topic:'earth', term:'Precipitation', def:'Water falling from clouds as rain, snow, sleet, or hail.'},
+            {topic:'earth', term:'Runoff', def:'Water flowing over land into rivers, lakes, and oceans.'},
+            {topic:'earth', term:'Groundwater', def:'Water that soaks into the ground and is stored underground.'},
+            {topic:'earth', term:'Weather', def:'The condition of the atmosphere RIGHT NOW (today\'s rain).'},
+            {topic:'earth', term:'Climate', def:'Average weather pattern over MANY YEARS.'},
+            {topic:'earth', term:'Cumulus cloud', def:'Puffy, cotton-ball cloud. Usually means fair weather.'},
+            {topic:'earth', term:'Stratus cloud', def:'Flat, gray layered cloud. Often brings drizzle.'},
+            {topic:'earth', term:'Cirrus cloud', def:'High, wispy clouds made of ice crystals.'},
+            {topic:'earth', term:'Cumulonimbus cloud', def:'Tall, towering thunderstorm cloud.'},
+            {topic:'earth', term:'Weathering', def:'Breaking down rock into smaller pieces (by wind, water, ice, plants).'},
+            {topic:'earth', term:'Erosion', def:'The MOVING of weathered rock and soil by wind, water, ice, or gravity.'},
+            {topic:'earth', term:'Deposition', def:'Dropping off eroded materials in a new place (deltas, sand dunes).'},
+            {topic:'earth', term:'Crust', def:'The thin outer solid layer of Earth that we live on.'},
+            {topic:'earth', term:'Mantle', def:'Thick layer of hot, slowly-flowing rock below the crust.'},
+            {topic:'earth', term:'Outer core', def:'LIQUID iron and nickel — S-waves can\'t pass through it.'},
+            {topic:'earth', term:'Inner core', def:'SOLID iron, extremely hot and under huge pressure.'},
+            {topic:'earth', term:'Rotation', def:'Earth spinning on its axis once every 24 hours. Causes day and night.'},
+            {topic:'earth', term:'Revolution', def:'Earth orbiting the Sun once every 365¼ days. Causes the year.'},
+            {topic:'earth', term:'Axis tilt', def:'Earth\'s 23.5° tilt. This is what causes the SEASONS.'},
+            {topic:'earth', term:'Waxing', def:'Moon phase getting BIGGER (crescent → full).'},
+            {topic:'earth', term:'Waning', def:'Moon phase getting SMALLER (full → crescent).'},
+            {topic:'earth', term:'Renewable resource', def:'A resource that can be replaced naturally (sun, wind, water, trees).'},
+            {topic:'earth', term:'Nonrenewable resource', def:'A resource that forms very slowly and can run out (coal, oil, gas).'},
+
+            // 🌱 LIVING THINGS
+            {topic:'life', term:'Producer', def:'Makes its own food using sunlight (plants, algae).'},
+            {topic:'life', term:'Consumer', def:'Eats other living things for energy.'},
+            {topic:'life', term:'Herbivore', def:'Eats only plants (rabbit, deer, cow).'},
+            {topic:'life', term:'Carnivore', def:'Eats only other animals (lion, shark, hawk).'},
+            {topic:'life', term:'Omnivore', def:'Eats both plants and animals (bear, human).'},
+            {topic:'life', term:'Decomposer', def:'Breaks down dead things and returns nutrients to the soil (bacteria, fungi).'},
+            {topic:'life', term:'Photosynthesis', def:'How plants use sunlight + water + CO₂ to make sugar (food) + oxygen.'},
+            {topic:'life', term:'Food chain', def:'A single path showing how energy flows from one organism to the next.'},
+            {topic:'life', term:'Food web', def:'Multiple food chains connected — shows all feeding relationships.'},
+            {topic:'life', term:'Ecosystem', def:'All living and non-living things in an area interacting together.'},
+            {topic:'life', term:'Biotic factor', def:'LIVING parts of an ecosystem (plants, animals, bacteria).'},
+            {topic:'life', term:'Abiotic factor', def:'NON-LIVING parts of an ecosystem (water, air, rocks, sunlight).'},
+            {topic:'life', term:'Adaptation', def:'A trait that helps an organism survive in its environment.'},
+            {topic:'life', term:'Inherited trait', def:'A trait you get from your parents (eye color, fur color).'},
+            {topic:'life', term:'Learned behavior', def:'A behavior taught or practiced, not inherited (riding a bike, dog tricks).'},
+            {topic:'life', term:'Metamorphosis', def:'A life cycle where an animal\'s body changes form (caterpillar → butterfly).'},
+            {topic:'life', term:'Complete metamorphosis', def:'4 stages: egg → larva → pupa → adult (butterfly, frog, beetle).'},
+            {topic:'life', term:'Incomplete metamorphosis', def:'3 stages: egg → nymph → adult (grasshopper, cockroach).'},
+            {topic:'life', term:'Invasive species', def:'A non-native species that spreads and damages an ecosystem (kudzu, zebra mussel).'},
+            {topic:'life', term:'Pollination', def:'Moving pollen from one flower to another so plants can make seeds.'},
+            {topic:'life', term:'Stomata', def:'Tiny holes on a leaf that let CO₂ in and O₂ out.'}
+        ];
+
+        let cards = [...allCards];
+        let idx = 0;
+        let filterValue = 'all';
+        const progress = JSON.parse(localStorage.getItem('flashcardProgress') || '{}');
+
+        const $ = id => document.getElementById(id);
+
+        function applyFilter() {
+            if (filterValue === 'all') {
+                cards = [...allCards];
+            } else if (filterValue === 'due') {
+                cards = allCards.filter(c => {
+                    const p = progress[c.term];
+                    return !p || p.status === 'again' || p.status === 'hard';
+                });
+            } else {
+                cards = allCards.filter(c => c.topic === filterValue);
+            }
+            idx = 0;
+            render();
+            updateStats();
+        }
+
+        function render() {
+            const card = $('card');
+            card.classList.remove('flipped');
+            if (cards.length === 0) {
+                $('term').textContent = '🎉 No cards in this filter!';
+                $('definition').textContent = 'Try another filter or reset progress.';
+                $('cardLabel').textContent = '—';
+                $('cardCounter').textContent = '0 / 0';
+                return;
+            }
+            const c = cards[idx];
+            $('term').textContent = c.term;
+            $('definition').textContent = c.def;
+            const topicName = {method:'🔬 Method', matter:'🧪 Matter', energy:'⚡ Energy', earth:'🌍 Earth', life:'🌱 Life'}[c.topic];
+            $('cardLabel').textContent = topicName;
+            $('cardCounter').textContent = `${idx+1} / ${cards.length}`;
+            $('current').textContent = `${idx+1}/${cards.length}`;
+        }
+
+        function updateStats() {
+            const total = allCards.length;
+            const mastered = allCards.filter(c => progress[c.term]?.status === 'good').length;
+            const review = allCards.filter(c => {
+                const p = progress[c.term];
+                return p && (p.status === 'again' || p.status === 'hard');
+            }).length;
+            $('total').textContent = total;
+            $('mastered').textContent = mastered;
+            $('review').textContent = review;
+        }
+
+        function flip() { $('card').classList.toggle('flipped'); }
+        function next() { if (cards.length) { idx = (idx + 1) % cards.length; render(); } }
+        function prev() { if (cards.length) { idx = (idx - 1 + cards.length) % cards.length; render(); } }
+        function shuffle() {
+            for (let i = cards.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [cards[i], cards[j]] = [cards[j], cards[i]];
+            }
+            idx = 0;
+            render();
+        }
+        function rate(status) {
+            if (!cards.length) return;
+            const c = cards[idx];
+            progress[c.term] = {status, t: Date.now()};
+            localStorage.setItem('flashcardProgress', JSON.stringify(progress));
+            updateStats();
+            next();
+        }
+        function resetProgress() {
+            if (!confirm('Reset all flashcard progress?')) return;
+            localStorage.removeItem('flashcardProgress');
+            for (const k in progress) delete progress[k];
+            updateStats();
+        }
+
+        document.querySelectorAll('.filter-btn').forEach(b => {
+            b.addEventListener('click', () => {
+                document.querySelectorAll('.filter-btn').forEach(x => x.classList.remove('active'));
+                b.classList.add('active');
+                filterValue = b.dataset.filter;
+                applyFilter();
+            });
+        });
+
+        document.addEventListener('keydown', (e) => {
+            if (e.code === 'Space') { e.preventDefault(); flip(); }
+            else if (e.key === 'ArrowRight') next();
+            else if (e.key === 'ArrowLeft') prev();
+            else if (e.key === '1') rate('again');
+            else if (e.key === '2') rate('hard');
+            else if (e.key === '3') rate('good');
+        });
+
+        applyFilter();
+    </script>
+</body>
+</html>

@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Diagrams - STAAR Science</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh; color: #222;
+        }
+        .container { max-width: 1100px; margin: 0 auto; padding: 20px; }
+        .back-link {
+            display: inline-block; background: rgba(255,255,255,0.9); color: #4a47a3;
+            padding: 10px 20px; border-radius: 20px; text-decoration: none;
+            font-weight: bold; margin-bottom: 15px;
+        }
+        .back-link:hover { background: #4a47a3; color: white; }
+        .header {
+            background: white; border-radius: 20px; padding: 25px;
+            text-align: center; margin-bottom: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        .header h1 { color: #4a47a3; font-size: 2.2em; margin-bottom: 8px; }
+        .tabs {
+            display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 15px;
+            justify-content: center;
+        }
+        .tab {
+            background: rgba(255,255,255,0.9); color: #4a47a3;
+            padding: 10px 20px; border-radius: 20px; cursor: pointer;
+            font-weight: bold; border: 2px solid transparent;
+        }
+        .tab.active { background: #4a47a3; color: white; }
+        .tab:hover { border-color: #4a47a3; }
+        .panel {
+            background: white; border-radius: 20px; padding: 25px;
+            margin-bottom: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            display: none;
+        }
+        .panel.active { display: block; }
+        .panel h2 { color: #4a47a3; margin-bottom: 12px; }
+        .panel p.lead { color: #555; margin-bottom: 15px; }
+
+        /* WATER CYCLE */
+        .water-cycle-svg {
+            width: 100%; max-width: 700px; height: auto; display: block;
+            margin: 10px auto; background: linear-gradient(to bottom, #bde0fe 0%, #a8dadc 70%, #6b9080 100%);
+            border-radius: 15px;
+        }
+        .wc-label {
+            cursor: pointer; fill: #4a47a3; font-weight: bold;
+            font-size: 16px; transition: fill 0.2s;
+        }
+        .wc-label:hover { fill: #ff6b00; }
+        .wc-label.correct { fill: #2e7d32; }
+        .wc-drop-zone {
+            cursor: pointer; transition: all 0.2s;
+            stroke: #4a47a3; stroke-width: 2; stroke-dasharray: 5,5;
+            fill: rgba(255,255,255,0.6);
+        }
+        .wc-drop-zone.filled { fill: #e8f5e9; stroke: #2e7d32; stroke-dasharray: none; }
+        .wc-word-bank {
+            display: flex; flex-wrap: wrap; gap: 8px; justify-content: center;
+            margin: 15px 0;
+        }
+        .wc-word {
+            background: #4a47a3; color: white; padding: 8px 16px;
+            border-radius: 20px; cursor: grab; font-weight: bold;
+            user-select: none;
+        }
+        .wc-word.used { opacity: 0.3; cursor: default; }
+        .wc-feedback {
+            text-align: center; font-size: 1.1em; font-weight: bold;
+            min-height: 28px; margin-top: 10px;
+        }
+
+        /* STATES OF MATTER */
+        .matter-container {
+            display: grid; grid-template-columns: repeat(3, 1fr);
+            gap: 15px; margin: 15px 0;
+        }
+        @media (max-width: 700px) { .matter-container { grid-template-columns: 1fr; } }
+        .matter-box {
+            background: #f5f7ff; border-radius: 12px; padding: 15px;
+            text-align: center; border: 3px solid #e0e0e0;
+        }
+        .matter-box.active { border-color: #4a47a3; background: #eef1ff; }
+        .matter-box h3 { color: #4a47a3; margin-bottom: 10px; }
+        .matter-particles {
+            position: relative; height: 160px; background: #fff;
+            border-radius: 10px; overflow: hidden; border: 2px solid #ddd;
+        }
+        .particle {
+            position: absolute; width: 16px; height: 16px;
+            background: radial-gradient(circle at 30% 30%, #6ca0ff, #1d4ed8);
+            border-radius: 50%; transition: all 0.05s linear;
+        }
+        .matter-slider {
+            width: 100%; margin-top: 15px;
+        }
+
+        /* FOOD WEB */
+        .food-web-svg { width: 100%; max-width: 800px; display: block; margin: 10px auto; }
+        .fw-node {
+            cursor: pointer; transition: transform 0.2s;
+        }
+        .fw-node:hover circle { stroke: #ff6b00; stroke-width: 4; }
+        .fw-info {
+            background: #eef1ff; border-left: 5px solid #4a47a3;
+            padding: 12px 16px; border-radius: 8px; margin: 15px 0;
+            min-height: 60px;
+        }
+        .fw-info h4 { color: #4a47a3; margin-bottom: 6px; }
+        .fw-scenarios button {
+            background: #ff9800; color: white; border: none;
+            padding: 10px 16px; border-radius: 15px; cursor: pointer;
+            margin: 4px; font-weight: bold;
+        }
+        .fw-scenarios button:hover { background: #e68900; }
+
+        /* CIRCUIT */
+        .circuit-board {
+            background: #f5f5f5; border: 3px solid #888;
+            border-radius: 12px; padding: 20px; margin: 15px 0;
+            text-align: center;
+        }
+        .circuit-svg { width: 100%; max-width: 500px; }
+        .circuit-controls {
+            display: flex; gap: 10px; justify-content: center;
+            flex-wrap: wrap; margin-top: 15px;
+        }
+        .circuit-btn {
+            background: #4a47a3; color: white; border: none;
+            padding: 10px 20px; border-radius: 20px; cursor: pointer;
+            font-weight: bold;
+        }
+        .circuit-btn.on { background: #4CAF50; }
+        .circuit-status {
+            margin-top: 12px; font-size: 1.1em; font-weight: bold;
+            min-height: 28px;
+        }
+
+        /* MOON PHASES */
+        .moon-phases {
+            display: grid; grid-template-columns: repeat(4, 1fr);
+            gap: 12px; margin: 15px 0;
+        }
+        @media (max-width: 700px) { .moon-phases { grid-template-columns: repeat(2, 1fr); } }
+        .moon-card {
+            background: #1a1a2e; color: white; padding: 15px;
+            border-radius: 12px; text-align: center; cursor: pointer;
+            transition: transform 0.2s;
+        }
+        .moon-card:hover { transform: scale(1.05); }
+        .moon-visual {
+            width: 70px; height: 70px; border-radius: 50%;
+            margin: 0 auto 10px; background: #e0e0e0;
+            position: relative; overflow: hidden;
+            box-shadow: 0 0 15px rgba(255,255,255,0.3);
+        }
+        .moon-visual::before {
+            content: ''; position: absolute; inset: 0;
+            background: #1a1a2e;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="index.html" class="back-link">← Back to Home</a>
+        <a href="quick_review.html" class="back-link">📖 Quick Review</a>
+
+        <div class="header">
+            <h1>🔬 Interactive Science Diagrams</h1>
+            <p style="color: #555;">See it, play with it, remember it. Tap and drag to explore.</p>
+        </div>
+
+        <div class="tabs">
+            <div class="tab active" data-panel="water">💧 Water Cycle</div>
+            <div class="tab" data-panel="matter">🧪 States of Matter</div>
+            <div class="tab" data-panel="foodweb">🌱 Food Web</div>
+            <div class="tab" data-panel="circuit">⚡ Circuit</div>
+            <div class="tab" data-panel="moon">🌙 Moon Phases</div>
+        </div>
+
+        <!-- WATER CYCLE -->
+        <div class="panel active" id="panel-water">
+            <h2>💧 Label the Water Cycle</h2>
+            <p class="lead">Drag each word onto the correct part of the diagram. Sun drives the whole cycle!</p>
+
+            <div class="wc-word-bank" id="wc-word-bank">
+                <div class="wc-word" draggable="true" data-word="Evaporation">Evaporation</div>
+                <div class="wc-word" draggable="true" data-word="Condensation">Condensation</div>
+                <div class="wc-word" draggable="true" data-word="Precipitation">Precipitation</div>
+                <div class="wc-word" draggable="true" data-word="Runoff">Runoff</div>
+                <div class="wc-word" draggable="true" data-word="Groundwater">Groundwater</div>
+            </div>
+
+            <svg class="water-cycle-svg" viewBox="0 0 700 400">
+                <!-- Sun -->
+                <circle cx="80" cy="70" r="35" fill="#ffd54f"/>
+                <text x="80" y="75" text-anchor="middle" font-weight="bold" fill="#333">SUN</text>
+                <!-- Arrows -->
+                <path d="M 150 150 Q 180 80 270 90" stroke="#4a47a3" stroke-width="3" fill="none" marker-end="url(#arr)"/>
+                <path d="M 450 100 Q 500 140 550 200" stroke="#4a47a3" stroke-width="3" fill="none" marker-end="url(#arr)"/>
+                <path d="M 550 270 Q 400 360 250 330" stroke="#4a47a3" stroke-width="3" fill="none" marker-end="url(#arr)"/>
+                <defs>
+                    <marker id="arr" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+                        <path d="M0,0 L0,6 L9,3 z" fill="#4a47a3"/>
+                    </marker>
+                </defs>
+                <!-- Cloud -->
+                <ellipse cx="350" cy="90" rx="90" ry="35" fill="white"/>
+                <circle cx="300" cy="75" r="25" fill="white"/>
+                <circle cx="400" cy="75" r="25" fill="white"/>
+                <!-- Ocean -->
+                <rect x="0" y="280" width="700" height="120" fill="#1d4ed8"/>
+                <!-- Land -->
+                <polygon points="0,280 200,280 260,240 340,270 400,230 500,280 560,250 700,280 700,400 0,400" fill="#6b9080"/>
+                <!-- Rain drops -->
+                <text x="470" y="190" font-size="20">💧</text><text x="500" y="210" font-size="18">💧</text><text x="525" y="230" font-size="20">💧</text>
+                <!-- Drop zones -->
+                <rect class="wc-drop-zone" x="130" y="155" width="130" height="30" rx="15" data-answer="Evaporation"/>
+                <text x="195" y="175" text-anchor="middle" fill="#888" font-size="13" pointer-events="none" id="dz-Evaporation">⬆ from ocean</text>
+
+                <rect class="wc-drop-zone" x="280" y="125" width="140" height="30" rx="15" data-answer="Condensation"/>
+                <text x="350" y="145" text-anchor="middle" fill="#888" font-size="13" pointer-events="none" id="dz-Condensation">cloud forms</text>
+
+                <rect class="wc-drop-zone" x="460" y="235" width="140" height="30" rx="15" data-answer="Precipitation"/>
+                <text x="530" y="255" text-anchor="middle" fill="#888" font-size="13" pointer-events="none" id="dz-Precipitation">⬇ rain/snow</text>
+
+                <rect class="wc-drop-zone" x="240" y="310" width="110" height="25" rx="12" data-answer="Runoff"/>
+                <text x="295" y="327" text-anchor="middle" fill="#888" font-size="12" pointer-events="none" id="dz-Runoff">flows to sea</text>
+
+                <rect class="wc-drop-zone" x="410" y="340" width="140" height="25" rx="12" data-answer="Groundwater"/>
+                <text x="480" y="357" text-anchor="middle" fill="#888" font-size="12" pointer-events="none" id="dz-Groundwater">soaks into soil</text>
+            </svg>
+
+            <div class="wc-feedback" id="wc-feedback"></div>
+            <div style="text-align: center;">
+                <button class="circuit-btn" onclick="resetWaterCycle()">♻️ Reset</button>
+            </div>
+        </div>
+
+        <!-- STATES OF MATTER -->
+        <div class="panel" id="panel-matter">
+            <h2>🧪 States of Matter (drag the heat slider!)</h2>
+            <p class="lead">Watch how particles behave in solids, liquids, and gases. More heat = more motion.</p>
+
+            <div class="matter-container">
+                <div class="matter-box" id="box-solid">
+                    <h3>Solid ❄️</h3>
+                    <div class="matter-particles" id="solid-particles"></div>
+                    <p style="margin-top:10px; font-size:0.9em;">Tightly packed, vibrate in place. Fixed shape.</p>
+                </div>
+                <div class="matter-box" id="box-liquid">
+                    <h3>Liquid 💧</h3>
+                    <div class="matter-particles" id="liquid-particles"></div>
+                    <p style="margin-top:10px; font-size:0.9em;">Close together, slide past each other. Takes container's shape.</p>
+                </div>
+                <div class="matter-box" id="box-gas">
+                    <h3>Gas 💨</h3>
+                    <div class="matter-particles" id="gas-particles"></div>
+                    <p style="margin-top:10px; font-size:0.9em;">Far apart, fast in all directions. Fills the whole container.</p>
+                </div>
+            </div>
+
+            <p style="text-align:center; font-weight: bold; color: #4a47a3; margin-top: 15px;">
+                🔥 Heat energy: <span id="heat-val">50</span>°
+            </p>
+            <input type="range" min="0" max="100" value="50" class="matter-slider" id="heat-slider">
+
+            <div style="background:#fff8dc; border-left:5px solid #ffc107; padding:12px 16px; border-radius:8px; margin-top:15px;">
+                <b>🔑 Big idea:</b> Mass stays the same in all three states — only particle spacing and motion change.
+                When you heat matter, particles speed up and spread out (solid→liquid→gas).
+            </div>
+        </div>
+
+        <!-- FOOD WEB -->
+        <div class="panel" id="panel-foodweb">
+            <h2>🌱 Pond Ecosystem Food Web</h2>
+            <p class="lead">Click any organism to see its role. Try the "What if...?" scenarios to see how ecosystems connect.</p>
+
+            <svg class="food-web-svg" viewBox="0 0 800 450">
+                <!-- Sun -->
+                <circle cx="60" cy="60" r="30" fill="#ffd54f"/>
+                <text x="60" y="66" text-anchor="middle" font-weight="bold">Sun</text>
+
+                <!-- Arrows -->
+                <g stroke="#4a47a3" stroke-width="2" fill="none" marker-end="url(#fwArr)">
+                    <path d="M 95 85 L 170 160"/>
+                    <path d="M 225 200 L 330 180"/>
+                    <path d="M 225 230 L 330 300"/>
+                    <path d="M 400 180 L 500 160"/>
+                    <path d="M 400 310 L 500 290"/>
+                    <path d="M 560 180 L 650 150"/>
+                    <path d="M 560 310 L 650 180"/>
+                    <path d="M 560 290 L 650 280"/>
+                </g>
+                <defs>
+                    <marker id="fwArr" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+                        <path d="M0,0 L0,6 L9,3 z" fill="#4a47a3"/>
+                    </marker>
+                </defs>
+
+                <!-- Organisms -->
+                <g class="fw-node" data-id="algae"><circle cx="200" cy="200" r="55" fill="#aed581"/><text x="200" y="195" text-anchor="middle" font-size="14" font-weight="bold">Algae</text><text x="200" y="215" text-anchor="middle" font-size="12">Producer</text></g>
+                <g class="fw-node" data-id="insect"><circle cx="370" cy="180" r="50" fill="#ff8a65"/><text x="370" y="178" text-anchor="middle" font-size="14" font-weight="bold">Insect</text><text x="370" y="196" text-anchor="middle" font-size="12">Herbivore</text></g>
+                <g class="fw-node" data-id="smallfish"><circle cx="370" cy="310" r="50" fill="#4fc3f7"/><text x="370" y="308" text-anchor="middle" font-size="14" font-weight="bold">Small Fish</text><text x="370" y="326" text-anchor="middle" font-size="12">Omnivore</text></g>
+                <g class="fw-node" data-id="frog"><circle cx="540" cy="160" r="50" fill="#81c784"/><text x="540" y="160" text-anchor="middle" font-size="14" font-weight="bold">Frog</text><text x="540" y="178" text-anchor="middle" font-size="12">Carnivore</text></g>
+                <g class="fw-node" data-id="largefish"><circle cx="540" cy="290" r="52" fill="#29b6f6"/><text x="540" y="288" text-anchor="middle" font-size="14" font-weight="bold">Large Fish</text><text x="540" y="306" text-anchor="middle" font-size="12">Carnivore</text></g>
+                <g class="fw-node" data-id="heron"><circle cx="700" cy="150" r="55" fill="#b39ddb"/><text x="700" y="148" text-anchor="middle" font-size="14" font-weight="bold">Heron</text><text x="700" y="166" text-anchor="middle" font-size="12">Top Predator</text></g>
+                <g class="fw-node" data-id="bacteria"><circle cx="700" cy="290" r="55" fill="#a1887f"/><text x="700" y="288" text-anchor="middle" font-size="14" font-weight="bold">Bacteria</text><text x="700" y="306" text-anchor="middle" font-size="12">Decomposer</text></g>
+            </svg>
+
+            <div class="fw-info" id="fw-info">
+                <h4>👆 Click any organism above!</h4>
+                <p>Find out if it's a producer, consumer, or decomposer, what it eats, and who eats it.</p>
+            </div>
+
+            <h3 style="color:#4a47a3; margin-top:20px;">🤔 What if...?</h3>
+            <div class="fw-scenarios">
+                <button onclick="scenario('insects')">All insects disappear</button>
+                <button onclick="scenario('bacteria')">All bacteria disappear</button>
+                <button onclick="scenario('heron')">Herons leave the pond</button>
+                <button onclick="scenario('algae')">Algae die off</button>
+            </div>
+            <div class="fw-info" id="fw-scenario" style="background:#fff8dc; border-color:#ffc107; display:none;"></div>
+        </div>
+
+        <!-- CIRCUIT -->
+        <div class="panel" id="panel-circuit">
+            <h2>⚡ Build-a-Circuit</h2>
+            <p class="lead">Flip switches and add components. A bulb only lights in a CLOSED loop with a power source.</p>
+
+            <div class="circuit-board">
+                <svg class="circuit-svg" viewBox="0 0 500 280">
+                    <!-- Wires -->
+                    <path id="wire1" d="M 80 200 L 80 100 L 200 100" stroke="#333" stroke-width="4" fill="none"/>
+                    <path id="wire2" d="M 200 100 L 300 100" stroke="#333" stroke-width="4" fill="none" stroke-dasharray="0" id="switch-wire"/>
+                    <path id="wire3" d="M 300 100 L 420 100 L 420 200" stroke="#333" stroke-width="4" fill="none"/>
+                    <path id="wire4" d="M 420 200 L 80 200" stroke="#333" stroke-width="4" fill="none"/>
+
+                    <!-- Battery -->
+                    <g>
+                        <rect x="60" y="195" width="40" height="25" fill="#424242"/>
+                        <rect x="100" y="200" width="8" height="15" fill="#424242"/>
+                        <text x="80" y="245" text-anchor="middle" font-size="12">🔋 Battery</text>
+                    </g>
+
+                    <!-- Bulb -->
+                    <g id="bulb-group">
+                        <circle id="bulb" cx="250" cy="200" r="30" fill="#555" stroke="#333" stroke-width="3"/>
+                        <path d="M 240 200 L 245 210 L 255 210 L 260 200" stroke="#333" stroke-width="2" fill="none"/>
+                        <rect x="244" y="228" width="12" height="8" fill="#333"/>
+                        <text x="250" y="260" text-anchor="middle" font-size="12">💡 Bulb</text>
+                    </g>
+
+                    <!-- Switch -->
+                    <g id="switch-group" onclick="toggleSwitch()" style="cursor:pointer">
+                        <circle cx="200" cy="100" r="6" fill="#333"/>
+                        <circle cx="300" cy="100" r="6" fill="#333"/>
+                        <line id="switch-arm" x1="200" y1="100" x2="280" y2="80" stroke="#333" stroke-width="5" stroke-linecap="round"/>
+                        <text x="250" y="60" text-anchor="middle" font-size="12" font-weight="bold" fill="#4a47a3">👆 Click switch</text>
+                    </g>
+                </svg>
+
+                <div class="circuit-controls">
+                    <button class="circuit-btn" onclick="toggleSwitch()" id="switch-btn">🔓 Switch: OPEN</button>
+                    <button class="circuit-btn" onclick="cutWire()">✂️ Cut / repair wire</button>
+                    <button class="circuit-btn" onclick="swapMaterial()" id="mat-btn">Material: 🔌 Copper</button>
+                </div>
+                <div class="circuit-status" id="circuit-status">Circuit is OPEN — no current flows. Bulb is off. 💡⚫</div>
+            </div>
+
+            <div style="background:#e8f5e9; border-left:5px solid #4CAF50; padding:12px 16px; border-radius:8px; margin-top:15px;">
+                <b>🔑 Remember:</b>
+                <ul style="margin-left:22px; margin-top:6px;">
+                    <li>Closed loop + power + conductor = bulb lights up ✅</li>
+                    <li>Insulators (rubber, wood, plastic) block current ❌</li>
+                    <li>Any break in the loop = open circuit = no light ❌</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- MOON PHASES -->
+        <div class="panel" id="panel-moon">
+            <h2>🌙 The 8 Moon Phases</h2>
+            <p class="lead">Click any phase to see what it looks like and when it appears. The full cycle takes ~29.5 days.</p>
+
+            <div class="moon-phases">
+                <div class="moon-card" onclick="showMoon('new')"><div class="moon-visual" style="background:#1a1a2e"></div><b>1. New Moon</b><br><small>No light visible</small></div>
+                <div class="moon-card" onclick="showMoon('waxcres')"><div class="moon-visual" style="background: radial-gradient(circle at 70% 50%, #1a1a2e 50%, #e0e0e0 50%)"></div><b>2. Waxing Crescent</b><br><small>Small sliver on right</small></div>
+                <div class="moon-card" onclick="showMoon('firstq')"><div class="moon-visual" style="background: linear-gradient(to right, #1a1a2e 50%, #e0e0e0 50%)"></div><b>3. First Quarter</b><br><small>Right half lit</small></div>
+                <div class="moon-card" onclick="showMoon('waxgib')"><div class="moon-visual" style="background: radial-gradient(circle at 30% 50%, #1a1a2e 30%, #e0e0e0 30%)"></div><b>4. Waxing Gibbous</b><br><small>Mostly lit on right</small></div>
+                <div class="moon-card" onclick="showMoon('full')"><div class="moon-visual" style="background:#e0e0e0"></div><b>5. Full Moon</b><br><small>Fully lit</small></div>
+                <div class="moon-card" onclick="showMoon('wangib')"><div class="moon-visual" style="background: radial-gradient(circle at 70% 50%, #1a1a2e 30%, #e0e0e0 30%)"></div><b>6. Waning Gibbous</b><br><small>Mostly lit on left</small></div>
+                <div class="moon-card" onclick="showMoon('lastq')"><div class="moon-visual" style="background: linear-gradient(to right, #e0e0e0 50%, #1a1a2e 50%)"></div><b>7. Last Quarter</b><br><small>Left half lit</small></div>
+                <div class="moon-card" onclick="showMoon('wancres')"><div class="moon-visual" style="background: radial-gradient(circle at 30% 50%, #1a1a2e 50%, #e0e0e0 50%)"></div><b>8. Waning Crescent</b><br><small>Small sliver on left</small></div>
+            </div>
+
+            <div class="fw-info" id="moon-info">
+                <h4>🔑 Key vocabulary</h4>
+                <p><b>Waxing</b> = growing bigger (right side lights up first).<br>
+                <b>Waning</b> = shrinking smaller (right side goes dark first).<br>
+                <b>Gibbous</b> = more than half lit.<br>
+                <b>Crescent</b> = less than half lit.</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // TABS
+        document.querySelectorAll('.tab').forEach(t => {
+            t.addEventListener('click', () => {
+                document.querySelectorAll('.tab').forEach(x => x.classList.remove('active'));
+                document.querySelectorAll('.panel').forEach(x => x.classList.remove('active'));
+                t.classList.add('active');
+                document.getElementById('panel-' + t.dataset.panel).classList.add('active');
+            });
+        });
+
+        // ============ WATER CYCLE ============
+        let dragged = null;
+        document.querySelectorAll('.wc-word').forEach(w => {
+            w.addEventListener('dragstart', e => { dragged = w; });
+            w.addEventListener('click', e => {
+                // Tap-to-select fallback for touch
+                document.querySelectorAll('.wc-word').forEach(x => x.style.outline = '');
+                w.style.outline = '3px solid #ff6b00';
+                dragged = w;
+            });
+        });
+        document.querySelectorAll('.wc-drop-zone').forEach(z => {
+            z.addEventListener('dragover', e => e.preventDefault());
+            z.addEventListener('drop', e => { e.preventDefault(); tryDrop(z); });
+            z.addEventListener('click', e => { if (dragged) tryDrop(z); });
+        });
+        function tryDrop(z) {
+            if (!dragged) return;
+            const word = dragged.dataset.word;
+            const answer = z.dataset.answer;
+            const fb = document.getElementById('wc-feedback');
+            if (word === answer) {
+                z.classList.add('filled');
+                document.getElementById('dz-' + answer).textContent = answer;
+                document.getElementById('dz-' + answer).setAttribute('fill', '#2e7d32');
+                document.getElementById('dz-' + answer).setAttribute('font-weight', 'bold');
+                dragged.classList.add('used');
+                dragged.setAttribute('draggable', 'false');
+                fb.textContent = `✅ Correct! ${word} goes there.`;
+                fb.style.color = '#2e7d32';
+                if (document.querySelectorAll('.wc-word.used').length === 5) {
+                    fb.textContent = '🎉 PERFECT! You labeled the whole water cycle!';
+                }
+            } else {
+                fb.textContent = `❌ Not quite. Try another spot for "${word}".`;
+                fb.style.color = '#c62828';
+            }
+            dragged.style.outline = '';
+            dragged = null;
+        }
+        function resetWaterCycle() {
+            document.querySelectorAll('.wc-drop-zone').forEach(z => z.classList.remove('filled'));
+            document.querySelectorAll('.wc-word').forEach(w => {
+                w.classList.remove('used');
+                w.setAttribute('draggable', 'true');
+                w.style.outline = '';
+            });
+            const defaults = {'Evaporation':'⬆ from ocean', 'Condensation':'cloud forms', 'Precipitation':'⬇ rain/snow', 'Runoff':'flows to sea', 'Groundwater':'soaks into soil'};
+            for (const k in defaults) {
+                const el = document.getElementById('dz-' + k);
+                el.textContent = defaults[k];
+                el.setAttribute('fill', '#888');
+                el.setAttribute('font-weight', 'normal');
+            }
+            document.getElementById('wc-feedback').textContent = '';
+        }
+
+        // ============ STATES OF MATTER ============
+        function makeParticles(boxId, count) {
+            const container = document.getElementById(boxId);
+            container.innerHTML = '';
+            const particles = [];
+            for (let i = 0; i < count; i++) {
+                const p = document.createElement('div');
+                p.className = 'particle';
+                container.appendChild(p);
+                particles.push({el: p, x: Math.random() * 90, y: Math.random() * 90, vx: 0, vy: 0});
+            }
+            return particles;
+        }
+        const solidP = makeParticles('solid-particles', 20);
+        const liquidP = makeParticles('liquid-particles', 18);
+        const gasP = makeParticles('gas-particles', 12);
+
+        // Arrange solid in grid
+        solidP.forEach((p, i) => {
+            p.x = 15 + (i % 5) * 17;
+            p.y = 15 + Math.floor(i / 5) * 35;
+        });
+        let heat = 50;
+        document.getElementById('heat-slider').addEventListener('input', e => {
+            heat = +e.target.value;
+            document.getElementById('heat-val').textContent = heat;
+        });
+        function animate() {
+            const box = document.querySelector('.matter-particles').clientWidth - 16;
+            const boxH = 160 - 16;
+            // Solid: tiny jiggle around grid position
+            solidP.forEach((p, i) => {
+                const baseX = 15 + (i % 5) * 17;
+                const baseY = 15 + Math.floor(i / 5) * 35;
+                p.x = baseX + (Math.random() - 0.5) * (heat * 0.08);
+                p.y = baseY + (Math.random() - 0.5) * (heat * 0.08);
+                p.el.style.left = p.x + '%';
+                p.el.style.top = p.y + 'px';
+            });
+            // Liquid: flow near bottom
+            liquidP.forEach(p => {
+                p.vx += (Math.random() - 0.5) * heat * 0.03;
+                p.vy += (Math.random() - 0.5) * heat * 0.02;
+                p.vx *= 0.9; p.vy *= 0.9;
+                p.x += p.vx; p.y += p.vy;
+                if (p.x < 2) { p.x = 2; p.vx *= -1; }
+                if (p.x > 92) { p.x = 92; p.vx *= -1; }
+                if (p.y < 60) { p.y = 60; p.vy *= -0.5; }
+                if (p.y > 135) { p.y = 135; p.vy *= -0.8; }
+                p.el.style.left = p.x + '%';
+                p.el.style.top = p.y + 'px';
+            });
+            // Gas: bounce everywhere
+            gasP.forEach(p => {
+                p.vx += (Math.random() - 0.5) * heat * 0.15;
+                p.vy += (Math.random() - 0.5) * heat * 0.15;
+                const maxV = Math.max(1, heat * 0.1);
+                p.vx = Math.max(-maxV, Math.min(maxV, p.vx));
+                p.vy = Math.max(-maxV, Math.min(maxV, p.vy));
+                p.x += p.vx; p.y += p.vy;
+                if (p.x < 2 || p.x > 92) p.vx *= -1;
+                if (p.y < 2 || p.y > 135) p.vy *= -1;
+                p.x = Math.max(2, Math.min(92, p.x));
+                p.y = Math.max(2, Math.min(135, p.y));
+                p.el.style.left = p.x + '%';
+                p.el.style.top = p.y + 'px';
+            });
+            requestAnimationFrame(animate);
+        }
+        animate();
+
+        // ============ FOOD WEB ============
+        const fwData = {
+            algae: {title:'Algae (Producer)', role:'Uses sunlight + water + CO₂ to make its own food (photosynthesis).', eats:'Makes its own food — does not eat.', eatenBy:'Insects, small fish.'},
+            insect: {title:'Insect (Herbivore)', role:'Primary consumer. Eats plants/algae.', eats:'Algae.', eatenBy:'Frogs, small fish.'},
+            smallfish: {title:'Small Fish (Omnivore)', role:'Eats both producers and consumers.', eats:'Algae, insects.', eatenBy:'Large fish.'},
+            frog: {title:'Frog (Carnivore)', role:'Secondary consumer.', eats:'Insects.', eatenBy:'Herons.'},
+            largefish: {title:'Large Fish (Carnivore)', role:'Secondary consumer.', eats:'Small fish.', eatenBy:'Herons.'},
+            heron: {title:'Heron (Top Predator)', role:'No one eats the heron. When it dies, decomposers break it down.', eats:'Frogs, large fish.', eatenBy:'Nothing — top of the food web!'},
+            bacteria: {title:'Bacteria (Decomposer)', role:'Breaks down dead plants and animals. Returns nutrients to the water and soil.', eats:'Dead matter.', eatenBy:'Not usually eaten.'}
+        };
+        document.querySelectorAll('.fw-node').forEach(n => {
+            n.addEventListener('click', () => {
+                const d = fwData[n.dataset.id];
+                document.getElementById('fw-info').innerHTML = `<h4>${d.title}</h4><p><b>Role:</b> ${d.role}</p><p><b>Eats:</b> ${d.eats}</p><p><b>Eaten by:</b> ${d.eatenBy}</p>`;
+            });
+        });
+        function scenario(id) {
+            const scenarios = {
+                insects: '🐛 If insects disappear: Algae grows unchecked 📈. Frogs lose food → frogs decrease ↘. Small fish lose a food source → small fish decrease. Herons have less to eat. <b>Lesson: removing one link affects many others.</b>',
+                bacteria: '🦠 If bacteria disappear: Dead plants and animals pile up. Nutrients stay locked in dead matter. Algae can\'t get nutrients → algae decline → ENTIRE food web collapses. <b>Decomposers are as important as producers!</b>',
+                heron: '🦩 If herons leave: Frog and large fish populations EXPLODE 📈 (no predator). Too many frogs eat all the insects. Too many large fish eat small fish. Balance is lost. <b>Top predators control ecosystem balance.</b>',
+                algae: '🌿 If algae die off: No food for insects or small fish → they die. Frogs lose food → decline. Large fish and herons eventually starve. <b>Without producers, everything above them collapses.</b>'
+            };
+            const info = document.getElementById('fw-scenario');
+            info.innerHTML = scenarios[id];
+            info.style.display = 'block';
+        }
+
+        // ============ CIRCUIT ============
+        let switchOn = false, wireCut = false, material = 'copper';
+        function updateCircuit() {
+            const bulb = document.getElementById('bulb');
+            const wire = document.getElementById('switch-wire');
+            const arm = document.getElementById('switch-arm');
+            const status = document.getElementById('circuit-status');
+            const btn = document.getElementById('switch-btn');
+            const matBtn = document.getElementById('mat-btn');
+
+            // Switch arm position
+            arm.setAttribute('x2', switchOn ? '300' : '280');
+            arm.setAttribute('y2', switchOn ? '100' : '80');
+            btn.textContent = switchOn ? '🔒 Switch: CLOSED' : '🔓 Switch: OPEN';
+            btn.classList.toggle('on', switchOn);
+
+            // Wire break
+            document.getElementById('wire3').setAttribute('stroke-dasharray', wireCut ? '10,10' : '0');
+            document.getElementById('wire3').setAttribute('stroke', wireCut ? '#f44336' : '#333');
+
+            // Material
+            matBtn.textContent = material === 'copper' ? 'Material: 🔌 Copper' : 'Material: 🪵 Rubber';
+
+            const lit = switchOn && !wireCut && material === 'copper';
+            bulb.setAttribute('fill', lit ? '#fff59d' : '#555');
+            if (lit) {
+                bulb.setAttribute('stroke', '#ffd54f');
+                bulb.style.filter = 'drop-shadow(0 0 15px #ffd54f)';
+                status.innerHTML = '✅ Closed loop + power + conductor = <b>Bulb is LIT!</b> 💡✨';
+                status.style.color = '#2e7d32';
+            } else {
+                bulb.setAttribute('stroke', '#333');
+                bulb.style.filter = 'none';
+                let reason = [];
+                if (!switchOn) reason.push('switch is OPEN');
+                if (wireCut) reason.push('wire is CUT');
+                if (material === 'rubber') reason.push('rubber is an INSULATOR');
+                status.innerHTML = `❌ Bulb is off — ${reason.join(', ')}.`;
+                status.style.color = '#c62828';
+            }
+        }
+        function toggleSwitch() { switchOn = !switchOn; updateCircuit(); }
+        function cutWire() { wireCut = !wireCut; updateCircuit(); }
+        function swapMaterial() { material = material === 'copper' ? 'rubber' : 'copper'; updateCircuit(); }
+        updateCircuit();
+
+        // ============ MOON PHASES ============
+        const moonInfo = {
+            new: {title:'1. New Moon', text:'The Moon is between Earth and Sun. The lit side faces away — we see nothing. Rises at sunrise, sets at sunset.'},
+            waxcres: {title:'2. Waxing Crescent', text:'A tiny sliver is lit on the RIGHT. Visible just after sunset in the western sky.'},
+            firstq: {title:'3. First Quarter', text:'Half the Moon (right side) is lit. Rises at noon, visible all afternoon and evening. About 7 days after new moon.'},
+            waxgib: {title:'4. Waxing Gibbous', text:'More than half lit and growing. Visible most of the evening.'},
+            full: {title:'5. Full Moon', text:'Whole lit side faces Earth. Rises at sunset, visible all night. 14-15 days after new moon.'},
+            wangib: {title:'6. Waning Gibbous', text:'More than half lit but shrinking. Light is now on the LEFT.'},
+            lastq: {title:'7. Last Quarter', text:'Half lit (left side). Rises at midnight, visible in the morning sky.'},
+            wancres: {title:'8. Waning Crescent', text:'Thin sliver on the LEFT. Visible just before sunrise in the eastern sky. Then → back to new moon!'}
+        };
+        function showMoon(id) {
+            const m = moonInfo[id];
+            document.getElementById('moon-info').innerHTML = `<h4>${m.title}</h4><p>${m.text}</p>`;
+        }
+    </script>
+</body>
+</html>

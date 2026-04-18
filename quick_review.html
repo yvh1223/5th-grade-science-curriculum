@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>30-Minute STAAR Quick Review - 5th Grade Science</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh; color: #222; line-height: 1.55;
+        }
+        .container { max-width: 1100px; margin: 0 auto; padding: 20px; }
+        .header {
+            background: white; border-radius: 20px; padding: 25px;
+            text-align: center; margin-bottom: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        .header h1 { color: #4a47a3; font-size: 2.3em; margin-bottom: 8px; }
+        .header p { color: #555; font-size: 1.05em; }
+        .back-link {
+            display: inline-block; background: rgba(255,255,255,0.9); color: #4a47a3;
+            padding: 10px 20px; border-radius: 20px; text-decoration: none;
+            font-weight: bold; margin-bottom: 15px;
+        }
+        .back-link:hover { background: #4a47a3; color: white; }
+        .toc {
+            background: white; border-radius: 15px; padding: 20px;
+            margin-bottom: 20px; box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        .toc h2 { color: #4a47a3; margin-bottom: 12px; }
+        .toc a {
+            display: inline-block; background: #eef1ff; color: #4a47a3;
+            padding: 8px 14px; border-radius: 20px; text-decoration: none;
+            margin: 4px; font-size: 0.95em; font-weight: 600;
+        }
+        .toc a:hover { background: #4a47a3; color: white; }
+        .strand {
+            background: white; border-radius: 15px; padding: 25px;
+            margin-bottom: 20px; box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            border-left: 8px solid #4a47a3;
+        }
+        .strand h2 {
+            color: #4a47a3; font-size: 1.6em; margin-bottom: 6px;
+            display: flex; align-items: center; gap: 10px;
+        }
+        .strand .teks-tag {
+            background: #4a47a3; color: white; padding: 4px 10px;
+            border-radius: 12px; font-size: 0.7em; font-weight: normal;
+        }
+        .strand h3 { color: #333; margin: 18px 0 8px 0; font-size: 1.15em; }
+        .strand p, .strand li { margin-bottom: 6px; }
+        .strand ul, .strand ol { margin-left: 22px; }
+        .key-facts {
+            background: #fff8dc; border-left: 5px solid #ffc107;
+            padding: 12px 16px; border-radius: 8px; margin: 12px 0;
+        }
+        .key-facts strong { color: #b8860b; }
+        .warning {
+            background: #ffe9e9; border-left: 5px solid #f44336;
+            padding: 12px 16px; border-radius: 8px; margin: 12px 0;
+        }
+        .warning strong { color: #c62828; }
+        .tip {
+            background: #e8f5e9; border-left: 5px solid #4CAF50;
+            padding: 12px 16px; border-radius: 8px; margin: 12px 0;
+        }
+        .tip strong { color: #2e7d32; }
+        .vocab-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 10px; margin: 12px 0;
+        }
+        .vocab {
+            background: #f5f7ff; padding: 10px 14px; border-radius: 8px;
+            border-left: 4px solid #4a47a3;
+        }
+        .vocab b { color: #4a47a3; }
+        table {
+            width: 100%; border-collapse: collapse; margin: 12px 0;
+            background: white; font-size: 0.95em;
+        }
+        th, td { border: 1px solid #ddd; padding: 8px 10px; text-align: left; }
+        th { background: #4a47a3; color: white; }
+        tr:nth-child(even) { background: #f8f9fa; }
+        .checklist {
+            background: #fffbea; border-radius: 10px; padding: 15px;
+            margin: 15px 0; border: 2px dashed #ffc107;
+        }
+        .checklist label {
+            display: flex; align-items: flex-start; gap: 10px;
+            padding: 6px 0; cursor: pointer;
+        }
+        .checklist input { margin-top: 5px; transform: scale(1.2); }
+        .checklist input:checked + span {
+            text-decoration: line-through; color: #888;
+        }
+        .print-btn {
+            background: #4a47a3; color: white; border: none;
+            padding: 10px 20px; border-radius: 20px; cursor: pointer;
+            font-size: 1em; margin: 10px 5px;
+        }
+        .print-btn:hover { background: #363399; }
+        @media print {
+            body { background: white; }
+            .back-link, .print-btn, .toc { display: none; }
+            .strand { box-shadow: none; page-break-inside: avoid; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="index.html" class="back-link">← Back to Home</a>
+        <a href="tests.html" class="back-link">Testing Center →</a>
+
+        <div class="header">
+            <h1>🎯 30-Minute STAAR Quick Review</h1>
+            <p>Everything you need to remember for the 5th grade Texas STAAR Science test.</p>
+            <p style="margin-top: 10px; color: #888;">Read each section. Check the ✅ boxes as you master them. Re-read anything fuzzy.</p>
+            <button class="print-btn" onclick="window.print()">🖨️ Print this page</button>
+        </div>
+
+        <div class="toc">
+            <h2>📖 Jump to a strand</h2>
+            <a href="#s1">1. How Scientists Work</a>
+            <a href="#s2">2. Matter</a>
+            <a href="#s3">3. Energy & Force</a>
+            <a href="#s4">4. Earth & Space</a>
+            <a href="#s5">5. Living Things</a>
+            <a href="#s6">6. Test-Day Strategy</a>
+        </div>
+
+        <!-- STRAND 1: Scientific Investigation -->
+        <div class="strand" id="s1">
+            <h2>🔬 1. How Scientists Work <span class="teks-tag">TEKS 5.1–5.4</span></h2>
+
+            <h3>The Scientific Method (memorize this order)</h3>
+            <ol>
+                <li><b>Question</b> — What do I want to find out?</li>
+                <li><b>Hypothesis</b> — An "If…, then…" educated guess you can test.</li>
+                <li><b>Experiment</b> — Test ONE thing at a time. Keep all other conditions the same.</li>
+                <li><b>Data</b> — Write down measurements (numbers, observations).</li>
+                <li><b>Conclusion</b> — Does the data support the hypothesis? Why or why not?</li>
+            </ol>
+
+            <h3>Variables (almost guaranteed on the test)</h3>
+            <div class="vocab-grid">
+                <div class="vocab"><b>Independent variable:</b> what YOU change (the cause).</div>
+                <div class="vocab"><b>Dependent variable:</b> what you MEASURE (the effect).</div>
+                <div class="vocab"><b>Controlled variables:</b> what stays the SAME so the test is fair.</div>
+            </div>
+            <div class="tip"><strong>💡 Trick:</strong> The independent variable is listed first in "Does ___ affect ___?" The dependent variable is what comes after "affect".</div>
+
+            <h3>Lab Tools — what each one measures</h3>
+            <table>
+                <tr><th>Tool</th><th>What it measures</th><th>Unit</th></tr>
+                <tr><td>Graduated cylinder</td><td>Volume of liquid</td><td>mL</td></tr>
+                <tr><td>Triple-beam / digital balance</td><td>Mass</td><td>g, kg</td></tr>
+                <tr><td>Spring scale</td><td>Weight / force</td><td>N (Newtons)</td></tr>
+                <tr><td>Thermometer</td><td>Temperature</td><td>°C</td></tr>
+                <tr><td>Meter stick / ruler</td><td>Length</td><td>cm, m</td></tr>
+                <tr><td>Stopwatch</td><td>Time</td><td>seconds</td></tr>
+                <tr><td>Hand lens / microscope</td><td>Magnifies small objects</td><td>—</td></tr>
+                <tr><td>Anemometer</td><td>Wind speed</td><td>mph, m/s</td></tr>
+                <tr><td>Rain gauge</td><td>Rainfall</td><td>cm, in</td></tr>
+            </table>
+
+            <h3>Graph types</h3>
+            <ul>
+                <li><b>Line graph</b> — shows CHANGE OVER TIME (plant growth, temperature).</li>
+                <li><b>Bar graph</b> — COMPARES categories (favorite foods, amounts).</li>
+                <li><b>Pie chart</b> — shows PARTS of a whole (percentages).</li>
+            </ul>
+
+            <div class="warning"><strong>⚠️ Common trap:</strong> If a question shows data over time, the answer is LINE graph. If it's comparing separate things, it's BAR graph.</div>
+
+            <div class="checklist">
+                <label><input type="checkbox"><span>I can pick out the independent, dependent, and controlled variables</span></label>
+                <label><input type="checkbox"><span>I know which graph type to use</span></label>
+                <label><input type="checkbox"><span>I know which tool measures each thing</span></label>
+            </div>
+        </div>
+
+        <!-- STRAND 2: Matter -->
+        <div class="strand" id="s2">
+            <h2>🧪 2. Matter <span class="teks-tag">TEKS 5.5</span></h2>
+
+            <h3>States of Matter</h3>
+            <table>
+                <tr><th>State</th><th>Shape</th><th>Volume</th><th>Particles</th></tr>
+                <tr><td>Solid</td><td>Definite</td><td>Definite</td><td>Packed tightly, vibrate in place</td></tr>
+                <tr><td>Liquid</td><td>Takes container</td><td>Definite</td><td>Close, slide past each other</td></tr>
+                <tr><td>Gas</td><td>Fills container</td><td>Fills container</td><td>Far apart, move fast in all directions</td></tr>
+            </table>
+
+            <h3>Physical Properties (use these to identify matter)</h3>
+            <div class="vocab-grid">
+                <div class="vocab"><b>Mass:</b> amount of matter (grams).</div>
+                <div class="vocab"><b>Volume:</b> space matter takes up (mL or cm³).</div>
+                <div class="vocab"><b>Density:</b> mass ÷ volume. Heavy for its size = denser. Denser stuff SINKS.</div>
+                <div class="vocab"><b>Magnetism:</b> attracted to magnets (iron, nickel, cobalt only).</div>
+                <div class="vocab"><b>Conductivity:</b> lets heat or electricity pass through (metals do, wood/plastic don't).</div>
+                <div class="vocab"><b>Solubility:</b> can it dissolve in water (salt yes, sand no).</div>
+                <div class="vocab"><b>State at room temp:</b> solid, liquid, or gas.</div>
+                <div class="vocab"><b>Melting/freezing/boiling point:</b> temperatures where state changes.</div>
+            </div>
+
+            <h3>Physical vs Chemical Change (CRITICAL)</h3>
+            <table>
+                <tr><th>Physical Change</th><th>Chemical Change</th></tr>
+                <tr>
+                    <td>Same substance, new shape/state.<br>
+                        <b>Examples:</b> melting, freezing, cutting, dissolving salt, crumpling paper.</td>
+                    <td>NEW substance is made.<br>
+                        <b>Examples:</b> burning, rusting, cooking an egg, baking a cake, vinegar + baking soda.</td>
+                </tr>
+            </table>
+            <div class="key-facts"><strong>🔑 Signs of a CHEMICAL change:</strong> color change, gas/bubbles that weren't from boiling, light or heat released, unusual smell, solid forms from liquids, change can't be undone.</div>
+
+            <h3>Conservation of Mass</h3>
+            <p>Mass is ALWAYS conserved. In a sealed container, mass before = mass after, even during chemical reactions.</p>
+            <div class="warning"><strong>⚠️ Trap:</strong> If a flask LOSES mass after a reaction, a gas escaped. Mass wasn't destroyed — it flew away as gas.</div>
+
+            <h3>Mixtures &amp; Solutions</h3>
+            <ul>
+                <li><b>Mixture:</b> two or more things combined; each keeps its properties. Can be separated physically.</li>
+                <li><b>Solution:</b> a mixture where one thing dissolves evenly into another (salt water, lemonade).</li>
+                <li><b>Separation tricks:</b> magnet (iron), filter (sand from water), evaporation (salt from water), sifting (big vs small bits).</li>
+            </ul>
+
+            <div class="checklist">
+                <label><input type="checkbox"><span>I know the 3 states and how particles behave in each</span></label>
+                <label><input type="checkbox"><span>I can tell physical vs chemical changes apart</span></label>
+                <label><input type="checkbox"><span>I know why mass seems to "disappear" (gas escapes)</span></label>
+                <label><input type="checkbox"><span>I can separate a sand + salt + iron mixture</span></label>
+            </div>
+        </div>
+
+        <!-- STRAND 3: Energy & Force -->
+        <div class="strand" id="s3">
+            <h2>⚡ 3. Energy & Force <span class="teks-tag">TEKS 5.6</span></h2>
+
+            <h3>Forms of Energy (know ALL of these)</h3>
+            <div class="vocab-grid">
+                <div class="vocab"><b>Mechanical:</b> motion or position (wind, moving car).</div>
+                <div class="vocab"><b>Light:</b> from Sun, bulbs, fire.</div>
+                <div class="vocab"><b>Heat (thermal):</b> from fire, friction, Sun.</div>
+                <div class="vocab"><b>Sound:</b> vibrations traveling as waves.</div>
+                <div class="vocab"><b>Electrical:</b> flowing charge in circuits.</div>
+                <div class="vocab"><b>Chemical:</b> stored in food, fuel, batteries.</div>
+                <div class="vocab"><b>Nuclear:</b> stored in atoms (Sun, power plants).</div>
+                <div class="vocab"><b>Kinetic:</b> energy of motion (moving ball).</div>
+                <div class="vocab"><b>Potential:</b> stored energy from position (ball at top of hill).</div>
+            </div>
+
+            <h3>Energy Transformations (common STAAR questions)</h3>
+            <table>
+                <tr><th>Device</th><th>Energy transformation</th></tr>
+                <tr><td>Flashlight</td><td>Chemical → Electrical → Light + Heat</td></tr>
+                <tr><td>Solar panel</td><td>Light → Electrical</td></tr>
+                <tr><td>Wind turbine</td><td>Mechanical (wind) → Electrical</td></tr>
+                <tr><td>Hydroelectric dam</td><td>Potential → Kinetic → Mechanical → Electrical</td></tr>
+                <tr><td>Toaster</td><td>Electrical → Heat + Light</td></tr>
+                <tr><td>Drum being hit</td><td>Mechanical → Sound</td></tr>
+                <tr><td>Battery</td><td>Chemical → Electrical</td></tr>
+                <tr><td>Plant photosynthesis</td><td>Light → Chemical (stored in sugar)</td></tr>
+            </table>
+
+            <div class="key-facts"><strong>🔑 Law of Conservation of Energy:</strong> Energy can't be created or destroyed — only changed from one form to another. Some always becomes heat (that's why devices get warm).</div>
+
+            <h3>Electric Circuits</h3>
+            <ul>
+                <li><b>Closed circuit</b> = complete loop = electricity flows = bulb lights.</li>
+                <li><b>Open circuit</b> = broken loop = no flow = bulb off.</li>
+                <li><b>Conductors</b> let electricity flow (metal wires, water with salt).</li>
+                <li><b>Insulators</b> block electricity (rubber, plastic, wood, glass).</li>
+                <li><b>Series circuit:</b> one path. Remove a bulb → all bulbs go out.</li>
+                <li><b>Parallel circuit:</b> multiple paths. Remove a bulb → others stay on.</li>
+            </ul>
+
+            <h3>Light &amp; Sound</h3>
+            <ul>
+                <li><b>Light travels in straight lines.</b> It can be reflected (mirror), refracted (bent through water), or absorbed.</li>
+                <li><b>Shadows</b> form when light is blocked. Closer to light = bigger shadow.</li>
+                <li><b>Sound needs a medium</b> (air, water, solid). Sound CAN'T travel through empty space.</li>
+                <li><b>Louder = more energy</b> put in. Higher pitch = faster vibrations.</li>
+            </ul>
+
+            <h3>Force &amp; Motion</h3>
+            <ul>
+                <li><b>Force</b> = a push or pull (measured in Newtons, N).</li>
+                <li>Bigger force OR less mass → more change in motion.</li>
+                <li><b>Gravity</b> pulls things DOWN toward Earth's center.</li>
+                <li><b>Friction</b> slows things down and makes heat.</li>
+                <li><b>Balanced forces</b> = no change in motion. <b>Unbalanced forces</b> = something speeds up, slows down, or changes direction.</li>
+            </ul>
+
+            <div class="checklist">
+                <label><input type="checkbox"><span>I can name 9 forms of energy</span></label>
+                <label><input type="checkbox"><span>I can trace a transformation like "battery → bulb"</span></label>
+                <label><input type="checkbox"><span>I know open vs closed, series vs parallel circuits</span></label>
+                <label><input type="checkbox"><span>I can explain why metal feels colder than wood (conduction)</span></label>
+            </div>
+        </div>
+
+        <!-- STRAND 4: Earth & Space -->
+        <div class="strand" id="s4">
+            <h2>🌍 4. Earth & Space <span class="teks-tag">TEKS 5.7, 5.8</span></h2>
+
+            <h3>Water Cycle (learn these 4 words)</h3>
+            <ol>
+                <li><b>Evaporation</b> — Sun heats water → it becomes water vapor (gas) and rises.</li>
+                <li><b>Condensation</b> — vapor cools in the sky → tiny droplets form clouds.</li>
+                <li><b>Precipitation</b> — droplets grow heavy → fall as rain, snow, sleet, or hail.</li>
+                <li><b>Collection / Runoff</b> — water collects in oceans, lakes, rivers, or seeps into the ground (groundwater).</li>
+            </ol>
+            <div class="key-facts"><strong>🔑 Sun is the engine</strong> of the water cycle. Without the Sun, no evaporation.</div>
+
+            <h3>Weather vs Climate</h3>
+            <ul>
+                <li><b>Weather</b> = what's happening RIGHT NOW (today's rain).</li>
+                <li><b>Climate</b> = average weather over MANY YEARS (Texas is mostly hot).</li>
+            </ul>
+
+            <h3>Clouds</h3>
+            <ul>
+                <li><b>Cumulus</b> — puffy, fair-weather clouds (like cotton).</li>
+                <li><b>Stratus</b> — flat, gray layers; often drizzle.</li>
+                <li><b>Cirrus</b> — wispy, high, made of ice crystals.</li>
+                <li><b>Cumulonimbus</b> — tall thunderstorm clouds.</li>
+            </ul>
+
+            <h3>Earth's Layers (outside → inside)</h3>
+            <ol>
+                <li><b>Crust</b> — thin, solid rock we live on.</li>
+                <li><b>Mantle</b> — hot, thick, slowly flowing rock.</li>
+                <li><b>Outer core</b> — LIQUID iron and nickel.</li>
+                <li><b>Inner core</b> — SOLID iron, extremely hot and under pressure.</li>
+            </ol>
+
+            <h3>Landforms &amp; Erosion</h3>
+            <ul>
+                <li><b>Weathering</b> breaks rocks into smaller pieces.</li>
+                <li><b>Erosion</b> MOVES those pieces (by water, wind, ice, gravity).</li>
+                <li><b>Deposition</b> drops them in a new place (deltas, beaches, sand dunes).</li>
+                <li>Fast-moving water carries more and bigger rocks than slow water.</li>
+            </ul>
+
+            <h3>Renewable vs Nonrenewable Resources</h3>
+            <table>
+                <tr><th>Renewable</th><th>Nonrenewable</th></tr>
+                <tr><td>Sun, wind, water, trees (if replanted)</td><td>Coal, oil, natural gas, most minerals</td></tr>
+            </table>
+
+            <h3>Solar System (memorize order!)</h3>
+            <p><b>My Very Educated Mother Just Served Us Nachos</b> = Mercury, Venus, Earth, Mars, Jupiter, Saturn, Uranus, Neptune.</p>
+            <ul>
+                <li><b>Inner planets</b> (Mercury, Venus, Earth, Mars) — small, rocky.</li>
+                <li><b>Outer planets</b> (Jupiter, Saturn, Uranus, Neptune) — big, gas/ice giants.</li>
+                <li>The farther from the Sun → the LONGER the year (orbital period).</li>
+                <li>The Sun is a <b>star</b>, the center of our solar system.</li>
+            </ul>
+
+            <h3>Day/Night, Seasons, Moon Phases</h3>
+            <ul>
+                <li><b>Day/Night:</b> Earth <b>rotates</b> on its axis every 24 hours.</li>
+                <li><b>Seasons:</b> caused by Earth's <b>tilt</b> (23.5°), NOT by distance from the Sun.</li>
+                <li><b>Year:</b> Earth <b>revolves</b> around the Sun every 365¼ days.</li>
+                <li><b>Moon phases cycle:</b> New → Waxing Crescent → First Quarter → Waxing Gibbous → Full → Waning Gibbous → Last Quarter → Waning Crescent → New. (≈29.5 days)</li>
+                <li><b>Waxing</b> = getting bigger. <b>Waning</b> = getting smaller.</li>
+            </ul>
+
+            <div class="warning"><strong>⚠️ Common trap:</strong> Seasons are NOT caused by Earth being closer or farther from the Sun. They're caused by Earth's TILT.</div>
+
+            <div class="checklist">
+                <label><input type="checkbox"><span>I can draw and label the water cycle</span></label>
+                <label><input type="checkbox"><span>I know the 4 layers of Earth</span></label>
+                <label><input type="checkbox"><span>I know rotation = day/night, revolution = year, tilt = seasons</span></label>
+                <label><input type="checkbox"><span>I can put planets in order from the Sun</span></label>
+            </div>
+        </div>
+
+        <!-- STRAND 5: Living Things -->
+        <div class="strand" id="s5">
+            <h2>🌱 5. Living Things <span class="teks-tag">TEKS 5.9, 5.10</span></h2>
+
+            <h3>Food Chains &amp; Webs</h3>
+            <ul>
+                <li><b>Producer</b> — makes its own food (plants, algae). Uses photosynthesis.</li>
+                <li><b>Consumer</b> — eats other living things.
+                    <ul>
+                        <li><b>Herbivore</b> — eats only plants (rabbit, deer).</li>
+                        <li><b>Carnivore</b> — eats only animals (lion, hawk).</li>
+                        <li><b>Omnivore</b> — eats both (bear, human).</li>
+                    </ul>
+                </li>
+                <li><b>Decomposer</b> — breaks down dead matter (bacteria, fungi, worms). Recycles nutrients back into soil.</li>
+                <li>Energy flows: <b>Sun → Producer → Consumer → Decomposer</b>.</li>
+                <li>Arrows in food chains point to the EATER (from food to animal).</li>
+            </ul>
+
+            <div class="key-facts"><strong>🔑 10% Rule:</strong> Only about 10% of energy passes from one level to the next. That's why there are lots of plants, fewer herbivores, and very few top predators.</div>
+
+            <h3>Photosynthesis</h3>
+            <p>Plants take in <b>sunlight + water + carbon dioxide</b> → they make <b>sugar (food) + oxygen</b>.</p>
+            <p style="background:#e8f5e9; padding: 10px; border-radius: 6px;"><b>Formula:</b> Light + CO₂ + H₂O → Sugar (glucose) + O₂</p>
+            <p>Leaves catch light, roots take up water, tiny holes (stomata) take in CO₂.</p>
+
+            <h3>Adaptations</h3>
+            <ul>
+                <li>An <b>adaptation</b> is a trait that helps an organism survive in its environment.</li>
+                <li><b>Physical</b> adaptations: thick fur (cold), cactus spines (protection + less water loss), webbed feet (swimming), camouflage.</li>
+                <li><b>Behavioral</b> adaptations: migration, hibernation, hunting in packs.</li>
+            </ul>
+
+            <h3>Inherited vs Learned</h3>
+            <ul>
+                <li><b>Inherited</b> — from parents (eye color, fur color, bird beak shape).</li>
+                <li><b>Learned</b> — practiced (riding a bike, dogs doing tricks, language).</li>
+            </ul>
+
+            <h3>Life Cycles</h3>
+            <ul>
+                <li><b>Complete metamorphosis</b> (4 stages): egg → larva → pupa → adult. <b>Butterflies, frogs, beetles.</b></li>
+                <li><b>Incomplete metamorphosis</b> (3 stages): egg → nymph → adult. <b>Grasshoppers, cockroaches.</b></li>
+                <li><b>Flowering plant:</b> seed → seedling → adult → flowers → pollination → seeds.</li>
+            </ul>
+
+            <h3>Ecosystems</h3>
+            <ul>
+                <li><b>Biotic</b> = living parts (plants, animals, bacteria).</li>
+                <li><b>Abiotic</b> = non-living parts (rocks, water, air, sunlight, temperature).</li>
+                <li>A change in any one part affects the whole ecosystem.</li>
+                <li><b>Invasive species</b> (like kudzu, zebra mussels) outcompete natives and damage ecosystems.</li>
+            </ul>
+
+            <div class="warning"><strong>⚠️ Trap:</strong> If a producer dies out, EVERY level above dies too (no food at the base). If a top predator dies out, prey populations EXPLODE, then overgraze producers.</div>
+
+            <div class="checklist">
+                <label><input type="checkbox"><span>I can label a food chain and know arrows point to the eater</span></label>
+                <label><input type="checkbox"><span>I know the photosynthesis ingredients and products</span></label>
+                <label><input type="checkbox"><span>I can tell inherited from learned traits</span></label>
+                <label><input type="checkbox"><span>I know complete vs incomplete metamorphosis</span></label>
+            </div>
+        </div>
+
+        <!-- STRAND 6: Test Strategy -->
+        <div class="strand" id="s6" style="border-left-color: #ff9800;">
+            <h2>🎯 6. STAAR Test-Day Strategy</h2>
+            <ol>
+                <li><b>Read each question twice.</b> Circle key words like "EXCEPT", "NOT", "BEST", "MOST".</li>
+                <li><b>Cross out wrong answers.</b> Usually 2 of 4 are obviously wrong — eliminate them first.</li>
+                <li><b>Look at the data FIRST</b> on data/graph questions, then read the question.</li>
+                <li><b>Watch for absolutes.</b> Answers with "always" or "never" are often wrong.</li>
+                <li><b>If stuck, flag it and move on.</b> Come back with fresh eyes at the end.</li>
+                <li><b>Eat breakfast. Sleep well. Pee before starting.</b> 🙂</li>
+                <li><b>Don't leave anything blank.</b> A guess has a 25% chance; a blank is 0%.</li>
+                <li><b>Use the whole time.</b> If you finish early, re-check flagged questions and data problems.</li>
+            </ol>
+            <div class="tip"><strong>💪 You've got this, Vihaan!</strong> You already know way more than you think. Trust your studying.</div>
+        </div>
+
+        <div style="text-align: center; padding: 20px 0;">
+            <a href="flashcards.html" class="print-btn" style="text-decoration: none;">🎴 Practice with Flashcards</a>
+            <a href="interactive.html" class="print-btn" style="text-decoration: none; background: #4CAF50;">🔬 Interactive Diagrams</a>
+            <a href="tests.html" class="print-btn" style="text-decoration: none; background: #ff9800;">📝 Take a Practice Test</a>
+        </div>
+    </div>
+
+    <script>
+        const saved = JSON.parse(localStorage.getItem('quickReviewChecks') || '{}');
+        document.querySelectorAll('.checklist input[type=checkbox]').forEach((cb, i) => {
+            cb.dataset.id = 'qr' + i;
+            if (saved[cb.dataset.id]) cb.checked = true;
+            cb.addEventListener('change', () => {
+                const s = JSON.parse(localStorage.getItem('quickReviewChecks') || '{}');
+                s[cb.dataset.id] = cb.checked;
+                localStorage.setItem('quickReviewChecks', JSON.stringify(s));
+            });
+        });
+    </script>
+</body>
+</html>
